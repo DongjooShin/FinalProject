@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+
+<mapper namespace="kosta.apt.mapper.ProductMapper"> <!-- namespace를 꼭 맞게 써주어야함 -->
+	<cache />
+	
+	
+	
+	<!-- pro_no을 1일추가시키기위해서 max값구한것  -->
+	
+	<select id="selectPro_no" resultType="Integer">
+	
+		select max(pro_no) from productApply 
+	
+	</select>
+
+
+	<!-- 공구신청등록 -->
+	<insert id="insertApplication" parameterType="kosta.apt.domain.Product.Product">
+
+		insert into productApply(
+		pro_no, pro_group, pro_name, m_memberNo, pro_tel, pro_context, apt_APTGNo, pro_date , pro_flag 
+		)
+		values(
+		#{pro_no}, #{pro_group}, #{pro_name}, #{m_memberNo}, #{pro_tel}, #{pro_context}, #{apt_APTGNo} , SYSDATE , #{pro_flag }
+		)
+
+	</insert>
+	
+	<!-- 관리자 공구신청 목록 -->
+	
+	<select id="selectAllApply" resultType="kosta.apt.domain.Product.Product">
+	
+		select * from productApply where apt_APTGNo = #{apt_APTGNo}
+	
+	</select>
+	
+	
+	<!-- 로그인한아이디 공구신청 목록 -->
+	
+	<select id="selectApplyList" resultType="kosta.apt.domain.Product.Product">
+	
+		select * from productApply where m_memberNo = #{m_memberNo}
+	
+	</select>
+	
+	
+   <select id="proApplyapprove" resultType="kosta.apt.domain.Product.Product" parameterType="int">
+   
+   select * from productApply where pro_no = #{pro_no}
+   
+   </select>
+   
+	
+	
+	
+	<!-- 페이지처리 -->
+	
+   <select id="listCountCri" resultType="int" parameterType="kosta.apt.domain.Paging.Criteria">
+   <![CDATA[
+
+   	 select 
+	   count(pro_no) 
+	 from 
+	   productApply 
+	 where 
+	   pro_no > 0 
+  
+   ]]>
+   
+   </select>
+	
+	
+	<!-- 승인완료 업데이트 -->
+	
+	<update id="proapproveOK">
+	
+	update productApply set pro_flag ='승인완료' where pro_no = #{pro_no}
+	
+	</update>
+	
+	
+	<!-- 승인취소 업데이트 -->
+	
+	<update id="proapproveCencel">
+	
+	update productApply set pro_flag ='승인거부' where pro_no = #{pro_no}
+	
+	</update>
+	
+	
+	<!-- 공구거래 매물 최대 번호 -->
+	
+	
+   <select id="selectpro_no" resultType="Integer">
+   	select  max(pro_no) from product
+   </select>
+	
+	
+	
+	<!--공동구매 등록  -->
+	
+	 <insert id="insertProduct" parameterType="kosta.apt.domain.Product.Product">
+      
+     insert into Product(
+     	
+     pro_no, pro_group, pro_name, m_memberNo, pro_tel, pro_context, pro_startdate, pro_enddate,
+     apt_APTGNo, pro_price, pro_num, pro_img1, pro_img2, pro_img3, checkPost, pro_maxnum
+      )
+      values(
+     #{pro_no}, #{pro_group}, #{pro_name}, #{m_memberNo}, #{pro_tel}, #{pro_context}, #{pro_startdate},
+     #{pro_enddate}, #{apt_APTGNo}, #{pro_price},  #{pro_num},#{pro_img1}, #{pro_img2}, #{pro_img3},
+     #{checkPost}, #{pro_maxnum} )
+    
+   </insert>
+   
+	
+	<!-- 공동구매 목록 -->
+	
+	<select id="prolist" resultType="kosta.apt.domain.Product.Product">
+   	<![CDATA[
+    select * from Product where #{date22} >= pro_startdate AND #{date22} <= pro_enddate 
+		
+		order by pro_no desc
+		]]>	
+   </select>
+   
+   
+   <!-- 공동구매 디테일 -->
+   
+   <select id="productdetail" resultType="kosta.apt.domain.Product.Product" parameterType="int">
+   select * from Product where pro_no = #{pro_no}
+   
+   </select>
+   
+	
+	<!-- 결제내역 등록 -->
+	<insert id="proCheck" parameterType="kosta.apt.domain.Product.ProductOrder">
+
+		insert into productcheckout(
+				pro_no, check_no, check_num, check_price, check_seller, check_buyer, check_name, check_date , check_tell,
+				check_addressee, check_address, check_sign, pro_price , checkPost		)
+		values(
+		#{pro_no}, #{check_no}, #{check_num}, #{check_price}, #{check_seller}, #{check_buyer}, #{check_name}, SYSDATE ,
+		 #{check_tell }, #{check_addressee }, #{check_address }, #{check_sign }, #{pro_price }, #{checkPost }
+		)
+
+	</insert>
+	
+	
+	<!-- 결제내역 번호매기기 -->
+	<select id="selectChcek_no" resultType="Integer">
+	
+		select max(check_no) from productcheckout 
+	
+	</select>
+	
+	
+	<!-- 구매내역 목록 -->
+	
+	 <select id="proconsumerlist" resultType="kosta.apt.domain.Product.ProductOrder" parameterType="String"  >
+	 <![CDATA[
+	 select 
+	   *
+	 from 
+	  productcheckout
+	 where check_no > 0 AND check_buyer = #{buyer}
+	 order by check_no desc, check_date desc
+	 ]]>
+   </select>
+   
+   
+   	
+	<!-- 관리자 구매내역목록 -->
+	
+	<select id="promanagelist" resultType="kosta.apt.domain.Product.ProductOrder" parameterType="String">
+	 <![CDATA[
+	 select 
+	 *
+	 from 
+	   productcheckout
+	 where check_seller = #{seller} AND check_no > 0
+	order by check_no desc, check_date desc
+	 ]]>
+   </select>
+   
+   
+   <!-- 배송처리 수정 -->
+	
+	
+	
+	   <!-- 디테일시 확인유무변경  -->
+   <update id="CheckPostUpdate" parameterType="int">
+   
+   update productcheckout set check_sign ='배송완료' where check_no =#{check_no}
+   
+   </update>
+   
+   
+   <update id="proNumupdate" parameterType="kosta.apt.domain.Product.ProductOrder">
+   
+   update Product set pro_num = pro_num - #{check_num} where pro_no = #{pro_no}
+   
+   </update>
+   
+   
+   
+   <select id="productOrderDetail" resultType="kosta.apt.domain.Product.ProductOrder" parameterType="int">
+   select * from productcheckout where check_no = #{checkno}
+   
+   </select>
+   
+   
+   
+   <!-- 댓글 번호구하기 -->
+   	<select id="selectRe_no" resultType="Integer">
+	
+		select max(re_no) from ProductReply where pro_no =#{pro_no}
+	
+	</select>
+	
+	
+	
+	<!-- 댓글 등록 -->
+	<insert id="replyadd" parameterType="kosta.apt.domain.Product.ProductReply">
+
+		insert into ProductReply(
+		pro_no, re_no, m_memberno, re_text, re_date 
+		
+		)
+		values(
+		#{pro_no}, #{re_no}, #{m_memberno}, #{re_text}, SYSDATE
+		
+		)
+
+	</insert>
+	
+	
+	<!-- 댓글 등록 -->
+	
+   	 <select id="Replylist" resultType="kosta.apt.domain.Product.ProductReply" parameterType="kosta.apt.domain.Product.ProductReply"  >
+	 <![CDATA[
+	 select 
+	   *
+	 from 
+	  ProductReply
+	 where pro_no = #{pro_no}
+	 order by re_no desc, re_date desc
+	 ]]>
+   </select>
+   
+   
+   
+   <!-- 댓글 삭제 -->
+   
+   <delete id="deleteRno" parameterType="int">
+   
+   delete from ProductReply where pro_no = #{pro_no} AND re_no  =#{re_no}
+   
+   </delete>
+   
+   
+   
+	
+</mapper>
+
+
+
+
+
+
+
+

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+
+<mapper namespace="kosta.apt.mapper.SurveyMapper"> <!-- namespace를 꼭 맞게 써주어야함 -->
+	<cache />
+
+
+
+	<select id="updategroup" resultType="Integer">
+		select max(su_group) from survey
+
+	</select>
+
+	<select id="updateSurveyGru" resultType="Integer">
+		select max(su_group) from SurveyDB 
+
+	</select>
+
+
+	<insert id="insertSurveyDB" parameterType="kosta.apt.domain.Survey.SurveyDB">
+
+		insert into SurveyDB(
+		su_group,su_startdate,su_enddate,apt_APTGNo,su_date, su_title
+		)
+		values(
+		#{su_group},#{su_startdate},#{su_enddate},1,#{su_date}, #{su_title}
+
+		)
+	</insert>
+	
+	
+
+	<!-- 설문지카운트 업데이트//섬문지 점수 업데이트 -->
+	<update id="inputSurCount" parameterType="kosta.apt.domain.Survey.Survey">
+	
+	update Survey set su_count = su_count + #{su_count}, su_sum = su_sum +#{su_sum} where apt_APTGNo = #{apt_APTGNo} AND su_group  = #{su_group } AND su_surveyNo  = #{su_surveyNo }
+	
+	</update>
+
+<!-- 	 설문지 점수 업데이트
+	<update id="inputSurSum" parameterType="kosta.apt.domain.Survey.Survey">
+	
+	
+	</update>
+ -->
+
+	<!-- 설문지 질문등록하기 -->
+	
+	<insert id="insertSurvey" parameterType="kosta.apt.domain.Survey.Survey">
+
+		insert into Survey(
+		su_group,su_surveyNo,su_context,apt_APTGNo,su_sum , su_count
+		)
+		values(
+		#{su_group},#{su_surveyNo},#{su_context},1, 0, 0
+
+		)
+	</insert>
+
+	<!-- 시작해야될 설문지구하기. -->
+	
+	<select id="surveystart" resultType="kosta.apt.domain.Survey.SurveyDB" parameterType="int">
+	  <![CDATA[
+	 select * from SURVEYDB  where #{date22} >= su_startdate AND #{date22} <= su_enddate 
+
+		]]>
+	</select>
+
+   	
+	<!--  
+	select * from SURVEYDB  where  <![CDATA[ #{date22} <= su_startdate  ]]> AND <![CDATA[ #{date22}  <= su_enddate  ]]> 
+	  -->
+   
+   
+   
+   	<select id="surveyList" resultType="kosta.apt.domain.Survey.Survey" parameterType="int">
+	
+	 select * from SURVEY  where su_group = #{groupNum}
+
+		
+	</select>
+   
+   
+   
+   <!-- 설문조사 제목가져오기 아파트번호 세션을가져와야대 -->
+   <select id="surveyResultTitle" resultType="kosta.apt.domain.Survey.SurveyDB">
+   
+    select * from SURVEYDB  where apt_APTGNo = 1
+   
+   </select>
+   
+   <select id="surveySelectDay" parameterType="kosta.apt.domain.Survey.SurveyDB" resultType="kosta.apt.domain.Survey.SurveyDB">
+     <![CDATA[
+
+	select * from SURVEYDB where apt_APTGNo = 1 AND su_startdate >= #{su_startdate} AND su_startdate <= #{su_enddate}
+		]]>
+   </select>
+   
+   
+   <!-- 점수총합 -->
+   <select id="surveyScoreSum" parameterType="Integer" resultType="int">
+   
+     select sum(su_sum) from SURVEY  where su_group  = #{sugroup}
+   
+   </select>
+   
+   <!-- 인원총합 -->
+   <select id="surveyCountSum" parameterType="Integer" resultType="int">
+   
+     select sum(su_count) from SURVEY  where su_group  = #{sugroup}
+   
+   </select>
+   
+   
+   <!-- 설문지 디테일부분 -->
+   <select id="surveyDetail" parameterType="Integer" resultType="kosta.apt.domain.Survey.Survey">
+   
+   select * from SURVEY where su_group = #{sugroup}
+   
+   </select>
+   
+   
+</mapper>
+
+
+
+
+
+
+
+
