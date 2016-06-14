@@ -47,6 +47,9 @@
 			<mapping path="/managementFee/*" />
 			<mapping path="/publicManagementFee/*" />
 			<mapping path="/budget/*" />
+			<mapping path="/siteNotice/inquiryMain"/>
+			<mapping path="/voter/*"/>
+			
 			<beans:ref bean="authInterceptor" />
 		</interceptor>
 		<interceptor>
@@ -68,6 +71,9 @@
 			<mapping path="/managementFee/*" />
 			<mapping path="/publicManagementFee/*" />
 			<mapping path="/budget/*"/>
+			<mapping path="/siteNotice/inquiryMain"/>
+			<mapping path="/voter/*"/>
+			
 			<beans:ref bean="loginInterceptor" />
 		</interceptor>
 
