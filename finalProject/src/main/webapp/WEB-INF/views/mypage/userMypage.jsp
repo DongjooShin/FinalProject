@@ -112,8 +112,7 @@
 		<jsp:include page="../include/head.jsp"></jsp:include>
 
 	</div>
-	<div id="page"
-		style="background: white; display: inline-block; padding-bottom: 50px; margin-left: 7.9%;">
+	<div id="page" style="background: white; display: inline-block; padding-bottom: 50px; margin-left: 7.9%;">
 		<div class="col-md-12">
 			<div id="mypageLayout">
 				<ul id=mypageUl>
