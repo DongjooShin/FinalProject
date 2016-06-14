@@ -59,6 +59,7 @@
 				success : function(result) {
 					var str = "";
 					$(result).each(function() {
+						alert(this.f_groupname);
 						str += "<option>" + this.f_groupname + "</option>"
 						$("#aptname").html(str);
 					});

@@ -65,6 +65,9 @@ public class MemberController {
 
 	@RequestMapping(value = "/signup", method = RequestMethod.GET)
 	public void signupGet(Model model, String state, String city, String aptname) {
+		System.out.println(state);
+		System.out.println(city);
+		System.out.println(aptname);
 		
 		String fullAddres = memberService.getAddressService(state + " " + city, aptname);
 		int apt_aptgno = memberService.getAptNumService(state + " " + city, aptname);

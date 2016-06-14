@@ -128,7 +128,7 @@
 											href="http://demo.themegrill.com/spacious/layout/no-sidebar-full-width/">수도세</a></li>
 										<li id="menu-item-107"
 											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-107"><a
-											href="/PublicManageFee">공통관리비</a></li>
+											href="publicmana/PublicManageFee">공통관리비</a></li>
 									</ul></li>
 								<li id="menu-item-111"
 									class="menu-item menu-item-type-custom menu-item-object-custom menu-item-165"><a
