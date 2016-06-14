@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+
+<mapper namespace="kosta.apt.mapper.GNMapper"> <!-- namespace를 꼭 맞게 써주어야함 -->
+   <cache />
+   
+   <!-- <select id="gnList" resultType="GroupNotice" parameterType="java.util.HashMap">
+	   	select * from (		select * from groupnotice
+			where apt_APTGNo=#{param2.a}
+	   	order by g_groupNoticeNo desc  ) 
+   	<if test="param1.se.area !=null">
+			<where>
+				<foreach collection="param1.se.area" item="item" separator="or" open="(" close=")">
+					${item} LIKE #{param1.se.searchKey}
+				</foreach>
+			</where>
+				
+		</if>
+ 
+   </select> -->
+
+   <insert id="insertGN">
+       insert into GROUPNOTICE(g_groupNoticeNo, g_title, g_date, g_content, g_hit, g_fileName, apt_APTGNo, m_memberNo,g_subNo)      
+      values(gn_seq.nextval,#{g_title},SYSDATE,#{g_content},0,#{g_fileName},#{apt_APTGNo},#{m_memberNo},0)
+   </insert>
+  
+   <select id="listAll" resultType="GroupNotice">
+	 <![CDATA[
+		 select * from groupnotice 
+		 where apt_APTGNo=0
+		 order by g_groupNoticeNo
+	 ]]>
+	</select>
+	
+	<select id="newlist" resultType="GroupNotice">
+	 <![CDATA[
+	 select * 
+	 from (
+		 select * from GROUPNOTICE
+		 order by g_groupNoticeNo DESC
+		)
+	 where rownum<6
+	 and apt_aptGNo=#{aptNum}
+		 
+	 ]]>
+	</select>
+	
+	<select id="read" resultType="GroupNotice">
+		select * from groupnotice where g_groupNoticeNo=#{g_groupNoticeNo}
+	</select>
+	<update id="update">
+		update groupnotice set
+		g_title=#{g_title},
+		g_content=#{g_content}
+		where g_groupNoticeNo=#{g_groupNoticeNo}
+		
+	</update>
+	
+	<delete id="delete" >
+   	delete from groupnotice
+   	where  g_groupNoticeNo=#{g_groupNoticeNo}
+   </delete>
+   
+   <update id="hitCount">
+		update groupnotice set
+		g_hit=g_hit+1
+		where g_groupNoticeNo = #{g_groupNoticeNo}
+	</update>
+	
+	
+	<!-- search관련된 xml -->
+	<sql id="search">
+	 <if test="searchType != null" >
+	   <if test="searchType == 't'.toString()">
+	     and g_title like '%'|| #{keyword}||'%'
+	   </if>
+	   <if test="searchType == 'w'.toString()">
+	     and m_memberNo like '%'|| #{keyword}||'%'
+	   </if>    
+	 </if> 
+	</sql>
+	
+	 
+	<select id="listSearch" resultType="GroupNotice" parameterType="GNSearchCriteria" >
+	<![CDATA[  
+	  select * 
+	  from groupnotice 
+	  where apt_APTGNo=#{aptNum}
+	]]>  
+	
+	  <include refid="search"></include>
+	  
+	<![CDATA[    
+	  order by g_subNo desc	  
+	]]>  
+	</select>
+	
+	<select id="listSearchCount" resultType="int" parameterType="GNSearchCriteria">
+	<![CDATA[  
+	  select count(*) 
+	  from groupnotice 
+	  where apt_APTGNo=#{aptNum}
+	]]>
+	  <include refid="search"></include>
+	 
+	</select> 
+	
+<!-- <select id="gnlistCount" resultType="int" parameterType="java.util.HashMap">
+		select count(*) from (select * from groupnotice
+		where apt_APTGNo=#{param2.apt}) 
+		<if test="param.cri.searchType !=null">
+			<where>
+				<foreach collection="param1.cri.searchType" item="item" separator="or" open="(" close=")">
+					${item} LIKE #{param.cri.keyword}
+				</foreach>
+			</where>
+		</if>
+	</select>
+	
+	
+	<select id="gnList" resultType="GroupNotice" parameterType="java.util.HashMap">
+		select * from ( select * from groupnotice
+		where apt_APTGNo=#{param.apt}
+		order by g_groupNoticeNo desc )
+	<if test="param.cri.searchType !=null">
+		<where>
+			<foreach collection="param.cri.searchType" item="item" separator="or"
+				open="(" close=")">
+				${item} LIKE #{param.cri.keyword}
+			</foreach>
+		</where>
+
+	</if>
+
+</select> -->
+   <!-- 
+   <select id="selectgnDetail" parameterType="int" resultType="GroupNotice">
+		select * from groupnotice where g_groupNoticeNo=#{g_groupNoticeNo}
+	</select>
+	
+	<update id="uphit" parameterType="int">
+		update groupnotice set
+		g_hit=g_hit+1
+		where g_groupNoticeNo = #{g_groupNoticeNo}
+	</update>
+	
+	<update id="updategn" parameterType="GroupNotice">
+		update groupnotice set
+		g_title=#{g_title}
+		g_fileName=#{g_fileName},
+		g_content=#{g_content}
+		where g_groupNoticeNo=#{g_groupNoticeNo}
+		
+	</update>
+	
+   
+   <delete id="selectgnDel" parameterType="int">
+   	delete from groupnotice
+   	where  g_groupNoticeNo=#{g_groupNoticeNo}
+   </delete>
+   
+   <select id="countgroupNotice" resultType="int" parameterType="java.util.HashMap">
+		select count(*) from (select * from groupnotice
+		where apt_APTGNo=#{param2.a}) 
+		<if test="param1.se.area !=null">
+			<where>
+				<foreach collection="param1.se.area" item="item" separator="or" open="(" close=")">
+					${item} LIKE #{param1.se.searchKey}
+				</foreach>
+			</where>
+		</if>
+	</select>
+	
+	<select id="selectCount" resultType="int" parameterType="int">
+		select MAX(g_subNo) from groupnotice
+		where apt_APTGNo=#{apt_APTGNo}	
+	</select> -->
+   
+</mapper>
+
+
+
+
+
+
+
+

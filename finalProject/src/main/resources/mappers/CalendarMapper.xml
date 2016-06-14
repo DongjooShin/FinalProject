@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+
+<mapper namespace="kosta.apt.mapper.CalMapper"> <!-- namespace를 꼭 맞게 써주어야함 -->
+   <cache />
+   
+
+   <insert id="insertCal" parameterType="Calendar">
+      insert into calendar(
+      c_calendarno,c_schedule,c_startdate,c_enddate,apt_APTGNo)      
+      values(
+      cal_seq.nextval,#{c_schedule},to_date(#{c_startdate},'yyyy-MM-dd'),to_date(#{c_enddate},'yyyy-MM-dd'),#{apt_APTGNo}
+      )
+   </insert>
+   
+  	<select id="listCalendar" resultType="Calendar" parameterType="int">
+   		select * from calendar 
+   		where apt_aptgno = #{aptGroupNum}
+    </select>
+   
+   <delete id="calendarDel" parameterType="Calendar">
+   	delete from calendar
+   	where c_schedule=#{c_schedule} and c_startdate=#{c_startdate} and apt_APTGNo=#{apt_APTGNo}
+   </delete>
+   
+   <select id="calendarDday" resultType="Calendar" parameterType="Calendar">
+   		select * from calendar 
+   		where apt_aptgno = #{apt_APTGNo}
+   		and c_startdate=#{c_Dday}
+   </select>
+   
+   <select id="calendarDday1" resultType="Calendar" parameterType="Calendar">
+   		select * from calendar 
+   		where apt_aptgno = #{apt_APTGNo}
+   		and c_startdate=#{c_Dday1}
+   </select>
+   
+   <select id="calendarDday2" resultType="Calendar" parameterType="Calendar">
+   		select * from calendar 
+   		where apt_aptgno = #{apt_APTGNo}
+   		and c_startdate=#{c_Dday2}
+   </select>
+   
+   <select id="calendarDday3" resultType="Calendar" parameterType="Calendar">
+   		select * from calendar 
+   		where apt_aptgno = #{apt_APTGNo}
+   		and c_startdate=#{c_Dday3}
+   </select>
+   
+</mapper>
+
+
+
+
+
+
+
+
