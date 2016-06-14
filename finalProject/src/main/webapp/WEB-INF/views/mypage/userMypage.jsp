@@ -18,6 +18,7 @@
 		$('#sixthContent').load("/member/passwordCheck");
 		$('#firstContent1').load("/calendar/exam");
 		$('#firstContent2').load("/groupNotice/exam");
+		$('thirdContent').load('/publicmana/list');
 		$('#firstManu').css('background', '#09b9e5');
 		$('#firstContent').css('display', 'block');
 
