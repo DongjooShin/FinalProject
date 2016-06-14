@@ -34,6 +34,7 @@ public class MemberDao {
 	}
 
 	public List<AptList> getAptName(String address) {
+		System.out.println("들어옴");
 		return sqlSession.getMapper(MemberMapper.class).getAptName(address);
 	}
 

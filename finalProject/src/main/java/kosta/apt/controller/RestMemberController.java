@@ -42,7 +42,10 @@ private MemberService memberService;
 	@RequestMapping(value = "/member/test1", method = RequestMethod.POST)
 	public ResponseEntity<List<AptList>> test1(Model model,@RequestParam("state") String state,@RequestParam("city") String city) {
 		String address = state + " " + city + "%";
+		System.out.println(address);
 		List<AptList> list = memberService.getAptNameService(address);
+	
+		System.out.println(list.size());
 		ResponseEntity<List<AptList>> entity  = new ResponseEntity<List<AptList>>(list,HttpStatus.OK);
 
 	

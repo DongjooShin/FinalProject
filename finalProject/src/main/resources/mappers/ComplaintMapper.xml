@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kosta.apt.mapper.ComplaintMapper">
+
+	<insert id="create">
+		insert into complaint
+		values(seq_complaint.nextval, #{cp_title},#{cp_content},'처리대기중', 0,#{cp_flag},#{cp_date},#{m_memberNo}, 1)
+	</insert>
+	
+	
+	<sql id="search">
+	 <if test="searchType != null" >
+	   <if test="searchType == 't'.toString()">
+	     and cp_title like '%'|| #{keyword}||'%'
+	   </if>
+	   <if test="searchType == 'c'.toString()">
+	     and cp_content like '%'|| #{keyword}||'%'
+	   </if>
+	   <if test="searchType == 'w'.toString()">
+	     and m_memberNo like '%'|| #{keyword}||'%'
+	   </if>    
+	   <if test="searchType == 'tc'.toString()">
+	     and ( cp_title like '%'|| #{keyword}||'%' OR cp_content like '%'|| #{keyword}||'%')
+	   </if>       
+	   <if test="searchType == 'cw'.toString()">
+	     and ( cp_content like '%'|| #{keyword}||'%' OR m_memberNo like '%'|| #{keyword}||'%')
+	   </if>       
+	   <if test="searchType == 'tcw'.toString()">
+	     and (   cp_title like '%'|| #{keyword}||'%'
+	           OR
+	             cp_content like '%'|| #{keyword}||'%'
+	           OR
+	             m_memberNo like '%'|| #{keyword}||'%')
+	   </if>             
+	 </if> 
+	</sql>
+	
+	<select id="listSearchCriteria" resultType="Complaint" parameterType="SearchCriteria" >
+	<![CDATA[  
+	  select * 
+	  from complaint 
+	  where cp_complaintNo > 0   
+	]]>  
+	
+	  <include refid="search"></include>
+	  
+	<![CDATA[    
+	  order by cp_complaintNo desc	  
+	]]>  
+	</select>
+	
+	
+	<select id="listSearchCount" resultType="int" parameterType="SearchCriteria">
+	<![CDATA[  
+	  select count(cp_complaintNo) 
+	  from complaint 
+	  where cp_complaintNo > 0 
+	]]>
+	  <include refid="search"></include>
+	 
+	</select>
+	
+	<select id="readComplaint" resultType="Complaint">
+		select *
+		from complaint
+		where cp_complaintNo =#{cp_complaintNo}
+	</select>
+	<update id="update">
+	update complaint
+	set cp_state =#{cp_state}
+	where cp_complaintNo =#{cp_complaintNo}
+	
+	
+	</update>
+	<delete id="delete" >
+	delete from complaint
+	where cp_complaintNo =#{cp_complaintNo}
+	</delete>
+	<select id="mypageComplaint" resultType="Complaint">
+		select *
+		from (select * 
+		from complaint 
+		order by cp_complaintNo desc)
+	 <![CDATA[where rownum <4]]>
+	</select>
+	
+	<insert id="addReply">
+	insert into reply values
+	(reply_seq.nextval,#{m_memberno},#{replytext},#{rdate},#{cp_complaintNo})
+	
+	
+	
+	</insert>
+	<select id="listReply" resultType="Reply">
+	select *
+	from reply
+	where cp_conplaintno =#{cp_complaintNo}
+	
+	
+	</select>
+	<update id="modifyReply">
+	update reply set replytext = #{replytext}
+	where rno =#{rno}
+	
+	
+	
+	
+	</update>
+	<delete id="removeReply">
+	delete from reply where rno =#{rno}
+	
+	</delete>
+	<select id="listReplyPage" resultType="Reply">
+	  <![CDATA[
+		 select 
+		  *
+		 from
+		   (
+		   select /*+INDEX_DESC(reply pk_reply))*/
+		     rownum rn, rno,m_memberno,replytext,rdate,cp_complaintNo
+		   from reply
+		   where cp_complaintNo = #{cp_complaintNo}
+		   and rno > 0
+		   and rownum <= #{cri.page} * #{cri.perPageNum}
+		   )
+		where rn > ( #{cri.page} -1) * #{cri.perPageNum}
+	  ]]> 
+	 </select>
+	 
+	 <select id="replyCount" resultType="int">
+	 select count(rno)
+	 from reply
+	 where cp_complaintNo =#{cp_complaintNo}
+	 
+	 
+	 
+	 </select>
+	
+	<update id="addRef">
+	update complaint set cp_ref = cp_ref + #{ref}
+	where cp_complaintNo = #{complaintno}
+	</update>
+	
+<!--   	<select id="read" resultType="BoardVO">
+		select
+		bno, title, content, writer, regdate, viewcnt,replycnt
+		from
+		tbl_board
+		where bno = #{bno}
+	</select>
+	
+	<update id="updateReplyCnt">
+	update tbl_board set replycnt = replycnt + #{amount}
+	where bno = #{bno}
+	
+	
+	</update>
+
+	<update id="update">
+		update tbl_board set title =#{title}, content =#{content}
+		where bno = #{bno}
+	</update>
+
+	<delete id="delete">
+		delete from tbl_board where bno = #{bno}
+	</delete> 
+
+	<select id="listAll" resultType="org.zerock.domain.BoardVO">
+	 <![CDATA[
+	 select 
+	   bno, title, content, writer, regdate, viewcnt 
+	 from 
+	   tbl_board 
+	 where bno > 0 
+	 order by bno desc, regdate desc
+	 ]]>
+	</select>
+
+
+	<select id="listCriteria" resultType="BoardVO">
+	 <![CDATA[
+	 select 
+	   bno, title, content, writer, regdate, viewcnt ,replycnt
+	 from 
+	   tbl_board 
+	 where bno > 0 
+	 order by bno desc, regdate desc	
+	 ]]>
+	</select>
+		<select id="countPaging" resultType="int">
+	 <![CDATA[
+	 select 
+	   count(bno) 
+	 from 
+	   tbl_board 
+	 where 
+	   bno > 0 
+	 ]]>
+ 	</select>
+
+	<sql id="search">
+	 <if test="searchType != null" >
+	   <if test="searchType == 't'.toString()">
+	     and title like '%'|| #{keyword}||'%'
+	   </if>
+	   <if test="searchType == 'c'.toString()">
+	     and content like '%'|| #{keyword}||'%'
+	   </if>
+	   <if test="searchType == 'w'.toString()">
+	     and writer like '%'|| #{keyword}||'%'
+	   </if>    
+	   <if test="searchType == 'tc'.toString()">
+	     and ( title like '%'|| #{keyword}||'%' OR content like '%'|| #{keyword}||'%')
+	   </if>       
+	   <if test="searchType == 'cw'.toString()">
+	     and ( content like '%'|| #{keyword}||'%' OR writer like '%'|| #{keyword}||'%')
+	   </if>       
+	   <if test="searchType == 'tcw'.toString()">
+	     and (   title like '%'|| #{keyword}||'%'
+	           OR
+	             content like '%'|| #{keyword}||'%'
+	           OR
+	             writer like '%'|| #{keyword}||'%')
+	   </if>             
+	 </if> 
+	</sql>
+	
+	<select id="listSearch" resultType="BoardVO" parameterType="SearchCriteria" >
+	<![CDATA[  
+	  select * 
+	  from tbl_board 
+	  where bno > 0   
+	]]>  
+	
+	  <include refid="search"></include>
+	  
+	<![CDATA[    
+	  order by bno desc	  
+	]]>  
+	</select>
+	
+		<select id="listSearchCount" resultType="int" parameterType="SearchCriteria">
+	<![CDATA[  
+	  select count(bno) 
+	  from tbl_board 
+	  where bno > 0 
+	]]>
+	  <include refid="search"></include>
+	 
+	</select>
+	<insert id="addAttach">
+	
+	insert into tbl_attach(fullname,bno) values(#{fullname},LAST_INSERT_ID())
+	</insert>
+	
+	<select id="getATtach" resultType="String">
+	
+	select fullname from tbl_attach where bno=#{bno} order by regdate
+	</select> -->
+<!-- 
+ 	<select id="listPage" resultType="BoardVO">
+	 <![CDATA[
+	 select 
+	   bno, title, content, writer, regdate, viewcnt 
+	 from 
+	   tbl_board 
+	 where bno > 0 
+	 order by bno desc, regdate desc 
+	 ]]>
+	</select>
+
+	<select id="listCriteria" resultType="BoardVO">
+	 <![CDATA[
+	 select 
+	   bno, title, content, writer, regdate, viewcnt 
+	 from 
+	   tbl_board 
+	 where bno > 0 
+	 order by bno desc, regdate desc	
+	 ]]>
+	</select>
+
+	<select id="countPaging" resultType="int">
+	 <![CDATA[
+	 select 
+	   count(bno) 
+	 from 
+	   tbl_board 
+	 where 
+	   bno > 0 
+	 ]]>
+ 	</select>
+ 
+ 
+
+	 
+  -->
+	  
+
+
+</mapper>

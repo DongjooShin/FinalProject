@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="kosta.apt.mapper.SiteNoticeMapper"> <!-- namespace를 꼭 맞게 써주어야함 -->
+
+	<cache />
+
+	<select id="maxSnNo" resultType="Integer">
+		select max(sn_sitenoticeno) from
+		sitenotice
+	</select>
+
+	<insert id="insertSN" parameterType="SiteNotice">
+		insert into
+		sitenotice(sn_sitenoticeno,sn_title,sn_date,sn_content,sn_hit,sn_filename,m_memberno)
+		values(#{sn_siteNoticeNo},#{sn_title},sysdate,#{sn_content},0,#{sn_fileName},#{m_memberNo})
+	</insert>
+
+	<!-- search관련된 xml -->
+	<sql id="search">
+		<if test="searchType != null">
+			<if test="searchType == 't'.toString()">
+				where sn_title like '%'|| #{keyword}||'%'
+			</if>
+			<if test="searchType == 'w'.toString()">
+				where m_memberNo like '%'|| #{keyword}||'%'
+			</if>
+		</if>
+	</sql>
+
+	<select id="selectList" parameterType="SNSearchCriteria"
+		resultType="SiteNotice">
+		 <![CDATA[  
+		     select * from sitenotice
+	 	 ]]>
+
+		<include refid="search"></include>
+	     
+		 <![CDATA[    
+		     order by sn_sitenoticeno desc     
+		 ]]>
+
+	</select>
+
+	<select id="selectOne" parameterType="SNSearchCriteria"
+		resultType="int">
+		   <![CDATA[  
+		     select count(*) 
+		     from sitenotice 
+		   ]]>
+		<include refid="search"></include>
+
+	</select>
+
+
+	<select id="snRead" resultType="SiteNotice">
+		select * from sitenotice where sn_siteNoticeNo=#{sn_siteNoticeNo}
+	</select>
+
+	<update id="snHitCount" parameterType="int">
+		update sitenotice set sn_hit=sn_hit+1 where sn_siteNoticeNo =
+		#{sn_siteNoticeNo}
+	</update>
+
+	<update id="snModify" parameterType="SiteNotice">
+		update sitenotice set sn_title=#{sn_title}, sn_content=#{sn_content}
+		where sn_siteNoticeNo=#{sn_siteNoticeNo}
+	</update>
+
+	<delete id="snDelete" parameterType="int">
+		delete from sitenotice where sn_siteNoticeNo=#{sn_siteNoticeNo}
+	</delete>
+
+
+	<select id="maxQnANo" resultType="Integer">
+		select max(qnano) from qna
+	</select>
+
+	<insert id="inquiryInsert" parameterType="QnA">
+		insert into
+		qna(qnaNo,q_name,q_email,q_title,q_content,q_date,q_filename,q_ref,q_state,m_memberno)
+		values(#{qnaNo},#{q_name},#{q_email},#{q_title},#{q_content},sysdate,#{q_fileName},#{qnaNo},1,#{m_memberNo})
+	</insert>
+
+	<select id="maxJINo" resultType="Integer">
+		select max(jno) from joininquiry
+	</select>
+
+	<insert id="insertJoinInquiry" parameterType="JoinInquiry">
+		insert into joininquiry(jno,j_name,j_email,j_phone,j_apt_name,j_message)
+		values(#{jno},#{j_name},#{j_email},#{j_phone},#{j_apt_name},#{j_message})
+	</insert>
+
+	<!-- search관련된 xml -->
+	<sql id="QnAsearch">
+		<if test="searchType != null">
+			<if test="searchType == 'g'.toString()">
+				AND q_name like '%'|| #{keyword}||'%'
+			</if>
+			<if test="searchType == 'w'.toString()">
+				AND m_memberNo like '%'|| #{keyword}||'%'
+			</if>
+		</if>
+	</sql>
+
+	<select id="QnAListSearchCri" parameterType="SNSearchCriteria"
+		resultType="QnA">
+		 <![CDATA[  
+		     select * from qna where qnaNo = q_ref 
+	 	 ]]>
+
+		<include refid="QnAsearch"></include>
+	     
+		 <![CDATA[    
+		     order by q_state asc, qnano desc     
+		 ]]>
+
+	</select>
+	<select id="inqRead" resultType="QnA" parameterType="int">
+		select * from qna where qnaNo=#{qnaNo} 
+	</select>
+	
+	<insert id="inqReply" parameterType="QnA">
+		insert into
+		qna(qnaNo,q_name,q_email,q_title,q_content,q_date,q_filename,q_ref,q_state,m_memberno)
+		values(#{qnaNo},#{q_name},#{q_email},#{q_title},#{q_content},sysdate,#{q_fileName},#{qnaNo},1,#{m_memberNo})
+	</insert>
+	
+	<select id="selectInquiry" parameterType="int" resultType="QnA">
+		select * from QnA where qnaNo = #{qnaNo}
+	</select>
+	<update id="updateState" parameterType="int">
+		update qna set q_state=2 where qnaNo=#{qnaNo}
+	</update>
+	
+	<insert id="insertAnswer" parameterType="QnA">
+		insert into
+		qna(qnaNo,q_name,q_email,q_title,q_content,q_date,q_filename,q_ref,q_state,m_memberno)
+		values(#{qnaNo},#{q_name},'NULL',#{q_title},#{q_content},sysdate,'NULL',#{q_ref},#{q_state},#{m_memberNo})
+	</insert>
+	
+	<select id="selectReply" parameterType="int" resultType="QnA">
+		select * from qna where q_ref = #{qnaNo} AND qnaNo != q_ref
+	</select>
+	
+	<select id="selectMyInquiry" parameterType="String" resultType="QnA">
+		select * from qna where m_memberNo = #{m_memberNo} AND qnaNo = q_ref
+	</select>
+	<select id="selectMyReply" parameterType="String" resultType="QnA">
+		select * from qna where m_memberNo = #{m_memberNo} AND qnaNo != q_ref
+	</select>
+	
+	
+</mapper>
+
+
+
+
+
+
+
+
+

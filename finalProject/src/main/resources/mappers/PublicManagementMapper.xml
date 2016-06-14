@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+
+<mapper namespace="apt.mapper.Management"> <!-- namespace를 꼭 맞게 써주어야함 -->
+   <cache />
+   
+   <!--연도별 공동관리비-->
+    <select id="selectPublicmanage" resultType="PublicManagementFee">
+    <![CDATA[
+	select PM_PUBLICFEENO,sum(pm_clean) pm_clean,sum(pm_general) pm_general,sum(pm_maintain) pm_maintain,sum(pm_liftMaintain) pm_liftMaintain,sum(pm_security) pm_security,
+	sum(pm_foodWaste) pm_foodWaste,sum(pm_fireInsurance) pm_fireInsurance,sum(pm_commission) pm_commission,sum(pm_meeting) pm_meeting,sum(pm_publicElectric) pm_publicElectric,sum(pm_liftElectric) pm_liftElectric,
+	sum(pm_TVFee) pm_TVFee,sum(pm_disinfection) pm_disinfection, apt_APTGNo from
+	 (select substr(PM_PUBLICFEENO,1,4) PM_PUBLICFEENO,pm_clean ,pm_general ,pm_maintain ,pm_liftMaintain ,pm_security ,
+	pm_foodWaste ,pm_fireInsurance ,pm_commission ,pm_meeting ,pm_publicElectric ,pm_liftElectric ,
+	pm_TVFee ,pm_disinfection ,apt_APTGNo   from PublicManagementFee 
+	  where apt_aptgno = #{apt_aptgno}
+	  and   substr(PM_PUBLICFEENO,1,4) != #{day}
+	  group by pm_publicFeeNo,pm_clean ,pm_general ,pm_maintain ,pm_liftMaintain ,pm_security ,pm_foodWaste ,pm_fireInsurance ,
+	pm_commission ,pm_meeting ,pm_publicElectric ,pm_liftElectric ,pm_TVFee ,pm_disinfection ,apt_APTGNo
+	   )
+	  group by PM_PUBLICFEENO,apt_APTGNo
+	  order by PM_PUBLICFEENO desc
+    ]]>
+   </select> 
+
+<!--달별 공동관리비-->
+	<select id="selectMonthPublicmanage" resultType="PublicManagementFee">
+	
+    <![CDATA[
+     select *
+     from PublicManagementFee
+     where apt_aptgno =#{aptgno}
+     and rownum <11
+     order by PM_PUBLICFEENO desc
+    ]]>
+	</select>
+	
+	<!-- 달별관리비-->
+	<select id="MonthManageFee" resultType="PublicManagementFee">
+	select * from
+	(select * from PublicManagementFee 
+	where apt_aptgno = #{aptgno}
+	order by pm_publicFeeNo  desc)
+	 <![CDATA[where rownum <7]]>
+	 order by pm_publicFeeNo asc
+	
+	</select>
+	
+	<!--작년 재작년 결산-->
+	<select id="appropriation" resultType="PublicManagementFee">
+	
+<!-- 	select mf_date,sum(mf_electricFee) mf_electricFee,sum(mf_gasFee) mf_gasFee,sum(mf_waterFee) mf_waterFee,
+	sum(mf_electricAmount) mf_electricAmount, sum(mf_gasAmount) mf_gasAmount,sum(mf_waterAmount) mf_waterAmount
+		from	(select substr(mf_date,1,4) mf_date,mf_electricFee ,mf_gasFee ,mf_waterFee ,mf_electricAmount ,mf_gasAmount ,
+				mf_waterAmount    from managementfee 
+				where m_memberno = #{m_memberno}
+  				group by mf_date,mf_electricFee ,mf_gasFee ,mf_waterFee ,mf_electricAmount ,mf_gasAmount ,mf_waterAmount
+ 				)
+		group by mf_date
+		order by mf_date -->
+	
+	<![CDATA[
+select PM_PUBLICFEENO,sum(pm_clean) pm_clean,sum(pm_general) pm_general,sum(pm_maintain) pm_maintain,sum(pm_liftMaintain) pm_liftMaintain,sum(pm_security) pm_security,
+	sum(pm_foodWaste) pm_foodWaste,sum(pm_fireInsurance) pm_fireInsurance,sum(pm_commission) pm_commission,sum(pm_meeting) pm_meeting,sum(pm_publicElectric) pm_publicElectric,sum(pm_liftElectric) pm_liftElectric,
+	sum(pm_TVFee) pm_TVFee,sum(pm_disinfection) pm_disinfection, apt_APTGNo from
+	 (select substr(PM_PUBLICFEENO,1,4) PM_PUBLICFEENO,pm_clean ,pm_general ,pm_maintain ,pm_liftMaintain ,pm_security ,
+	pm_foodWaste ,pm_fireInsurance ,pm_commission ,pm_meeting ,pm_publicElectric ,pm_liftElectric ,
+	pm_TVFee ,pm_disinfection ,apt_APTGNo   from PublicManagementFee 
+	  where apt_aptgno = #{aptgno}
+	  and   substr(PM_PUBLICFEENO,1,4) != #{day}
+	  group by pm_publicFeeNo,pm_clean ,pm_general ,pm_maintain ,pm_liftMaintain ,pm_security ,pm_foodWaste ,pm_fireInsurance ,
+	pm_commission ,pm_meeting ,pm_publicElectric ,pm_liftElectric ,pm_TVFee ,pm_disinfection ,apt_APTGNo
+	   )
+	  group by PM_PUBLICFEENO,apt_APTGNo
+	  order by PM_PUBLICFEENO desc
+	  
+	]]>	
+	</select>
+	
+	<select id="DataAppropriation"  resultType="ManagementYear">
+select 
+	a_date,pm_clean,pm_general,pm_maintain,pm_liftMaintain,pm_security,pm_foodWaste,pm_fireInsurance,
+	pm_commission,pm_meeting,pm_publicElectric,pm_liftElectric,pm_TVFee,pm_disinfection,a_usedamount
+	from(	select PM_PUBLICFEENO,sum(pm_clean) pm_clean,sum(pm_general) pm_general,sum(pm_maintain) pm_maintain,sum(pm_liftMaintain) pm_liftMaintain,sum(pm_security) pm_security,
+			sum(pm_foodWaste) pm_foodWaste,sum(pm_fireInsurance) pm_fireInsurance,sum(pm_commission) pm_commission,sum(pm_meeting) pm_meeting,sum(pm_publicElectric) pm_publicElectric,sum(pm_liftElectric) pm_liftElectric,
+			sum(pm_TVFee) pm_TVFee,sum(pm_disinfection) pm_disinfection, apt_APTGNo 
+				from
+	 			(select substr(PM_PUBLICFEENO,1,4) PM_PUBLICFEENO,pm_clean ,pm_general ,pm_maintain ,pm_liftMaintain ,pm_security ,
+				pm_foodWaste ,pm_fireInsurance ,pm_commission ,pm_meeting ,pm_publicElectric ,pm_liftElectric ,
+				pm_TVFee ,pm_disinfection ,apt_APTGNo   
+					from PublicManagementFee 
+	  				where apt_aptgno = #{aptgno}
+	  				group by pm_publicFeeNo,pm_clean ,pm_general ,pm_maintain ,pm_liftMaintain ,pm_security ,pm_foodWaste ,pm_fireInsurance ,
+					pm_commission ,pm_meeting ,pm_publicElectric ,pm_liftElectric ,pm_TVFee ,pm_disinfection ,apt_APTGNo
+	   )
+	  group by PM_PUBLICFEENO,apt_APTGNo
+	  order by PM_PUBLICFEENO desc) managefee ,(select a_date,a_usedamount 
+	  											from APPROPRIATION) appro
+	  where managefee.PM_PUBLICFEENO = appro.a_date
+			
+	</select> 
+	
+	<!-- 도/시 별 공동관리비-->
+	<select id="getCityGraph"  resultType="PublicManagementFee" >
+ 	
+	<![CDATA[
+ 
+ select num1.PM_PUBLICFEENO,pm_clean,pm_general
+ 	from
+  		(select PM_PUBLICFEENO,pm_clean +pm_general +pm_maintain +pm_liftMaintain +pm_security +
+   	 	 pm_foodWaste +pm_fireInsurance +pm_commission +pm_meeting +pm_publicElectric +pm_liftElectric +
+   		  pm_TVFee +pm_disinfection pm_clean
+          from
+		 		(select PM_PUBLICFEENO, round((pm_clean/numnum),2) pm_clean, round((pm_general/numnum),2) pm_general, round((pm_maintain/numnum),2) pm_maintain, round((pm_liftMaintain/numnum),2) pm_liftMaintain, round((pm_security/numnum),2) pm_security,
+			 	 round((pm_foodWaste/numnum),2) pm_foodWaste, round((pm_fireInsurance/numnum),2) pm_fireInsurance, round((pm_commission/numnum),2) pm_commission, round((pm_meeting/numnum),2) pm_meeting, round((pm_publicElectric/numnum),2) pm_publicElectric, round((pm_liftElectric/numnum),2) pm_liftElectric,
+				 round((pm_TVFee/numnum),2) pm_TVFee, round((pm_disinfection/numnum),2) pm_disinfection
+				from
+					(select PM_PUBLICFEENO, sum(pm_clean) pm_clean,sum(pm_general) pm_general,sum(pm_maintain) pm_maintain,sum(pm_liftMaintain) pm_liftMaintain,sum(pm_security) pm_security,
+					sum(pm_foodWaste) pm_foodWaste,sum(pm_fireInsurance) pm_fireInsurance,sum(pm_commission) pm_commission,sum(pm_meeting) pm_meeting,sum(pm_publicElectric) pm_publicElectric,sum(pm_liftElectric) pm_liftElectric,
+					sum(pm_TVFee) pm_TVFee,sum(pm_disinfection) pm_disinfection 
+					from PUBLICMANAGEMENTFEE p
+					where apt_aptgno in (select APT_APTGNO
+                    					 from FACILITYINFO 
+                    					 where substr(f_addr,1,3)  in (select substr( f.F_ADDR,1,3) 
+                                       					               from FACILITYINFO f
+                                                   						where f.APT_APTGNO = #{apt_APTGNo}))
+			group by p.PM_PUBLICFEENO) p2 ,(select count(*) numnum
+											from
+											(select distinct APT_APTGNO
+											from PUBLICMANAGEMENTFEE 
+											where apt_aptgno in (select APT_APTGNO
+											                     from FACILITYINFO 
+											                     where substr(f_addr,1,3)  in (select substr( f.F_ADDR,1,3) 
+											                                                   from FACILITYINFO f
+											                                                   where f.APT_APTGNO = #{apt_APTGNo})))) con  
+																								order by PM_PUBLICFEENO desc)) num1,
+  
+  
+           ( select PM_PUBLICFEENO,pm_clean +pm_general +pm_maintain +pm_liftMaintain +pm_security +
+            pm_foodWaste +pm_fireInsurance +pm_commission +pm_meeting +pm_publicElectric +pm_liftElectric +
+            pm_TVFee +pm_disinfection pm_general
+            from
+            (select PM_PUBLICFEENO,pm_clean ,pm_general ,pm_maintain ,pm_liftMaintain ,pm_security ,
+            pm_foodWaste ,pm_fireInsurance ,pm_commission ,pm_meeting ,pm_publicElectric ,pm_liftElectric ,
+            pm_TVFee ,pm_disinfection,apt_aptgno  from PUBLICMANAGEMENTFEE
+            where APT_APTGNO =#{apt_APTGNo}
+            order by PM_PUBLICFEENO desc) p4, (select count(*) numnum
+          from((select DISTINCT apt_aptgno from PUBLICMANAGEMENTFEE where APT_APTGNO =#{apt_APTGNo}))) a 
+          order by PM_PUBLICFEENO desc) num2
+          WHERE num1.PM_PUBLICFEENO = num2.PM_PUBLICFEENO
+          and  rownum <11
+          
+	]]>
+	
+	</select>
+	<!-- 전국단위 공동관리비 -->
+	<select id="getContry"  resultType="PublicManagementFee">
+<![CDATA[	
+ select num1.PM_PUBLICFEENO,pm_clean,pm_general
+ from
+	(select PM_PUBLICFEENO,pm_clean +pm_general +pm_maintain +pm_liftMaintain +pm_security +
+	       pm_foodWaste +pm_fireInsurance +pm_commission +pm_meeting +pm_publicElectric +pm_liftElectric +
+	       pm_TVFee +pm_disinfection pm_clean
+	 from
+			(select PM_PUBLICFEENO, round((pm_clean/numnum),2) pm_clean, round((pm_general/numnum),2) pm_general, round((pm_maintain/numnum),2) pm_maintain, round((pm_liftMaintain/numnum),2) pm_liftMaintain, round((pm_security/numnum),2) pm_security,
+					 round((pm_foodWaste/numnum),2) pm_foodWaste, round((pm_fireInsurance/numnum),2) pm_fireInsurance, round((pm_commission/numnum),2) pm_commission, round((pm_meeting/numnum),2) pm_meeting, round((pm_publicElectric/numnum),2) pm_publicElectric, round((pm_liftElectric/numnum),2) pm_liftElectric,
+					 round((pm_TVFee/numnum),2) pm_TVFee, round((pm_disinfection/numnum),2) pm_disinfection
+ 			 from
+					(select PM_PUBLICFEENO, sum(pm_clean) pm_clean,sum(pm_general) pm_general,sum(pm_maintain) pm_maintain,sum(pm_liftMaintain) pm_liftMaintain,sum(pm_security) pm_security,
+							sum(pm_foodWaste) pm_foodWaste,sum(pm_fireInsurance) pm_fireInsurance,sum(pm_commission) pm_commission,sum(pm_meeting) pm_meeting,sum(pm_publicElectric) pm_publicElectric,sum(pm_liftElectric) pm_liftElectric,
+							sum(pm_TVFee) pm_TVFee,sum(pm_disinfection) pm_disinfection 
+					from PUBLICMANAGEMENTFEE
+					group by PM_PUBLICFEENO) p ,(select count(*) numnum
+                           					   from(
+                            				   select DISTINCT apt_aptgno
+                              					from PUBLICMANAGEMENTFEE)) a
+												order by PM_PUBLICFEENO desc))num1 ,
+(select PM_PUBLICFEENO,pm_clean +pm_general +pm_maintain +pm_liftMaintain +pm_security +
+         pm_foodWaste +pm_fireInsurance +pm_commission +pm_meeting +pm_publicElectric +pm_liftElectric +
+         pm_TVFee +pm_disinfection pm_general
+ from
+		  (select PM_PUBLICFEENO,pm_clean ,pm_general ,pm_maintain ,pm_liftMaintain ,pm_security ,
+				pm_foodWaste ,pm_fireInsurance ,pm_commission ,pm_meeting ,pm_publicElectric ,pm_liftElectric ,
+				pm_TVFee ,pm_disinfection
+		  from
+				(select PM_PUBLICFEENO,pm_clean ,pm_general ,pm_maintain ,pm_liftMaintain ,pm_security ,
+					pm_foodWaste ,pm_fireInsurance ,pm_commission ,pm_meeting ,pm_publicElectric ,pm_liftElectric ,
+					pm_TVFee ,pm_disinfection,apt_aptgno  
+				from PUBLICMANAGEMENTFEE
+				where APT_APTGNO =#{apt_APTGNo}
+				order by PM_PUBLICFEENO desc) p4, (select count(*) numnum
+												from((select DISTINCT apt_aptgno 
+													  from PUBLICMANAGEMENTFEE 
+													  where APT_APTGNO =#{apt_APTGNo}))) a 
+													  
+order by PM_PUBLICFEENO desc))num2
+where num1.PM_PUBLICFEENO=num2.PM_PUBLICFEENO
+and  rownum <7
+order by PM_PUBLICFEENO desc
+	]]>
+	</select>
+	
+	
+	<select id="myManageFee"  resultType="PublicManagementFee">
+	select PM_PUBLICFEENO,pm_clean ,pm_general ,pm_maintain ,pm_liftMaintain ,pm_security ,
+	pm_foodWaste ,pm_fireInsurance ,pm_commission ,pm_meeting ,pm_publicElectric ,pm_liftElectric ,
+	pm_TVFee ,pm_disinfection,apt_aptgno  from PUBLICMANAGEMENTFEE
+	where APT_APTGNO =#{apt_APTGNo}
+	order by PM_PUBLICFEENO
+		
+	
+	
+	</select>
+	
+	<select id="selectMonthmanage" resultType="ManagementFee">
+	
+		select * from (select * from managementfee 
+            where mf_date = #{param1}
+            AND m_memberno = #{param2}
+            order by mf_date DESC)
+         where <![CDATA[ ROWNUM <= 1 ]]>
+	
+	
+	
+	</select>
+</mapper>
+
+
+
+
+
+
+
+
+
+<!-- select round(sum(pm_clean/coun),2) pm_clean,round(sum(pm_general/coun),2) pm_general,round(sum(pm_maintain/coun),2) pm_maintain,round(sum(pm_liftMaintain/coun),2) pm_liftMaintain,round(sum(pm_security/coun),2) pm_security,
+round(sum(pm_foodWaste/coun),2) pm_foodWaste,round(sum(pm_fireInsurance/coun),2) pm_fireInsurance,round(sum(pm_commission/coun),2) pm_commission,round(sum(pm_meeting/coun),2) pm_meeting,round(sum(pm_publicElectric/coun),2) pm_publicElectric,round(sum(pm_liftElectric/coun),2) pm_liftElectric,
+round(sum(pm_TVFee/coun),2) pm_TVFee,round(sum(pm_disinfection/coun),2) pm_disinfection 
+from
+(select round((pm_clean/numnum),2) pm_clean, round((pm_general/numnum),2) pm_general, round((pm_maintain/numnum),2) pm_maintain, round((pm_liftMaintain/numnum),2) pm_liftMaintain, round((pm_security/numnum),2) pm_security,
+ round((pm_foodWaste/numnum),2) pm_foodWaste, round((pm_fireInsurance/numnum),2) pm_fireInsurance, round((pm_commission/numnum),2) pm_commission, round((pm_meeting/numnum),2) pm_meeting, round((pm_publicElectric/numnum),2) pm_publicElectric, round((pm_liftElectric/numnum),2) pm_liftElectric,
+ round((pm_TVFee/numnum),2) pm_TVFee, round((pm_disinfection/numnum),2) pm_disinfection
+from
+(select sum(pm_clean) pm_clean,sum(pm_general) pm_general,sum(pm_maintain) pm_maintain,sum(pm_liftMaintain) pm_liftMaintain,sum(pm_security) pm_security,
+sum(pm_foodWaste) pm_foodWaste,sum(pm_fireInsurance) pm_fireInsurance,sum(pm_commission) pm_commission,sum(pm_meeting) pm_meeting,sum(pm_publicElectric) pm_publicElectric,sum(pm_liftElectric) pm_liftElectric,
+sum(pm_TVFee) pm_TVFee,sum(pm_disinfection) pm_disinfection, apt_APTGNo from
+ (select substr(PM_PUBLICFEENO,1,4) PM_PUBLICFEENO,pm_clean ,pm_general ,pm_maintain ,pm_liftMaintain ,pm_security ,
+pm_foodWaste ,pm_fireInsurance ,pm_commission ,pm_meeting ,pm_publicElectric ,pm_liftElectric ,
+pm_TVFee ,pm_disinfection ,apt_APTGNo   from PublicManagementFee 
+  group by pm_clean ,pm_general ,pm_maintain ,pm_liftMaintain ,pm_security ,pm_foodWaste ,pm_fireInsurance ,
+pm_commission ,pm_meeting ,pm_publicElectric ,pm_liftElectric ,pm_TVFee ,pm_disinfection ,apt_APTGNo
+   )
+  group by apt_APTGNo) pm ,(select count(APT_APTGNO)numnum,APT_APTGNO
+from PUBLICMANAGEMENTFEE p
+where apt_aptgno in (select APT_APTGNO
+                     from FACILITYINFO 
+                     where substr(f_addr,1,3)  in (select substr( f.F_ADDR,1,3) 
+                                                   from FACILITYINFO f
+                                                   where f.APT_APTGNO = #{apt_APTGNo}))
+group by APT_APTGNO) addr
+where pm.apt_aptgno = addr.apt_aptgno) pmfinal,((select count(*) coun from
+(select  APT_APTGNO
+from PUBLICMANAGEMENTFEE p
+where apt_aptgno in (select APT_APTGNO
+                     from FACILITYINFO 
+                     where substr(f_addr,1,3)  in (select substr( f.F_ADDR,1,3) 
+                                                   from FACILITYINFO f
+                                                   where f.APT_APTGNO = #{apt_APTGNo}))
+group by APT_APTGNO))) apt 
+union all   
+select round((pm_clean /countt),2) pm_clean,round((pm_general /countt),2) pm_general,round((pm_maintain /countt),2) pm_maintain,round((pm_liftMaintain /countt),2) pm_liftMaintain,round((pm_security /countt),2) pm_security,round((pm_foodWaste /countt),2) pm_foodWaste,round((pm_fireInsurance /countt),2) pm_fireInsurance,
+round((pm_commission /countt),2) pm_commission,round((pm_meeting /countt),2) pm_meeting,round((pm_publicElectric /countt),2) pm_publicElectric,round((pm_liftElectric /countt),2) pm_liftElectric,round((pm_TVFee /countt),2) pm_TVFee,round((pm_disinfection /countt),2) pm_disinfection
+
+	from(	select sum(pm_clean ) pm_clean,sum(pm_general ) pm_general,sum(pm_maintain ) pm_maintain,sum(pm_liftMaintain ) pm_liftMaintain,sum(pm_security ) pm_security,sum(pm_foodWaste ) pm_foodWaste,sum(pm_fireInsurance ) pm_fireInsurance,
+			sum(pm_commission ) pm_commission,sum(pm_meeting ) pm_meeting,sum(pm_publicElectric ) pm_publicElectric,sum(pm_liftElectric ) pm_liftElectric,sum(pm_TVFee ) pm_TVFee,sum(pm_disinfection) pm_disinfection
+			from PUBLICMANAGEMENTFEE
+			where apt_aptgno=#{apt_APTGNo}) pppm ,(select count(*) countt
+                            					   from PUBLICMANAGEMENTFEE 
+                                                   where apt_aptgno =#{apt_APTGNo}) co -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
