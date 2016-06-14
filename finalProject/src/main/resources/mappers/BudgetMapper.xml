@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+
+<mapper namespace="kosta.apt.mapper.BudgetMapper"> <!-- namespace를 꼭 맞게 써주어야함 -->
+	<cache />
+	<insert id="budgetInsert" parameterType="Budget">
+		insert into budget(
+			b_budgetNo, b_date, b_clean, b_general, b_maintain, b_liftMaintain,	b_security,
+			b_foodWaste, b_fireInsurance, b_commission, b_meeting, b_publicElectric, b_liftElectric,
+			b_TVFee, b_disinfection, b_appropriation, b_fileName, apt_APTGNo) 
+		values(
+			budget_seq.NEXTVAL, #{b_date},#{b_clean},#{b_general},#{b_maintain},#{b_liftMaintain},#{b_security},
+			#{b_foodWaste},#{b_fireInsurance},#{b_commission},#{b_meeting},#{b_publicElectric},#{b_liftElectric},
+			#{b_TVFee},#{b_disinfection},#{b_appropriation},#{b_fileName},#{apt_APTGNo}
+		)
+	</insert>
+
+	<!-- <select id="selectFileName" resultType="String" parameterType="java.util.HashMap">
+		select b_fileName from budget
+			where b_date = #{param1.b_date}
+		AND apt_APTGNo = #{param2.apt_APTGNo}
+		AND ROWNUM = 1
+		ORDER BY b_budgetNo DESC
+	</select>
+	-->
+
+	<update id="budgetExcelInsert" parameterType="Budget">
+		UPDATE budget
+		SET b_clean = #{b_clean},
+			b_general = #{ b_general},
+			b_maintain = #{ b_maintain},
+			b_liftMaintain = #{ b_liftMaintain},
+			b_security = #{ b_security},
+			b_foodWaste = #{ b_foodWaste},
+			b_fireInsurance = #{ b_fireInsurance},
+			b_commission = #{ b_commission},
+			b_meeting = #{ b_meeting},
+			b_publicElectric = #{ b_publicElectric},
+			b_liftElectric = #{ b_liftElectric},
+			b_TVFee = #{ b_TVFee},
+			b_disinfection = #{ b_disinfection},
+			b_appropriation = #{ b_appropriation}
+		WHERE b_date = #{b_date}
+		AND apt_APTGNO = #{apt_APTGNo}
+		AND b_budgetNO = (select MAX(b_budgetNo) from budget)
+	</update>
+	
+ 
+	<select id="selectBudgetList" parameterType="String" resultType="Budget">
+		select * from budget
+		where b_date in(#{b_date},#{b_date}-1,#{b_date}-2,#{b_date}-3,#{b_date}-4)
+		AND <![CDATA[ ROWNUM <= 5 ]]>
+		ORDER BY b_date DESC
+	</select>
+	
+		<!--
+	<select id="selectGraphBudget" parameterType="String" resultType="Budget">
+		select * from budget
+		where b_date in (#{date},#{date}-1,#{date}-2,#{date}-3,#{date}-4)
+		AND apt_aptgno = 1
+		AND <![CDATA[ ROWNUM <= 5 ]]> order by b_date desc
+	</select> -->
+	
+	<!-- b_commission = #{param3.bg.b_commission},
+		b_meeting = #{param3.bg.b_meeting},
+		b_publicElectric = #{param3.bg.b_publicElectric},
+		b_liftElectric = #{param3.bg.b_liftElectric},
+		b_TVFee = #{param3.bg.b_TVFee},
+		b_disinfection = #{param3.bg.b_disinfection},
+		b_appropriation = #{param3.bg.b_appropriation} -->
+	
+	<!-- b_general = #{param3.bg.b_general}, b_liftMaintain = #{param3.bg.b_liftMaintain}, 
+		b_security = #{param3.bg.b_security}, b_foodWaste = #{param3.bg.b_foodWaste}, 
+		b_fireInsurance = #{param3.bg.b_fireInsurance}, b_commission = #{param3.bg.b_commission}, 
+		b_meeting = #{param3.bg.b_meeting}, b_publicElectric = #{param3.bg.b_publicElectric}, 
+		b_liftElectric = #{param3.bg.b_liftElectric}, b_TVFee = #{param3.bg.b_TVFee}, 
+		b_disinfection = #{param3.bg.b_disinfection}, b_appropriation = #{param3.bg.b_appropriation} -->
+	
+	<!-- UPDATE budget SET b_clean = #{param3.bg.b_clean}, b_general = #{param3.bg.b_general}, 
+		b_maintain = #{param3.bg.b_maintain}, b_liftMaintain = #{param3.bg.b_liftMaintain}, 
+		b_security = #{param3.bg.b_security}, b_foodWaste = #{param3.bg.b_foodWaste}, 
+		b_fireInsurance = #{param3.bg.b_fireInsurance}, b_commission = #{param3.bg.b_commission}, 
+		b_meeting = #{param3.bg.b_meeting}, b_publicElectric = #{param3.bg.b_publicElectric}, 
+		b_liftElectric = #{param3.bg.b_liftElectric}, b_TVFee = #{param3.bg.b_TVFee}, 
+		b_disinfection = #{param3.bg.b_disinfection}, b_appropriation = #{param3.bg.b_appropriation} 
+		WHERE b_date = #{param1.b_date} AND apt_APTGNo = #{param2.apt_APTGNo} AND 
+		ROWNUM = 1 ORDER BY b_budgetNo DESC -->
+</mapper>
+
+
+
+
+
+
+
+

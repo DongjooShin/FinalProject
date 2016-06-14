@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kosta.apt.mapper.ManagementFeeMapper"> <!-- namespace를 꼭 맞게 써주어야함 -->
+	<cache />
+
+	<select id="selectMember" parameterType="int" resultType="Member">
+		select * from Member
+		where m_buildingNo = #{param1} AND
+			  m_roomNo = #{param2}
+	</select>
+	
+	<insert id="managementFeeInsert" parameterType="java.util.HashMap">
+		insert into
+		managementfee(
+			mf_managementfeeno, mf_electricFee, mf_gasFee, mf_waterFee, mf_electricAmount,
+			mf_gasAmount, mf_waterAmount, mf_date, m_memberno
+		)values(
+		managementfee_seq.NEXTVAL, #{param1.mf.mf_electricFee },
+			#{param1.mf.mf_gasFee},
+			#{param1.mf.mf_waterFee }, #{param1.mf.mf_electricAmount }, #{param1.mf.mf_gasAmount},
+			#{param1.mf.mf_waterAmount}, #{param2.mf_date }, 
+			#{param2.m_memberNo }
+		)
+	</insert>
+	
+	<select id="selectManagementFee" parameterType="String" resultType="ManagementFee">
+		select * from (select * from managementfee 
+				where m_memberno = #{m_memberNo}
+				order by mf_date DESC)
+			where <![CDATA[ ROWNUM <= 7 ]]>
+			order by mf_date ASC
+	</select>
+	
+	<select id="select2MonthManagementFee" parameterType="String" resultType="ManagementFee">
+		select * from (select * from managementfee 
+				where mf_date in (#{param1}, #{param2})
+				AND m_memberno = #{param3}
+				order by mf_date DESC)
+			where <![CDATA[ ROWNUM <= 2 ]]>
+	</select>
+	
+	
+	
+	<select id="selectManagementFeeAvg" parameterType="String" resultType="ManagementFeeAvg">
+		select mf_waterfeeavg, mf_gasfeeavg, mf_electricfeeavg, mf_date from  (select round(AVG(mng.mf_waterfee)) as mf_waterfeeavg, round(AVG(mng.mf_gasfee)) as mf_gasfeeavg, round(AVG(mng.mf_electricfee)) as mf_electricfeeavg, mng.mf_date
+		from member mem, managementfee mng
+		where mem.m_memberno = mng.m_memberno
+		and mem.apt_aptgno = (select apt_aptgno from member 
+			where m_memberno = #{m_memeberNo})
+		group by mng.mf_date
+		order by mf_date DESC)
+		where <![CDATA[ ROWNUM <= 7 ]]>
+		order by mf_date ASC
+	</select>
+	
+	<select id="selectMonthManagementFee" parameterType="java.util.HashMap" resultType="ManagementFee">
+		select * from managementfee
+		where mf_date = #{mf_date}
+		and  m_memberNo = #{m_memberNo}
+	</select>
+	
+	<insert id="insertManagementFeePay" parameterType="ManagementFeePay">
+		insert into
+		managementfeepay(
+			M_BUILDINGNO,M_ROOMNO,P_DATE,P_PUBLICAMOUNT,P_MANAGEMENTAMOUNT,P_AMOUNT, P_MEANS, APT_APTGNO, P_PLAG
+		)values(
+			#{m_buildingNo}, #{m_roomNo}, #{p_date}, #{p_publicAmount}, #{p_managementAmount}, #{p_amount}, #{p_means}, #{apt_APTGNo}, #{p_plag}
+		)
+	</insert>
+	
+	<!-- 
+
+	FK로 apt_APTGNo가 있어야 하는데 로그인 상태에서 아파트 그룹을 끌고와야할 것 같음 (지금은 빠진상태)
+	<insert id="insertPublicMntFee" parameterType="PublicManagementFee">
+		insert into publicmanagementfee(
+			pm_publicFeeNo, pm_clean, pm_general, pm_maintain, pm_liftMaintain,
+			pm_security, pm_foodWaste, pm_fireInsurance, pm_commission, pm_meeting,
+			pm_publicElectric, pm_liftElectric, pm_tvfee, pm_disinfection, apt_APTGNo
+		)values(
+			#{pm_publicFeeNo }, #{pm_clean }, #{pm_general },
+			#{pm_maintain }, #{pm_liftMaintain },
+			#{pm_security },
+			#{pm_foodWaste }, #{pm_fireInsurance }, #{pm_commission},
+			#{pm_meeting}, #{pm_publicElectric},
+			#{pm_liftElectric},
+			#{pm_TVFee}, #{pm_disinfection}, 1
+		)
+	</insert>
+
+	포함버전
+	<insert id="insertPublicMntFee" parameterType="java.util.HashMap"> 
+		insert into publicmanagementfee( pm_publicFeeNo, pm_clean, pm_general, pm_maintain, 
+		pm_liftMaintain, pm_security, pm_foodWaste, pm_fireInsurance, pm_commission, 
+		pm_meeting, pm_publicElectric, pm_liftElectric, pm_disinfection, pm_date, 
+		apt_APTGNo )values( publicmanagementfee_seq.NEXTVAL, #{param1.pm.pm_clean 
+		}, #{param1.pm.pm_general }, #{param1.pm.pm_maintain }, #{param1.pm.pm_liftMaintain 
+		}, #{param1.pm.pm_security }, #{param1.pm.pm_foodWaste }, #{param1.pm.pm_fireInsurance 
+		}, #{param1.pm.pm_commission}, #{param1.pm.pm_meeting}, #{param1.pm.pm_publicElectric}, 
+		#{param1.pm.pm_liftElectric}, #{param1.pm.pm_TVFee}, #{param1.pm.pm_disinfection}, 
+		#{param2.pm_date}, #{param3.★something★} ) </insert>
+
+	이달의 나의 관리비를 구하는 쿼리문
+	아이디가 세션에서 유지돼야 해서 지금은 날짜로만 검색
+	<select id="selectMntFee" parameterType="String" resultType="ManagementFee">
+		select * from managementfee
+		where mf_date = #{date}
+		AND ROWNUM = 1
+	</select>
+	
+	이달의 공공관리비를 구하는 쿼리문
+	<select id="selectPublicMntFee" parameterType="String" resultType="PublicManagementFee">
+		select * from Publicmanagementfee
+		where pm_publicFeeNo = #{date}
+	</select>
+	
+	나의 전기요금 그래프
+	<select id="selectElectricFee" resultType="ManagementFee" parameterType="int">
+		select * from (select * from managementfee 
+				where m_memberno = 'kkt891230'
+				order by mf_date DESC)
+			where <![CDATA[ ROWNUM <= 5 ]]>
+	</select>
+	
+	나의 수도요금 그래프
+	<select id="selectWaterFee" resultType="ManagementFee" parameterType="int">
+		select * from (select * from managementfee 
+				where m_memberno = 'kkt891230'
+				order by mf_date DESC)
+			where <![CDATA[ ROWNUM <= 5 ]]>
+	</select>
+	
+	나의 난방요금 그래프
+	<select id="selectGasFee" resultType="ManagementFee" parameterType="int">
+		select * from (select * from managementfee 
+				where m_memberno = 'kkt891230'
+				order by mf_date DESC)
+			where <![CDATA[ ROWNUM <= 5 ]]>
+	</select> -->
+</mapper>
+
+
+
+
+
+
+
+

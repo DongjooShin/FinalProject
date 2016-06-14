@@ -119,13 +119,7 @@
 									<ul class="sub-menu">
 										<li id="menu-item-109"
 											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-109"><a
-											href="managementFeeList">전체관리비</a></li>
-										<li id="menu-item-108"
-											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-108"><a
-											href="http://demo.themegrill.com/spacious/layout/right-sidebar/">전기세</a></li>
-										<li id="menu-item-106"
-											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-106"><a
-											href="http://demo.themegrill.com/spacious/layout/no-sidebar-full-width/">수도세</a></li>
+											href="/managementFee/managementFeeList">전체관리비</a></li>
 										<li id="menu-item-107"
 											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-107"><a
 											href="publicmana/PublicManageFee">공통관리비</a></li>
@@ -193,16 +187,19 @@
 											href="/controller/aptMessage">메세지보내기</a></li>
 										<li id="menu-item-115"
 											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-109"><a
-											href="managementFeeInsertForm">관리비입력</a></li>
+											href="/managementFee/managementFeeInsertForm">관리비입력</a></li>
 										<li id="menu-item-116"
 											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-110"><a
-											href="publicManagementFeeInsertForm">공동관리비입력</a></li>
+											href="/publicManagementFee/publicManagementFeeInsertForm">공동관리비입력</a></li>
 										<li id="menu-item-117"
 											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-111"><a
-											href="budgetInsertForm">예산입력</a></li>
-										<li id="menu-item-117"
+											href="/budget/budgetInsertForm">예산입력</a></li>
+										<li id="menu-item-118"
 											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-111"><a
-											href="budgetList">예산조회</a></li>
+											href="/budget/budgetList">예산조회</a></li>
+										<li id="menu-item-119"
+											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-111"><a
+											href="/managementFee/myPageManagementFee">마이페이지 관리비</a></li>
 
 
 									</ul></li>

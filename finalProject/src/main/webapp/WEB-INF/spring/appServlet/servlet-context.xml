@@ -44,6 +44,9 @@
 			<mapping path="/groupNotice/*"/>
 			<mapping path="/facility/*"/>
 			<mapping path="/store/*"/>
+			<mapping path="/managementFee/*" />
+			<mapping path="/publicManagementFee/*" />
+			<mapping path="/budget/*" />
 			<beans:ref bean="authInterceptor" />
 		</interceptor>
 		<interceptor>
@@ -62,6 +65,9 @@
 			<mapping path="/groupNotice/*"/>
 			<mapping path="/facility/*"/>
 			<mapping path="/store/*"/>
+			<mapping path="/managementFee/*" />
+			<mapping path="/publicManagementFee/*" />
+			<mapping path="/budget/*"/>
 			<beans:ref bean="loginInterceptor" />
 		</interceptor>
 

@@ -76,6 +76,11 @@ public class ManagementFee implements Serializable {
 				+ ", mf_date=" + mf_date + ", m_memberNo=" + m_memberNo + "]";
 	}
 	
+	public int sumManagementFee(){
+		int sum = getMf_gasFee()+getMf_electricFee()+getMf_waterFee();
+		return sum;
+	}
+	
 
 	
 }
