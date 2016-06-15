@@ -50,6 +50,14 @@ public class ManagementFeeService {
 		dao.insertManagementFeePay(mngFeePay);
 	}
 
+	public List<ManagementFeePay> selectMangementAmountCheck(int apt_APTGNo) {
+		return dao.selectMangementAmountCheck(apt_APTGNo);
+	}
+
+	public void updateManagementFeePay(ManagementFeePay mngFeePay) {
+		dao.updateManagementFeePay(mngFeePay);
+	}
+
 
 
 	
