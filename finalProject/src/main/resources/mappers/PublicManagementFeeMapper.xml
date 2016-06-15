@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kosta.apt.mapper.PublicManagementFeeMapper"> <!-- namespace를 꼭 맞게 써주어야함 -->
+	<cache />
+
+	<insert id="publicManagementFeeInsert" parameterType="PublicManagementFee">
+		insert into publicmanagementfee(
+			pm_publicFeeNo, pm_clean, pm_general, pm_maintain, pm_liftMaintain,
+			pm_security, pm_foodWaste, pm_fireInsurance, pm_commission, pm_meeting,
+			pm_publicElectric, pm_liftElectric, pm_tvfee, pm_disinfection, apt_APTGNo
+		)values(
+			#{pm_publicFeeNo }, #{pm_clean }, #{pm_general },
+			#{pm_maintain }, #{pm_liftMaintain },
+			#{pm_security },
+			#{pm_foodWaste }, #{pm_fireInsurance }, #{pm_commission},
+			#{pm_meeting}, #{pm_publicElectric},
+			#{pm_liftElectric},
+			#{pm_TVFee}, #{pm_disinfection}, #{apt_APTGNo}
+		)
+	</insert>
+	
+	<select id="selectPublicManagementFee" parameterType="int" resultType="int">
+			select (PM_CLEAN+PM_GENERAL+PM_MAINTAIN+PM_LIFTMAINTAIN+PM_SECURITY+PM_FOODWASTE+PM_FIREINSURANCE+PM_COMMISSION+PM_MEETING+PM_PUBLICELECTRIC+PM_LIFTELECTRIC+PM_TVFEE+PM_DISINFECTION) as sumpublicfee  
+			from (select * from publicmanagementfee 
+					where apt_aptgno = #{param1}
+					order by pm_publicfeeno DESC)
+				where<![CDATA[ ROWNUM <= 7 ]]>	
+				order by pm_publicfeeno ASC		
+	</select>
+	
+	<select id="select2MonthPublicManagementFee" parameterType="java.util.HashMap" resultType="PublicManagementFee">
+			select * from publicmanagementfee 
+			where pm_publicfeeno in (#{param1.mf_date}, #{param1.mf_date}-1) 
+			and apt_aptgno = #{param2.apt_APTGno}
+			order by pm_publicfeeno DESC
+			
+	</select>
+	
+	<select id="selectMonthPublicManagementFee" parameterType="int" resultType="PublicManagementFee">
+			select * from publicmanagementfee 
+			where apt_aptgno = #{apt_APTGNo}
+			order by pm_publicfeeno DESC
+	</select>
+	
+	<select id="selectMemberList" parameterType="int" resultType="Member">
+			select M_BUILDINGNO,m_roomno
+			from member
+			where apt_aptgno = #{apt_APTGNo}
+			group by M_BUILDINGNO,m_roomno
+			order by m_roomNo
+	</select>
+	
+	<select id="selectPublicAmount" parameterType="int" resultType="PublicManagementFee">
+		select P_PUBLICAMOUNT,M_BUILDINGNO
+		from managementfeepay
+		where apt_aptgno =#{apt_aptgno}
+	</select>
+	
+	<update id="updatePublicManagementFeePay" parameterType="int">
+		update managementfeepay set P_PUBLICAMOUNT = #{p_publicAmount}
+		where apt_aptgno =#{apt_APTGNo}
+	</update>
+	
+	<insert id="insertPublicManagementFeePay" parameterType="ManagementFeePay">
+		insert into (
+			M_BUILDINGNO,M_ROOMNO,P_DATE,P_PUBLICAMOUNT,P_MANAGEMENTAMOUNT,P_AMOUNT, P_MEANS, APT_APTGNO, P_PLAG
+		)values( 
+			#{M_BUILDINGNO}, #{p_date}, #{P_AMOUNT}, #{P_MEANS}, #{APT_APTGNO}, #{P_PLAG}, #{M_ROOMNO}, #{P_PUBLICAMOUNT}, #{P_MANAGEMENTAMOUNT}
+		)
+	</insert>
+	
+</mapper>

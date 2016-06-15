@@ -1,0 +1,12 @@
+.content {
+	padding-top: 50px;
+	padding-right: 50px;
+	padding-left: 50px;
+}
+.small-box .samllTitle{
+	font-size: 20px;
+    font-weight: bold;
+    margin: 0 0 10px;
+    padding: 0;
+    white-space: nowrap;
+}

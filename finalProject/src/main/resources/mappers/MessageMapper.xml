@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+
+<mapper namespace="kosta.apt.mapper.MessageMapper"> <!-- namespace를 꼭 맞게 써주어야함 -->
+   <cache />
+
+
+ <insert id="SandMessage" parameterType="kosta.apt.domain.Message.Message">
+     insert into Message(
+    	MG_CONTENT,MG_MESSAGENO,mg_date,m_memberNo,mg_state,mg_from,mg_to,mg_title
+    
+      )
+      values(
+     	 #{mg_content},#{mg_messageNo},SYSDATE,#{mg_from},#{mg_state},#{mg_from},#{mg_to},#{mg_title}
+
+      )
+      
+      
+    
+   </insert>
+   
+   <!-- 디테일메세지 -->
+   <select id="detailmsg" resultType="kosta.apt.domain.Message.Message" parameterType="int">
+   select * from message where mg_messageNo = #{msgno}
+   
+   </select>
+   
+   <select id="countMsg" resultType="Integer">
+   select max(mg_messageNo) from message
+
+   </select>
+   
+   <!-- 수신페이징 처리 -->
+      <select id="listCountCri" resultType="int">
+   <![CDATA[
+
+   	 select 
+	   count(mg_messageNo) 
+	 from 
+	   message 
+	 where 
+	   mg_messageNo > 0 
+  
+   ]]>
+   
+   </select>
+   
+   <!-- 발신 페이징처리 -->
+   
+   <select id="sendPage" resultType="int">
+   <![CDATA[
+
+   	 select 
+	   count(mg_messageNo) 
+	 from 
+	   message 
+	 where 
+	   mg_messageNo > 0 
+  
+   ]]>
+   
+   </select>
+   
+   
+   
+	<select id="readlistMsg" resultType="kosta.apt.domain.Message.Message">
+	 <![CDATA[
+	 select 
+	   mg_messageNo, mg_from, mg_to, mg_content, mg_date, mg_state, m_memberNo, mg_title
+	 from 
+	   Message
+	 where mg_messageNo > 0 
+	 order by mg_messageNo desc, mg_date desc
+	 ]]>
+	</select>
+   
+    <select id="sendMessageList" resultType="kosta.apt.domain.Message.Message">
+	 <![CDATA[
+	 select 
+	   mg_messageNo, mg_from, mg_to, mg_content, mg_date, mg_state, m_memberNo, mg_title
+	 from 
+	   Message
+	 where mg_messageNo > 0 
+	 order by mg_messageNo desc, mg_date desc
+	 ]]>
+   </select>
+   
+   
+   
+   <!-- 메세지 삭제하기 -->
+   <delete id="delectMsg" parameterType="int">
+   
+   delete from message where mg_messageNo = #{msgNo}
+   
+   </delete>
+   
+   <!-- 디테일시 확인유무변경  -->
+   <update id="updateState" parameterType="int">
+   
+   update message set mg_state ='읽음' where mg_messageNo =#{msgno}
+   
+   </update>
+   
+      
+    <insert id="insertMember" parameterType="kosta.apt.domain.member.Member">
+
+      insert into member(
+      m_memberNo,m_pass,m_buildingNo,m_roomNo,m_name,m_age,m_homeTel,m_tel,m_email,apt_APTGNo,v_flag)
+      
+      values(
+      #{m_memberNo},#{m_pass},#{m_buildingNo},#{m_roomNo},#{m_name},#{m_age},#{m_homeTel},#{m_tel},#{m_email},#{apt_APTGNo},#{v_flag}
+      )
+      
+   </insert> 
+   
+   
+
+   
+<!--  	<select id="aptno" resultType="Integer">
+ 	select APT_APTGNO
+ 	from member
+ 	where M_MEMBERNO = #{memberId}
+ 	</select>
+ 	   	<select id="nextCOMPLAINTNO" resultType="Integer" >
+   		select max(CP_COMPLAINTNO)
+			from COMPLAINT
+   		
+   	</select>
+ 	
+ 	
+ 	<insert id="insertComplaint" parameterType="Complaint">
+ 	insert into Complaint 
+ 	
+ 	values(#{cp_complaintNo},#{cp_title},#{cp_content},1,1,#{cp_date},#{m_memberNo},#{apt_APTGNo})
+ 	
+ 	</insert>
+ 	
+ 	<select id="listComplaint" resultType="Complaint" parameterType="String">
+ 	select *
+ 	from complaint
+ 	where M_MEMBERNO =#{id}
+ 	order by cp_complaintNo desc
+ 	
+ 	
+ 	
+ 	</select>
+   <select id="countComplaint" resultType="Integer" parameterType="String">
+   select count(*)
+   from complaint
+   where m_memberno =#{id}
+   order by cp_complaintNo desc
+   
+   
+   </select>
+   <select id="selectComplaint" resultType="Complaint" parameterType="String">
+    	select *
+ 	from complaint
+ 	where cp_complaintNo =#{cp_complaintNo} 
+    order by cp_complaintNo desc
+   
+   </select>
+   <select id="countComplaintManage" resultType="Integer">
+      select count(*)
+  	 from complaint
+   </select>
+   <select id="listComplaintManage" resultType="Complaint">
+         select *
+   from complaint
+   order by cp_complaintNo desc
+   
+   
+   </select>
+   
+   <select id="listmypageComplaint" resultType="Complaint" parameterType="String">
+    
+    select *
+    from( select *
+ 	 from complaint
+ 	 where m_memberNo =#{id} 
+	 order by cp_complaintNo desc)
+	 where<![CDATA[ ROWNUM <=3 ]]>
+   </select>
+   
+   <update id="updateComplaint" parameterType="Complaint">
+   update complaint
+   set  cp_state = #{cp_state}
+   where cp_complaintNo = #{cp_complaintNo}
+   </update>
+   
+   <select id="listManageComplaint" resultType="Complaint">
+   	select *
+ 	from complaint
+ 	order by cp_complaintNo desc
+ 	
+   
+   </select>
+ 	 -->
+   
+</mapper>
+
+
+
+
+
+
+
+

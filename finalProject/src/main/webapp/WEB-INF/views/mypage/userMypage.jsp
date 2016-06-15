@@ -18,27 +18,28 @@
 		$('#sixthContent').load("/member/passwordCheck");
 		$('#firstContent1').load("/calendar/exam");
 		$('#firstContent2').load("/groupNotice/exam");
-		$('thirdContent').load('/publicmana/list');
-		$('#firstManu').css('background', '#09b9e5');
+		/* $('#thirdContent').load("/publicmana/list"); */
+		
+		$('#firstManu').css('background', '#0fbe7c');
 		$('#firstContent').css('display', 'block');
 
 		$('#firstManu').click(function() {
 			$('.manu').css('background-color', 'rgba(0, 0, 0, 0.3)');
-			$('#firstManu').css('background-color', '#09b9e5');
+			$('#firstManu').css('background-color', '#0fbe7c');
 			$('.content').css('display', 'none');
 			$('#firstContent').css('display', 'block');
 		});
 
 		$('#secondManu').click(function() {
 			$('.manu').css('background-color', 'rgba(0, 0, 0, 0.3)');
-			$('#secondManu').css('background-color', '#09b9e5');
+			$('#secondManu').css('background-color', '#0fbe7c');
 			$('.content').css('display', 'none');
 			$('#secondContent').css('display', 'block');
 		});
 
 		$('#thirdManu').click(function() {
 			$('.manu').css('background-color', 'rgba(0, 0, 0, 0.3)');
-			$('#thirdManu').css('background-color', '#09b9e5');
+			$('#thirdManu').css('background-color', '#0fbe7c');
 			$('.content').css('display', 'none');
 			$('#thirdContent').css('display', 'block');
 
@@ -46,7 +47,7 @@
 
 		$('#fourthManu').click(function() {
 			$('.manu').css('background-color', 'rgba(0, 0, 0, 0.3)');
-			$('#fourthManu').css('background-color', '#09b9e5');
+			$('#fourthManu').css('background-color', '#0fbe7c');
 			$('.content').css('display', 'none');
 			$('#fourthContent').css('display', 'block');
 
@@ -54,7 +55,7 @@
 
 		$('#fifthManu').click(function() {
 			$('.manu').css('background-color', 'rgba(0, 0, 0, 0.3)');
-			$('#fifthManu').css('background-color', '#09b9e5');
+			$('#fifthManu').css('background-color', '#0fbe7c');
 			$('.content').css('display', 'none');
 			$('#fifthContent').css('display', 'block');
 
@@ -62,7 +63,7 @@
 
 		$('#sixthManu').click(function() {
 			$('.manu').css('background-color', 'rgba(0, 0, 0, 0.3)');
-			$('#sixthManu').css('background-color', '#09b9e5');
+			$('#sixthManu').css('background-color', '#0fbe7c');
 			$('.content').css('display', 'none');
 			$('#sixthContent').css('display', 'block');
 
@@ -91,7 +92,7 @@
 
 #mypageLayout {
 	border: 3px solid #eaeaea;
-	border-top: 4px solid #09b9e5;
+	border-top: 4px solid #eaeaea;
 	display: inline-block;
 	width: 100%;
 	margin-top: 70px;
@@ -142,12 +143,12 @@
 
 
 					<div id="secondContent" class="content "
-						style="background: orange; height: 500px;"></div>
+						style="height: 500px;"></div>
 
 
 
 					<div id="thirdContent" class="content "
-						style="background: red; height: 500px;"></div>
+						style=" height: 500px;"><jsp:include page="../complaint/complaintList.jsp"></jsp:include></div>
 
 
 

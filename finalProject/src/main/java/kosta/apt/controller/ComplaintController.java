@@ -67,7 +67,7 @@ public class ComplaintController {
 		
 		complaint.setM_memberNo(member.getM_memberNo());
 		service.create(complaint);
-		return "redirect:/list";
+		return "redirect:/publicmana/list";
 	}
 	
 	   @RequestMapping(value="/readPage",method=RequestMethod.GET)
@@ -84,13 +84,13 @@ public class ComplaintController {
 	   public String modifyPage(@ModelAttribute("cri") SearchCriteria cri,Complaint complaint){
 		   service.update(complaint);
 		   
-		   return"redirect:/list";
+		   return"redirect:/publicmana/list";
 	   }
 	   @RequestMapping("/removePage")
 	   public String removePage(@RequestParam("cp_complaintNo") int cp_complaintNo){
 		   service.delete(cp_complaintNo);
 		   
-		   return"redirect:/list";
+		   return"redirect:/publicmana/list";
 	   }
 	   
 	   @RequestMapping("/replies")

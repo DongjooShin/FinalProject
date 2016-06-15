@@ -119,7 +119,11 @@ public class PublicManagementFee implements Serializable {
 				+ ", pm_publicElectric=" + pm_publicElectric + ", pm_liftElectric=" + pm_liftElectric + ", pm_TVFee="
 				+ pm_TVFee + ", pm_disinfection=" + pm_disinfection + ", apt_APTGNo=" + apt_APTGNo + "]";
 	}
-	
+	public int sumPublicFee(){
+		int sum = getPm_clean()+getPm_commission()+getPm_liftMaintain()+getPm_disinfection()+getPm_fireInsurance()+getPm_foodWaste()+
+		getPm_general()+getPm_liftElectric()+getPm_maintain()+getPm_meeting()+getPm_publicElectric()+getPm_TVFee()+getPm_publicElectric();
+		return sum;
+	}
 	
 	
 }
