@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kosta.apt.domain.member.Member;
@@ -49,6 +50,7 @@ public class MypageController {
 
 	@RequestMapping(value = "/mypage/userMypage", method = RequestMethod.GET)
 	public void userMypageGet(HttpSession session, Model model) {
+		
 
 	}
 	
@@ -61,4 +63,14 @@ public class MypageController {
 	public void siteManagerMypageGet(HttpSession session, Model model) {
 
 	}
+	
+	
+	
+	@RequestMapping(value = "/mypage/maessage", method = RequestMethod.GET)
+	public void maessageGet(HttpSession session, Model model, RedirectAttributes rttr) {
+
+			
+	}
+	
+	
 }

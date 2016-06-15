@@ -4,15 +4,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-
 <script type="text/javascript"
 	src="/resources/jquery/jQuery-2.1.4.min.js"></script>
-
 <script type="text/javascript">
 	$(function() {
-		$('#firstManu').css('background', '#09b9e5');
-		$('#firstManu').css('display', 'block');
+		$('#fifthManu').css('background', '#09b9e5');
+		$('#fifthManu').css('display', 'block');
 
 
 	});
@@ -67,11 +64,11 @@
 		<div class="col-md-12">
 			<div id="mypageLayout">
 				<ul id=mypageUl>
-					<a href="/mypage/maessage"><li id="firstManu" class="manu ">커뮤니티</li></a>
+					<a href="/mypage/userMypage"><li id="firstManu" class="manu ">커뮤니티</li></a>
 					<a href="/mypage/maessage"><li id="secondManu" class="manu">관리비</li></a>
 					<a href="/mypage/maessage"><li id="thirdManu" class="manu">문의답변</li></a>
 					<a href="/mypage/maessage"><li id="fourthManu" class="manu">1:1:문의</li></a>
-					<a href="/mypage/maessage"><li id="fifthManu" class="manu">쪽 지</li></a>
+					<a href="/mypage/userMypage"><li id="fifthManu" class="manu">쪽 지</li></a>
 					<a href="/mypage/maessage"><li id="sixthManu" class="manu">개인정보 수정</li></a>
 				</ul>
 				
@@ -80,15 +77,8 @@
 				
 				
 				
+				
 			</div>
-		</div>
-	</div>	 
-
-	<div id="page"
-		style="background: white; display: inline-block; margin-left: 7.9%;">
-		<div class="col-md-12">
-		
-		
 		</div>
 	</div>
 </body>
