@@ -73,38 +73,13 @@ width: 100%;
 </style>
 <script src="http://snipplicious.com/js/jquery.js"></script>
 <script src="http://snipplicious.com/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <title>Insert title here</title>
 </head>
 <body>
-
-<script type="text/javascript">
-$(document).ready(function(){
-	
-	
-	alert("시작이된다.");
-	
-	$.ajax({
-	
-		url : '/Survey/surveyRegistdeliver2',
-		type : 'post',
-		dataType : 'texst',
-		success : function(data){
-		
-				alert("ajax성공했습니다.");
-		
-		}
-		
-	
-	});
-	
-	
-});
-
-
-</script>
+성공
 
 
 <div class="container" id="main">

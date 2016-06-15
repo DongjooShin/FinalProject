@@ -177,11 +177,12 @@ public class ProductDao {
 
 	public List<ProductOrder> proconsumerlist(String buyer, Criteria cri) {
 		
-		List<ProductOrder> list =null;
+		List<ProductOrder> list = null;
 		
 		list = sqlSession.getMapper(ProductMapper.class).proconsumerlist(new RowBounds(cri.getPageStart(),cri.getPerPageNum()),buyer);
 		
 		return list;
+
 	}
 
 	public void CheckPostUpdate(int check_no) {
@@ -232,6 +233,23 @@ public class ProductDao {
 	public void deleteRno(ProductReply productReply) {
 	
 		sqlSession.getMapper(ProductMapper.class).deleteRno(productReply);	
+	}
+
+	
+
+	public ProductOrder proRefund2(int checkno) {
+
+			return sqlSession.getMapper(ProductMapper.class).proRefund2(checkno);
+	}
+
+	public void updateCheckno(int checkno) {
+		sqlSession.getMapper(ProductMapper.class).updateCheckno(checkno);
+		
+	}
+
+	public void updateProduct(ProductOrder productOrder) {
+		
+		sqlSession.getMapper(ProductMapper.class).updateProduct(productOrder);
 	}
 	
 	

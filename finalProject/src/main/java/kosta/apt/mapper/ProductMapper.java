@@ -59,6 +59,13 @@ public interface ProductMapper {
 	public List<ProductReply> Replylist(int pro_no);
 
 	public void deleteRno(ProductReply productReply);
+
+
+	public ProductOrder proRefund2(int checkno);
+
+	public void updateCheckno(int checkno);
+
+	public void updateProduct(ProductOrder productOrder);
 	
 	
 }

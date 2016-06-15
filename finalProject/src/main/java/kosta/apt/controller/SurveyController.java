@@ -273,6 +273,52 @@ public class SurveyController {
 	}
 	
 	
+	
+	//설문지 배달 AJax버전 
+	@RequestMapping(value="/surveyRegistdeliver2", method = RequestMethod.POST)
+	public String surveyRegistdeliver2(Model model)throws Exception{
+		
+		System.out.println("ajax컨트롤러에 들어왔다.");
+		
+		List<Survey> survey = null;
+		
+		List<SurveyDB> surveyDB = null;
+		
+		surveyDB = surveyService.surveystart();
+		System.out.println(surveyDB.size()+"서베이 크기");
+		
+		
+		if(surveyDB !=null){
+			
+			
+		for(int i = 0; i< surveyDB.size(); i++){
+		System.out.println(surveyDB.get(i).getSu_group()+"이게 해당하느일이다."+"시작일:"+surveyDB.get(i).getSu_startdate()+"끝날짜:"+surveyDB.get(i).getSu_enddate());
+			
+			int groupNum = surveyDB.get(i).getSu_group();
+			
+			System.out.println(groupNum);
+			
+				survey = surveyService.surveyList(groupNum);
+				
+				System.out.println(survey.size()+"설문지문항의 개수");
+				System.out.println(survey.get(i).getSu_surveyNo());
+				
+				
+				model.addAttribute("survey", survey);
+			
+				
+			}
+			model.addAttribute("su_group", survey.get(0).getSu_group());
+		
+		}
+		
+		
+		return "";
+		
+	}
+	
+	
+	
 	@RequestMapping(value="/surveyRegistdeliver", method = RequestMethod.POST)
 	public void surveydelivery(HttpServletRequest request,@RequestParam("size") int size,
 								@RequestParam("su_group") int su_group){

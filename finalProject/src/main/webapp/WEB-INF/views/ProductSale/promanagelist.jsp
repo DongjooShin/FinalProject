@@ -49,9 +49,11 @@ function promanagelist2(){
 	
 }
 
+
 function CheckPostUpdate(){
 	alert("버튼클릭됬다.");
 	
+	$(this).html('');
 	
 	$.ajax({
 		url : '/ProductSale/CheckPostUpdate',
@@ -60,8 +62,9 @@ function CheckPostUpdate(){
 		success : function(data){
 			
  			alert("버튼성공");
+ 			
  			promanagelist2();
-		
+			
 		}
 		
 	});
@@ -69,7 +72,7 @@ function CheckPostUpdate(){
 	
 	
 }
-
+ 
 
 
 	
@@ -108,7 +111,7 @@ function CheckPostUpdate(){
 		<th>배송지</th>
 		<th>처리상태</th>
 		<form action="/ProductSale/CheckPostUpdate" method="post">
-		<th><input type="submit" value="배송완료"><button onclick="CheckPostUpdate()">배송완료</button> </th>
+		<th><button onclick="CheckPostUpdate()">배송완료</button> </th>
 		<th><input type="hidden" name="readPage" value="1"></th>
 	</tr>
 	</tr>
@@ -152,20 +155,20 @@ function CheckPostUpdate(){
 
 							<c:if test="${pageMaker.prev}">
 								<li><a
-									href="proconsumerlist${pageMaker.makeSearch(pageMaker.startPage - 1) }">&laquo;</a></li>
+									href="promanagelist${pageMaker.makeSearch(pageMaker.startPage - 1) }">&laquo;</a></li>
 							</c:if>
 
 							<c:forEach begin="${pageMaker.startPage }"
 								end="${pageMaker.endPage }" var="idx">
 								<li
 									<c:out value="${pageMaker.cri.page == idx?'class =active':''}"/>>
-									<a href="proconsumerlist${pageMaker.makeSearch(idx)}">${idx}</a>
+									<a href="promanagelist${pageMaker.makeSearch(idx)}">${idx}</a>
 								</li>
 							</c:forEach>
 
 							<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
 								<li><a
-									href="proconsumerlist${pageMaker.makeSearch(pageMaker.endPage +1) }">&raquo;</a></li>
+									href="promanagelist${pageMaker.makeSearch(pageMaker.endPage +1) }">&raquo;</a></li>
 							</c:if>
 
 						</ul>

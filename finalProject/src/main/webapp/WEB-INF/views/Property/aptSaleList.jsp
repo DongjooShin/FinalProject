@@ -76,7 +76,7 @@
 							value="${fn:substring(property.pr_imageName,0,fn:length(property.pr_imageName)-4) }"></c:set>
 						<c:set var="pattern"
 							value="${fn:substringAfter(property.pr_imageName, head) }"></c:set>
-						 <img src="\C:\Users\MIN\Desktop\eclipse\work\Spring_work\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\finalProject\M_upload1/${head }_small${pattern}" /> 
+						 <img src="../M_upload1/${head }_small${pattern}" /> 
 						
 					</c:if></td>
 

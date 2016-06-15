@@ -13,15 +13,38 @@
 	src="/resources/jquery/jQuery-2.1.4.min.js"></script>
 
 <script type="text/javascript">
-	$(function() {
-		
+
+
+	 $(function() {
+
 		$('#sixthContent').load("/member/passwordCheck");
-		$('#firstContent1').load("/calendar/exam");
-		$('#firstContent2').load("/groupNotice/exam");
-		$('#firstContent3').load("/");
+/* 		 $('#firstContent1').load("/calendar/exam");
+		$('#firstContent2').load("/groupNotice/exam");  */
+		
+		$('#fifthContent1').load("/Message");
+		$('#fifthContent3').load("/Message/readMessageList");
+		
+
+
+		
+		
+	$('.cc2').on('click',function(){
+			
+			
+			alert("클릭되었다.");
+			alert(this.text());
+			
+		});
+		
+		
+	//	$('#fifthContent3').load("/Message/sendMessageList");
+
 		$('#firstManu').css('background', '#09b9e5');
 		$('#firstContent').css('display', 'block');
 
+		
+	
+	 	
 		$('#firstManu').click(function() {
 			$('.manu').css('background-color', 'rgba(0, 0, 0, 0.3)');
 			$('#firstManu').css('background-color', '#09b9e5');
@@ -67,8 +90,16 @@
 			$('#sixthContent').css('display', 'block');
 
 		});
+		
+		
+		
 
-	});
+
+	 }); 
+	
+	
+	
+	
 </script>
 
 <style type="text/css">
@@ -97,13 +128,13 @@
 	margin-top: 70px;
 }
 
-.content {
+/* .content {
 	display: none;
 	margin-top: 15px;
-}
+} */
 
-#sixthContent{
-	min-height: 500px; 
+#sixthContent {
+	min-height: 500px;
 }
 </style>
 </head>
@@ -130,17 +161,11 @@
 
 				<div class="col-md-12">
 					<div id="firstContent" class="content  " style="height: 500px;">
-						<div id="firstContent1">
-						
-						</div>
-						
-							<div id="firstContent2">
-						
-						</div>
-						
-						<div id="firstContent3">
-						
-						</div>
+						<div id="firstContent1"></div>
+
+						<div id="firstContent2"></div>
+
+						<div id="firstContent3"></div>
 					</div>
 
 
@@ -151,7 +176,7 @@
 
 
 					<div id="thirdContent" class="content "
-						style="background: red; height: 500px;"></div>
+						style=" height: 500px;"></div>
 
 
 
@@ -159,8 +184,25 @@
 						style="background: red; height: 500px;"></div>
 
 
-					<div id="fifthContent" class="content "
-						style="background: green; height: 600px;"></div>
+					<div id="fifthContent" class="content " style="height: 600px;">
+						
+						<div id="fifthContent1" >
+						
+						
+						</div>
+
+						<div id="fifthContent2" >
+						
+					
+						
+						</div>
+						
+						<div id="fifthContent3" >
+						
+						</div>
+						
+						
+					</div>
 
 					<div id="sixthContent" class="content "></div>
 				</div>

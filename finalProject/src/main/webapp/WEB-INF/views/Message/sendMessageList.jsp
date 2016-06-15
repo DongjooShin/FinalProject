@@ -45,11 +45,8 @@ function detailMsg(id2){
 </script>
 
 
-
-	 <jsp:include page="../include/head.jsp"></jsp:include> 
-
 <!-- Main content -->
-<section class="content">
+
 	<div class="row">
 		<!-- left column -->
 		<div class="col-md-12">
@@ -86,8 +83,7 @@ function detailMsg(id2){
 		<td><a onclick="detailMsg(${list.mg_messageNo})">${list.mg_title}</a></td>
 		
 		<td>${list.mg_from}</td>
-		<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
-				value="${list.mg_date}" /></td>
+		<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${list.mg_date}"/></td>
 		<td><span class="badge bg-red">${list.mg_state }</span></td>
 		<td><input type="checkbox" name="delect" value="${list.mg_messageNo}"> </td>
 	
@@ -111,20 +107,22 @@ function detailMsg(id2){
 
 							<c:if test="${pageMaker.prev}">
 								<li><a
-									href="sendMessageList${pageMaker.makeSearch(pageMaker.startPage - 1) }">&laquo;</a></li>
+									href="/sendMessageList${pageMaker.makeSearch(pageMaker.startPage - 1) }">&laquo;</a></li>
 							</c:if>
 
 							<c:forEach begin="${pageMaker.startPage }"
 								end="${pageMaker.endPage }" var="idx">
 								<li
 									<c:out value="${pageMaker.cri.page == idx?'class =active':''}"/>>
-									<a href="sendMessageList${pageMaker.makeSearch(idx)}">${idx}</a>
+									<a href="/sendMessageList${pageMaker.makeSearch(idx)}" id="massage"+${idx }">${idx}</a>
+								
+								
 								</li>
 							</c:forEach>
 
 							<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
 								<li><a
-									href="sendMessageList${pageMaker.makeSearch(pageMaker.endPage +1) }">&raquo;</a></li>
+									href="/sendMessageList${pageMaker.makeSearch(pageMaker.endPage +1) }">&raquo;</a></li>
 							</c:if>
 
 						</ul>
@@ -140,7 +138,7 @@ function detailMsg(id2){
 
 	</div>
 	<!-- /.row -->
-</section>
+
 <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->

@@ -33,10 +33,6 @@ function detailMsg(id2){
 </script>
 
 
-<div class="header">
-	 <jsp:include page="../include/head.jsp"></jsp:include> 
-</div>
-
 <!-- Main content -->
 <section class="content">
 	<div class="row">
@@ -46,7 +42,7 @@ function detailMsg(id2){
 
 			<div class="box">
 				<div class="box-header with-border">
-					<h3 class="box-title">LIST ALL PAGE</h3>
+					<h3 class="box-title">받은 메세지함</h3>
 				</div>
 				<div class="box-body">
 				
@@ -107,16 +103,17 @@ function detailMsg(id2){
 								end="${pageMaker.endPage }" var="idx">
 								<li
 									<c:out value="${pageMaker.cri.page == idx?'class =active':''}"/>>
-									<a href="readMessageList${pageMaker.makeSearch(idx)}">${idx}</a>
+								
 								</li>
 							</c:forEach>
-
+							
 							<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
 								<li><a
 									href="readMessageList${pageMaker.makeSearch(pageMaker.endPage +1) }">&raquo;</a></li>
 							</c:if>
 
 						</ul>
+								
 					</div>
 
 				</div>

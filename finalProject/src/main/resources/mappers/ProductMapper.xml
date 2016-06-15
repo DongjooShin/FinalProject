@@ -172,8 +172,29 @@
 	 ]]>
    </select>
    
+   <!-- 구매 환불하기 -->
    
-   	
+   <select id="proRefund2" resultType="kosta.apt.domain.Product.ProductOrder" parameterType="int">
+	
+	select * from productcheckout where check_no = #{checkno}
+	 
+   </select>
+   
+ 	<!-- 환불수정-->
+   <update id="updateCheckno" parameterType="int">
+   
+   update productcheckout set check_sign ='환불처리' where check_no =#{checkno}
+   
+   </update>
+   
+   <!-- 환불하면 구매리스트이 데이터값증거시켜야되 -->
+   
+   <update id="updateProduct" parameterType="kosta.apt.domain.Product.ProductOrder">
+   
+   update product set pro_num  = pro_num + #{check_num} where pro_no = #{pro_no}
+   
+   </update>
+   
 	<!-- 관리자 구매내역목록 -->
 	
 	<select id="promanagelist" resultType="kosta.apt.domain.Product.ProductOrder" parameterType="String">
@@ -202,7 +223,7 @@
    
    <update id="proNumupdate" parameterType="kosta.apt.domain.Product.ProductOrder">
    
-   update Product set pro_num = pro_num - #{check_num} where pro_no = #{pro_no}
+   update Product set pro_num = (pro_num + #{check_num}) where pro_no = #{pro_no}
    
    </update>
    
