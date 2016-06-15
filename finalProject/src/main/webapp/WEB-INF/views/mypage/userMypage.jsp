@@ -18,6 +18,7 @@
 		$('#sixthContent').load("/member/passwordCheck");
 		$('#firstContent1').load("/calendar/exam");
 		$('#firstContent2').load("/groupNotice/exam");
+		$('#firstContent3').load("/");
 		$('#firstManu').css('background', '#09b9e5');
 		$('#firstContent').css('display', 'block');
 
@@ -134,6 +135,10 @@
 						</div>
 						
 							<div id="firstContent2">
+						
+						</div>
+						
+						<div id="firstContent3">
 						
 						</div>
 					</div>

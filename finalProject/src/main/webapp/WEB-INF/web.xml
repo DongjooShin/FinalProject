@@ -55,6 +55,8 @@
 	<filter-mapping>
 		<filter-name>multipart</filter-name>
 		<url-pattern>/budget/*</url-pattern>
+		<url-pattern>/ProductSale/*</url-pattern>
+		<url-pattern>/Property/*</url-pattern>
 	</filter-mapping>
 
 </web-app>

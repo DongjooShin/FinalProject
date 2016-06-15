@@ -47,7 +47,10 @@
 			<mapping path="/managementFee/*" />
 			<mapping path="/publicManagementFee/*" />
 			<mapping path="/budget/*" />
+			<mapping path="/siteNotice/inquiryMain"/>
+			<mapping path="/voter/*"/>
 			<beans:ref bean="authInterceptor" />
+	
 		</interceptor>
 		<interceptor>
 			<!-- 
@@ -68,6 +71,10 @@
 			<mapping path="/managementFee/*" />
 			<mapping path="/publicManagementFee/*" />
 			<mapping path="/budget/*"/>
+			<mapping path="/siteNotice/inquiryMain"/>
+			<mapping path="/voter/*"/>
+	
+			
 			<beans:ref bean="loginInterceptor" />
 		</interceptor>
 
@@ -78,9 +85,11 @@
 		<beans:property name="maxUploadSize" value="10485760"></beans:property>
 	</beans:bean>
 	
-	<!-- 충돌날거같아 -->
-   <beans:bean id="uploadPath" class="java.lang.String">
-      <beans:constructor-arg value="C:\Users\Dongjoo Shin\Desktop\upload"/>
-   </beans:bean>
+
+   
+   	<beans:bean id="uploadPath" class="java.lang.String">
+		<beans:constructor-arg value="C:\\upload"/>
+	</beans:bean>
+   
 	
 </beans:beans>
