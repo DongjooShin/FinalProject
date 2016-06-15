@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>  
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -14,9 +16,8 @@
 		$('#firstManu').css('background', '#09b9e5');
 		$('#firstManu').css('display', 'block');
 
-
 	});
-</script> 
+</script>
 
 <style type="text/css">
 #mypageUl {
@@ -62,34 +63,81 @@
 	<div class="header">
 		<jsp:include page="../include/head.jsp"></jsp:include>
 	</div>
-	<div id="page"
-		style="background: white; display: inline-block;  margin-left: 7.9%;">
+	<div id="page" style="background: white; display: inline-block;">
 		<div class="col-md-12">
 			<div id="mypageLayout">
 				<ul id=mypageUl>
-					<a href="/mypage/maessage"><li id="firstManu" class="manu ">커뮤니티</li></a>
+					<a href="/mypage/userMypage"><li id="firstManu" class="manu ">커뮤니티</li></a>
 					<a href="/mypage/maessage"><li id="secondManu" class="manu">관리비</li></a>
 					<a href="/mypage/maessage"><li id="thirdManu" class="manu">문의답변</li></a>
 					<a href="/mypage/maessage"><li id="fourthManu" class="manu">1:1:문의</li></a>
 					<a href="/mypage/maessage"><li id="fifthManu" class="manu">쪽 지</li></a>
-					<a href="/mypage/maessage"><li id="sixthManu" class="manu">개인정보 수정</li></a>
+					<a href="/mypage/maessage"><li id="sixthManu" class="manu">개인정보
+							수정</li></a>
 				</ul>
-				
-				
-				
-				
-				
-				
+
+				<div class="col-lg-10 col-lg-offset-1">
+					<br> <br> <label
+						style="font-size: 25px; color: black; border-bottom: 3px solid #eaeaea; padding: 0 15px 13px 15px; margin-bottom: 15px;">스케줄</label><br>
+					<br>
+					<div class="col-lg-10 " >
+						<label class="labelDay">오늘 :</label>
+						<c:forEach var="cal" items="${nowlist}">
+							<label class="labelDay">${cal.c_schedule }</label>
+						</c:forEach>
+
+
+						<br> <br> <label class="labelDay">1일전 :</label>
+						<c:forEach var="cal" items="${list}">
+							<label class="labelDay">${cal.c_schedule }</label>
+
+						</c:forEach>
+
+						<br> <br> <label class="labelDay">2일전 :</label>
+						<c:forEach var="cal" items="${list2}">
+							<label class="labelDay">${cal.c_schedule }</label>
+						</c:forEach>
+						<br> <br> <label class="labelDay">3일전 :</label>
+						<c:forEach var="cal" items="${list3}">
+							<label class="labelDay">${cal.c_schedule }</label>
+						</c:forEach>
+
+						<br> <br> <br> <br>
+					</div>
+				</div>
+
+				<div class="col-lg-10 col-lg-offset-1">
+					<label
+						style="font-size: 25px; color: black; border-bottom: 3px solid #eaeaea; padding: 0 15px 13px 15px; margin-bottom: 15px;">최신
+						공지사항</label>
+					<table class="table table-striped">
+						<tr height="30">
+							<th width="50">번호</th>
+							<th width="250">제목</th>
+							<th width="150">작성자</th>
+							<th width="150">작성일</th>
+							<th width="100">조회수</th>
+						</tr>
+						<c:forEach var="gn" items="${newlist}">
+							<tr>
+								<td align="center">${gn.g_subNo }</td>
+								<td align="left"><a href="/groupNotice/read">${gn.g_title}</a></td>
+
+								<td align="center">${gn.m_memberNo}</td>
+								<td align="center"><fmt:formatDate value="${gn.g_date}"
+										pattern="yyyy-MM-dd" /></td>
+								<td align="center">${gn.g_hit}</td>
+							</tr>
+						</c:forEach>
+					</table>
+			<br><br><br>
+				</div>
+
+
 			</div>
 		</div>
-	</div>	 
+	</div>
 
-	<div id="page"
-		style="background: white; display: inline-block; margin-left: 7.9%;">
-		<div class="col-md-12">
-		
-		
-		</div>
 	</div>
 </body>
 </html>
