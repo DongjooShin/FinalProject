@@ -18,7 +18,8 @@
 		$('#sixthContent').load("/member/passwordCheck");
 		$('#firstContent1').load("/calendar/exam");
 		$('#firstContent2').load("/groupNotice/exam");
-		$('#firstContent3').load("/");
+		$('#fourthContent').load("/siteNotice/mypage_SiteInquiry");
+	//	$('#firstContent3').load("/");
 		$('#firstManu').css('background', '#09b9e5');
 		$('#firstContent').css('display', 'block');
 
@@ -156,7 +157,10 @@
 
 
 					<div id="fourthContent" class="content "
-						style="background: red; height: 500px;"></div>
+						style="height: 500px;">
+						
+							
+					</div>
 
 
 					<div id="fifthContent" class="content "

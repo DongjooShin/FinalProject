@@ -15,7 +15,7 @@ public interface VoterMapper {
 	public List<Candidate> selectAllEachCandi(Candidate c);
 	public void updateVflag(Member m);
 	public Integer maxCandiNo();
-	public Integer searchSymbol(int s);
+	public Integer searchSymbol(HashMap<String, Integer> map);
 	public Integer selectOneCandi(String id);
 	public void insertCandidate(Candidate c);
 	public void levelDownGroupPresi(String candi);
@@ -29,7 +29,8 @@ public interface VoterMapper {
 	public int insertVoter(Voter v);
 	public Voter selectExistVoter(HashMap<String, Integer> map);
 	public List<Member> selectBuildingPresi(int aptgno);
-	public void levelDownBuildingPresi(int aptgno);	
+	public void levelDownBuildingPresi(int aptgno);
+	public Integer searchBSymbolService(HashMap<String, Integer> map);	
 	
 	
 	/*
