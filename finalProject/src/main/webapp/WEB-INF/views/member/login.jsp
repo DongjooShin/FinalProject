@@ -69,8 +69,8 @@
 <body>
 
 	<jsp:include page="../include/head.jsp"></jsp:include>
-
-	<div id="page" style="background: white; display: inline-block; padding-bottom: 50px;">
+<!-- style="background: white;  -->
+	<div id="page" display: inline-block; padding-bottom: 50px;">
 		<div class="col-md-12">
 
 			<div class="top-content" id="widthsize" style="margin-top: 10px">
