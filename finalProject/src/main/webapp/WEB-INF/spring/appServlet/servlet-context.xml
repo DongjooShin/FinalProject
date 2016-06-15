@@ -49,7 +49,6 @@
 			<mapping path="/budget/*" />
 			<mapping path="/siteNotice/inquiryMain"/>
 			<mapping path="/voter/*"/>
-			
 			<beans:ref bean="authInterceptor" />
 		</interceptor>
 		<interceptor>
@@ -73,6 +72,7 @@
 			<mapping path="/budget/*"/>
 			<mapping path="/siteNotice/inquiryMain"/>
 			<mapping path="/voter/*"/>
+	
 			
 			<beans:ref bean="loginInterceptor" />
 		</interceptor>
@@ -93,5 +93,6 @@
    <beans:bean id="kosta.apt.SnviewResolver3" class="org.springframework.web.servlet.view.BeanNameViewResolver">
       <beans:property name="order" value="1"/>
    </beans:bean>
+
 
 </beans:beans>

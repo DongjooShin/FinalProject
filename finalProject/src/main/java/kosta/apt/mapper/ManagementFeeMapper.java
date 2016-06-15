@@ -17,5 +17,7 @@ public interface ManagementFeeMapper {
 	public List selectManagementFeeAvg(String m_memberNo);
 	public List<ManagementFee> selectMonthManagementFee(Map<String, String> map);
 	public void insertManagementFeePay(ManagementFeePay mngFeePay);
+	public List<ManagementFeePay> selectMangementAmountCheck(int apt_APTGNo);
+	public void updateManagementFeePay(ManagementFeePay mngFeePay);
 	
 }
