@@ -79,9 +79,16 @@ public class ManagementFeeController {
 		String m_roomNo = Integer.toString(roomNo);
 		int p_managementAmount = managementFee.sumManagementFee();
 		
+		List<ManagementFeePay> mntFeePayCheck = mntFeeService.selectMangementAmountCheck(list.get(0).getApt_APTGNo());
+		
 		//동, 호, 날짜, 공동관리비총액, 관리비총액, 공동관리비+관리비, 결제수단, 결제유무, 아파트그룹
 		ManagementFeePay mngFeePay = new ManagementFeePay(m_buildingNo, m_roomNo, date, 0, p_managementAmount, 0, "", "f", list.get(0).getApt_APTGNo());
-		mntFeeService.insertManagementFeePay(mngFeePay);
+		
+		if(mntFeePayCheck.get(0).getP_publicAmount()!=0){
+			mntFeeService.updateManagementFeePay(mngFeePay);
+		}else{
+			mntFeeService.insertManagementFeePay(mngFeePay);
+		}
 		
 		return "/main";
 	}

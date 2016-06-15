@@ -99,7 +99,7 @@ $(function() {
 					strokeColor : "rgba(210, 214, 222, 1)",
 					pointColor : "rgba(210, 214, 222, 1)",
 					pointStrokeColor : "#c1c7d1",
-					pointHighlightFill : "#fff",
+					pointHighlightFill : "#eaeaea",
 					pointHighlightStroke : "rgba(220,220,220,1)",
 					data : [0,0,0,0,0,0,0]
 				}, {
