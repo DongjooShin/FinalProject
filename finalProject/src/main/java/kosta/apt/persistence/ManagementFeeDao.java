@@ -71,6 +71,15 @@ public class ManagementFeeDao {
 	public void insertManagementFeePay(ManagementFeePay mngFeePay) {
 		sqlSession.getMapper(ManagementFeeMapper.class).insertManagementFeePay(mngFeePay);
 	}
+
+	public List<ManagementFeePay> selectMangementAmountCheck(int apt_APTGNo) {
+		return sqlSession.getMapper(ManagementFeeMapper.class).selectMangementAmountCheck(apt_APTGNo);
+	}
+
+
+	public void updateManagementFeePay(ManagementFeePay mngFeePay) {
+		sqlSession.getMapper(ManagementFeeMapper.class).updateManagementFeePay(mngFeePay);
+	}
 	
 	
 }

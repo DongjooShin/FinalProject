@@ -5,102 +5,20 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link rel='stylesheet' href='/resources/bootstrap/bootstrap.min.css'
-	type='text/css' rel="stylesheet" />
-<link rel='stylesheet' href='/resources/bootstrap/mypage-bootstrap.css'
-	type='text/css' rel="stylesheet" />
+
 <script type="text/javascript"
 	src="/resources/jquery/jQuery-2.1.4.min.js"></script>
 
 <script type="text/javascript">
 
-
-	 $(function() {
-
-		$('#sixthContent').load("/member/passwordCheck");
-/* 		 $('#firstContent1').load("/calendar/exam");
-		$('#firstContent2').load("/groupNotice/exam");  */
-		
-		$('#fifthContent1').load("/Message");
-		$('#fifthContent3').load("/Message/readMessageList");
-		
-
-
-		
-		
-	$('.cc2').on('click',function(){
-			
-			
-			alert("클릭되었다.");
-			alert(this.text());
-			
-		});
-		
-		
-	//	$('#fifthContent3').load("/Message/sendMessageList");
+	$(function() {
 
 		$('#firstManu').css('background', '#09b9e5');
-		$('#firstContent').css('display', 'block');
-
-		
-	
-	 	
-		$('#firstManu').click(function() {
-			$('.manu').css('background-color', 'rgba(0, 0, 0, 0.3)');
-			$('#firstManu').css('background-color', '#09b9e5');
-			$('.content').css('display', 'none');
-			$('#firstContent').css('display', 'block');
-		});
-
-		$('#secondManu').click(function() {
-			$('.manu').css('background-color', 'rgba(0, 0, 0, 0.3)');
-			$('#secondManu').css('background-color', '#09b9e5');
-			$('.content').css('display', 'none');
-			$('#secondContent').css('display', 'block');
-		});
-
-		$('#thirdManu').click(function() {
-			$('.manu').css('background-color', 'rgba(0, 0, 0, 0.3)');
-			$('#thirdManu').css('background-color', '#09b9e5');
-			$('.content').css('display', 'none');
-			$('#thirdContent').css('display', 'block');
-
-		});
-
-		$('#fourthManu').click(function() {
-			$('.manu').css('background-color', 'rgba(0, 0, 0, 0.3)');
-			$('#fourthManu').css('background-color', '#09b9e5');
-			$('.content').css('display', 'none');
-			$('#fourthContent').css('display', 'block');
-
-		});
-
-		$('#fifthManu').click(function() {
-			$('.manu').css('background-color', 'rgba(0, 0, 0, 0.3)');
-			$('#fifthManu').css('background-color', '#09b9e5');
-			$('.content').css('display', 'none');
-			$('#fifthContent').css('display', 'block');
-
-		});
-
-		$('#sixthManu').click(function() {
-			$('.manu').css('background-color', 'rgba(0, 0, 0, 0.3)');
-			$('#sixthManu').css('background-color', '#09b9e5');
-			$('.content').css('display', 'none');
-			$('#sixthContent').css('display', 'block');
-
-		});
-		
-		
-		
-
+		$('#firstManu').css('display', 'block');
 
 	 }); 
 	
-	
-	
-	
-</script>
+</script> 
 
 <style type="text/css">
 #mypageUl {
@@ -135,79 +53,39 @@
 
 #sixthContent {
 	min-height: 500px;
+
+}
+
+.manu {
+	color: white;
 }
 </style>
 </head>
 <body>
 	<div class="header">
-
 		<jsp:include page="../include/head.jsp"></jsp:include>
-
 	</div>
 	<div id="page"
-		style="background: white; display: inline-block; padding-bottom: 50px; margin-left: 7.9%;">
+		style="background: white; display: inline-block;  margin-left: 7.9%;">
 		<div class="col-md-12">
 			<div id="mypageLayout">
+			<!-- 	<ul id=mypageUl>
+					<a href="/mypage/maessage"><li id="firstManu" class="manu ">커뮤니티</li></a>
+					<a href="/mypage/maessage"><li id="secondManu" class="manu">관리비</li></a>
+					<a href="/mypage/maessage"><li id="thirdManu" class="manu">문의답변</li></a>
+					<a href="/mypage/maessage"><li id="fourthManu" class="manu">1:1:문의</li></a>
+					<a href="/mypage/readMessageList"><li id="fifthManu" class="manu">쪽 지</li></a>
+					<a href="/mypage/maessage"><li id="sixthManu" class="manu">개인정보 수정</li></a>
+				</ul> -->
+				
 				<ul id=mypageUl>
-					<li id="firstManu" class="manu ">커뮤니티</li>
-					<li id="secondManu" class="manu">관리비</li>
-					<li id="thirdManu" class="manu">문의답변</li>
-					<li id="fourthManu" class="manu">1:1:문의</li>
-					<li id="fifthManu" class="manu">쪽 지</li>
-					<li id="sixthManu" class="manu">개인정보 수정</li>
+						<jsp:include page="../include/aaa.jsp"></jsp:include>
+				
 				</ul>
-				<br>
 
-
-				<div class="col-md-12">
-					<div id="firstContent" class="content  " style="height: 500px;">
-						<div id="firstContent1"></div>
-
-						<div id="firstContent2"></div>
-
-						<div id="firstContent3"></div>
-					</div>
-
-
-
-					<div id="secondContent" class="content "
-						style="background: orange; height: 500px;"></div>
-
-
-
-					<div id="thirdContent" class="content "
-						style=" height: 500px;"></div>
-
-
-
-					<div id="fourthContent" class="content "
-						style="background: red; height: 500px;"></div>
-
-
-					<div id="fifthContent" class="content " style="height: 600px;">
-						
-						<div id="fifthContent1" >
-						
-						
-						</div>
-
-						<div id="fifthContent2" >
-						
-					
-						
-						</div>
-						
-						<div id="fifthContent3" >
-						
-						</div>
-						
-						
-					</div>
-
-					<div id="sixthContent" class="content "></div>
-				</div>
 			</div>
 		</div>
-	</div>
+	</div>	 
+
 </body>
 </html>
