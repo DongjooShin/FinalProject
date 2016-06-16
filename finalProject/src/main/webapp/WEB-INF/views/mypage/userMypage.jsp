@@ -14,11 +14,10 @@
 
 <script type="text/javascript">
 	$(function() {
-		
+
 		$('#sixthContent').load("/member/passwordCheck");
 		$('#firstContent1').load("/calendar/exam");
 		$('#firstContent2').load("/groupNotice/exam");
-		$('#firstContent3').load("/");
 		$('#firstManu').css('background', '#09b9e5');
 		$('#firstContent').css('display', 'block');
 
@@ -88,7 +87,6 @@
 	color: #fff;
 	font-size: 21px;
 }
-
 #mypageLayout {
 	border: 3px solid #eaeaea;
 	border-top: 4px solid #09b9e5;
@@ -96,25 +94,20 @@
 	width: 100%;
 	margin-top: 70px;
 }
-
 .content {
 	display: none;
 	margin-top: 15px;
 }
-
-#sixthContent{
-	min-height: 500px; 
+#sixthContent {
+	min-height: 500px;
 }
 </style>
 </head>
 <body>
 	<div class="header">
-
 		<jsp:include page="../include/head.jsp"></jsp:include>
-
 	</div>
-	<div id="page"
-		style="background: white; display: inline-block; padding-bottom: 50px; margin-left: 7.9%;">
+	<div id="page" style="display: inline-block; padding-bottom: 50px;">
 		<div class="col-md-12">
 			<div id="mypageLayout">
 				<ul id=mypageUl>
@@ -125,43 +118,22 @@
 					<li id="fifthManu" class="manu">쪽 지</li>
 					<li id="sixthManu" class="manu">개인정보 수정</li>
 				</ul>
-				<br>
-
-
 				<div class="col-md-12">
-					<div id="firstContent" class="content  " style="height: 500px;">
+					<div id="firstContent" class="content" style="height: 500px;">
 						<div id="firstContent1">
 						
 						</div>
-						
-							<div id="firstContent2">
+						<div id="firstContent2">
 						
 						</div>
-						
 						<div id="firstContent3">
 						
 						</div>
 					</div>
-
-
-
-					<div id="secondContent" class="content "
-						style="background: orange; height: 500px;"></div>
-
-
-
-					<div id="thirdContent" class="content "
-						style="background: red; height: 500px;"></div>
-
-
-
-					<div id="fourthContent" class="content "
-						style="background: red; height: 500px;"></div>
-
-
-					<div id="fifthContent" class="content "
-						style="background: green; height: 600px;"></div>
-
+					<div id="secondContent" class="content" style="background: orange; height: 500px;"></div>
+					<div id="thirdContent" class="content" style="background: red; height: 500px;"></div>
+					<div id="fourthContent" class="content"	style="background: red; height: 500px;"></div>
+					<div id="fifthContent" class="content" style="background: green; height: 600px;"></div>
 					<div id="sixthContent" class="content "></div>
 				</div>
 			</div>

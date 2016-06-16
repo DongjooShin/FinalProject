@@ -10,7 +10,6 @@
 <!-- Ionicons -->
 <link rel="stylesheet"
 	href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-
 <script type='text/javascript' src='/resources/dist/js/main3.js'></script>
 <link rel='stylesheet'
 	href='/resources/dist/css/kyungtae/AdminLTE.min.css' type='text/css' />
@@ -25,8 +24,6 @@
 	<div class="header">
 		<jsp:include page="../include/head.jsp"></jsp:include>
 	</div>
-
-	
 	<div class="wrapper">
 		<!-- Main content -->
 		<section class="content">
@@ -38,7 +35,9 @@
 					</div>
 					<div class="box-body">
 						<div id="mntEx"></div>
-						<input type="button" id="mntPay" value="버튼2"/>
+						<br>
+						<input type="button" id="mntPay" value="관리비 결제"/>
+						 
 					</div>
 					<!-- /.box-body -->
 				</div>
@@ -205,8 +204,7 @@
 	
 		$(function(){
 		$('#mntPay').on('click',function(){
-			alert('aa');
-			window.open('/managementFee/managementFeePay','_blank','toolbar=no,location=no,status=no,menubar=no, scrollbars=auto,resizable=no,directories=no,	width=680,height=630, top=100,left=30');
+			window.open('/managementFee/managementFeePay','_blank','toolbar=no,location=no,status=no,menubar=no, scrollbars=auto,resizable=no,directories=no,	width=680,height=690, top=0,left=40');
 		})
 	})
 	</script>
