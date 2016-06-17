@@ -8,6 +8,7 @@ import kosta.apt.domain.SiteNotice.JoinInquiry;
 import kosta.apt.domain.SiteNotice.QnA;
 import kosta.apt.domain.SiteNotice.SNSearchCriteria;
 import kosta.apt.domain.SiteNotice.SiteNotice;
+import kosta.apt.domain.vote.Candidate;
 
 
 public interface SiteNoticeMapper {
@@ -33,4 +34,5 @@ public interface SiteNoticeMapper {
 	public QnA selectReply(int qnaNo);
 	public List<QnA> selectMyInquiry(String m_memberNo);
 	public List<QnA> selectMyReply(String m_memberNo);
+	public void updateGP(int aptgno);
 }

@@ -127,14 +127,14 @@
       <div class="col-md-12">
          <div id="mypageLayout">
             <ul id=mypageUl>
-                  <jsp:include page="../include/aaa.jsp"></jsp:include>
+                  <jsp:include page="../include/mypagehead.jsp"></jsp:include>
             
             </ul>
             <br>
 
 
             <div class="col-md-12">
-               <div id="firstContent" class="content  " style="height: 500px;">
+               <div id="firstContent" class="content" style="height: 500px;">
                   <div id="firstContent1">
                   
                   </div>
