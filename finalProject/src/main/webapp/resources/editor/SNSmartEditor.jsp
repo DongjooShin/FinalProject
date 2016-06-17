@@ -14,10 +14,10 @@
 <body>
 <div></div>
 <div>
-<!-- <form action="/siteNotice/siteNoticeRegist" method="post" enctype="multipart/form-data"> -->
-<form action="/siteNotice/siteNoticeRegist" method="post">
+ <form action="/siteNotice/siteNoticeRegist" method="post" enctype="multipart/form-data"> 
+<!-- <form action="/siteNotice/siteNoticeRegist" method="post"> -->
 	Title <input type="text"  name="sn_title"  width="30px"/>
-<!-- 	File <input type="file" name="uploadFile"> -->
+ 	File <input type="file" name="uploadFile"> 
 	Detail<br><textarea name="sn_content" id="ir1" rows="10" cols="100" style="width:766px; height:412px; display:none;"></textarea> 
 	<input type="button" onclick="submitContents(this);" value="Submit" />
 </form>

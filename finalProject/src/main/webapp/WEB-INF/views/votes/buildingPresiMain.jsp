@@ -25,7 +25,7 @@
 		 <jsp:include page="head.jsp"></jsp:include> 
 	</div>	
 <%-- ------------------------------Body------------------------------------------- --%>
-	<div id= "page">
+	<div id= "page" style="height: 900px; margin-left: 144px; margin-top: -3px; padding-bottom: 50px;">
 		<div class="col-md-3">
 			<jsp:include page="../Community/CommunitySidebar.jsp"></jsp:include>
 		</div>

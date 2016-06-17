@@ -124,6 +124,7 @@
 							<br><br><h3>우리 단지의 입주자 대표</h3><br><br>
 							<c:if test="${gpm != null }">
 								<table class="nowPresi">
+									<tr><td colspan=""><img alt="" src="../j_upload/${cn.cd_imageName }"></td></tr>
 									<tr><td colspan="2">${gpm.getM_name() }</td></tr>
 									<tr><td colspan="2">${gpm.getM_memberNo() }</td></tr>
 									<tr><td>${gpm.getM_buildingNo()} 동</td><td>${gpm.getM_roomNo() } 호</td></tr>
@@ -140,9 +141,9 @@
 							<form action="/voter/voteSubmitOk" method="post">
 								<div class="col-md-12">
 									<c:forEach var="cn" items="${groupPresi }">
-										<div class="radio col-md-5" style="margin:0 0 0 50px;padding:0px;">
-											<table class="voteCandiList" style="width:250px; height:400px; ">
-												<!-- <tr><td><img alt="" src="C:\\upload\\${cn.cd_imageName}"></td></tr> -->
+										<div class="radio col-md-5" style="margin:0 0 0 10px;padding:0px;">
+											<table class="voteCandiList" style="width:300px; height:440px;">
+												<tr><td colspan="2" height="280"><img alt="" src="../j_upload/${cn.cd_imageName }"></td></tr>
 												<tr><td><b>기호</b></td><td>${cn.cd_symbol}</td></tr>
 												<tr><td><b>학력</b></td><td>${cn.cd_eduLevel }</td></tr>
 												<tr><td><b>직업</b></td><td>${cn.cd_job }</td></tr>
@@ -151,7 +152,7 @@
 												<tr><td colspan="2"><b>공약</b></td></tr>
 												<tr><td colspan="2">${cn.cd_promise }</td></tr>
 												
-												<tr><td colspan="2" style="padding:10px;">
+												<tr><td height="40px" colspan="2" style="padding:10px;">
 													<input type="radio"name="onechoose" checked="checked" value="${cn.cd_symbol }" style="margin-top:0px;margin-left:0px;">
 												</td></tr>
 											</table>
@@ -168,7 +169,7 @@
 								</c:if>
 								<div class="col-md-12"><br></div>
 								<div class="col-md-3"></div>
-								<div class="col-md-2"><input type="text" style="margin-right:50px" name = "pass" placeholder="비밀번호"></div>
+								<div class="col-md-2"><input type="password" style="margin-right:50px" name = "pass" placeholder="비밀번호"></div>
 								<div class="col-md-1"><input type="submit" value="제출"></div>
 								<br><Br>
 							</form>
