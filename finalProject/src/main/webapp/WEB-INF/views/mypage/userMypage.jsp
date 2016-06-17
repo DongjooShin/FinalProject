@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 
 <script type="text/javascript"
-	src="/resources/jquery/jQuery-2.1.4.min.js"></script>
+   src="/resources/jquery/jQuery-2.1.4.min.js"></script>
 
 <script type="text/javascript">
 
@@ -52,8 +52,49 @@
 			$('#fourthContent').css('display', 'block');
 
 		});
-	 }); 
-	
+   $(function() {
+      
+      $('#sixthContent').load("/member/passwordCheck");
+      $('#firstContent1').load("/calendar/exam");
+      $('#firstContent2').load("/groupNotice/exam");
+      /* $('#thirdContent').load("/publicmana/list"); */
+      
+      $('#firstManu').css('background', '#0fbe7c');
+
+      $('#firstManu').css('background', '#09b9e5');
+      $('#firstManu').css('display', 'block');
+
+      $('#firstManu').click(function() {
+         $('.manu').css('background-color', 'rgba(0, 0, 0, 0.3)');
+         $('#firstManu').css('background-color', '#0fbe7c');
+         $('.content').css('display', 'none');
+         $('#firstContent').css('display', 'block');
+      });
+
+      $('#secondManu').click(function() {
+         $('.manu').css('background-color', 'rgba(0, 0, 0, 0.3)');
+         $('#secondManu').css('background-color', '#0fbe7c');
+         $('.content').css('display', 'none');
+         $('#secondContent').css('display', 'block');
+      });
+
+      $('#thirdManu').click(function() {
+         $('.manu').css('background-color', 'rgba(0, 0, 0, 0.3)');
+         $('#thirdManu').css('background-color', '#0fbe7c');
+         $('.content').css('display', 'none');
+         $('#thirdContent').css('display', 'block');
+
+      });
+
+      $('#fourthManu').click(function() {
+         $('.manu').css('background-color', 'rgba(0, 0, 0, 0.3)');
+         $('#fourthManu').css('background-color', '#0fbe7c');
+         $('.content').css('display', 'none');
+         $('#fourthContent').css('display', 'block');
+
+      });
+    }); 
+   
 </script> 
 <script type="text/javascript">
  $(function () {

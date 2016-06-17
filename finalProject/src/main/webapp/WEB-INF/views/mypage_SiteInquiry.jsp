@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html>
 <head>
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -27,11 +27,12 @@
 <script src="/resources/FAQ_CSSnJS/modernizr.js"></script>
 </head>
 <body>
-<div class="main" id="page">
-			<div class="container">
-				<section class="cd-faq">
+	
+			<div class="container" >
+				<section class="cd-faq" style="margin-top:30px;">
 					<c:if test="${myqna != null }">	<!-- 1:1 inquiry exist -->
 						<c:forEach var="my" items="${myqna}">	<!-- All inquiry print -->
+								<span style="color: #408080;">${my.q_name }</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<fmt:formatDate value="${my.q_date }" pattern="yyyy-MM-dd"/><br>
 								<div class="cd-faq-items">
 									<ul id="" class="cd-faq-group">
 										<li><a class="cd-faq-trigger" style="font-size: 15px;" href="#0">${my.q_title }</a>
@@ -49,12 +50,13 @@
 										</li>
 									</ul>
 								</div>
+								<hr><br>
 						</c:forEach>
 					</c:if>
 				<%-- END OF ITEMS --%>
 				</section>
 			</div>
-		</div>
+
 	<script src="/resources/FAQ_CSSnJS/jquery-2.1.1.js"></script>
 	<script src="/resources/FAQ_CSSnJS/jquery.mobile.custom.min.js"></script>
 	<script src="/resources/FAQ_CSSnJS/main.js"></script>

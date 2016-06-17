@@ -17,11 +17,11 @@
 <script type="text/javascript">
 
 function fn_insertForm() {
-/* 	$('.insertForm').prepend('<div style="padding-top:20px;margin-left:20px;"><form action="/voter/insertCandidate" method="post" enctype="multipart/form-data">' */
-	$('.insertForm').prepend('<div style="padding-top:20px;margin-left:20px;"><form action="/voter/insertCandidate" method="post">'
+ 	$('.insertForm').prepend('<div style="padding-top:20px;margin-left:20px;"><form action="/voter/insertCandidate" method="post" enctype="multipart/form-data">' 
+/*	$('.insertForm').prepend('<div style="padding-top:20px;margin-left:20px;"><form action="/voter/insertCandidate" method="post">'	*/
 			+'<table border="1px" class="candidatelist"><tr><td>입주민 선택</td><td>'+
 			'<input type="text" name="m_memberNo" style="width:100%;"></td></tr>'
-/* 			+'<tr><td>이미지파일</td><td id="fileInto" data-toggle="tooltip" data-placement="right" title="jpg,png,gif만 지원. 투명배경 지원X"><input type="file" name="file" style="width:100%;"></td></tr>' */
+ 			+'<tr><td>이미지파일</td><td id="fileInto" data-toggle="tooltip" data-placement="right" title="jpg,png,gif만 지원. 투명배경 지원X"><input type="file" name="file" style="width:100%;"></td></tr>' 
 			+'<tr><td>기호</td><td><input type="text" name="cd_symbol" style="width:100%;"></td></tr>'+
 			'<tr><td>학력</td><td><input type="text" name="cd_eduLevel" style="width:100%;"></td></tr>'+
 			'<tr><td>직업</td><td><input type="text" name="cd_job" style="width:100%;"></td></tr><tr><td colspan="2">경력</td></tr>'
@@ -81,9 +81,9 @@ $('#fileInto').tooltip({
 							<input type="hidden" name="cno" value="${cn.candidateNo }"> 
 							<table class="candidatelist" border="1px" >
 								<tr>
-								<!-- 	<td rowspan="4" width="300px">
-											<img alt="" src="C:\\upload\\${cn.cd_imageName}">
-									</td> -->
+								 	<td rowspan="4" width="300px">
+											<img alt="" src="../j_upload/${cn.cd_imageName }">
+									</td>
 									<td width="100px">분류</td>
 									<td width="300px">${cn.cd_group}</td>
 								</tr>

@@ -20,11 +20,11 @@
 
 
 function fn_insertForm() {
-	/* $('.insertForm').prepend('<div style="padding-top:20px;margin-left:20px;"><form action="/voter/insertBCandidate" method="post" enctype="multipart/form-data"><table border="1px" class="candidatelist"><tr><td>입주민 선택</td><td>' */
-			$('.insertForm').prepend('<div style="padding-top:20px;margin-left:20px;"><form action="/voter/insertBCandidate" method="post">'+
+	 $('.insertForm').prepend('<div style="padding-top:20px;margin-left:20px;"><form action="/voter/insertBCandidate" method="post" enctype="multipart/form-data"><table border="1px" class="candidatelist"><tr><td>입주민 선택</td><td>' 		
+	/*		$('.insertForm').prepend('<div style="padding-top:20px;margin-left:20px;"><form action="/voter/insertBCandidate" method="post">'+	*/
 			'<table border="1px" class="candidatelist"><tr><td>입주민 선택</td><td>'+	
 			+'<input type="text" name="m_memberNo" style="width:100%;"></td></tr>'+
-		/* 	'<tr><td>이미지파일</td><td id="fileInto" data-toggle="tooltip" data-placement="right" title="jpg,png,gif만 지원. 투명배경 지원X"><input type="file" name="file" style="width:100%;"></td></tr>' */
+		 	'<tr><td>이미지파일</td><td id="fileInto" data-toggle="tooltip" data-placement="right" title="jpg,png,gif만 지원. 투명배경 지원X"><input type="file" name="file" style="width:100%;"></td></tr>' 
 			+'<tr><td>동수</td><td><input type="text" name="cd_buildingNo" style="width:100%;"></td></tr>'
 			+'<tr><td>기호</td><td><input type="text" name="cd_symbol" style="width:100%;"></td></tr>'+
 			'<tr><td>학력</td><td><input type="text" name="cd_eduLevel" style="width:100%;"></td></tr>'+
@@ -88,7 +88,7 @@ $('#fileInto').tooltip({
 							<table class="candidatelist" border="1px" >
 								<tr>
 									<td rowspan="4" width="300px">
-											<img alt="" src="C:\\upload\\${cn.cd_imageName}">
+											<img alt="" src="${uploadPath }\${cn.cd_imageName}">
 									</td>
 									<td width="100px">분류</td>
 									<td width="300px">${cn.cd_group}</td>

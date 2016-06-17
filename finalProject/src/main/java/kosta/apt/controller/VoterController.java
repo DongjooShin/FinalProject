@@ -1,12 +1,14 @@
 package kosta.apt.controller;
 
 import java.io.File;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import javax.annotation.Resource;
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -26,9 +28,9 @@ import kosta.apt.service.VoteService;
 @Controller
 @RequestMapping("/voter/*")
 public class VoterController {
-
+/*
 	@Resource(name = "uploadPath")
-	private String uploadPath;
+	private String uploadPath;*/
 	@Inject
 	private VoteService voteService;
 
@@ -101,12 +103,13 @@ public class VoterController {
 		model.addAttribute("m", member);
 		model.addAttribute("gpm", gpm);
 		model.addAttribute("clist", clist);
+/*		model.addAttribute("uploadPath", uploadPath);*/
 		model.addAttribute("GPmessage","No");
 		return "/votes/groupPresiRegist";
 	}	//Done
 
 	@RequestMapping(value = "insertCandidate", method = RequestMethod.POST)
-	public String insertGPCandidate(HttpSession session,Candidate c,/* MultipartFile file,*/ Model model) throws Exception {
+	public String insertGPCandidate(HttpSession session,Candidate c, MultipartFile file, Model model, HttpServletRequest request) throws Exception {
 		Member member = (Member)session.getAttribute("member");		//Get Session
 		Member gpm = voteService.selectGroupPresiService(member.getApt_APTGNo());	//Group President now
 		List<Candidate> clist = voteService.selectAllEachCandiService(c);	
@@ -122,7 +125,8 @@ public class VoterController {
 		if (gpm != null) {
 			model.addAttribute("GPmessage", "현 입주자대표의 권한이 하향되지 않았습니다.");
 		} else {
-			if (voteService.searchSymbolService(c.getCd_symbol()) != null) {
+			if (voteService.searchSymbolService(c.getCd_symbol(),c.getApt_APTGNo()) != null) {
+
 				model.addAttribute("GPmessage", "이미 존재하는 기호입니다.");
 			} else {
 				if (voteService.selectOneCandiService(c.getM_memberNo()) != null) {
@@ -136,33 +140,35 @@ public class VoterController {
 						Member temp = voteService.selectOneMemberService(c.getM_memberNo());
 						c.setCd_buildingNo(temp.getM_buildingNo());
 						model.addAttribute("GPmessage", "No");
-						/*
+						
 						String b_fname = null;
 						if (!file.isEmpty()) {
 							b_fname = file.getOriginalFilename();
 						}else{
 							b_fname = "non_image.png";
 						}
-						
-						file.transferTo(new File(uploadPath,b_fname));
+						String uploadDir = request.getServletContext().getRealPath("/j_upload/");
+						System.out.println("1+"+uploadDir);
+					
+						file.transferTo(new File(uploadDir,b_fname));
 						// aaa.gif => aaa_small.gif
 						String pattern = b_fname.substring(b_fname.indexOf(".") + 1);
 						String headName = b_fname.substring(0, b_fname.indexOf("."));
-						String imagePath = uploadPath + "\\" + b_fname;
-							
+						String imagePath = uploadDir + "\\" + b_fname;
 						File src = new File(imagePath);
-						String thumImagePath = uploadPath + "\\" + headName + "_small." + pattern;
+						String thumImagePath = uploadDir + "\\" + headName + "_small." + pattern;
 						File dest = new File(thumImagePath);
 						
+						System.out.println("2+"+imagePath);
+						System.out.println("3+"+dest);
 	
-						if (pattern.equals("jpg") || pattern.equals("png") || pattern.equals("png")) {
+						if (pattern.equals("jpg") || pattern.equals("png") || pattern.equals("gif")
+								|| pattern.equals("JPG") || pattern.equals("PNG") || pattern.equals("GIF")) {
 							ImageUtil.resize(src, dest, 210, ImageUtil.RATIO);
 						}
 	
 						c.setCd_imageName(headName + "_small." + pattern);
 						
-						*/
-						c.setCd_imageName("<NULL>");
 						c.setApt_APTGNo(member.getApt_APTGNo());
 						
 						if(voteService.maxCandiNoService() != null)
@@ -250,8 +256,8 @@ public class VoterController {
 			String message = "후보를 선택해 주세요";
 			model.addAttribute("msg", message);
 		}else{
-			if(m.getM_pass().equals(pass)){
-				
+			
+			if(m.getM_pass().equals(testSHA256(pass))){
 				HashMap<String, Integer> map = new HashMap<>();
 				map.put("buildingNo", m.getM_buildingNo());
 				map.put("roomNo", m.getM_roomNo());
@@ -313,21 +319,20 @@ public class VoterController {
 	
 	@RequestMapping(value = "levelDownBP")
 	public String levelDownBP(HttpSession session,Model model) {
-		Member m = (Member)session.getAttribute("member");
-		Member member = voteService.selectOneMemberService(m.getM_memberNo());
+		Member member = (Member)session.getAttribute("member");
 		
 		voteService.levelDownBuildingPresi(member.getApt_APTGNo());
 
 		return buildingPresiRegist(session,model);
 	}
 	
-	@RequestMapping(value="insertBCandidate")
-	public String insertBCandidate(HttpSession session,Candidate c, MultipartFile file, Model model) throws Exception{
+	@RequestMapping(value="insertBCandidate",method=RequestMethod.POST)
+	public String insertBCandidate(HttpSession session,Candidate c, MultipartFile file, Model model,HttpServletRequest request) throws Exception{
 	
 		Member member = (Member)session.getAttribute("member");
 		
 		List<Member> blist = voteService.selectBuildingPresi(member.getApt_APTGNo());
-		
+		c.setCd_group("동대표");
 		c.setApt_APTGNo(member.getApt_APTGNo());
 		
 		List<Candidate> clist = voteService.selectAllEachCandiService(c);
@@ -346,7 +351,7 @@ public class VoterController {
 		if (blist != null) {
 			model.addAttribute("BPmessage", "현 동대표들의 권한이 하향되지 않았습니다.");
 		} else {
-			if (voteService.searchSymbolService(c.getCd_symbol()) != null) {
+			if (voteService.searchBSymbolService(c.getCd_symbol(),c.getApt_APTGNo()) != null) {
 				model.addAttribute("BPmessage", "이미 존재하는 기호입니다.");
 			} else {
 				if (voteService.selectOneCandiService(c.getM_memberNo()) != null) {
@@ -358,15 +363,17 @@ public class VoterController {
 					}else{
 						b_fname = "non_image.png";
 					}
-					
-					file.transferTo(new File(uploadPath,b_fname));
+					String uploadDir = request.getServletContext().getRealPath("/j_upload/");
+					System.out.println(uploadDir);
+				
+					file.transferTo(new File(uploadDir,b_fname));
 					// aaa.gif => aaa_small.gif
 					String pattern = b_fname.substring(b_fname.indexOf(".") + 1);
 					String headName = b_fname.substring(0, b_fname.indexOf("."));
-					String imagePath = uploadPath + "\\" + b_fname;
+					String imagePath = uploadDir + "/" + b_fname;
 						
 					File src = new File(imagePath);
-					String thumImagePath = uploadPath + "\\" + headName + "_small." + pattern;
+					String thumImagePath = uploadDir + "/" + headName + "_small." + pattern;
 					File dest = new File(thumImagePath);
 
 					if (pattern.equals("jpg") || pattern.equals("png") || pattern.equals("png")) {
@@ -387,22 +394,27 @@ public class VoterController {
 			}
 		}
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		return buildingPresiRegist(session,model);
 	}
 	
-	
+	public String testSHA256(String str) {
+	      String SHA = "";
+	      try {
+	         MessageDigest sh = MessageDigest.getInstance("SHA-256");
+	         sh.update(str.getBytes());
+	         byte byteData[] = sh.digest();
+	         StringBuffer sb = new StringBuffer();
+	         for (int i = 0; i < byteData.length; i++) {
+	            sb.append(Integer.toString((byteData[i] & 0xff) + 0x100, 16).substring(1));
+	         }
+	         SHA = sb.toString();
+
+	      } catch (NoSuchAlgorithmException e) {
+	         e.printStackTrace();
+	         SHA = null;
+	      }
+	      return SHA;
+	   }
 	
 	
 	
