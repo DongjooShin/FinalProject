@@ -49,9 +49,9 @@
 			<aside id="archives" class="widget">
 			<h3 class="widget-title">Archives</h3>
 			<ul>
-				<li><a href='/Property/aptSaleList'>부동산매물 정보</a></li>
-				<li><a href='/aptSale/Property'>부동산매물 등록</a></li>
-
+				<li><a href='/Survey/surveyRegist'>관리자설문조사 작성하기</a></li>
+				<li><a href='/Survey/surveyRegistdeliver'>설문조사 답변</a></li>
+				<li><a href='/Survey/surveyResult'>설문조사 조회</a></li>
 			</ul>
 			</aside>
 		</div>

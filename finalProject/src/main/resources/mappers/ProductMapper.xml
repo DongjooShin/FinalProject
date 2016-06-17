@@ -223,7 +223,7 @@
    
    <update id="proNumupdate" parameterType="kosta.apt.domain.Product.ProductOrder">
    
-   update Product set pro_num = (pro_num + #{check_num}) where pro_no = #{pro_no}
+   update Product set pro_num = (pro_num - #{check_num}) where pro_no = #{pro_no}
    
    </update>
    
@@ -285,6 +285,15 @@
    
    
    
+   <!--product디테일부분-->
+   
+    <select id="selectProduct" resultType="Integer">
+	
+		select pro_num from Product where pro_no =#{pro_no}
+	
+	</select>
+	
+	
 	
 </mapper>
 

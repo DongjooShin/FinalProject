@@ -20,14 +20,34 @@
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+
+<style type="text/css">
+
+
+</style>
+
 </head>
 
 <body>
 
+		
+		 <jsp:include page="../include/head.jsp"></jsp:include> 
 
-
-<div class="container" id="main">
-
+	
+	
+		<div class="row">
+			
+			<!-- 사이드부분 끝@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+			<!-- 메인부분 시작@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+		<div class="col-md-3" style="padding-left: 60px;">
+		
+			 <jsp:include page="SurveySideBar.jsp"></jsp:include> 
+		</div>
+		
+		<div class="col-md-9" style="margin-top: 50px;">
+		
+		<div class="container mainpage1" id="main" style="padding-right: 220px;">
+	
 
 
 
@@ -37,7 +57,7 @@
 
 <form role ="form" id="main_input_box" >
 
-<input type="text" class ="form-control" id="custom_textbox" name="Item" placeholder="설문지 질문을 적으세요!">
+<input type="text" class ="form-control" id="custom_textbox" name="Item" placeholder="설문지 질문을 적으세요!" style="height: 100px;">
 
 <input type="hidden" name="count" value="count">
 <input type="submit" value="Add" class="btn btn-primary add_button" >
@@ -117,6 +137,14 @@
 </form>
 
 </div>
+
+	
+		</div>
+	</div>
+	
+
+
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];

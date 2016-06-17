@@ -14,10 +14,10 @@
 <body>
 <div></div>
 <div>
-<form action="/register" method="post" >
+<br/>
+<form action="/publicmana/register" method="post" >
 	<input type="hidden" name="m_memberNo" value="${member.m_memberNo}">
 	<input type="hidden" name="apt_APTGNo" value="${member.apt_APTGNo}">
-	<input type="file" name="dd">
 	제목 : <input type="text" name="cp_title"  style="width: 700px; margin-bottom: 10px;"></input>
 	<label><input type="checkbox" name="cp_flag"value="1">게시물비공개</label>
 	<textarea name="cp_content" id="ir1" rows="10" cols="100" style="width:766px; height:412px; display:none;"></textarea> 

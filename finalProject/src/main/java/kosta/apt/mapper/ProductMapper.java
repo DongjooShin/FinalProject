@@ -66,6 +66,8 @@ public interface ProductMapper {
 	public void updateCheckno(int checkno);
 
 	public void updateProduct(ProductOrder productOrder);
+
+	public int selectProduct(int pro_no);
 	
 	
 }

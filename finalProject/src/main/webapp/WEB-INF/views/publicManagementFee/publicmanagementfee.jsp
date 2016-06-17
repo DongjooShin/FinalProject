@@ -101,7 +101,8 @@
 							maxlength="9" placeHolder="전기사용량을 입력해주세요">
 						<button id="FeeCal">계산</button>
 						<div class="feee" id="calu">
-							결과값:<input id="feee" disabled="disabled">
+							 결과값:<input id="feee" disabled="disabled" value=""> 
+							
 						</div>
 					</div>
 
@@ -406,7 +407,7 @@
 
 				var cal = 0;
 				if (option == 'ele') {
-					cal = fee * 57.6;
+					cal = fee -passfee
 					if (fee > 100) {
 						cal = fee * 57.6;
 					} else if (fee > 200) {
@@ -422,12 +423,14 @@
 					}
 
 				} else {
-					cal = fee * 635.73;
+					
+					cal = fee -passfee;
+					
 					if (fee > 12) {
 						cal = ((fee - 12) * 700.32) + (12 * 635.73);
 					}
 				}
-				cal += "원";
+				cal *="원";
 				$('#calu').removeClass();
 				$('#feee').val(cal);
 			} else {

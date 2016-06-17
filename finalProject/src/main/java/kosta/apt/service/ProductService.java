@@ -214,6 +214,13 @@ public class ProductService {
 
 
 
+	public int selectProduct(int pro_no) {
+		
+		return productDao.selectProduct(pro_no);
+	}
+
+
+
 
 
 
