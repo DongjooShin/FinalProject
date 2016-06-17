@@ -110,6 +110,7 @@ public class PublicManagementFee implements Serializable {
 	public void setPm_publicFeeNo(String pm_publicFeeNo) {
 		this.pm_publicFeeNo = pm_publicFeeNo;
 	}
+	
 	@Override
 	public String toString() {
 		return "PublicManagementFee [pm_publicFeeNo=" + pm_publicFeeNo + ", pm_clean=" + pm_clean + ", pm_general="
