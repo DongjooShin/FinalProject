@@ -42,7 +42,7 @@ public class PublicManageController {
 	//엑셀
 	@RequestMapping("/getExcel")
 	public String getExcel(Model model,RedirectAttributes attr,HttpServletResponse response,HttpSession session){
-		Member m = (Member)session.getAttribute("member");
+		Member m = (Memgber)session.getAttribute("member");
 
 		response.setHeader("Content-Disposition", "attachment; filename=getexcel.xls");
 		response.setHeader("Content-Description", "JSP Generated Data");

@@ -33,6 +33,10 @@ public class Product implements Serializable {
 	private int pro_maxnum;
 	
 	
+	private String pro_date;
+	
+	
+	
 	
 	
 	
@@ -46,6 +50,12 @@ public class Product implements Serializable {
 	
 	
 	
+	public String getPro_date() {
+		return pro_date;
+	}
+	public void setPro_date(String pro_date) {
+		this.pro_date = pro_date;
+	}
 	public int getPro_maxnum() {
 		return pro_maxnum;
 	}

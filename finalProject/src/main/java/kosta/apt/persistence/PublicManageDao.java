@@ -23,6 +23,7 @@ public class PublicManageDao {
 	@Autowired
 	private SqlSession sqlSession;//세션테플레이트 생성
 	
+	
 	private final static String namespace ="apt.mapper.Management";
 	
 	public List<PublicManagementFee> selectMonthPublicmanage(Integer aptgno){

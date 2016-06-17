@@ -11,7 +11,7 @@
 
 <script type="text/javascript">
 
-	$(function() {
+/* 	$(function() {
 		
 		$('#sixthContent').load("/member/passwordCheck");
 		$('#firstContent1').load("/calendar/exam");
@@ -93,11 +93,11 @@
          $('#fourthContent').css('display', 'block');
 
       });
-    }); 
+    }) */
    
 </script> 
 <script type="text/javascript">
- $(function () {
+/*  $(function () {
 	
 		$('#fifthManu').click(function() {
 			$('.manu').css('background-color', 'rgba(0, 0, 0, 0.3)');
@@ -115,7 +115,7 @@
 
 		});
 
-})
+}); */
 </script>
 
 		<style type="text/css">
@@ -159,6 +159,10 @@
 </style>
 </head>
 <body>
+<<<<<<< HEAD
+=======
+
+>>>>>>> branch 'master' of https://github.com/DongjooShin/FinalProject.git
 	<div class="header">
 		<jsp:include page="../include/head.jsp"></jsp:include>
 	</div>
@@ -170,7 +174,6 @@
 				
 				
 				<br>
-
 
 				<div class="col-md-12">
 					<div id="firstContent" class="content  " style="height: 500px;">
@@ -202,11 +205,16 @@
 					<div id="fifthContent" class="content "
 						style="background: green; height: 600px;"></div>
 
+
 					<div id="sixthContent" class="content "></div>
 				</div>
 
 			</div>
 	</div>	 
+<<<<<<< HEAD
 
+=======
+
+>>>>>>> branch 'master' of https://github.com/DongjooShin/FinalProject.git
 </body>
 </html>

@@ -80,34 +80,24 @@ width: 100%;
 </head>
 <body>
 
-<script type="text/javascript">
-$(document).ready(function(){
+
+
+	 <jsp:include page="../include/head.jsp"></jsp:include> 
+
 	
 	
-	alert("시작이된다.");
-	
-	$.ajax({
-	
-		url : '/Survey/surveyRegistdeliver2',
-		type : 'post',
-		dataType : 'texst',
-		success : function(data){
+		<div class="row">
+			
+			
+		<div class="col-md-3" style="padding-left: 60px;">
 		
-				alert("ajax성공했습니다.");
+			 <jsp:include page="SurveySideBar.jsp"></jsp:include> 
+		</div>
 		
-		}
+		<div class="col-md-9" style="margin-top: 50px;">
+
 		
-	
-	});
-	
-	
-});
-
-
-</script>
-
-
-<div class="container" id="main">
+		<div class="container mainpage1" id="main" style="padding-right: 220px;">
 
 
 <%-- <h1>아파트 설문조사</h1> 날짜 : ${survey.su_enddate }까지 제출바랍니다.
@@ -161,6 +151,39 @@ ${survey.su_surveyNo }. ${survey.su_context }
 <br><br>
 
 </form>
+		
+		
+		
+				</div>
+		</div>
+		
+
+<script type="text/javascript">
+$(document).ready(function(){
+	
+	
+	alert("시작이된다.");
+	
+	$.ajax({
+	
+		url : '/Survey/surveyRegistdeliver2',
+		type : 'post',
+		dataType : 'texst',
+		success : function(data){
+		
+				alert("ajax성공했습니다.");
+		
+		}
+		
+	
+	});
+	
+	
+});
+
+
+</script>
+
 
 </body>
 

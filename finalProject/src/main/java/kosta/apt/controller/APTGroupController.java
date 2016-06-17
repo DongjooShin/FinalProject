@@ -15,4 +15,5 @@ public class APTGroupController {
 		model.addAttribute("groupName", groupName);
 		return "/Community/APTGroupMain";
 	}
+	
 }

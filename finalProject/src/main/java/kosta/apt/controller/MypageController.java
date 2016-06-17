@@ -88,6 +88,7 @@ public class MypageController {
 	
 	
 	
+
 	
 	
 	@RequestMapping(value = "/mypage/maessage", method = RequestMethod.GET)
@@ -103,8 +104,10 @@ public class MypageController {
 
 	
 	@RequestMapping(value = "/mypage/aptMessage", method = RequestMethod.GET)
-	public void Msgview(Message message, @RequestParam("m_memberNo") int m_memberNo, Model model) {
+	public void Msgview(Message message , Model model) {
 		System.out.println("메시지창이다.");
+		
+		int m_memberNo = 1;
 		
 		model.addAttribute("m_memberNo", m_memberNo);
 		
@@ -229,6 +232,8 @@ public class MypageController {
 		
 		
 	
+	
+		
 	
 	
 	

@@ -57,9 +57,34 @@
 .manu {
 	color: white;
 }
+
+
+.table-bordered th{
+
+	text-align: center;
+
+}
+
+.table-bordered td{
+
+	text-align: center;
+
+}
+
+
+.box-header{
+
+	margin: 10px;
+	margin-top: 30px;
+
+}
+
+
 </style>
 </head>
 <body>
+
+
 
 
 <script type="text/javascript">
@@ -81,6 +106,22 @@ function detailMsg(id2){
 
 }
 
+
+function msgform(){
+	
+	
+	url = "/mypage/aptMessage";
+	
+	open(    
+			url,
+			"confirm",
+			"toolbar=no, status=no, menubar=no, location=no, scrollbars=no, resizable=no, width=450, height=350");
+
+	
+	
+}
+
+
 </script>
 
 
@@ -92,18 +133,9 @@ function detailMsg(id2){
 		<div class="col-md-12">
 			<div id="mypageLayout">
 				<ul id=mypageUl>
-					<a href="/mypage/userMypage"><li id="firstManu" class="manu ">커뮤니티</li></a>
-					<a href="/mypage/maessage"><li id="secondManu" class="manu">관리비</li></a>
-					<a href="/mypage/maessage"><li id="thirdManu" class="manu">문의답변</li></a>
-					<a href="/mypage/maessage"><li id="fourthManu" class="manu">1:1:문의</li></a>
-					<a href="/mypage/userMypage"><li id="fifthManu" class="manu">쪽 지</li></a>
-					<a href="/mypage/maessage"><li id="sixthManu" class="manu">개인정보 수정</li></a>
-					
-					
-					
-					
-					
-					
+				
+						<jsp:include page="../include/mypagehead.jsp"></jsp:include>
+				
 				</ul>
 				
 				
@@ -113,6 +145,14 @@ function detailMsg(id2){
 					<div class="box">
 				<div class="box-header with-border">
 					<h3 class="box-title">받은 메세지함</h3>
+					
+					<a href="/mypage/readMessageList" class="box-title">받은 메세지함</a>>
+					<a href="/mypage/sendMessageList">보낸 메세지함 </a>>
+					<a href="/mypage/"> 보관함</a>
+					
+						<br><br>
+					<label class=""><button onclick="msgform()">메세지쓰기</button></label>
+					
 				</div>
 				<div class="box-body">
 				
@@ -124,9 +164,9 @@ function detailMsg(id2){
 		<th>날짜</th>
 		<th style="width: 100px">확인유무</th>
 		
-<form action="delectMsg" method="post">
+<form action="/mypage/delectMsg" method="post">
 		<th><input type="submit" value="삭제하기"></th>
-		<th><input type="hidden" name="readPage" value="1"></th>
+		<input type="hidden" name="readPage" value="1">
 	</tr>
 	
 
@@ -168,14 +208,14 @@ function detailMsg(id2){
 
 							<c:if test="${pageMaker.prev}">
 								<li><a
-									href="/readMessageList${pageMaker.makeSearch(pageMaker.startPage - 1) }">&laquo;</a></li>
+									href="/mypage/readMessageList${pageMaker.makeSearch(pageMaker.startPage - 1) }">&laquo;</a></li>
 							</c:if>
 
 							<c:forEach begin="${pageMaker.startPage }"
 								end="${pageMaker.endPage }" var="idx">
 								<li
 									<c:out value="${pageMaker.cri.page == idx?'class =active':''}"/>>
-									<a href="/readMessageList${pageMaker.makeSearch(idx)}" id="massage"+${idx }">${idx}</a>
+									<a href="/mypage/readMessageList${pageMaker.makeSearch(idx)}" id="massage"+${idx }">${idx}</a>
 								
 								
 								</li>
@@ -183,7 +223,7 @@ function detailMsg(id2){
 
 							<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
 								<li><a
-									href="/readMessageList${pageMaker.makeSearch(pageMaker.endPage +1) }">&raquo;</a></li>
+									href="/mypage/readMessageList${pageMaker.makeSearch(pageMaker.endPage +1) }">&raquo;</a></li>
 							</c:if>
 
 						</ul>
