@@ -37,8 +37,11 @@ public class VoteService {
 	public Integer maxCandiNoService() {
 		return votedao.maxCandiNo();
 	}
-	public Integer searchSymbolService(int s) {
-		return votedao.searchSymbol(s);
+	public Integer searchSymbolService(int s,int aptgno) {
+		HashMap<String, Integer> map = new HashMap<>();
+		map.put("aptgno", aptgno);
+		map.put("s", s);
+		return votedao.searchSymbol(map);
 	}
 	public Integer selectOneCandiService(String id) {
 		return votedao.selectOneCandi(id);
@@ -96,6 +99,12 @@ public class VoteService {
 	}
 	public void levelDownBuildingPresi(int aptgno) {
 		votedao.levelDownBuildingPresi(aptgno);
+	}
+	public Integer searchBSymbolService(int cd_symbol, int apt_APTGNo) {
+		HashMap<String, Integer> map = new HashMap<>();
+		map.put("s", cd_symbol);
+		map.put("aptgno", apt_APTGNo);
+		return votedao.searchBSymbolService(map);
 	}
 	
 	
