@@ -26,8 +26,8 @@
 	<select id="maxCandiNo" resultType="Integer">
 		select max(candidateNo) from candidate
 	</select>
-	<select id="searchSymbol" parameterType="int" resultType="Integer">
-		select cd_symbol from candidate where cd_symbol = #{s} 
+	<select id="searchSymbol" parameterType="java.util.HashMap" resultType="Integer">
+		select cd_symbol from candidate where cd_symbol = #{s} AND cd_group = '입주자대표' AND apt_aptgno = #{aptgno}
 <!-- Here!!! NEED A APT_NO!!!! -->
 	</select>
 		<select id="selectOneCandi" resultType="Integer" parameterType="String">
@@ -87,24 +87,21 @@
 			where apt_aptgno = #{aptgno} AND m_grade = 4
 	</update>
 	
+	<select id="searchBSymbol" parameterType="java.util.HashMap" resultType="Integer">
+		select cd_symbol from candidate where cd_symbol = #{s} AND cd_group = '동대표' AND apt_aptgno = #{aptgno}
+<!-- Here!!! NEED A APT_NO!!!! -->
+	</select>
+	
+	
+	
 <!-- 	
 	
-	<update id="levelDownBuildingPresi" parameterType="int">
-		update Member set m_grade = 1 
-			where apt_aptgno = #{groupNo} AND m_grade = 4
-	</update>
-	<select id="totalGroupNum" resultType="int" parameterType="int">
-		select count(*) from Member where apt_aptgno = #{groupNo} 	
-	</select>
-	<select id="totalGPVoterNum" resultType="int" parameterType="int">
-		select count(*) from Voter where apt_aptgno = #{groupNo} AND v_group = 1
-	</select>
+	
+	
 	<select id="totalBPVoterNum" resultType="int" parameterType="int">
 		select count(*) from Voter where apt_aptgno = #{groupNo} AND v_group = 2
 	</select>
-	<update id="updateAllResiVflag" parameterType="java.util.HashMap">
-		update Member set v_flag = #{vflag} where apt_aptgno = #{groupNo}
-	</update>
+	
 	<update id="updateAllResiV2flag" parameterType="java.util.HashMap">
 		update Member set v2_flag = #{v2flag} where apt_aptgno = #{groupNo}
 	</update>

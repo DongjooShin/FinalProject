@@ -184,3 +184,7 @@ h1{
 	color: #623733;
 }
 
+.voteCandiList td{
+	text-align: center;
+  	vertical-align: middle;
+}

@@ -34,6 +34,11 @@ $(function() {
 			type: 'post',
 			dataType: 'json',
 			success: successHandler4});
+		$.ajax({
+			url: '/publicdata',
+			type: 'post',
+			dataType: 'json',
+			success: successHandler1});
 		// AREA CHART
 		
 
@@ -77,10 +82,23 @@ $(function() {
             data: data,
             xkey: 'd',
             ykeys: ['manageFee'],
-            labels: ['년도별평균관리비'],
+            labels: ['월별관리비'],
             lineColors: ['#3c8dbc'],
             hideHover: 'auto'
           });
+	};
+	function successHandler1(data) {
+		
+		var line = new Morris.Line({
+			element: 'line-chart2',
+			resize: true,
+			data: data,
+			xkey: 'd',
+			ykeys: ['manageFee'],
+			labels: ['연도별관리비'],
+			lineColors: ['#3c8dbc'],
+			hideHover: 'auto'
+		});
 	};
 
 

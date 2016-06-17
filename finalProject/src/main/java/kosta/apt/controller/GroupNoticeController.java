@@ -31,10 +31,10 @@ import kosta.apt.service.GroupNoticeService;
 @RequestMapping("/groupNotice")
 public class GroupNoticeController {
 	private GroupNoticeService gnService;
-	
+/*	
 	@Resource(name="uploadPath")
 	private String uploadDir;
-	
+	*/
 	@Autowired
 	public void setGnService(GroupNoticeService gnService) {
 		this.gnService = gnService;

@@ -56,7 +56,7 @@
 
 						
 <h3>글목록 보기</h3>
-	<a href="aptSale.jsp">글쓰기</a>
+	<a href="/Property/aptSale">글쓰기</a>
 
 	<table border="1" cellpadding="0" cellspacing="0">
 		<tr height="30">
@@ -157,82 +157,33 @@
 
 
 
-<%-- 
-
-<h3>글목록 보기</h3>
-	<a href="aptSale.jsp">글쓰기</a>
-
-	<table border="1" cellpadding="0" cellspacing="0">
-		<tr height="30">
-			<th width="50">건물명</th>
-			<th width="100">이미지</th>
-			<th width="250">제목</th>
-			<th width="150">회원아이디</th>
-			<th width="150">작성일</th>
-		
-		</tr>
-		<c:forEach var="property" items="${listModel.list }">
-			<tr height="30">
-				<td align="center">${property.pr_APTName }</td>
-				<td align="center"><c:if test="${property.pr_imageName != null}">
-				
-						<c:set var="head"
-							value="${fn:substring(property.pr_imageName,0,fn:length(property.pr_imageName)-4) }"></c:set>
-						<c:set var="pattern"
-							value="${fn:substringAfter(property.pr_imageName, head) }"></c:set>
-						 <img src="../M_upload1/${head }_small${pattern}" /> 
-						
-					</c:if></td>
-
-				<td align="left">
-				 <a href="aptSaledetail.jsp?pr_propertyNo=${property.pr_propertyNo }">${property.pr_APTName }</a></td>
-				<td align="center">${property.pr_APTName }</td>
-		 	<td align="center"><fmt:formatDate value="${property.pr_date }"
-						pattern="yyyy-MM-dd" /></td> 
-				</tr>
-				
-			
-		</c:forEach>
-	</table>
-	<br>
-	<br>
-
-	<!-- 페이징 처리  -->
-	<!-- 현재페이지, 페이지당글 갯수, 총 글갯수, 총페이지갯수, 시작페이지, 마지막페이지  -->
-
-	<c:if test="${listModel.startPage >5 }">
-		<a href="aptSaleList.jsp?pageNum=${listModel.startPage-5 }">[이전]</a>
-	</c:if>
 
 
-	<c:forEach var="pageNum" begin="${listModel.startPage }"
-		end="${listModel.endPage }">
-		<c:choose>
-			<c:when test="${listModel.requestPage == pageNum}">
-				<a href="aptSaleList.jsp?pageNum=${pageNum}"><b>[ ${pageNum} ]</b></a>
-			</c:when>
-			<c:otherwise>
-				<a href="aptSaleList.jsp?pageNum=${pageNum}">[ ${pageNum} ]</a>
-			</c:otherwise>
-		</c:choose>
+<!-- Modal -->
+  <div class="modal fade" id="Modal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">상점 세부 보기</h4>
+        </div>
+        <form class="form-horizontal" method="post" action="/store/delete" role="form">
+	        <div class="modal-body" id="modal-content">
+	        	
+	        </div>
+	        <div class="modal-footer">
+	          <button type="submit" class="btn btn-default" >삭제</button>
+	          <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+	        </div>
+        </form>
+      </div>
+      
+    </div>
+  </div>
+  
 
-	</c:forEach>
-
-
-	<c:if test="${listModel.endPage < listModel.totalPageCount }">
-		<a href="aptSaleList.jsp?pageNum=${listModel.startPage+5 }">[다음]</a>
-	</c:if>
-	<br>
-	<br>
-
-	<form action="aptSaleList.jsp" method="post">
-		<input type="checkbox" name="area" value="b_title">제목 <input
-			type="checkbox" name="area" value="b_name">작성자 <input   
-			type="text" name="searchKey" size="10"> <input type="hidden"
-			name="temp" value="temp"> <input type="submit" value="검색">
-			<!-- 이거 pr이어야 검색되겟다 -->
-
-	</form> --%>
 
 </body>
 </html>

@@ -66,6 +66,8 @@ public class MypageController {
 	}
 
 
+
+
 	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
 	public String SelectMypage(HttpSession session, Model model, HttpServletRequest request, RedirectAttributes attr) {
 
@@ -174,8 +176,10 @@ public class MypageController {
 
 	
 	@RequestMapping(value = "/mypage/aptMessage", method = RequestMethod.GET)
-	public void Msgview(Message message, @RequestParam("m_memberNo") int m_memberNo, Model model) {
+	public void Msgview(Message message , Model model) {
 		System.out.println("메시지창이다.");
+		
+		int m_memberNo = 1;
 		
 		model.addAttribute("m_memberNo", m_memberNo);
 		
@@ -297,9 +301,7 @@ public class MypageController {
 			}
 
 		}
-		
-		
-		
+
 		
 		
 		//사이트 관리자 아파트 관리자 아이디/비밀번호 생성

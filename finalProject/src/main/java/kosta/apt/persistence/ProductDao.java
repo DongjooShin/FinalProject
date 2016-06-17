@@ -251,6 +251,11 @@ public class ProductDao {
 		
 		sqlSession.getMapper(ProductMapper.class).updateProduct(productOrder);
 	}
+
+	public int selectProduct(int pro_no) {
+	
+		return sqlSession.getMapper(ProductMapper.class).selectProduct(pro_no);
+	}
 	
 	
 	

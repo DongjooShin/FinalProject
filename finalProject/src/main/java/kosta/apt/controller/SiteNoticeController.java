@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,9 +30,6 @@ import kosta.apt.service.SiteNoticeService;
 @RequestMapping("/siteNotice/*")
 public class SiteNoticeController {
 
-	@Resource(name="uploadPath")
-	private String uploadDir;
-	
 	private SiteNoticeService snService;
 
 	@Autowired
@@ -66,7 +64,7 @@ public class SiteNoticeController {
 	}
 	
 	@RequestMapping(value="siteNoticeRegist",method=RequestMethod.POST)
-	public String registerPOST(SiteNotice sn,Model model)throws Exception{
+	public String registerPOST(SiteNotice sn,Model model,HttpServletRequest request)throws Exception{
 		System.out.println("1212125664212sn controller 들어옴!!!!");
 		System.out.println("title: " + sn.getSn_title());
 		if(snService.maxSnNo() != null){
@@ -77,7 +75,7 @@ public class SiteNoticeController {
 		sn.setM_memberNo("admin");
 	
 		// 1.
-	/*	MultipartFile multiPartFile = sn.getUploadFile();// file객체얻어옴(upload됨)
+		MultipartFile multiPartFile = sn.getUploadFile();// file객체얻어옴(upload됨)
 		System.out.println(multiPartFile);
 		
 		// 2.
@@ -86,7 +84,8 @@ public class SiteNoticeController {
 				String filename = multiPartFile.getOriginalFilename();// file의 실제이름
 																	// 얻어옴
 				sn.setSn_fileName(filename);// DB에 file이름 저장할수있음
-				System.out.println("a뭐야"+filename);
+				String uploadDir = request.getServletContext().getRealPath("/j_upload/");
+				System.out.println(uploadDir);
 				multiPartFile.transferTo(new File(uploadDir, filename));// 파일을 업로드
 
 			}else{
@@ -95,7 +94,7 @@ public class SiteNoticeController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-			*/
+
 		snService.regist(sn);
 		    
 		return "redirect:/siteNotice/siteNoticeAllList";
@@ -134,10 +133,13 @@ public class SiteNoticeController {
 	}
 	
 	@RequestMapping("siteNotice_download")
-	public ModelAndView fileDown(@RequestParam String filename)throws Exception{
+	public ModelAndView fileDown(@RequestParam String filename,HttpServletRequest request)throws Exception{
+		
+		String uploadDir = request.getServletContext().getRealPath("/j_upload/");
+		System.out.println(uploadDir);
 		File file=new File(uploadDir, filename);//file객체구하기
 		
-		return new ModelAndView("GndownloadView","downloadFile",file);//뷰의이름,가져갈객체 키값,데이터값
+		return new ModelAndView("SndownloadView","downloadFile",file);//뷰의이름,가져갈객체 키값,데이터값
 	}
 	
 	
@@ -172,19 +174,35 @@ public class SiteNoticeController {
 	}
 	
 	@RequestMapping(value="inquiryRegist", method=RequestMethod.POST)
-	public String inquiryRegist(QnA qna,Model model){
+	public String inquiryRegist(QnA qna,Model model,HttpServletRequest request){
 		if(snService.maxQnANo() != null)
 		{
 			qna.setQnaNo(snService.maxQnANo()+1);
 		}else{
 			qna.setQnaNo(1);
 		}
+
+// 1.
+		MultipartFile multiPartFile = qna.getMultipart();// file객체얻어옴(upload됨)
+		System.out.println(multiPartFile);
 		
-		if(qna.getMultipart() != null){
-			qna.setQ_fileName(qna.getMultipart().getOriginalFilename());
-		}else{
-			qna.setQ_fileName("NULL");
+		// 2.
+		try {
+			if (!multiPartFile.isEmpty()) {
+				String filename = multiPartFile.getOriginalFilename();// file의 실제이름
+																	// 얻어옴
+				String uploadDir = request.getServletContext().getRealPath("/j_upload/");
+				System.out.println(uploadDir);
+				qna.setQ_fileName(filename);// DB에 file이름 저장할수있음
+				multiPartFile.transferTo(new File(uploadDir, filename));// 파일을 업로드
+
+			}else{
+				qna.setQ_fileName("NULL");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
+
 		snService.insertInquiry(qna);
 		System.out.println(qna.getQ_name());
 		model.addAttribute("msg", "SUCCESS");

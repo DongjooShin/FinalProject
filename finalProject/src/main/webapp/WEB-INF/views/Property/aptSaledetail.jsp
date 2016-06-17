@@ -26,7 +26,9 @@
   box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.2);
 }
 .panel-pricing .panel-heading {
+
   padding: 20px 10px;
+  text-align: center;
 }
 .panel-pricing .panel-heading .fa {
   margin-top: 10px;
@@ -50,6 +52,13 @@
   color: #777777;
   padding: 20px;
   margin: 0px;
+  text-align: center;
+}
+.list-group{
+	text-align: center;
+}
+.panel-footer{
+	text-align: center;
 }
  </style>
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -99,7 +108,22 @@ function aaa(id2){
                     <div class="panel panel-success panel-pricing">
                         <div class="panel-heading">
                         
-                            <i class="fa fa-desktop"></i>
+                     <c:if test="${property.pr_imageName != null}">
+				
+						<c:set var="head"
+							value="${fn:substring(property.pr_imageName,0,fn:length(property.pr_imageName)-4) }"></c:set>
+						<c:set var="pattern"
+							value="${fn:substringAfter(property.pr_imageName, head) }"></c:set>
+						<img src="../M_upload1/${head }${pattern}" width="300px" height="400" />
+						
+					</c:if>   
+					
+					 <c:if test="${property.pr_imageName == null}">
+					 
+                            <i class="fa fa-desktop"></i> <!-- 사진이없을경우 디폴트이미지로 -->
+                     </c:if>         
+                            
+                            
                             <h3>${property.pr_group }</h3> 
                        		<a href="/Property/aptUpdate?pr_propertyNo=${property.pr_propertyNo }">수정하기</a>
                        		<a href="/Property/aptDelete?pr_propertyNo=${property.pr_propertyNo }">삭제하기</a>
@@ -123,16 +147,8 @@ function aaa(id2){
                             <li class="list-group-item"><i class="fa fa-check"></i>건설회사 : ${property.pr_company }</li>
                              
                             <li class="list-group-item"><i class="fa fa-check"></i> 상세내용 <br>
-                            
-                              <c:if test="${property.pr_imageName != null}">
-				
-						<c:set var="head"
-							value="${fn:substring(property.pr_imageName,0,fn:length(property.pr_imageName)-4) }"></c:set>
-						<c:set var="pattern"
-							value="${fn:substringAfter(property.pr_imageName, head) }"></c:set>
-						<img src="../M_upload1/${head }${pattern}" width="300px" height="400" />
-						
-					</c:if>   
+                            	${property.pr_content }
+                     			
                             
                             </li>
                         </ul>

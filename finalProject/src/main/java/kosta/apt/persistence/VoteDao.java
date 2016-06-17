@@ -55,9 +55,9 @@ public class VoteDao {
 	public Integer maxCandiNo(){
 		return sqlSession.getMapper(VoterMapper.class).maxCandiNo();
 	}
-	public Integer searchSymbol(int s){
+	public Integer searchSymbol(HashMap<String, Integer> map){
 		Integer re = 0;
-		re = sqlSession.getMapper(VoterMapper.class).searchSymbol(s);
+		re = sqlSession.getMapper(VoterMapper.class).searchSymbol(map);
 	
 		return re;
 	}
@@ -112,6 +112,10 @@ public class VoteDao {
 
 	public void levelDownBuildingPresi(int aptgno) {
 		sqlSession.getMapper(VoterMapper.class).levelDownBuildingPresi(aptgno);
+	}
+
+	public Integer searchBSymbolService(HashMap<String, Integer> map) {
+		return sqlSession.getMapper(VoterMapper.class).searchBSymbolService(map);
 	}
 	
 	

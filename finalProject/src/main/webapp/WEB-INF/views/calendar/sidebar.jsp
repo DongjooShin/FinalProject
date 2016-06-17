@@ -83,7 +83,7 @@
 </script>
 </head>
 <body>
-   <div class="container" id="page">
+   <div class="container" id="page" style="min-height: 500px;">
    
       <div class="col-md-3">
          
@@ -107,11 +107,11 @@
                </ul>
                </aside>
             </div>
-            <div id="primary" style="height: 1000px; "></div>
+
          
       </div>
 
-      <div class="col-md-8">
+      <div class="col-md-8" style="margin-bottom: 100px;">
          <!-- 일정추가모달 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
          <br>
 
@@ -172,7 +172,7 @@
 
                            <div class="modal-footer">
                               <button type="submit" id="success" class="btn btn-default"
-                                 value="성공">
+                                 value="성공"></button>
                                  성공
                                  <button type="button" class="btn btn-default"
                                     data-dismiss="modal">닫기</button>
