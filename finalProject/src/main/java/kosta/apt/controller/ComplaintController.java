@@ -44,7 +44,7 @@ public class ComplaintController {
 	
 	@RequestMapping(value = "/list", method = RequestMethod.GET )
 	public String List(@ModelAttribute("cri") SearchCriteria cri,Model model,HttpSession session){
-			model.addAttribute("member",(Member)session.getAttribute("member"));
+		model.addAttribute("member",(Member)session.getAttribute("member"));
 		   model.addAttribute("list", service.listSearchCriteria(cri));
 		   PageMaker pagemaker = new PageMaker();
 		   pagemaker.setCri(cri);

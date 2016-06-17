@@ -1,13 +1,45 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-<div class="header">
-	<jsp:include page="../include/head.jsp"></jsp:include>
-</div>
-<div>
-	<jsp:include page="../mypage/MypageHead.jsp" />
-</div>
+		<style type="text/css">
+#mypageUl {
+   margin-top: -53px;
+}
 
+#mypageUl li {
+   display: inline;
+   float: left;
+   position: relative;
+   margin-right: 5px;
+   padding: 10px;
+   background-color: rgba(0, 0, 0, 0.3);
+   padding: 15px 35px 15px 35px;
+   border-radius: 3px;
+   color: #fff;
+   font-size: 21px;
+}
+
+#mypageLayout {
+   border: 3px solid #eaeaea;
+   border-top: 4px solid #09b9e5;
+   display: inline-block;
+   width: 100%;
+   margin-top: 70px;
+}
+
+.content {
+   display: none;
+   margin-top: 15px;
+}
+
+#sixthContent {
+   min-height: 500px;
+}
+
+.manu {
+   color: white;
+}
+</style>
 <div>
 
 	<div class="col-lg-2"></div>

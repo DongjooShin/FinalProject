@@ -25,6 +25,9 @@
 	padding-right: 50px;
 	padding-left: 50px;
 }
+.box-header{background: #f8f8f8;}
+.box-body{background: #f8f8f8;}
+.box-footer{background: #f8f8f8;}
 </style>
 </head>
 
@@ -34,7 +37,7 @@
 	</div>
 	<div class="wrapper">
 		<!-- Main content -->
-		<section class="content">
+		<section class="content" id="page">
 		<div class="row">
 			<div class="col-md-9">
 				<div class="box">

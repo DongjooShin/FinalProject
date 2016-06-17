@@ -46,7 +46,6 @@ $(document).ready(function(){
 					  $('#resultInfo').append('<div id="detail'+i+'"><div id="resultContext'+i+'" class="resultContext"></div><div id="resultGrape'+i+'" class="resultGrape"></div></div> <div id="buttonSwitch'+i+'"><input type="button" onclick="detailclick('+sendMessage.su_group+','+i+')" value="상세보기"></div>');
 					  $('#resultInfo').append('<div id="detailbut'+i+'"><div>');
 					  
-					  
 					  $('#resultGrape'+i).hide();//테두리 색깔보여서
 					  i++;
 				});

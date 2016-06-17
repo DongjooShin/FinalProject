@@ -59,15 +59,15 @@
 	</select>
 	
 	<update id="updatePublicManagementFeePay" parameterType="int">
-		update managementfeepay set P_PUBLICAMOUNT = #{p_publicAmount}
-		where apt_aptgno =#{apt_APTGNo}
+		update managementfeepay set P_PUBLICAMOUNT = #{param1}
+		where apt_aptgno =#{param2}
 	</update>
 	
 	<insert id="insertPublicManagementFeePay" parameterType="ManagementFeePay">
-		insert into (
+		insert into managementfeepay (
 			M_BUILDINGNO,M_ROOMNO,P_DATE,P_PUBLICAMOUNT,P_MANAGEMENTAMOUNT,P_AMOUNT, P_MEANS, APT_APTGNO, P_PLAG
 		)values( 
-			#{M_BUILDINGNO}, #{p_date}, #{P_AMOUNT}, #{P_MEANS}, #{APT_APTGNO}, #{P_PLAG}, #{M_ROOMNO}, #{P_PUBLICAMOUNT}, #{P_MANAGEMENTAMOUNT}
+			#{m_buildingNo}, #{m_roomNo}, #{p_date}, #{p_publicAmount}, #{p_managementAmount}, #{p_amount}, #{p_means}, #{apt_APTGNo}, #{p_plag}
 		)
 	</insert>
 	

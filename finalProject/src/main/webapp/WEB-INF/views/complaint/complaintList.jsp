@@ -9,11 +9,23 @@
 </head>
 <body style="background-color: #eaeaea;">
 	<div class="main">
-			<!-- 리스트,입력,상세보기 -->
-			<div class="col-md-12" style="margin-top: 50px;">
-				<jsp:include page="list.jsp"></jsp:include>
-			</div>
-	</div>
+		<!-- 리스트,입력,상세보기 -->
+		<div class="header">
 
+			<jsp:include page="../include/head.jsp"></jsp:include>
+		</div>
+		<div id="page" style="background: white; display: inline-block;">
+			<div class="col-md-12">
+			
+				<jsp:include page="../include/mypagehead.jsp"></jsp:include>
+
+				<div class="col-md-12">
+
+					<jsp:include page="list.jsp"></jsp:include>
+
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

@@ -42,20 +42,28 @@ function proconsumerlist2(){
 		url : '/ProductSale/proconsumerlist2',
 		type: 'post',
 		dataType :'json',
+		data :{
+			"page" : 1
+		},
 		success : function(data){
 			
-			$('.checkSign').empty();
-			$('.refundbtn').empty();
-			i=0;
+			//$('.bbc').empty();
+			
 			$.each(data, function(index, productOrder ){
 					
 					var html3 = '';
-					html3 += '<td class="checkSign'+i+'">'+productOrder.check_sign+'</td>'; 
-					html3 +='<td class="refundbtn'+i+'"><a href="javascript:cancelCheck('+productOrder.check_no+')">환불하기</a></td>';
-					$('.ppand').append(html3);
-					$('.checkSign'+i).remove();
+					html3 +='<tr class="bbc"><td>'+productOrder.check_no+'</td>';
+					html3 +='<td>'+productOrder.check_date+'</td>';
+					html3 +='<td>'+productOrder.check_name+'</td>';
+					html3 +='<td>'+productOrder.pro_price+'</td>';
+					html3 +='<td>'+productOrder.check_num+'</td>';
+					html3 +='<td>'+productOrder.checkPost+'</td>';
+					html3 +='<td>'+productOrder.check_price+'</td>';
+					html3 += '<td>'+productOrder.check_sign+'</td>'; 
+					html3 += '<td><a class="addressdetail" id="addressdetail" href="javascript:detailaddress('+productOrder.check_no+')">배송지보기</a></td>';					
+					html3 +='<td id="td'+productOrder.check_no+'"><button id="'+productOrder.check_no+'" onclick="cancelCheck('+productOrder.check_no+')">환불하기</button></td></tr>';
+					$('#tablelist').append(html3);
 					
-				
 			});
 			
 		}
@@ -63,10 +71,31 @@ function proconsumerlist2(){
 		
 	});
 	
-	
-	
 }
 	
+	
+function cancelCheck(checkno){
+	
+	alert("환불하기버튼클릭했다")
+
+	$.ajax({
+		url : '/ProductSale/proRefund',
+		type: 'post',
+		dataType :'text',
+		data :{
+			"checkno" : checkno
+		},
+		success : function(data){
+			$('#'+checkno).remove();
+			$('#td'+checkno).html('환불완료되었습니다.');
+			
+			alert("환불성공22");
+			
+
+		}
+		
+	});
+}
 
 
 function detailaddress(checkno){
@@ -128,7 +157,7 @@ function detailaddress(checkno){
 				</div>
 				<div class="box-body">
 				
-<table class="table table-bordered">
+<table class="table table-bordered" id="tablelist">
 	<tr>
 		<th style="width: 10px">주문번호</th>
 		<th>주문일자</th>
@@ -144,28 +173,6 @@ function detailaddress(checkno){
 	
 
 
-<c:forEach items="${list}" var="list">
-		
-	<tr class="ppand">
-		
-		<td>${list.check_no}</td>
-		<td>${list.check_date}</td>
-		<td>${list.check_name}</td>
-		<td>${list.pro_price}</td>
-		<td>${list.check_num }</td>
-		<td>${list.checkPost}</td>
-		<td>${list.check_price }</td>
-		<td><a class="addressdetail" id="addressdetail" href="javascript:detailaddress(${list.check_no})">배송지보기</a></td>
-		
-		
-	
-	
-	</tr>
-	
-		
-</c:forEach>
-
-
 
 			 	
 
@@ -176,7 +183,6 @@ function detailaddress(checkno){
 <div class="boad-page">
 
 				<div class="box-footer">
-
 					<div class="text-center">
 						<ul class="pagination">
 
@@ -184,7 +190,7 @@ function detailaddress(checkno){
 								<li><a
 									href="proconsumerlist${pageMaker.makeSearch(pageMaker.startPage - 1) }">&laquo;</a></li>
 							</c:if>
-
+				
 							<c:forEach begin="${pageMaker.startPage }"
 								end="${pageMaker.endPage }" var="idx">
 								<li

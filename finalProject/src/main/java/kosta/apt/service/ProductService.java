@@ -194,6 +194,27 @@ public class ProductService {
 
 
 
+	public ProductOrder proRefund2(int checkno) {
+		return productDao.proRefund2(checkno);
+	}
+
+
+
+	public void updateCheckno(int checkno) {
+	
+		productDao.updateCheckno(checkno);
+	}
+
+
+
+	public void updateProduct(ProductOrder productOrder) {
+		
+		productDao.updateProduct(productOrder);
+	}
+
+
+
+
 
 
 	

@@ -8,17 +8,23 @@
 <title>Insert title here</title>
 </head>
 <body style="background-color: #eaeaea;">
-	<div class="header">
-		 <jsp:include page="../include/head.jsp"></jsp:include> 
-	</div>
 	<div class="main">
-		<div class="container" id="page">
+		<!-- 리스트,입력,상세보기 -->
+		<div class="header">
+
+			<jsp:include page="../include/head.jsp"></jsp:include>
+		</div>
+		<div id="page" style="background: white; display: inline-block;">
+			<div class="col-md-12">
 			
-			<!-- 리스트,입력,상세보기 -->
-			<div class="body col-md-12" id="page">
+				<jsp:include page="../include/mypagehead.jsp"></jsp:include>
+
+				<div class="col-md-12">
+
 			<jsp:include page="../../../resources/editor/ComplaintSmartEditor2.jsp"></jsp:include>
 
 				</div>
+			</div>
 		</div>
 	</div>
 

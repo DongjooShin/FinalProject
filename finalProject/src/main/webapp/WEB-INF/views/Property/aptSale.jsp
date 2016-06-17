@@ -99,7 +99,7 @@
 				<div class="row">
 					<div class="col-lg-12">
 						<div class="well bs-component">
-							<form class="form-horizontal" action="/Property/aptSale" method="post" enctype="multipart/form-data">
+							<form class="form-horizontal" action="/Property/aptSale?pr_propertyNo=0" method="post" enctype="multipart/form-data">
 								
 									<legend>Legend</legend>
  
