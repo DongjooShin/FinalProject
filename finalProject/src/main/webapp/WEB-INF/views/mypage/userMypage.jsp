@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>  
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -13,43 +13,13 @@
 
 <script type="text/javascript">
 	$(function() {
+
 		$('#firstManu').css('background', '#09b9e5');
 		$('#firstManu').css('display', 'block');
 
 	});
 </script>
-
 <style type="text/css">
-#mypageUl {
-	margin-top: -53px;
-}
-
-#mypageUl li {
-	display: inline;
-	float: left;
-	position: relative;
-	margin-right: 5px;
-	padding: 10px;
-	background-color: rgba(0, 0, 0, 0.3);
-	padding: 15px 35px 15px 35px;
-	border-radius: 3px;
-	color: #fff;
-	font-size: 21px;
-}
-
-#mypageLayout {
-	border: 3px solid #eaeaea;
-	border-top: 4px solid #09b9e5;
-	display: inline-block;
-	width: 100%;
-	margin-top: 70px;
-}
-
-.content {
-	display: none;
-	margin-top: 15px;
-}
-
 #sixthContent {
 	min-height: 500px;
 }
@@ -66,21 +36,18 @@
 	<div id="page" style="background: white; display: inline-block;">
 		<div class="col-md-12">
 			<div id="mypageLayout">
+
 				<ul id=mypageUl>
-					<a href="/mypage/userMypage"><li id="firstManu" class="manu ">커뮤니티</li></a>
-					<a href="/mypage/maessage"><li id="secondManu" class="manu">관리비</li></a>
-					<a href="/mypage/maessage"><li id="thirdManu" class="manu">문의답변</li></a>
-					<a href="/mypage/maessage"><li id="fourthManu" class="manu">1:1:문의</li></a>
-					<a href="/mypage/maessage"><li id="fifthManu" class="manu">쪽 지</li></a>
-					<a href="/mypage/maessage"><li id="sixthManu" class="manu">개인정보
-							수정</li></a>
+					<jsp:include page="../include/aaa.jsp"></jsp:include>
+
 				</ul>
+
 
 				<div class="col-lg-10 col-lg-offset-1">
 					<br> <br> <label
-						style="font-size: 25px; color: black; border-bottom: 3px solid #eaeaea; padding: 0 15px 13px 15px; margin-bottom: 15px;">스케줄</label><br>
-					<br>
-					<div class="col-lg-10 " >
+						style="font-size: 25px; color: black; border-bottom: 3px solid #eaeaea; padding: 0 15px 13px 15px; margin-bottom: 15px;">스케줄</label>
+					<a href="/calendar/calendar">더 많은 스케줄보기</a> <br> <br>
+					<div class="col-lg-10 ">
 						<label class="labelDay">오늘 :</label>
 						<c:forEach var="cal" items="${nowlist}">
 							<label class="labelDay">${cal.c_schedule }</label>
@@ -109,7 +76,7 @@
 				<div class="col-lg-10 col-lg-offset-1">
 					<label
 						style="font-size: 25px; color: black; border-bottom: 3px solid #eaeaea; padding: 0 15px 13px 15px; margin-bottom: 15px;">최신
-						공지사항</label>
+						공지사항</label> <a href="/groupNotice/listAll">더 많은 공지사항보기</a>
 					<table class="table table-striped">
 						<tr height="30">
 							<th width="50">번호</th>
@@ -130,14 +97,12 @@
 							</tr>
 						</c:forEach>
 					</table>
-			<br><br><br>
+					<br> <br> <br>
 				</div>
-
-
 			</div>
 		</div>
 	</div>
 
-	</div>
+
 </body>
 </html>

@@ -91,5 +91,12 @@
 		<beans:constructor-arg value="C:\\upload"/>
 	</beans:bean>
    
+   
+   <!-- 충돌날거같아 -->
+   <beans:bean id="GndownloadView" class="kosta.apt.Gnview.DownloadView"></beans:bean>
+   <!-- 충돌날거같아 -->
+   <beans:bean id="kosta.apt.GnviewResolver3" class="org.springframework.web.servlet.view.BeanNameViewResolver">
+      <beans:property name="order" value="1"/>
+   </beans:bean>
 	
 </beans:beans>

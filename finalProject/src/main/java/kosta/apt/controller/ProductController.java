@@ -469,7 +469,6 @@ public class ProductController {
 		model.addAttribute("list", list);
 		
 		
-		
 	}
 	
 	
@@ -502,6 +501,8 @@ public class ProductController {
 		
 		List<ProductOrder> list = productService.proconsumerlist(buyer,cri);
 		
+		System.out.println(list.size()+"뭐지");
+		
 		ResponseEntity<List<ProductOrder>> responseEntity = new ResponseEntity<>(list, HttpStatus.OK);
 		
 		
@@ -518,7 +519,27 @@ public class ProductController {
 		
 	}
 	
+	//환불하기
 	
+	@RequestMapping(value="/proRefund", method = RequestMethod.POST)
+	public String proRefund(@RequestParam("checkno") int checkno)throws Exception{
+		
+		ProductOrder productOrder = null;
+		System.out.println("환불할 목록번호입니다."+checkno);
+		
+		productOrder = productService.proRefund2(checkno);
+
+	//System.out.println(productOrder.getCheck_buyer()+"구매한사람입니다.");
+	//	System.out.println(productOrder.getCheck_num()+"구매한개수이다.");
+		
+		productService.updateCheckno(checkno);
+		
+		productService.updateProduct(productOrder);
+		
+		System.out.println("환불취소완료되어쩌여");
+		
+		return "redirect:/ProductSale/proconsumerlist";
+	}
 	
 	
 	

@@ -4,6 +4,8 @@ import java.io.File;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,30 +51,36 @@ public class GroupNoticeController {
 	}
 	
 	@RequestMapping(value="/register",method=RequestMethod.POST)
-	public String registerPOST(GroupNotice gn,HttpSession session)throws Exception{
-		System.out.println("gn controller 들어옴!!!!");
-		Member m=(Member) session.getAttribute("member");
-		int aptNum=m.getApt_APTGNo();
-		gn.setApt_APTGNo(aptNum);
-		gn.setM_memberNo(m.getM_memberNo());
-		System.out.println("controller gn=>"+gn.toString());
-		// 1.
-		MultipartFile multiPartFile = gn.getUploadFile();// file객체얻어옴(upload됨)
-		// 2.
-		if (multiPartFile != null) {
-			String filename = multiPartFile.getOriginalFilename();// file의 실제이름
-																	// 얻어옴
-			gn.setG_fileName(filename);// DB에 file이름 저장할수있음
+	public String registerPOST(GroupNotice gn,HttpSession session,HttpServletRequest req)throws Exception{
+		System.out.println("gn controller 들어옴!!!!"+gn.toString());
+	      Member m=(Member) session.getAttribute("member");
+	      int aptNum=m.getApt_APTGNo();
+	      gn.setApt_APTGNo(aptNum);
+	      gn.setM_memberNo(m.getM_memberNo());
+	      System.out.println("controller gn=>"+gn.toString());
+	      // 1.
+	      MultipartFile multiPartFile = gn.getUploadFile();// file객체얻어옴(upload됨)
+	      // 2.
+	      if (!multiPartFile.isEmpty()) {
+	         System.out.println("파일 있을때 들어오는 if");
+	         System.out.println("if안 들어옴!!!!"+gn.toString());
+	         String filename = multiPartFile.getOriginalFilename();// file의 실제이름 얻어옴
+	         String uploadPath= req.getServletContext().getRealPath("/uploadGroupN/");
+	         System.out.println("UPLOAD_PATH : "+uploadPath);
+	                                                   
+	         gn.setG_fileName(filename);// DB에 file이름 저장할수있음
 
-			multiPartFile.transferTo(new File(uploadDir, filename));// 파일을 업로드
+	         multiPartFile.transferTo(new File(uploadPath, filename));// 파일을 업로드
 
+	      }else{
+	         System.out.println("else문 파일없을때 ");
+	         gn.setG_fileName("파일없음!");
+	      }
+	      System.out.println("마지막 gn controller 마지막!!!!"+gn.toString());
+	      gnService.regist(gn);
+	      return "redirect:/groupNotice/listAll";
 		}
-				
-		
-		
-		gnService.regist(gn);
-		return "redirect:/groupNotice/listAll";
-	}
+
 	
 	
 	@RequestMapping(value="/exam",method=RequestMethod.GET)
@@ -140,9 +148,15 @@ public class GroupNoticeController {
 	}
 	
 	@RequestMapping("/groupNotice_download")
-	public ModelAndView fileDown(@RequestParam String filename)throws Exception{
-		File file=new File(uploadDir, filename);//file객체구하기
-		
-		return new ModelAndView("GndownloadView","downloadFile",file);//뷰의이름,가져갈객체 키값,데이터값
-	}
+	   public ModelAndView fileDown(@RequestParam String filename,HttpServletRequest req)throws Exception{
+	      
+	      String uploadPath1= req.getServletContext().getRealPath("/uploadGroupN/");
+	      System.out.println("UPLOAD_PATH : "+uploadPath1);
+	      
+	      String uploadPath=uploadPath1+"/";
+	      System.out.println("UPLOAD_PATH 11111111111 : "+uploadPath1);
+	      File file=new File(uploadPath, filename);//file객체구하기
+	      
+	      return new ModelAndView("GndownloadView","downloadFile",file);//뷰의이름,가져갈객체 키값,데이터값
+	   }
 }

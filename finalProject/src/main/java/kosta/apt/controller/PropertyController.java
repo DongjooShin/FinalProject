@@ -2,9 +2,11 @@ package kosta.apt.controller;
 
 import java.io.File;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,6 +30,7 @@ import kosta.apt.domain.Paging.Criteria;
 import kosta.apt.domain.Paging.PageMaker;
 import kosta.apt.domain.Property.Property;
 import kosta.apt.domain.Property.PropertyImageUtil;
+import kosta.apt.domain.member.RssReader;
 import kosta.apt.service.PropertyService;
 
 @Controller
@@ -44,24 +47,9 @@ public class PropertyController {
 	}
 	
 	@RequestMapping(value="/aptSale", method = RequestMethod.GET)
-	public void aptSaleView(@RequestParam("pr_propertyNo") int pr_propertyNo, Model model){
+	public void aptSaleView(Model model){
 	
 		System.out.println("뷰로 이동하겠습니다.1");
-		
-		if(pr_propertyNo!=0){
-			
-			Property property= propertyService.aptSaledetail(pr_propertyNo);
-			
-		//	String b = property.getPr_tel().substring(0,property.getPr_tel().lastIndexOf("-")-1);
-		//	String c = property.getPr_tel().substring(property.getPr_tel().lastIndexOf("-")+1,property.getPr_tel().lastIndexOf("-")+1);
-			
-			
-			
-			model.addAttribute("property", property);
-			
-		}
-		
-		
 		
 	}
 	
@@ -154,7 +142,7 @@ public class PropertyController {
 			
 			propertyService.aptUpdate(property);
 			
-			return "/Property/aptSaleList";
+			return "redirect:/Property/aptSaleList";
 			
 		}else{
 			
@@ -164,8 +152,7 @@ public class PropertyController {
 			
 			propertyService.insertAPTsale(property);
 			
-			
-			return "/Property/aptSaleList";
+			return "redirect:/Property/aptSaleList";
 			
 		}
 		
@@ -222,8 +209,29 @@ public class PropertyController {
 		rttr.addFlashAttribute("pr_propertyNo", pr_propertyNo);
 	
 		
-		return "redirect:/Property/aptSale?pr_propertyNo="+pr_propertyNo;
+		return "redirect:/Property/aptSale2?pr_propertyNo="+pr_propertyNo;
 	}
+	
+	@RequestMapping(value="/aptSale2", method = RequestMethod.GET)
+	public void aptSaleView2(@RequestParam("pr_propertyNo") int pr_propertyNo, Model model){
+	
+		System.out.println("뷰로 이동하겠습니다.1");
+		
+		if(pr_propertyNo!=0){
+			
+			Property property= propertyService.aptSaledetail(pr_propertyNo);
+			
+		//	String b = property.getPr_tel().substring(0,property.getPr_tel().lastIndexOf("-")-1);
+		//	String c = property.getPr_tel().substring(property.getPr_tel().lastIndexOf("-")+1,property.getPr_tel().lastIndexOf("-")+1);
+			model.addAttribute("property", property);
+			
+		}
+		
+		
+		
+	}
+	
+	
 	
 	
 	
@@ -312,6 +320,23 @@ public class PropertyController {
 		
 		
 	}*/
+	
+	@RequestMapping(value = "/aptNews", method = RequestMethod.GET)
+	public void aptNewsGet(HttpSession session, Model model, @RequestParam("newsNum") int newsNum,
+			@RequestParam("page") int page) throws Exception {
+		List<Map<String, String>> newsList = null;
+		RssReader rssReader = new RssReader();
+		newsList = rssReader.getSynFeed(newsNum);
+		int startPage = page;
+		int endPage = startPage + 4;
+
+		model.addAttribute("listSize", newsList.size() - 5);
+		model.addAttribute("newsNum", newsNum);
+		model.addAttribute("startPage", startPage);
+		model.addAttribute("endPage", endPage);
+		model.addAttribute("newsList", newsList);
+
+	}
 	
 	
 }

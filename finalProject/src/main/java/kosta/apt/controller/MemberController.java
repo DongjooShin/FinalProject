@@ -92,7 +92,7 @@ public class MemberController {
 		member.setM_domain(domain);
 		String S_passwod = testSHA256(member.getM_pass());
 		member.setM_pass(S_passwod);
-		// testSHA256
+	
 
 		memberService.inserMemberService(member);
 		return "redirect:/main";
@@ -186,7 +186,7 @@ public class MemberController {
 		return "redirect:/main";
 	}
 
-	@RequestMapping(value = "/aptNews", method = RequestMethod.GET)
+/*	@RequestMapping(value = "/aptNews", method = RequestMethod.GET)
 	public void aptNewsGet(HttpSession session, Model model, @RequestParam("newsNum") int newsNum,
 			@RequestParam("page") int page) throws Exception {
 		List<Map<String, String>> newsList = null;
@@ -201,76 +201,8 @@ public class MemberController {
 		model.addAttribute("endPage", endPage);
 		model.addAttribute("newsList", newsList);
 
-	}
+	}*/
 
-	@RequestMapping(value = "/FileUploadForm", method = RequestMethod.GET)
-	public void showForm(AptTransactionPrice aptTransactionPrice, ModelMap model) {
-		model.addAttribute("excel", aptTransactionPrice);
-	}
-
-	@SuppressWarnings("resource")
-	@RequestMapping(value = "/FileUploadForm", method = RequestMethod.POST)
-	public String processForm(@ModelAttribute("excel") AptTransactionPrice aptTransactionPrice, BindingResult result)
-			throws IOException {
-		List<AptTransactionPrice> list = new ArrayList<AptTransactionPrice>();
-		AptTransactionPrice aptTransactionPrice1 = null;
-		if (!result.hasErrors()) {
-			FileOutputStream outputStream = null;
-
-			// save & load location
-			String filePath = System.getProperty("java.io.tmpdir") + aptTransactionPrice.getFile().getOriginalFilename();
-
-			String[] b = filePath.split("[.]");
-
-			// save
-			outputStream = new FileOutputStream(new File(filePath));
-			outputStream.write(aptTransactionPrice.getFile().getFileItem().get());
-
-			// load
-			FileInputStream file = new FileInputStream(new File(filePath));
-
-			XSSFWorkbook workbook = new XSSFWorkbook(file);
-			XSSFSheet sheet = workbook.getSheetAt(0);
-			System.out.println(workbook.getSheetName(0));
-			Iterator<Row> rowIterator = sheet.iterator();
-
-			while (rowIterator.hasNext()) {
-				Row row = rowIterator.next();
-				if (row.getRowNum() == 0) {
-
-				} else {
-					String primaryNum = "201604" + workbook.getSheetName(0) + row.getRowNum();
-					String[] aptPrice = row.getCell(5).getStringCellValue().split("[,]");
-					aptTransactionPrice1 = new AptTransactionPrice(primaryNum, row.getCell(0).getStringCellValue(),
-							row.getCell(1).getStringCellValue(), row.getCell(2).getStringCellValue(),
-							Float.parseFloat(row.getCell(3).getStringCellValue()), row.getCell(4).getStringCellValue(),
-							Integer.parseInt(aptPrice[0] + aptPrice[1]),
-							Integer.parseInt(row.getCell(6).getStringCellValue()),
-							Integer.parseInt(row.getCell(7).getStringCellValue()), row.getCell(8).getStringCellValue());
-
-					memberService.updateRealTransactionPriceService(aptTransactionPrice1);
-				}
-			}
-
-			file.close();
-
-			return "redirect:/main";
-		}
-		return "main";
-	}
-
-	@RequestMapping(value = "/sendMail", method = RequestMethod.GET)
-	public void sendMail(Model model) {
-		ApplicationContext context = new ClassPathXmlApplicationContext("classpath:/Spring-Mail.xml");
-		MailMail mm = (MailMail) context.getBean("MailMail");
-		mm.sendMail("aptmanager.kost111@gmail.com", "dongjoo1029@naver.com", "Testing123",
-				"Testing only \n\n Hello Spring Email Sender");
-	}
-
-	@RequestMapping(value = "/mypageTest", method = RequestMethod.GET)
-	public void mypageTest(Model model) {
-
-	}
 
 	@RequestMapping(value = "/certification", method = RequestMethod.GET)
 	public void certificationGet(Model model) {

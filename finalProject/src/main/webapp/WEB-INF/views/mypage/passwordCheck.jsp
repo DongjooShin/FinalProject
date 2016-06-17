@@ -7,6 +7,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript"
+	src="/resources/jquery/jQuery-2.1.4.min.js"></script>
 
 <script type="text/javascript">
 	$(function() {
@@ -52,24 +54,21 @@
 		<div class="col-md-12">
 			<div id="mypageLayout">
 				<ul id=mypageUl>
-					<a href="/mypage/userMypage"><li id="firstManu" class="manu ">커뮤니티</li></a>
-					<a href="/mypage/maessage"><li id="secondManu" class="manu">관리비</li></a>
-					<a href="/mypage/maessage"><li id="thirdManu" class="manu">문의답변</li></a>
-					<a href="/mypage/maessage"><li id="fourthManu" class="manu">1:1:문의</li></a>
-					<a href="/mypage/maessage"><li id="fifthManu" class="manu">쪽
-							지</li></a>
-					<a href="/mypage/maessage"><li id="sixthManu" class="manu">개인정보
-							수정</li></a>
+					<jsp:include page="../include/aaa.jsp"></jsp:include>
+
 				</ul>
 				<div id="passwordCheckDiv" class="col-lg-12">
+					<br>
+					<br>
+					<br>
 					<div class="col-lg-3 col-lg-offset-1">
 						<span style="font-size: 30px; margin-top: 40px">회원정보 수정</span>
 					</div>
-					<br>
-					<br> <input type="hidden" id="passwordCh" value="${password }">
+					<br> <br> <input type="hidden" id="passwordCh"
+						value="${password }">
 
 					<div class="col-lg-6  col-lg-offset-3"
-						style="margin-top: 50px; border: 4px solid #eaeaea; border-radius: 5px; padding: 40px 0 0 25px;">
+						style="margin-top: 50px;  margin-bottom:50px;  border: 4px solid #eaeaea; border-radius: 5px; padding: 40px 0 0 25px;">
 						<div class="col-lg-12">
 							<div style="" class="insert-form">
 								<div class="col-lg-4">
@@ -103,7 +102,9 @@
 							</div>
 						</div>
 					</div>
+					
 				</div>
+			
 			</div>
 		</div>
 	</div>

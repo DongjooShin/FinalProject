@@ -5,75 +5,87 @@
 
 
 <mapper namespace="kosta.apt.mapper.MemberMapper"> <!-- namespace를 꼭 맞게 써주어야함 -->
-   <cache />
- 
+	<cache />
+
 
 	<select id="getCity" parameterType="int" resultType="addressCity">
-			select * from addressCity where a_stateNum = #{a_stateNum}
+		select * from addressCity where a_stateNum = #{a_stateNum}
 	</select>
-	
-	
+
+
 	<select id="getStateNum" parameterType="String" resultType="int">
-			select a_stateNum from addressState where addr_state = #{addr_state}
-   </select>
-   
-   
-	<select id="getAptName" parameterType="String" resultType="aptList">
-			select f_groupname from facilityinfo where f_addr LIKE #{f_addr}
+		select a_stateNum from addressState where addr_state = #{addr_state}
 	</select>
-   
-   
-      <select id="getAddress"  parameterType="java.util.HashMap" resultType="String">
-   			select f_addr from facilityinfo where f_addr like #{address} and f_groupname = #{aptname}
-   		</select>
-   
-   <select id="getAptNum" parameterType="java.util.HashMap" resultType="int">
-   
-   select apt_aptgno from facilityinfo where f_addr like #{address} and f_groupname = #{aptname}
-   </select>
-   
-     <select id="checkMemberId" parameterType="String" resultType="Integer">
-  			 select count(*) from member where m_memberNo = #{id}
-   								
-   	</select>
-   	
-   	   <insert id="insertMember" parameterType="member">
 
-      insert into member(
-      m_memberNo,m_pass,m_buildingNo,m_roomNo,m_name,m_age,m_grade,m_homeTel,m_tel,m_email,apt_APTGNo,v_flag)
-      
-      values(
-      #{m_memberNo},#{m_pass},#{m_buildingNo},#{m_roomNo},#{m_name},#{m_age},#{m_grade},#{m_homeTel},#{m_tel},#{m_email},#{apt_APTGNo},#{v_flag}
-      )
-   </insert>
-   	
-   	   <select id="checkMemberPass" parameterType="LoginCheck" resultType="Integer">
-   			select count(*) from member where m_memberNo = #{m_memberNo} and m_pass = #{m_pass}
- 	  </select>
-   	
-   	     <select id="getMamber" parameterType="String" resultType="member">
-  			 select * from member where m_memberNo = #{id}
-   								
-   	</select>
-   	
-   	<select id="getAPTAddress" parameterType="int" resultType="String">
-   		select f_addr from facilityinfo where apt_APTGNo = #{apt_APTGNo}
-   	
-   	</select>
-   	
-   	
-   	   <update id="updateMember" parameterType="member">
-    update member set m_pass = #{m_pass}, m_buildingNo = #{m_buildingNo} 
-    ,m_roomNo = #{m_roomNo}, m_name = #{m_name}, m_age = #{m_age }
-	,m_email = #{m_email},m_grade = #{m_grade},m_homeTel = #{m_homeTel }
-	,m_tel = #{m_tel},apt_APTGNo = #{apt_APTGNo},v_flag = #{v_flag }
-  	where m_memberNo =#{m_memberNo}
-   </update>
 
-<insert id="updateRealTransactionPrice"  parameterType="aptTransactionPrice">
-   
-  insert into RealTransactionPrice (primaryNum,address,addressNum,aptName, area,contract,aptPrice,floor,builtYear,addressName)values(#{primaryNum},#{address},#{addressNum},#{aptName},#{area},#{contract},#{aptPrice} ,#{floor},#{builtYear},#{addressName})
-</insert>
+	<select id="getAptName" parameterType="String" resultType="aptList">
+		select f_groupname from facilityinfo where f_addr LIKE #{f_addr}
+	</select>
+
+
+	<select id="getAddress" parameterType="java.util.HashMap"
+		resultType="String">
+		select f_addr from facilityinfo where f_addr like #{address} and f_groupname
+		= #{aptname}
+	</select>
+
+	<select id="getAptNum" parameterType="java.util.HashMap"
+		resultType="int">
+
+		select apt_aptgno from facilityinfo where f_addr like #{address} and
+		f_groupname = #{aptname}
+	</select>
+
+	<select id="checkMemberId" parameterType="String" resultType="Integer">
+		select count(*) from member where m_memberNo = #{id}
+
+	</select>
+
+	<insert id="insertMember" parameterType="member">
+
+		insert into member(
+		m_memberNo,m_pass,m_buildingNo,m_roomNo,m_name,m_age,m_grade,m_homeTel,m_tel,m_email,apt_APTGNo,v_flag,v2_flag)
+
+		values(
+		#{m_memberNo},#{m_pass},#{m_buildingNo},#{m_roomNo},#{m_name},#{m_age},#{m_grade},#{m_homeTel},#{m_tel},#{m_email},#{apt_APTGNo},#{v_flag},#{v2_flag}
+		)
+	</insert>
+
+	<select id="checkMemberPass" parameterType="LoginCheck"
+		resultType="Integer">
+		select count(*) from member where m_memberNo = #{m_memberNo} and m_pass =
+		#{m_pass}
+	</select>
+
+	<select id="getMamber" parameterType="String" resultType="member">
+		select * from member where m_memberNo = #{id}
+
+	</select>
+
+	<select id="getAPTAddress" parameterType="int" resultType="String">
+		select f_addr from facilityinfo where apt_APTGNo = #{apt_APTGNo}
+
+	</select>
+
+
+	<update id="updateMember" parameterType="member">
+		update member set m_pass = #{m_pass}, m_buildingNo = #{m_buildingNo}
+		,m_roomNo = #{m_roomNo}, m_name = #{m_name}, m_age = #{m_age }
+		,m_email = #{m_email},m_grade = #{m_grade},m_homeTel = #{m_homeTel }
+		,m_tel = #{m_tel},apt_APTGNo = #{apt_APTGNo},v_flag = #{v_flag }
+		where m_memberNo =#{m_memberNo}
+	</update>
+
+	<insert id="updateRealTransactionPrice" parameterType="aptTransactionPrice">
+
+		insert into RealTransactionPrice (primaryNum,address,addressNum,aptName,
+		area,contract,aptPrice,floor,builtYear,addressName)values(#{primaryNum},#{address},#{addressNum},#{aptName},#{area},#{contract},#{aptPrice}
+		,#{floor},#{builtYear},#{addressName})
+	</insert>
+
+
+	
+
 </mapper>
 
 
