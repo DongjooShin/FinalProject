@@ -82,7 +82,7 @@ function detailclick(sugroup, i){
 		dataType:'json',
 		type: 'post',
 		success: function(data){
-			alert("서베이 디테일입니다.");
+		//	alert("서베이 디테일입니다.");
 		
 			 $('#resultGrape'+i).show();
 			
@@ -288,12 +288,34 @@ function deleteSurvey(divnum){
 </head>
 
 <body>
+
+
+
+	 <jsp:include page="../include/head.jsp"></jsp:include> 
+
+	
+	
+		<div class="row">
+			
+			
+		<div class="col-md-3" style="padding-left: 60px;">
+		
+			 <jsp:include page="SurveySideBar.jsp"></jsp:include> 
+		</div>
+		
+		<div class="col-md-9" style="margin-top: 50px;">
+
+		
+		<div class="container mainpage1" id="main" style="padding-right: 220px;">
+
+
+
 	<div class="header">
 				 <jsp:include page="../include/head.jsp"></jsp:include>  
 	</div>
-	삐용
+	
 	<div class="sutitle" id="sutitle">
-	<select class="form-control" name="su_title" id="select123" >
+	<h1>날짜선택</h1> <select class="form-control" name="su_title" id="select123" style="width: 150px;" >
 	
 	<c:forEach begin="1" end="12" var="list">
 	
@@ -341,38 +363,12 @@ function deleteSurvey(divnum){
 </div>
 
 
-	
-	
-	<%-- <c:forEach begin="1" end="12" var="list2">
-	
-		제목 : ${list2.su_title }
-		
-		
-	</c:forEach>
+			</div>
+	</div>
+</div>
 
-	
-	<c:forEach items="${list }" var="list">
-	<div id="resultInfo">
-	제목: ${list.su_title } 
-	
-	총 투표수 :${list2.totalCount }  투표율 : ${list2.totalCount }/아파트그룹총인원 평점 :  ${list2.su_avgSum}
-	</div>
-	<div id="resultbarMain" >
-	
-	
-	<div id="realbar"></div>
-	
-	36%
-	</div>
-	
-	<a href="" onclick="detailclick()"> 상세보기</a> : Ajax로 펼치기
-	 <c:forEach items="${list2 }" var="list2"> ${list2 }</c:forEach>
-	</c:forEach>
-	
-	
-	<br>
-	
-	 --%>
+
+
 
 	
 

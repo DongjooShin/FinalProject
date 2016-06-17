@@ -69,19 +69,13 @@
 		style="background: white; display: inline-block;  margin-left: 7.9%;">
 		<div class="col-md-12">
 			<div id="mypageLayout">
-			<!-- 	<ul id=mypageUl>
-					<a href="/mypage/maessage"><li id="firstManu" class="manu ">커뮤니티</li></a>
-					<a href="/mypage/maessage"><li id="secondManu" class="manu">관리비</li></a>
-					<a href="/mypage/maessage"><li id="thirdManu" class="manu">문의답변</li></a>
-					<a href="/mypage/maessage"><li id="fourthManu" class="manu">1:1:문의</li></a>
-					<a href="/mypage/readMessageList"><li id="fifthManu" class="manu">쪽 지</li></a>
-					<a href="/mypage/maessage"><li id="sixthManu" class="manu">개인정보 수정</li></a>
-				</ul> -->
-				
+		
 				<ul id=mypageUl>
+					
 						<jsp:include page="../include/aaa.jsp"></jsp:include>
 				
 				</ul>
+				
 
 			</div>
 		</div>

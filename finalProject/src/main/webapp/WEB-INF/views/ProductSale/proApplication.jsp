@@ -25,13 +25,28 @@
 	<div id="page" class="hfeed site">
 
 		<div class="row">
+			<div class="col-lg-12">
+		
+		<div class="col-lg-3"
+					style="margin-right: 0; margin-left: 0px; margin-top: 17px;">
+					<div class="loginSidebar">
+						<jsp:include page="ProductSideBar.jsp"></jsp:include>
+						</div>
 
-			<div class="col-md-9">
+		</div>
+
+			<div class="col-md-9" style="margin-top: 17px;">
 				<div class="row">
 					<div class="col-lg-12">
+					
+							
+					
+					
+					
 						<div class="well bs-component">
 							<form class="form-horizontal" action="/ProductSale/proApplication" method="post">
-
+				
+					
 
 								<div class="form-group">
 									<label class="col-lg-3 control-label">분류</label>
@@ -106,6 +121,8 @@
 			</div>
 		</div>
 
+	</div>
+	
 	</div>
 
 	<br>
