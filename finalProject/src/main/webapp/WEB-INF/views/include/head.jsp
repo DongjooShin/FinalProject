@@ -122,7 +122,7 @@
 											href="/managementFee/managementFeeList">전체관리비</a></li>
 										<li id="menu-item-107"
 											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-107"><a
-											href="publicmana/PublicManageFee">공통관리비</a></li>
+											href="/publicmana/PublicManageFee">공통관리비</a></li>
 									</ul></li>
 								<li id="menu-item-111"
 									class="menu-item menu-item-type-custom menu-item-object-custom menu-item-165"><a

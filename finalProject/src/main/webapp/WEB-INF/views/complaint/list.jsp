@@ -4,20 +4,72 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page session="false"%>
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-		
+		<style type="text/css">
+#mypageUl {
+   margin-top: -53px;
+}
+
+#mypageUl li {
+   display: inline;
+   float: left;
+   position: relative;
+   margin-right: 5px;
+   padding: 10px;
+   background-color: rgba(0, 0, 0, 0.3);
+   padding: 15px 35px 15px 35px;
+   border-radius: 3px;
+   color: #fff;
+   font-size: 21px;
+}
+
+#mypageLayout {
+   border: 3px solid #eaeaea;
+   border-top: 4px solid #09b9e5;
+   display: inline-block;
+   width: 100%;
+   margin-top: 70px;
+}
+
+.content {
+   display: none;
+   margin-top: 15px;
+}
+
+#sixthContent {
+   min-height: 500px;
+}
+
+.manu {
+   color: white;
+}
+</style>
+	<script type="text/javascript">
+   $(function() {
+      $('#fifthManu').css('background', '#09b9e5');
+      $('#fifthManu').css('display', 'block');
+
+
+   });
+</script> 
 <!-- Main content -->
-<section class="content">
+<section class="contents">
 	<div class="row">
 		<!-- left column -->
 	<div class="col-lg-12">
+	
+
+
+
+	
 	<div class="col-lg-1"></div>
 		<div class="col-lg-10" style="background-color: white;">
 			<!-- general form elements -->
 			<div class='box'>
 				<div class="box-header with-border">
 					<h3 class="box-title">건의 / 불만 게시판</h3>
+					
 				</div>
-
+					
 
 					<div class='box-body'>
 
@@ -53,9 +105,10 @@
 					<input type="text" name='keyword' id="keywordInput" value='${cri.keyword }'>
 					</c:otherwise>
 					</c:choose>
-					<button id='searchBtn' onclick="search()">Search</button>
-					<button id='newBtn' onclick="newCreate()">New 글쓰기</button>
-
+					<div>
+					<button id='searchBtn' >Search</button>
+					<button id='newBtn' >New 글쓰기</button>
+					</div>
 				</div>
 			</div>
 
@@ -83,7 +136,7 @@
 								<c:when test="${Complaint.cp_flag ==1}">
 								<c:choose>
 								<c:when test="${member.m_memberNo ==Complaint.m_memberNo||member.m_grade >2}">
-								<a href='/readPage${pageMaker.makeSearch(pageMaker.cri.page) }&cp_complaintNo=${Complaint.cp_complaintNo}'>
+								<a href='/publicmana/readPage${pageMaker.makeSearch(pageMaker.cri.page) }&cp_complaintNo=${Complaint.cp_complaintNo}'>
 									${Complaint.cp_title} </a>
 								</c:when>
 								<c:otherwise>
@@ -92,7 +145,7 @@
 								</c:choose>
 								</c:when>
 								<c:otherwise>
-								<a href='/readPage${pageMaker.makeSearch(pageMaker.cri.page) }&cp_complaintNo=${Complaint.cp_complaintNo}'>
+								<a href='/publicmana/readPage${pageMaker.makeSearch(pageMaker.cri.page) }&cp_complaintNo=${Complaint.cp_complaintNo}'>
 									${Complaint.cp_title} </a>
 								</c:otherwise>
 								</c:choose>
@@ -119,20 +172,20 @@
 
 							<c:if test="${pageMaker.prev}">
 								<li><a
-									href="list${pageMaker.makeSearch(pageMaker.startPage - 1) }">&laquo;</a></li>
+									href="/publicmana/list${pageMaker.makeSearch(pageMaker.startPage - 1) }">&laquo;</a></li>
 							</c:if>
 
 							<c:forEach begin="${pageMaker.startPage }"
 								end="${pageMaker.endPage }" var="idx">
 								<li
 									<c:out value="${pageMaker.cri.page == idx?'class =active':''}"/>>
-									<a href="list${pageMaker.makeSearch(idx)}">${idx}</a>
+									<a href="/publicmana/list${pageMaker.makeSearch(idx)}">${idx}</a>
 								</li>
 							</c:forEach>
 
 							<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
 								<li><a
-									href="list${pageMaker.makeSearch(pageMaker.endPage +1) }">&raquo;</a></li>
+									href="/publicmana/list${pageMaker.makeSearch(pageMaker.endPage +1) }">&raquo;</a></li>
 							</c:if>
 
 						</ul>
@@ -158,17 +211,14 @@
 	if (result == 'SUCCESS') {
 		alert("처리가 완료되었습니다.");
 	}
-</script>
-
-<script>
 	$(function () {
 		
 
 				$('#searchBtn').on(
 						"click",
 						function(event) {
-							alert('11')
-							self.location = "list"
+							alert('dd')
+							location.location = "/publicmana/list"
 									+ '${pageMaker.makeQuery(1)}'
 									+ "&searchType="
 									+ $("select option:selected").val()
@@ -177,17 +227,17 @@
 						});
 
 				$('#newBtn').on("click", function(event) {
-					alert('11222')
-					self.location = "register";
+							alert('dd')
+					location.href = "/publicmana/register";
 
 				});
 	});
-
 </script>
-<!-- <script>
+
+<!--  <script>
 	function search() {
 		
-		Location.href = "list"
+		Location.href = "/publicmana/list"
 			+ '${pageMaker.makeQuery(1)}'
 			+ "&searchType="
 			+ $("select option:selected").val()
@@ -196,8 +246,8 @@
 	}
 	function newCreate() {
 		alert('dd')
-	Window.href = "register";
+	Window.href = "/publicmana/register";
 	}
 
-</script> -->
-
+</script> 
+ -->
