@@ -7,6 +7,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
+<script type="text/javascript">
+ 	$(function() {
+
+		$('#thirdManu').css('background', '#09b9e5');
+
+    })  
+   
+</script> 
 <body style="background-color: #eaeaea;">
 	<div class="main">
 		<!-- 리스트,입력,상세보기 -->
@@ -17,7 +25,7 @@
 		<div id="page" style="background: white; display: inline-block;">
 			<div class="col-md-12">
 			
-				<jsp:include page="../include/aaa.jsp"></jsp:include>
+				<jsp:include page="../include/mypagehead.jsp"></jsp:include>
 
 				<div class="col-md-12">
 

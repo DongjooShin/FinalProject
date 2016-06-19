@@ -5,6 +5,8 @@
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
 <!-- Main content -->
+<script type="text/javascript"
+   src="/resources/jquery/jQuery-2.1.4.min.js"></script>
 <div id="page" style="background: white; display: inline-block;">
 	<div class="col-lg-12">
 		<div class="col-lg-10" style="background-color: white;">
@@ -155,8 +157,8 @@
 <script>
 	$(function() {
 		getPage("/publicmana/replies/" + cp_complaintNo + "/1");
-	})
-
+	
+	
 	$(document).on("click", ".modiBtn", function(index) {
 		var button = '<button  class="btn btn-info creaBtn" >수정</button>';
 		var replytext = $(this).parent().parent().find('#text').html();
@@ -193,7 +195,8 @@
 				console.log("result: " + result);
 				if (result == 'SUCCESS') {
 					alert("삭제 되었습니다.");
-					getPage("/replies/" + cp_complaintNo + "/" + replyPage);
+					getPage("/publicmana/replies/" + cp_complaintNo + "/" + replyPage);
+					
 				}
 			}
 		});
@@ -203,7 +206,6 @@
 			"click",
 			".creaBtn",
 			function(index) {
-				alert($(this).parent().parent().find('.text').val());
 				var rno = $(this).parent().parent().find('.rno').val();
 				var replytext = $(this).parent().parent().find('.text').val();
 				$.ajax({
@@ -221,14 +223,17 @@
 						console.log("result: " + result);
 						if (result == 'SUCCESS') {
 							alert("수정 되었습니다.");
-							$('#repliesDiv').empty();
 							getPage("/publicmana/replies/" + cp_complaintNo
 									+ "/" + replyPage);
+							
 						}
 					}
 				});
 
 			})
+			
+	});
+	
 	Handlebars.registerHelper("prettifyDate", function(timeValue) {
 		var dateObj = new Date(timeValue);
 		var year = dateObj.getFullYear();
@@ -238,45 +243,39 @@
 	});
 
 	var printData = function(replyArr, target, templateObject) {
-
 		var template = Handlebars.compile(templateObject.html());
-
 		var html = template(replyArr);
 		$(".replyLi").remove();
 		target.after(html);
 
 	}
 
-	var cp_complaintNo = $
+	var cp_complaintNo = <c:out value='${complaint.cp_complaintNo}' />
+		/* $
 	{
-		complaint.cp_complaintNo
-	};
+	complaint.cp_complaintNo
+	}; */
 	var replyPage = 1;
 
 	function getPage(pageInfo) {
 		var id = "[" + "<c:out value='${member.m_memberNo}' />" + "]";
-		$
-				.getJSON(
-						pageInfo,
-						function(data) {
-							printData(data.list, $("#repliesDiv"),
-									$('#template'));
+		$.getJSON(pageInfo,function(data) {
+							printData(data.list, $("#repliesDiv"),$('#template'));
 							printPaging(data.pageMaker, $(".pagination"));
-							$('.timeline-header')
-									.each(
-											function() {
-												if ($(this).html() == id) {
-													var button = '<button  class="btn btn-info modiBtn" >수정</button>';
-													button += '<button  class="btn btn-info remoBtn" >삭제</button>'
-													$(this).parent().find(
-															'.check').append(
-															button);
-												}
+							$('.timeline-header').each(function() {
+									if ($(this).html() == id) {
+										var button = '<button  class="btn btn-info modiBtn" >수정</button>';
+										button += '<button  class="btn btn-info remoBtn" >삭제</button>'
+										$(this).parent().find(
+												'.check').append(
+												button);
+									}
 											})
 							$("#replycntSmall").html(
 									"[" + data.pageMaker.totalCount + "]");
 
 						});
+		
 	}
 
 	var printPaging = function(pageMaker, target) {
@@ -332,15 +331,21 @@
 			success : function(result) {
 				console.log("result: " + result);
 				if (result == 'SUCCESS') {
-					alert("등록 되었습니다.");
+			
 					replyPage = 1;
-					getPage("/replies/" + cp_complaintNo + "/" + replyPage);
+					alert("등록 되었습니다.2222");
+					getPage("/publicmana/replies/" + cp_complaintNo + "/" + replyPage);
+					
 					replyerObj.val("");
 					replytextObj.val("");
 				}
 			}
 		});
 	});
+	
+	
+	
+	
 
 	$(".timeline").on("click", ".replyLi", function(event) {
 
@@ -376,9 +381,18 @@
 							getPage("/publicmana/replies/" + cp_complaintNo
 									+ "/" + replyPage);
 						}
+						
+						goListBtn();
 					}
 				});
 			});
+	
+	
+	function goListBtn(){
+		formObj.attr("method", "get");
+		formObj.attr("action", "/publicmana/list");
+		formObj.submit();
+	}
 </script>
 
 
@@ -407,7 +421,11 @@
 		});
 
 	});
+	
+
+
 </script>
+
 
 
 

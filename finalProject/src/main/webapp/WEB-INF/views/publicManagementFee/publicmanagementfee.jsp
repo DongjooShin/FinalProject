@@ -60,6 +60,11 @@
 .feee {
 	display: none;
 }
+.content {
+	padding-top: 50px;
+	padding-right: 50px;
+	padding-left: 50px;
+}
 </style>
 
 </head>
@@ -69,22 +74,19 @@
 		<jsp:include page="../include/head.jsp"></jsp:include>
 	</div>
 	<div>
-		<div id="page" class="hfeed site">
-			<div class="row">
-				<div class="col-lg-2">
+		<div id="page" class="content">
+				<div class="col-lg-3">
 
 					<div id="secondary">
-						<aside id="archives" class="widget">
-						<h3 class="widget-title">&nbsp;관리비</h3>
-						<ul>
-							<li><a href='http://demo.themegrill.com/spacious/2014/03/'>&nbsp;전체관리비
-							</a></li>
-							<li><a href='http://demo.themegrill.com/spacious/2014/02/'>&nbsp;전기세</a></li>
-
-							<li><a href='http://demo.themegrill.com/spacious/2014/03/'>&nbsp;수도세</a></li>
-							<li><a href='http://demo.themegrill.com/spacious/2014/03/'>&nbsp;공동관리비</a></li>
-						</ul>
-						</aside>
+					<aside id="archives" class="widget">
+					<h3 class="widget-title ">&nbsp;관리비</h3>
+					<ul>
+						<li><a href='/managementFee/managementFeeList'>&nbsp;전체관리비
+								</a></li>
+						<li><a href='/publicmana/appropia'>&nbsp;예산</a></li>
+						<li><a href='/publicmana/PublicManageFee'>&nbsp;공동관리비</a></li>
+					</ul>
+					</aside>
 					</div>
 					<div id="primary" style="height: 1000px;"></div>
 
@@ -93,17 +95,25 @@
 				<div class="col-lg-8">
 					<div>
 						<p>나의 전기/가스 계산</p>
+						<div class="row">
+						<div class="col-md-2">
 						<select name="state">
 							<option value="ele">전기세</option>
 							<option value="gas">가스세</option>
-						</select> <input type="text" id="fee"
+						</select> 
+						</div>
+						<div class="col-md-5">
+						<input type="text" id="fee"
 							onkeyup="this.value=this.value.replace(/[^0-9]/g,'')"
 							maxlength="9" placeHolder="전기사용량을 입력해주세요">
+							</div>
 						<button id="FeeCal">계산</button>
+						</div>
 						<div class="feee" id="calu">
 							 결과값:<input id="feee" disabled="disabled" value=""> 
 							
 						</div>
+						
 					</div>
 
 
@@ -430,9 +440,10 @@
 						cal = ((fee - 12) * 700.32) + (12 * 635.73);
 					}
 				}
-				cal *="원";
+				cal *="1";
 				$('#calu').removeClass();
-				$('#feee').val(cal);
+			var car2=Math.round(cal);
+				$('#feee').val(" "+Math.round(cal)+"원");
 			} else {
 				
 				alert(fee)

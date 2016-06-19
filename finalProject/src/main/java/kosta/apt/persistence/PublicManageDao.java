@@ -23,6 +23,7 @@ public class PublicManageDao {
 	@Autowired
 	private SqlSession sqlSession;//세션테플레이트 생성
 	
+	
 	private final static String namespace ="apt.mapper.Management";
 	
 	public List<PublicManagementFee> selectMonthPublicmanage(Integer aptgno){
@@ -76,6 +77,7 @@ public class PublicManageDao {
 	}
 	public List<ManagementFee> DataAppropriation(int aptgno) {
 		// TODO Auto-generated method stub
+		System.out.println(aptgno);
 		return sqlSession.selectList(namespace+".DataAppropriation", aptgno);
 	}
 	public List<PublicManagementFee> getCityGraph(int apt_APTGNo) {

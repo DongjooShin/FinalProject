@@ -36,9 +36,24 @@
 		<jsp:include page="../include/head.jsp"></jsp:include>
 	</div>
 	<div class="wrapper">
-		<!-- Main content -->
-		<section class="content" id="page">
-		<div class="row">
+		<!-- Main content -->					
+		<div class="content" id="page">
+		
+		<div class="col-lg-3">
+		<div id="secondary" >
+			<aside id="archives" class="widget"> 
+					<h3 class="widget-title ">&nbsp;관리비</h3>
+					<ul>
+						<li><a href='/managementFee/managementFeeList'>&nbsp;전체관리비
+								</a></li>
+						<li><a href='/publicmana/appropia'>&nbsp;예산</a></li>
+						<li><a href='/publicmana/PublicManageFee'>&nbsp;공동관리비</a></li>
+					</ul>
+			</aside>
+			</div>
+		</div>
+		
+		<div class="col-lg-9">
 			<div class="col-lg-9"></div>
 			<div class="col-lg-3">
 				<select class="form-control" id="graphChange" name="feeGroup">
@@ -50,12 +65,10 @@
 				</select>
 			</div>
 			</form>
-		</div>
 		
 		<div class="row">
 			<div class="col-lg-12">&nbsp;</div>
 		</div>
-		
 		<div class="row">
 			<div class="col-md-9">
 				<div class="box">
@@ -339,10 +352,11 @@
 					</table>
 				</div>
 			</div>
+			</div>
 		</div>
 		</section>
-
-	</div>
+		</div>
+	</div></div>
 	<!-- ./wrapper -->
 
 

@@ -45,8 +45,7 @@
 </style>
 	<script type="text/javascript">
    $(function() {
-      $('#fifthManu').css('background', '#09b9e5');
-      $('#fifthManu').css('display', 'block');
+      $('#thirdManu').css('background', '#09b9e5');
 
 
    });
@@ -71,9 +70,9 @@
 				</div>
 					
 
-					<div class='box-body'>
-
-					<select name="searchType">
+					<div class='box-body' class="row">
+					<div class="col-md-3">
+					<select name="searchType" class="form-control">
 						<option value="n"
 							<c:out value="${cri.searchType == null?'selected':''}"/>>
 							---</option>
@@ -96,6 +95,8 @@
 							<c:out value="${cri.searchType eq 'tcw'?'selected':''}"/>>
 							제목 OR 내용 OR 글쓴이</option>
 					</select> 
+					</div>
+					<div class="col-md-5">
 					<c:choose>
 					<c:when test="${cri.keyword ==null }">
 											
@@ -105,6 +106,7 @@
 					<input type="text" name='keyword' id="keywordInput" value='${cri.keyword }'>
 					</c:otherwise>
 					</c:choose>
+					</div>
 					<div>
 					<button id='searchBtn' >Search</button>
 					<button id='newBtn' >New 글쓰기</button>
@@ -217,8 +219,7 @@
 				$('#searchBtn').on(
 						"click",
 						function(event) {
-							alert('dd')
-							location.location = "/publicmana/list"
+							location.href = "/publicmana/list"
 									+ '${pageMaker.makeQuery(1)}'
 									+ "&searchType="
 									+ $("select option:selected").val()

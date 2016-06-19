@@ -49,6 +49,7 @@
 			<mapping path="/budget/*" />
 			<mapping path="/siteNotice/inquiryMain"/>
 			<mapping path="/voter/*"/>
+			<mapping path="/publicmana/*"/>
 			<beans:ref bean="authInterceptor" />
 		</interceptor>
 		<interceptor>
@@ -72,6 +73,7 @@
 			<mapping path="/budget/*"/>
 			<mapping path="/siteNotice/inquiryMain"/>
 			<mapping path="/voter/*"/>
+			<mapping path="/publicmana/*"/>
 	
 			
 			<beans:ref bean="loginInterceptor" />
@@ -104,7 +106,7 @@
    </beans:bean>
 	
 
-	<beans:bean id="SndownloadView" class="kosta.apt.SnView.DownloadView2"></beans:bean>
+	<!-- <beans:bean id="SndownloadView" class="kosta.apt.SnView.DownloadView2"></beans:bean> -->
    <!-- 충돌날거같아 -->
    <beans:bean id="kosta.apt.SnviewResolver3" class="org.springframework.web.servlet.view.BeanNameViewResolver">
       <beans:property name="order" value="1"/>

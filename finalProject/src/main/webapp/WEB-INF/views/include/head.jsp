@@ -122,6 +122,9 @@
 										<li id="menu-item-109"
 											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-109"><a
 											href="/managementFee/managementFeeList">전체관리비</a></li>
+										<li id="menu-item-109"
+											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-109"><a
+											href="/publicmana/appropia">예산</a></li>
 										<li id="menu-item-107"
 											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-107"><a
 											href="/publicmana/PublicManageFee">공통관리비</a></li>

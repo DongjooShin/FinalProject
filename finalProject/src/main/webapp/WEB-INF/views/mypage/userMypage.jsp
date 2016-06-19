@@ -15,14 +15,16 @@
 
 	$(function() {
 
-		$('#firstManu').css('background', '#09b9e5');
 
+		$('#firstManu').css('background', '#09b9e5');
 
 	});
 
 </script>
+
 <style type="text/css">
 
+<<<<<<< HEAD
 #mypageUl {
    margin-top: -53px;
 }
@@ -45,6 +47,12 @@
    display: inline-block;
    width: 100%;
    margin-top: 70px;
+=======
+#sixthContent {
+
+	min-height: 500px;
+
+>>>>>>> branch 'master' of https://github.com/DongjooShin/FinalProject.git
 }
 
 .manu {
@@ -55,6 +63,7 @@
 </style>
 </head>
 <body>
+
 
    <div class="header">
       <jsp:include page="../include/head.jsp"></jsp:include>
@@ -69,6 +78,9 @@
             </ul>
             <br>
 
+
+
+					<jsp:include page="../include/mypagehead.jsp"></jsp:include>
 
 
 
@@ -129,7 +141,6 @@
 					<br> <br> <br>
 				</div>
 
-			</div>
 
 		</div>
 	</div>

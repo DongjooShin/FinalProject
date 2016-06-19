@@ -61,7 +61,7 @@
 		<div id="page" style="background: white; display: inline-block;">
 			<div class="col-md-12">
 			
-						<jsp:include page="../include/aaa.jsp"></jsp:include>
+						<jsp:include page="../include/mypagehead.jsp"></jsp:include>
 
 				<div class="col-md-12">
 

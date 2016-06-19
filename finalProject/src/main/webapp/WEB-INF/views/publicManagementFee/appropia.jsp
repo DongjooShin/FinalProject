@@ -59,6 +59,11 @@
 .feee{
 	display:  none;
 }
+.content {
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 50px;
+}
 </style>
 </head>
 
@@ -68,27 +73,25 @@
 	</div>
 	<div class="main">
 		<div>
-			<div id="page" class="hfeed site">
-			<div class="row">
-				<div class="col-lg-2">
+			<div id="page" class="content">
+			
+				<div class="col-lg-3">
 				
-				<div id="secondary">
+				<div id="secondary" >
 					<aside id="archives" class="widget">
 					<h3 class="widget-title ">&nbsp;관리비</h3>
 					<ul>
-						<li><a href='http://demo.themegrill.com/spacious/2014/03/'>&nbsp;전체관리비
+						<li><a href='/managementFee/managementFeeList'>&nbsp;전체관리비
 								</a></li>
-						<li><a href='http://demo.themegrill.com/spacious/2014/02/'>&nbsp;전기세</a></li>
-
-						<li><a href='http://demo.themegrill.com/spacious/2014/03/'>&nbsp;수도세</a></li>
-						<li><a href='http://demo.themegrill.com/spacious/2014/03/'>&nbsp;공동관리비</a></li>
+						<li><a href='/publicmana/appropia'>&nbsp;예산</a></li>
+						<li><a href='/publicmana/PublicManageFee'>&nbsp;공동관리비</a></li>
 					</ul>
 					</aside>
 				</div>
 				<div id="primary" style="height: 1000px;"></div>
 
 			</div>
-					<div class="col-lg-10">
+					<div class="col-lg-9">
 					<div class="col-lg-12">
 					<br/>
 					<br/>
@@ -334,7 +337,7 @@
 
 
 		</div>
-				</div>
+				
 	
 			<div class="footer"></div>
 </body>

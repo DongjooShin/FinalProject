@@ -46,8 +46,8 @@ public class PublicManageController {
 
 		response.setHeader("Content-Disposition", "attachment; filename=getexcel.xls");
 		response.setHeader("Content-Description", "JSP Generated Data");
-	List<PublicManagementFee> list =	service.selectPublicmanage(m.getApt_APTGNo());
-	model.addAttribute("list", list);
+	    List<PublicManagementFee> list =	service.selectPublicmanage(m.getApt_APTGNo());
+	    model.addAttribute("list", list);
 		
 		return "/publicManagementFee/getExcel";
 	}

@@ -28,6 +28,10 @@
 		$("#closer").on('click', function() {
 			window.close();
 		})
+		$('#mntPay').on('click',function(){
+			alert('dd');
+			window.location.href="/managementFee/paySequence1";
+		});
 	})
 </script>
 </html>
@@ -81,7 +85,7 @@
 						src="/resources/images/kyungtae/blank.png" width="20" height="568"
 						alt=""></td>
 					<td colspan="2">
-						<div width="69" height="16" alt="">3</div>
+						<div width="69" height="16" alt="">298239</div>
 					</td>
 					<td colspan="13" rowspan="9"><img
 						src="/resources/images/kyungtae/blank.png" width="447"
@@ -99,35 +103,35 @@
 				</tr>
 				<tr>
 					<td colspan="2">
-						<div width="69" height="14" alt="">5</div>
+						<div width="69" height="14" alt="">0</div>
 					</td>
 					<td><img src="/resources/images/kyungtae/blank.png" width="1"
 						height="14" alt=""></td>
 				</tr>
 				<tr>
 					<td colspan="2">
-						<div width="69" height="15" alt="">6</div>
+						<div width="69" height="15" alt="">0</div>
 					</td>
 					<td><img src="/resources/images/kyungtae/blank.png" width="1"
 						height="15" alt=""></td>
 				</tr>
 				<tr>
 					<td colspan="2">
-						<div width="69" height="15" alt="">7</div>
+						<div width="69" height="15" alt="">298239</div>
 					</td>
 					<td><img src="/resources/images/kyungtae/blank.png" width="1"
 						height="15" alt=""></td>
 				</tr>
 				<tr>
 					<td colspan="2">
-						<div width="69" height="15" alt="">8</div>
+						<div width="69" height="15" alt="">1.05%</div>
 					</td>
 					<td><img src="/resources/images/kyungtae/blank.png" width="1"
 						height="15" alt=""></td>
 				</tr>
 				<tr>
 					<td colspan="2">
-						<div width="69" height="14" alt="">9</div>
+						<div width="69" height="14" alt="">301200</div>
 					</td>
 					<td><img src="/resources/images/kyungtae/blank.png" width="1"
 						height="14" alt=""></td>
@@ -208,7 +212,7 @@
 				</tr>
 				<tr>
 					<td colspan="2" rowspan="2">
-						<div width="69" height="13" alt="">15</div>
+						<div width="69" height="13" alt="">8474</div>
 					</td>
 					<td><img src="/resources/images/kyungtae/blank.png" width="1"
 						height="7" alt=""></td>
@@ -230,14 +234,14 @@
 				</tr>
 				<tr>
 					<td colspan="2">
-						<div width="69" height="15" alt="">17</div>
+						<div width="69" height="15" alt="">3939</div>
 					</td>
 					<td><img src="/resources/images/kyungtae/blank.png" width="1"
 						height="15" alt=""></td>
 				</tr>
 				<tr>
 					<td colspan="2">
-						<div width="69" height="13" alt="">18</div>
+						<div width="69" height="13" alt="">3249</div>
 					</td>
 					<td><img src="/resources/images/kyungtae/blank.png" width="1"
 						height="13" alt=""></td>
@@ -299,7 +303,7 @@
 				</tr>
 				<tr>
 					<td colspan="2">
-						<div width="69" height="14" alt="">23</div>
+						<div width="69" height="14" alt="">2344</div>
 					</td>
 					<td><img src="/resources/images/kyungtae/blank.png" width="1"
 						height="14" alt=""></td>
@@ -329,7 +333,7 @@
 				</tr>
 				<tr>
 					<td colspan="2">
-						<div width="69" height="14" alt="">26</div>
+						<div width="69" height="14" alt="">1353</div>
 					</td>
 					<td colspan="7" rowspan="4"><img
 						src="/resources/images/kyungtae/blank.png" width="285" height="51"
@@ -346,14 +350,14 @@
 				</tr>
 				<tr>
 					<td colspan="2">
-						<div width="69" height="13" alt="">28</div>
+						<div width="69" height="13" alt="">8944</div>
 					</td>
 					<td><img src="/resources/images/kyungtae/blank.png" width="1"
 						height="13" alt=""></td>
 				</tr>
 				<tr>
 					<td colspan="2" rowspan="2">
-						<div width="69" height="14" alt="">29</div>
+						<div width="69" height="14" alt="">4429</div>
 					</td>
 					<td><img src="/resources/images/kyungtae/blank.png" width="1"
 						height="10" alt=""></td>
@@ -372,13 +376,13 @@
 						<div width="69" height="18" alt="">42</div>
 					</td>
 					<td colspan="2" rowspan="2">
-						<div width="47" height="18" alt="">43</div>
+						<div width="47" height="18" alt="">201602</div>
 					</td>
 					<td colspan="2" rowspan="2">
-						<div width="60" height="18" alt="">44</div>
+						<div width="60" height="18" alt="">232912</div>
 					</td>
 					<td rowspan="2">
-						<div width="48" height="18" alt="">45</div>
+						<div width="48" height="18" alt=""></div>
 					</td>
 					<td rowspan="8"><img
 						src="/resources/images/kyungtae/blank.png" width="8" height="96"
@@ -388,14 +392,14 @@
 				</tr>
 				<tr>
 					<td colspan="2">
-						<div width="69" height="14" alt="">위탁관리</div>
+						<div width="69" height="14" alt="">5631</div>
 					</td>
 					<td><img src="/resources/images/kyungtae/blank.png" width="1"
 						height="14" alt=""></td>
 				</tr>
 				<tr>
 					<td colspan="2">
-						<div width="69" height="13" alt="">선거관리</div>
+						<div width="69" height="13" alt="">5000</div>
 					</td>
 					<td rowspan="2">
 						<div width="64" height="17" alt="">46</div>
@@ -407,13 +411,13 @@
 						<div width="69" height="17" alt="">48</div>
 					</td>
 					<td colspan="2" rowspan="2">
-						<div width="47" height="17" alt="">49</div>
+						<div width="47" height="17" alt="">201603</div>
 					</td>
 					<td colspan="2" rowspan="2">
-						<div width="60" height="17" alt="">50</div>
+						<div width="60" height="17" alt="">203599</div>
 					</td>
 					<td rowspan="2">
-						<div width="48" height="17" alt="">51</div>
+						<div width="48" height="17" alt=""></div>
 					</td>
 					<td><img src="/resources/images/kyungtae/blank.png" width="1"
 						height="13" alt=""></td>
@@ -436,13 +440,13 @@
 						<div width="69" height="17" alt="">54</div>
 					</td>
 					<td colspan="2">
-						<div width="47" height="17" alt="">55</div>
+						<div width="47" height="17" alt="">201604</div>
 					</td>
 					<td colspan="2">
-						<div width="60" height="17" alt="">56</div>
+						<div width="60" height="17" alt="">590708</div>
 					</td>
 					<td>
-						<div width="48" height="17" alt="">57</div>
+						<div width="48" height="17" alt=""></div>
 					</td>
 					<td>
 						<div width="1" height="17" alt=""></div>
@@ -450,19 +454,19 @@
 				</tr>
 				<tr>
 					<td>
-						<div width="64" height="19" alt="">58
+						<div width="64" height="19" alt="">
 					</td>
 					<td colspan="2">
 						<div width="61" height="19" alt="">${monthMntFee.mf_gasAmount }
 					</td>
 					<td colspan="2">
-						<div width="69" height="19" alt="">60
+						<div width="69" height="19" alt="">
 					</td>
 					<td colspan="2">
-						<div width="47" height="19" alt="">61
+						<div width="47" height="19" alt="">201605
 					</td>
 					<td colspan="2">
-						<div width="60" height="19" alt="">62
+						<div width="60" height="19" alt="">245053
 					</td>
 					<td>
 						<div width="48" height="19" alt="">
@@ -478,10 +482,10 @@
 						<div width="47" height="16" alt="">${monthMntFee.mf_date }
 					</td>
 					<td colspan="2">
-						<div width="60" height="16" alt="">64
+						<div width="60" height="16" alt="">229563
 					</td>
 					<td>
-						<div width="48" height="16" alt="">65
+						<div width="48" height="16" alt="">
 					</td>
 					<td><img src="/resources/images/kyungtae/blank.png" width="1"
 						height="16" alt=""></td>
