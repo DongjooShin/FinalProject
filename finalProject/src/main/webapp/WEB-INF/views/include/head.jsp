@@ -119,28 +119,24 @@
 											href="/managementFee/managementFeeList">전체관리비</a></li>
 										<li id="menu-item-107"
 											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-107"><a
-											href="publicmana/PublicManageFee">공통관리비</a></li>
+											href="/publicmana/PublicManageFee">공통관리비</a></li>
 									</ul></li>
 								<li id="menu-item-111"
 									class="menu-item menu-item-type-custom menu-item-object-custom menu-item-165"><a
-									target="_blank" href="/aptList">부동산</a>
+									target="_blank" href="/Property/aptNews?newsNum=0&page=0">부동산</a>
 									<ul class="sub-menu">
 										<li id="menu-item-255"
 											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-255"><a
-											href="/member/aptNews?newsNum=0&page=0">부동산뉴스</a></li>
+											href="/Property/aptNews?newsNum=0&page=0">부동산뉴스</a></li>
 										<li id="menu-item-256"
 											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-256"><a
 											href="main.jsp?body=aptNewsMain.jsp">아파트시세</a></li>
 										<li id="menu-item-255"
 											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-255"><a
 											href="main.jsp?body=aptNewsMain.jsp">아파트이미지</a></li>
-										<li id="menu-item-256"
-											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-256"><a
-											href="main.jsp?body=aptNewsMain.jsp">CCTV정보</a></li>
 										<li id="menu-item-107"
 											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-107"><a
 											href="/controller/aptSale">아파트매물등록</a></li>
-
 										<li id="menu-item-107"
 											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-107"><a
 											href="aptSaleList.jsp">아파트매물보기</a></li>
@@ -166,7 +162,7 @@
 								<li id="menu-item-105"
 									class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-105"><a
 									href="/mypage">마이페이지</a>
-									<ul class="sub-menu">
+								<!-- 	<ul class="sub-menu">
 										<li id="menu-item-110"
 											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-109"><a
 											href="/aptGroup/Main">아파트그룹</a></li>
@@ -199,7 +195,7 @@
 											href="/managementFee/myPageManagementFee">마이페이지 관리비</a></li>
 
 
-									</ul></li>
+									</ul> --></li>
 
 
 							</ul>

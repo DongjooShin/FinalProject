@@ -79,13 +79,17 @@
 			
 			<!-- 사이드부분 끝@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
 			<!-- 메인부분 시작@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
-			<div class="col-md-9">
+		<div class="col-md-3">
+		
+			 <jsp:include page="../Property/aptSideBar.jsp"></jsp:include> 
+		</div>
+		<div class="col-md-9">
 
 				<h2>아파트 매물올리기</h2>
 				<p class="bs-component">
 					<!-- <a href="#" class="btn btn-default">Default</a>
               <a href="#" class="btn btn-primary">Primary</a>
-              <a href="#" class="btn btn-success">Success</a>
+	          <a href="#" class="btn btn-success">Success</a>
               <a href="#" class="btn btn-info">Info</a>
               <a href="#" class="btn btn-warning">Warning</a>
               <a href="#" class="btn btn-danger">Danger</a> -->

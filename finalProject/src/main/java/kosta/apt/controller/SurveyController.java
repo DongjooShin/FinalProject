@@ -478,6 +478,8 @@ public class SurveyController {
 	@RequestMapping(value="/surveyDetail", method = RequestMethod.POST)
 	public ResponseEntity<List<Survey>> surveyDetail(@RequestParam("sugroup") int sugroup)throws Exception{
 		
+		System.out.println("시발머여!");
+		System.out.println(sugroup+"숫자이다");
 		
 		List<Survey> list = new ArrayList<>();
 		

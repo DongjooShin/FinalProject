@@ -78,15 +78,31 @@
 		</interceptor>
 
 	</interceptors>
+	
 
 	<beans:bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<beans:property name="maxUploadSize" value="10485760"></beans:property>
 	</beans:bean>
 	
-   <beans:bean id="uploadPath" class="java.lang.String">
+ <!--   <beans:bean id="uploadPath" class="java.lang.String">
       <beans:constructor-arg value="C:\Users\kelli\Spring_workspace\final\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\finalProject"/>
+   </beans:bean> -->
+
+
+   
+   	<beans:bean id="uploadPath" class="java.lang.String">
+		<beans:constructor-arg value="C:\\upload"/>
+	</beans:bean>
+   
+   
+   <!-- 충돌날거같아 -->
+   <beans:bean id="GndownloadView" class="kosta.apt.Gnview.DownloadView"></beans:bean>
+   <!-- 충돌날거같아 -->
+   <beans:bean id="kosta.apt.GnviewResolver3" class="org.springframework.web.servlet.view.BeanNameViewResolver">
+      <beans:property name="order" value="1"/>
    </beans:bean>
+	
 
 	<beans:bean id="SndownloadView" class="kosta.apt.SnView.DownloadView2"></beans:bean>
    <!-- 충돌날거같아 -->

@@ -82,7 +82,7 @@ function detailclick(sugroup, i){
 		dataType:'json',
 		type: 'post',
 		success: function(data){
-		//	alert("서베이 디테일입니다.");
+			alert("서베이 디테일입니다.");
 		
 			 $('#resultGrape'+i).show();
 			

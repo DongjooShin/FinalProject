@@ -23,6 +23,6 @@ public interface MemberMapper {
 	public String getAPTAddress(int apt_APTGNo);
 	public int getAptNum(Map<String, String> map);
 	public void updateRealTransactionPrice(AptTransactionPrice aptTransactionPrice);
-
+	
 
 }

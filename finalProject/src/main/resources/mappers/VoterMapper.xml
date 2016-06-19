@@ -28,7 +28,6 @@
 	</select>
 	<select id="searchSymbol" parameterType="java.util.HashMap" resultType="Integer">
 		select cd_symbol from candidate where cd_symbol = #{s} AND cd_group = '입주자대표' AND apt_aptgno = #{aptgno}
-<!-- Here!!! NEED A APT_NO!!!! -->
 	</select>
 		<select id="selectOneCandi" resultType="Integer" parameterType="String">
 		select candidateno from Candidate where m_memberno = #{id}
@@ -60,9 +59,8 @@
 	 	select m_name from member where m_memberno = #{id} 
 	</select>
 	
-	<update id="updateHit" parameterType="int">
-		update Candidate set cd_voteNum = cd_voteNum+1 where cd_symbol = #{hit}
-<!-- Something weird!!!!!! -->	
+	<update id="updateHit" parameterType="String">
+		update Candidate set cd_voteNum = cd_voteNum+1 where m_memberNo = #{id}
 	</update>
 	<select id="maxVoterNo" resultType="int">
 		select max(v_voterno) from Voter
@@ -89,10 +87,13 @@
 	
 	<select id="searchBSymbol" parameterType="java.util.HashMap" resultType="Integer">
 		select cd_symbol from candidate where cd_symbol = #{s} AND cd_group = '동대표' AND apt_aptgno = #{aptgno}
-<!-- Here!!! NEED A APT_NO!!!! -->
 	</select>
 	
-	
+	<update id="updateGP" parameterType="int">
+		update Member set m_grade = 3 
+			where m_memberNno = (select m_memberNo from candidate where apt_aptgno = #{aptgno} 
+				AND cd_votenum = (select max(cd_votenum) from candidate where apt_aptgno = #{aptgno}) )
+	</update>
 	
 <!-- 	
 	

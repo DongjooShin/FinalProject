@@ -1,5 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -10,6 +12,7 @@
    src="/resources/jquery/jQuery-2.1.4.min.js"></script>
 
 <script type="text/javascript">
+<<<<<<< HEAD
    $(function() {
       
       $('#sixthContent').load("/member/passwordCheck");
@@ -74,9 +77,17 @@
       });
 
 })
-</script>
+=======
+	$(function() {
 
+		$('#firstManu').css('background', '#09b9e5');
+
+
+	});
+>>>>>>> branch 'master' of https://github.com/DongjooShin/FinalProject.git
+</script>
 <style type="text/css">
+<<<<<<< HEAD
 #mypageUl {
    margin-top: -53px;
 }
@@ -99,14 +110,24 @@
    display: inline-block;
    width: 100%;
    margin-top: 70px;
+=======
+
+#sixthContent {
+
+	min-height: 500px;
+
+>>>>>>> branch 'master' of https://github.com/DongjooShin/FinalProject.git
 }
 
 .manu {
-   color: white;
+
+	color: white;
+
 }
 </style>
 </head>
 <body>
+<<<<<<< HEAD
    <div class="header">
       <jsp:include page="../include/head.jsp"></jsp:include>
    </div>
@@ -115,48 +136,77 @@
       <div class="col-md-12">
          <div id="mypageLayout">
             <ul id=mypageUl>
-                  <jsp:include page="../include/aaa.jsp"></jsp:include>
+                  <jsp:include page="../include/mypagehead.jsp"></jsp:include>
             
             </ul>
             <br>
 
 
-            <div class="col-md-12">
-               <div id="firstContent" class="content  " style="height: 500px;">
-                  <div id="firstContent1">
-                  
-                  </div>
-                  
-                     <div id="firstContent2">
-                  
-                  </div>
-               </div>
 
 
-
-               <div id="secondContent" class="content "
-                  style="height: 500px;"></div>
-
-
-
-               <div id="thirdContent" class="content "
-                  style=" height: 500px;"><jsp:include page="../complaint/complaintList.jsp"></jsp:include></div>
-
-
-
-               <div id="fourthContent" class="content "
-                  style="background: red; height: 500px;"></div>
+				<div class="col-lg-10 col-lg-offset-1">
+					<br> <br> <label
+						style="font-size: 25px; color: black; border-bottom: 3px solid #eaeaea; padding: 0 15px 13px 15px; margin-bottom: 15px;">스케줄</label>
+					<a href="/calendar/calendar">더 많은 스케줄보기</a> <br> <br>
+					<div class="col-lg-10 ">
+						<label class="labelDay">오늘 :</label>
+						<c:forEach var="cal" items="${nowlist}">
+							<label class="labelDay">${cal.c_schedule }</label>
+						</c:forEach>
 
 
-               <div id="fifthContent" class="content "
-                  style="background: green; height: 600px;"></div>
+						<br> <br> <label class="labelDay">1일전 :</label>
+						<c:forEach var="cal" items="${list}">
+							<label class="labelDay">${cal.c_schedule }</label>
 
-               <div id="sixthContent" class="content "></div>
-            </div>
+						</c:forEach>
 
-         </div>
-      </div>
-   </div>    
+						<br> <br> <label class="labelDay">2일전 :</label>
+						<c:forEach var="cal" items="${list2}">
+							<label class="labelDay">${cal.c_schedule }</label>
+						</c:forEach>
+						<br> <br> <label class="labelDay">3일전 :</label>
+						<c:forEach var="cal" items="${list3}">
+							<label class="labelDay">${cal.c_schedule }</label>
+						</c:forEach>
+
+						<br> <br> <br> <br>
+					</div>
+				</div>
+
+				<div class="col-lg-10 col-lg-offset-1">
+					<label
+						style="font-size: 25px; color: black; border-bottom: 3px solid #eaeaea; padding: 0 15px 13px 15px; margin-bottom: 15px;">최신
+						공지사항</label> <a href="/groupNotice/listAll">더 많은 공지사항보기</a>
+					<table class="table table-striped">
+						<tr height="30">
+							<th width="50">번호</th>
+							<th width="250">제목</th>
+							<th width="150">작성자</th>
+							<th width="150">작성일</th>
+							<th width="100">조회수</th>
+						</tr>
+						<c:forEach var="gn" items="${newlist}">
+							<tr>
+								<td align="center">${gn.g_subNo }</td>
+								<td align="left"><a href="/groupNotice/read">${gn.g_title}</a></td>
+
+								<td align="center">${gn.m_memberNo}</td>
+								<td align="center"><fmt:formatDate value="${gn.g_date}"
+										pattern="yyyy-MM-dd" /></td>
+								<td align="center">${gn.g_hit}</td>
+							</tr>
+						</c:forEach>
+					</table>
+					<br> <br> <br>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+
+
 
 </body>
 </html>

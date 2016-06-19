@@ -15,30 +15,47 @@
 <link rel='stylesheet' id='spacious_style-css' href='../css/main1.css'
 	type='text/css' media='all' />
 
+<style type="text/css">
+
+#page2{
+
+	margin-left: 3px;
+
+}
+
+#archives{
+
+	padding-left: 10px;
+}
+
+
+#archives ul li{
+
+	padding: 50px;
+}
+
+#archives ul{
+
+	padding: 50px;
+}
+
+</style>
 
 </head>
 <body>
-	<div id="page" class="hfeed site">
+	<div id="page page2" class="hfeed site">
 
 		<div id="secondary" style="background-color: white;">
 			<aside id="archives" class="widget">
 			<h3 class="widget-title">Archives</h3>
 			<ul>
-				<li><a href='http://demo.themegrill.com/spacious/2014/03/'>부동산매물 정보</a></li>
-				<li><a href='http://demo.themegrill.com/spacious/2014/02/'>부동산매물 등록</a></li>
+				<li><a href='/Property/aptSaleList'>부동산매물 정보</a></li>
+				<li><a href='/aptSale/Property'>부동산매물 등록</a></li>
 
-				<li><a href='http://demo.themegrill.com/spacious/2014/03/'>March
-						2014</a></li>
-				<li><a href='http://demo.themegrill.com/spacious/2014/02/'>February
-						2014</a></li>
-				<li><a href='http://demo.themegrill.com/spacious/2014/03/'>March
-						2014</a></li>
-				<li><a href='http://demo.themegrill.com/spacious/2014/02/'>February
-						2014</a></li>
 			</ul>
 			</aside>
 		</div>
-		<div id="primary" style="height: 1000px; background: orange;"></div>
+	
 	</div>
 </body>
 </html>

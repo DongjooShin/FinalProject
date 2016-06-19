@@ -2,9 +2,11 @@ package kosta.apt.controller;
 
 import java.io.File;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,6 +30,7 @@ import kosta.apt.domain.Paging.Criteria;
 import kosta.apt.domain.Paging.PageMaker;
 import kosta.apt.domain.Property.Property;
 import kosta.apt.domain.Property.PropertyImageUtil;
+import kosta.apt.domain.member.RssReader;
 import kosta.apt.service.PropertyService;
 
 @Controller
@@ -317,6 +320,23 @@ public class PropertyController {
 		
 		
 	}*/
+	
+	@RequestMapping(value = "/aptNews", method = RequestMethod.GET)
+	public void aptNewsGet(HttpSession session, Model model, @RequestParam("newsNum") int newsNum,
+			@RequestParam("page") int page) throws Exception {
+		List<Map<String, String>> newsList = null;
+		RssReader rssReader = new RssReader();
+		newsList = rssReader.getSynFeed(newsNum);
+		int startPage = page;
+		int endPage = startPage + 4;
+
+		model.addAttribute("listSize", newsList.size() - 5);
+		model.addAttribute("newsNum", newsNum);
+		model.addAttribute("startPage", startPage);
+		model.addAttribute("endPage", endPage);
+		model.addAttribute("newsList", newsList);
+
+	}
 	
 	
 }

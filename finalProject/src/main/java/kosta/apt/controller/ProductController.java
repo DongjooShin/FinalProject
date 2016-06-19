@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,6 +38,8 @@ public class ProductController {
 
 	private ProductService productService;
 
+	//순서 proApplication->proApplicationList->proRegister
+	
 	@Autowired
 	public void setProductService(ProductService productService) {
 		this.productService = productService;
@@ -92,7 +96,7 @@ public class ProductController {
 		 
 	
 		}else{
-			
+			System.out.println("입주자로 로그인했다.");
 			list = productService.selectApplyList(cri, m_memberNo);
 			
 			
@@ -423,6 +427,7 @@ public class ProductController {
 	
 	
 	//결제하기 DB등록
+	@Transactional(propagation=Propagation.REQUIRED, rollbackFor={Exception.class})
 	@RequestMapping(value="/proCheck", method = RequestMethod.POST)
 	public String proCheck(ProductOrder productOrder)throws Exception{
 		
@@ -434,11 +439,12 @@ public class ProductController {
 		productOrder.setCheck_sign("배송대기");
 		productOrder.setCheck_no(productService.selectChcek_no()+1);
 		
-		
-		
 		System.out.println(productOrder.getCheck_no()+"결제하기 목록번호");
 		
 		System.out.println(productOrder.getCheck_num()+"결제수량입니다.");
+		
+		//int a = productService.selectProduct(productOrder.getPro_no()); 트랜잭션 수량좀 확인해보고싶어
+		
 		
 		productService.proNumupdate(productOrder);
 		
