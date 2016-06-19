@@ -81,6 +81,24 @@ margin-top: 50px;
 margin-left: 10%;
 margin-bottom: 40px;
 }
+.newslayout p{
+ color: black;
+  font-family: "Lato",​sans-serif;
+  font-weight: normal;
+
+}
+.newslayout > a{
+font-size: 15px;
+}
+.newslayout a{
+ color: black;
+ font-family: "Lato",​sans-serif;
+font-weight: normal;
+
+}
+.newsSummary{
+font-size: 15px;
+}
 
 #ChooseNews input{
 margin-right: 3%;
@@ -123,15 +141,15 @@ margin-right: 3%;
 		style="height: 950px; border-top: 2px solid;">
 		<div class="col-md-12">
 			<div class="col-md-3">
-			
+			<jsp:include page="aptSideBar.jsp"></jsp:include>
 			
 			</div>
 			<div class="col-md-9">
 				<div id="ChooseNews">
-					<input type="button" value="매일경제 부동산" id="mknews"> <input
-						type="button" value="조선비즈 부동산" id="fnnews"> <input
-						type="button" value="이델일리 부동산" id="edailynews"> <input
-						type="button" value="헤 럴 드 부동산" id="heraldnews">
+					<input type="button" value="매일경제 부동산" id="mknews" class="btn btn-primary" style="background-color: #428bca"> <input
+						type="button" value="조선비즈 부동산" id="fnnews" class="btn btn-primary" style="background-color: #428bca"> <input
+						type="button" value="이델일리 부동산" id="edailynews" class="btn btn-primary" style="background-color: #428bca"> <input
+						type="button" value="헤 럴 드 부동산" id="heraldnews" class="btn btn-primary" style="background-color: #428bca" >
 				</div>
 				<ul id="news">
 					<c:forEach var="i" begin="${startPage }" end="${endPage }" step="1" >
@@ -145,10 +163,10 @@ margin-right: 3%;
 				</ul>
 				<div id="pageId">
 					<c:if test="${startPage>4}">
-						<input type="button" value="< 이전"  id="preBtn">
+						<input type="button" value="< 이전"  id="preBtn" class="btn btn-primary" style="background-color: #428bca">
 					</c:if>
 					<c:if test="${startPage<listSize}">
-						<input type="button"value="다음 >" id="nextBtn">
+						<input type="button"value="다음 >" id="nextBtn" class="btn btn-primary" style="background-color: #428bca">
 					</c:if>
 				</div>
 			</div>

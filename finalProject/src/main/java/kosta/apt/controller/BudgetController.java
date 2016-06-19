@@ -62,13 +62,13 @@ public class BudgetController {
 		String uploadPath = request.getRealPath("");
 		uploadPath += "\\WEB-INF\\views\\budget\\budgetExcelUpload";
 		int size = 20 * 1024 * 1024;
-		System.out.println(uploadPath);
+		
 
 		MultipartRequest multi = new MultipartRequest(request, uploadPath, size, "utf-8",
 				new DefaultFileRenamePolicy());
 		String b_fileName = multi.getFilesystemName("b_fileName");
 		String b_date = multi.getParameter("b_date");
-		System.out.println(b_fileName);
+	
 
 		budgetService.budgetExcelInsert(multi);
 
@@ -95,17 +95,13 @@ public class BudgetController {
 					b_TVFee = null;
 			int i = 1;
 			row = sheet.getRow(i); // row 가져오기
-			System.out.println(row + "row");
 			if (row != null) {
 				// && !"".equals(row.getCell(0).getStringCellValue())) {
 				
 				cell = row.getCell(0);
-				System.out.println(cell + "셀셀");
 				b_clean = cell + "";
-				System.out.println(b_clean);
 				cell = row.getCell(1);
 				b_general = cell + "";
-				System.out.println(b_general);
 				cell = row.getCell(2);
 				b_maintain = cell + "";
 				cell = row.getCell(3);
@@ -132,59 +128,45 @@ public class BudgetController {
 				b_TVFee = cell + "";
 
 				str = b_clean.split("\\.");
-				System.out.println(str[0] + "배열");
 				budget.setB_clean(Integer.parseInt(str[0]));
 
 				str = b_general.split("\\.");
-				System.out.println(str[0] + "배열");
 				budget.setB_general(Integer.parseInt(str[0]));
 
 				str = b_maintain.split("\\.");
-				System.out.println(str[0] + "배열");
 				budget.setB_maintain(Integer.parseInt(str[0]));
 
 				str = b_lifMaintain.split("\\.");
-				System.out.println(str[0] + "배열");
 				budget.setB_liftMaintain(Integer.parseInt(str[0]));
 
 				str = b_security.split("\\.");
-				System.out.println(str[0] + "배열");
 				budget.setB_security(Integer.parseInt(str[0]));
 
 				str = b_foodWaste.split("\\.");
-				System.out.println(str[0] + "배열");
 				budget.setB_foodWaste(Integer.parseInt(str[0]));
 
 				str = b_fireInsurance.split("\\.");
-				System.out.println(str[0] + "배열");
 				budget.setB_fireInsurance(Integer.parseInt(str[0]));
 
 				str = b_commission.split("\\.");
-				System.out.println(str[0] + "배열");
 				budget.setB_commission(Integer.parseInt(str[0]));
 
 				str = b_meeting.split("\\.");
-				System.out.println(str[0] + "배열");
 				budget.setB_meeting(Integer.parseInt(str[0]));
 
 				str = b_publicElectric.split("\\.");
-				System.out.println(str[0] + "배열");
 				budget.setB_publicElectric(Integer.parseInt(str[0]));
 
 				str = b_liftElectric.split("\\.");
-				System.out.println(str[0] + "배열");
 				budget.setB_liftElectric(Integer.parseInt(str[0]));
 
 				str = b_TVFee.split("\\.");
-				System.out.println(str[0] + "배열");
 				budget.setB_TVFee(Integer.parseInt(str[0]));
 
 				str = b_disinfection.split("\\.");
-				System.out.println(str[0] + "배열");
 				budget.setB_disinfection(Integer.parseInt(str[0]));
 
 				str = b_appropriation.split("\\.");
-				System.out.println(str[0] + "배열");
 				budget.setB_appropriation(Integer.parseInt(str[0]));
 
 				// 파일 업로드
@@ -203,7 +185,6 @@ public class BudgetController {
 			e1.printStackTrace();
 		}
 
-		System.out.println(budget.toString() + "1");
 		budgetService.budgetExcelInsert(budget);
 		
 		return "/main";
@@ -212,7 +193,6 @@ public class BudgetController {
 	@RequestMapping("/budgetList")
 	public String budgetList(Model model){
 		List<Budget> list = budgetService.selectBudgetList();
-		System.out.println(list.size());
 		model.addAttribute("budget1", list.get(0));
 		model.addAttribute("budget2", list.get(1));
 		model.addAttribute("budget3", list.get(2));

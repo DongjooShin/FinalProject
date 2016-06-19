@@ -29,8 +29,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import kosta.apt.domain.Property.AptTransactionPrice;
 import kosta.apt.domain.member.AptList;
-import kosta.apt.domain.member.AptTransactionPrice;
 import kosta.apt.domain.member.LoginCheck;
 import kosta.apt.domain.member.MailMail;
 import kosta.apt.domain.member.Member;
@@ -65,10 +65,7 @@ public class MemberController {
 
 	@RequestMapping(value = "/signup", method = RequestMethod.GET)
 	public void signupGet(Model model, String state, String city, String aptname) {
-		System.out.println(state);
-		System.out.println(city);
-		System.out.println(aptname);
-		
+
 		String fullAddres = memberService.getAddressService(state + " " + city, aptname);
 		int apt_aptgno = memberService.getAptNumService(state + " " + city, aptname);
 		model.addAttribute("fullAddres", fullAddres);
@@ -78,7 +75,6 @@ public class MemberController {
 
 	@RequestMapping(value = "/confirmId", method = RequestMethod.GET)
 	public void confirmIdPost(Model model, @RequestParam("id") String id) {
-		System.out.println(id);
 		int check = memberService.checkMemberIdService(id);
 		model.addAttribute("id", id);
 		model.addAttribute("check", check);
@@ -186,23 +182,6 @@ public class MemberController {
 		return "redirect:/main";
 	}
 
-/*	@RequestMapping(value = "/aptNews", method = RequestMethod.GET)
-	public void aptNewsGet(HttpSession session, Model model, @RequestParam("newsNum") int newsNum,
-			@RequestParam("page") int page) throws Exception {
-		List<Map<String, String>> newsList = null;
-		RssReader rssReader = new RssReader();
-		newsList = rssReader.getSynFeed(newsNum);
-		int startPage = page;
-		int endPage = startPage + 4;
-
-		model.addAttribute("listSize", newsList.size() - 5);
-		model.addAttribute("newsNum", newsNum);
-		model.addAttribute("startPage", startPage);
-		model.addAttribute("endPage", endPage);
-		model.addAttribute("newsList", newsList);
-
-	}*/
-
 
 	@RequestMapping(value = "/certification", method = RequestMethod.GET)
 	public void certificationGet(Model model) {
@@ -215,8 +194,7 @@ public class MemberController {
 			@RequestParam("domain") String domain) {
 		HashMap<String, String> map = new HashMap<String, String>();
 		String Email = email + "@" + domain;
-		ApplicationContext context = new ClassPathXmlApplicationContext("classpath:/Spring-Mail.xml");
-		MailMail mm = (MailMail) context.getBean("MailMail");
+
 
 		int Num1[] = new int[8];
 		int Num2[] = new int[8];
@@ -228,8 +206,11 @@ public class MemberController {
 				+ Num2[2] + Num2[3] + ((char) Num1[4]) + ((char) Num1[5]) + ((char) Num1[6]) + ((char) Num1[7])
 				+ Num2[4] + Num2[5] + Num2[6] + Num2[7];
 
-		String text = "AptManager 회원 인증을 위한 메일입니다 \n\n 아래 key값을 복사하여 입력해주세요.\n\n\t\t" + key + "\n\n\t감사합니다.";
-		mm.sendMail("aptmanager.kost111@gmail.com", Email, "AptManager 회원 인증", text);
+		ApplicationContext context = new ClassPathXmlApplicationContext("classpath:/Spring-Mail.xml");
+		MailMail mail = (MailMail) context.getBean("MailMail");
+		String text = "AptManager 회원 인증을 위한 메일입니다 \n\n 아래 key값을 복사하여 입력해주세요."
+				+ "\n\n\t\t" + key + "\n\n\t감사합니다.";
+		mail.sendMail("aptmanager.kost111@gmail.com", Email, "AptManager 회원 인증", text);
 		map.put("key", key);
 		return map;
 	}
@@ -274,7 +255,6 @@ public class MemberController {
 				sb.append(Integer.toString((byteData[i] & 0xff) + 0x100, 16).substring(1));
 			}
 			SHA = sb.toString();
-
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
 			SHA = null;

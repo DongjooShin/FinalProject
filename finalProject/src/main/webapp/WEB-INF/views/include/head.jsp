@@ -94,7 +94,7 @@
 											href="/calendar/calendar">스케줄</a></li>
 										<li id="menu-item-108"
 											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-108"><a
-											href="http://demo.themegrill.com/spacious/layout/right-sidebar/">아파트시세</a></li>
+											href="/Property/aptRealTransaction?page=0">아파트시세</a></li>
 										<li id="menu-item-106"
 											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-106"><a
 											href="http://demo.themegrill.com/spacious/layout/no-sidebar-full-width/">투표</a></li>
@@ -133,7 +133,7 @@
 											href="/Property/aptNews?newsNum=0&page=0">부동산뉴스</a></li>
 										<li id="menu-item-256"
 											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-256"><a
-											href="main.jsp?body=aptNewsMain.jsp">아파트시세</a></li>
+											href="/Property/OtheraptRealTransaction">아파트시세</a></li>
 										<li id="menu-item-255"
 											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-255"><a
 											href="main.jsp?body=aptNewsMain.jsp">아파트이미지</a></li>

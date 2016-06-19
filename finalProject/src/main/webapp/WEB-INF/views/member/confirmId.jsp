@@ -6,6 +6,15 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<link rel='stylesheet' href='/resources/bootstrap/bootstrap.min.css'
+	type='text/css' rel="stylesheet" />
+<link rel='stylesheet' href='/resources/dist/css/mainFont.css'
+	type='text/css' rel="stylesheet" />
+<link rel='stylesheet'
+	href='//fonts.googleapis.com/css?family=Lato&#038;ver=e7d1598c32c9180e5e08e97723f82bcd'
+	type='text/css' media='all' />
+<link rel='stylesheet' href='/resources/dist/css/main1.css'
+	type='text/css' rel="stylesheet" />
 
 <script type="text/javascript">
 	function setid() {
@@ -34,7 +43,7 @@ margin-left: 40%;
 }
 </style>
 </head>
-<body>
+<body style="background-color: white;">
 	<c:if test="${check ==1 }">
 	<br><br><h3 align="center">입력하신  ${id }은  사용가능합니다.</h3>
 

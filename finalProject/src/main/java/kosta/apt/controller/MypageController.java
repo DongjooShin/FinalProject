@@ -32,7 +32,7 @@ import kosta.apt.domain.calendar.Calendar;
 import kosta.apt.domain.Message.Message;
 import kosta.apt.domain.Paging.Criteria;
 import kosta.apt.domain.Paging.PageMaker;
-import kosta.apt.domain.member.AptTransactionPrice;
+import kosta.apt.domain.Property.AptTransactionPrice;
 import kosta.apt.domain.member.Member;
 import kosta.apt.service.CalendarService;
 import kosta.apt.service.GroupNoticeService;
