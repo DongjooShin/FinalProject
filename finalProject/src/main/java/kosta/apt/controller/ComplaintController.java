@@ -43,9 +43,16 @@ public class ComplaintController {
 	
 	
 	@RequestMapping(value = "/list", method = RequestMethod.GET )
-	public String List(@ModelAttribute("cri") SearchCriteria cri,Model model,HttpSession session){
+	public String List(@ModelAttribute("cri") SearchCriteria cri,Model model,HttpSession session,HttpServletRequest request){
 		model.addAttribute("member",(Member)session.getAttribute("member"));
 		   model.addAttribute("list", service.listSearchCriteria(cri));
+		   System.out.println(cri.toString());
+		   String keyword = request.getParameter("keyword");
+		   System.out.println(keyword);
+		   if(keyword !=null){
+			   
+			   System.out.println(keyword);
+		   }
 		   PageMaker pagemaker = new PageMaker();
 		   pagemaker.setCri(cri);
 		   pagemaker.setTotalCount(service.listSearchCount(cri));
@@ -95,6 +102,7 @@ public class ComplaintController {
 	   
 	   @RequestMapping("/replies")
 	   public ResponseEntity<String> getReply(@RequestBody Reply reply){
+		   System.out.println("ddd");
 		   ResponseEntity<String> entity=null;
 		   int ref =1;
 		   try {
@@ -111,6 +119,7 @@ public class ComplaintController {
 	   
 		@RequestMapping(value ="/replies/all/{cp_complaintNo}", method=RequestMethod.GET)
 		public ResponseEntity<List<Reply>> list(@PathVariable("cp_complaintNo") Integer cp_complaintNo){ //객체를 JSON JSON을 객체를 반환한다. 
+			System.out.println("dddddddddddddddddddddddd");
 			ResponseEntity<List<Reply>> entity = null;
 			System.out.println(service.listReply(cp_complaintNo));
 			try {
@@ -121,8 +130,7 @@ public class ComplaintController {
 			return entity;
 		}
 		@RequestMapping(value ="/replies/{rno}", method= {RequestMethod.PUT,RequestMethod.PATCH})
-		public ResponseEntity<String> update
-						(@PathVariable("rno") int rno, @RequestBody Reply vo){
+		public ResponseEntity<String> update(@PathVariable("rno") int rno, @RequestBody Reply vo){
 			ResponseEntity<String> entity = null;
 			try {
 				vo.setRno(rno);
@@ -139,8 +147,7 @@ public class ComplaintController {
 		}
 		
 		@RequestMapping(value ="/replies/{rno}", method= RequestMethod.DELETE)
-		public ResponseEntity<String> delete
-		(@PathVariable("rno") int rno ,@RequestBody Reply reply){
+		public ResponseEntity<String> delete(@PathVariable("rno") int rno ,@RequestBody Reply reply){
 			ResponseEntity<String> entity = null;
 			int ref =-1;
 			try {

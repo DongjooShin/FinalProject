@@ -9,7 +9,13 @@
 <title>네이버 :: Smart Editor 2 &#8482;</title>
   <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="/resources/editor/js/HuskyEZCreator.js" charset="utf-8"></script>
+<script type="text/javascript">
 
+	function goList() {
+		location.href="/publicmana/list";
+	}
+
+</script>
 </head>
 <body>
 <div></div>

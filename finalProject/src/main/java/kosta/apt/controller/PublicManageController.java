@@ -42,12 +42,12 @@ public class PublicManageController {
 	//엑셀
 	@RequestMapping("/getExcel")
 	public String getExcel(Model model,RedirectAttributes attr,HttpServletResponse response,HttpSession session){
-		Member m = (Memgber)session.getAttribute("member");
+		Member m = (Member)session.getAttribute("member");
 
 		response.setHeader("Content-Disposition", "attachment; filename=getexcel.xls");
 		response.setHeader("Content-Description", "JSP Generated Data");
-	List<PublicManagementFee> list =	service.selectPublicmanage(m.getApt_APTGNo());
-	model.addAttribute("list", list);
+	    List<PublicManagementFee> list =	service.selectPublicmanage(m.getApt_APTGNo());
+	    model.addAttribute("list", list);
 		
 		return "/publicManagementFee/getExcel";
 	}

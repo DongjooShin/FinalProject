@@ -29,6 +29,8 @@ import kosta.apt.service.PublicManagementFeeService;
 public class ManagementFeeController {
 	
 	private ManagementFeeService mntFeeService;
+	
+	
 	private PublicManagementFeeService publicMntService;
 	
 	@Autowired

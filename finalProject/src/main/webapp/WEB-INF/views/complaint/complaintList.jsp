@@ -7,6 +7,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
+<script type="text/javascript">
+ 	$(function() {
+
+		$('#thirdManu').css('background', '#09b9e5');
+
+    })  
+   
+</script> 
 <body style="background-color: #eaeaea;">
 	<div class="main">
 		<!-- 리스트,입력,상세보기 -->

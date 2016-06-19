@@ -45,8 +45,7 @@
 </style>
 	<script type="text/javascript">
    $(function() {
-      $('#fifthManu').css('background', '#09b9e5');
-      $('#fifthManu').css('display', 'block');
+      $('#thirdManu').css('background', '#09b9e5');
 
 
    });
@@ -217,8 +216,7 @@
 				$('#searchBtn').on(
 						"click",
 						function(event) {
-							alert('dd')
-							location.location = "/publicmana/list"
+							location.href = "/publicmana/list"
 									+ '${pageMaker.makeQuery(1)}'
 									+ "&searchType="
 									+ $("select option:selected").val()

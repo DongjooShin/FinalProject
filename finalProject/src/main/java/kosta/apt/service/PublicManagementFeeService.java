@@ -15,6 +15,7 @@ import kosta.apt.persistence.PublicManagementFeeDao;
 @Service
 public class PublicManagementFeeService {
 	
+	
 	private PublicManagementFeeDao dao;
 
 	@Autowired

@@ -67,9 +67,6 @@
 					<ul>
 						<li><a href='http://demo.themegrill.com/spacious/2014/03/'>&nbsp;전체관리비
 								</a></li>
-						<li><a href='http://demo.themegrill.com/spacious/2014/02/'>&nbsp;전기세</a></li>
-
-						<li><a href='http://demo.themegrill.com/spacious/2014/03/'>&nbsp;수도세</a></li>
 						<li><a href='http://demo.themegrill.com/spacious/2014/03/'>&nbsp;공동관리비</a></li>
 					</ul>
 					</aside>

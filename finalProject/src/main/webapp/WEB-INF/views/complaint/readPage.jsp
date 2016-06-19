@@ -5,6 +5,8 @@
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
 <!-- Main content -->
+<script type="text/javascript"
+   src="/resources/jquery/jQuery-2.1.4.min.js"></script>
 <div id="page" style="background: white; display: inline-block;">
 	<div class="col-lg-12">
 		<div class="col-lg-10" style="background-color: white;">
@@ -155,8 +157,8 @@
 <script>
 	$(function() {
 		getPage("/publicmana/replies/" + cp_complaintNo + "/1");
-	})
-
+	
+	});
 	$(document).on("click", ".modiBtn", function(index) {
 		var button = '<button  class="btn btn-info creaBtn" >수정</button>';
 		var replytext = $(this).parent().parent().find('#text').html();
@@ -247,31 +249,26 @@
 
 	}
 
-	var cp_complaintNo = $
+	var cp_complaintNo = <c:out value='${complaint.cp_complaintNo}' />
+		/* $
 	{
-		complaint.cp_complaintNo
-	};
+	complaint.cp_complaintNo
+	}; */
 	var replyPage = 1;
 
 	function getPage(pageInfo) {
 		var id = "[" + "<c:out value='${member.m_memberNo}' />" + "]";
-		$
-				.getJSON(
-						pageInfo,
-						function(data) {
-							printData(data.list, $("#repliesDiv"),
-									$('#template'));
+		$.getJSON(pageInfo,function(data) {
+							printData(data.list, $("#repliesDiv"),$('#template'));
 							printPaging(data.pageMaker, $(".pagination"));
-							$('.timeline-header')
-									.each(
-											function() {
-												if ($(this).html() == id) {
-													var button = '<button  class="btn btn-info modiBtn" >수정</button>';
-													button += '<button  class="btn btn-info remoBtn" >삭제</button>'
-													$(this).parent().find(
-															'.check').append(
-															button);
-												}
+							$('.timeline-header').each(function() {
+									if ($(this).html() == id) {
+										var button = '<button  class="btn btn-info modiBtn" >수정</button>';
+										button += '<button  class="btn btn-info remoBtn" >삭제</button>'
+										$(this).parent().find(
+												'.check').append(
+												button);
+									}
 											})
 							$("#replycntSmall").html(
 									"[" + data.pageMaker.totalCount + "]");
@@ -407,7 +404,9 @@
 		});
 
 	});
+
 </script>
+
 
 
 

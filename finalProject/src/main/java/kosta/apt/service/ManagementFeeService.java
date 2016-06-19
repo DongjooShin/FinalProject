@@ -20,7 +20,7 @@ public class ManagementFeeService {
 		this.dao = dao;
 	}
 	
-	public List<Member>selectMember(int buildingNo, int roomNo) {
+	public List<Member> selectMember(int buildingNo, int roomNo) {
 		List<Member> list = dao.selectMember(buildingNo, roomNo);;
 		return list;
 	}
