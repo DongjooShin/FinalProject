@@ -158,7 +158,7 @@
 	$(function() {
 		getPage("/publicmana/replies/" + cp_complaintNo + "/1");
 	
-	});
+	
 	$(document).on("click", ".modiBtn", function(index) {
 		var button = '<button  class="btn btn-info creaBtn" >수정</button>';
 		var replytext = $(this).parent().parent().find('#text').html();
@@ -195,7 +195,8 @@
 				console.log("result: " + result);
 				if (result == 'SUCCESS') {
 					alert("삭제 되었습니다.");
-					getPage("/replies/" + cp_complaintNo + "/" + replyPage);
+					getPage("/publicmana/replies/" + cp_complaintNo + "/" + replyPage);
+					
 				}
 			}
 		});
@@ -205,7 +206,6 @@
 			"click",
 			".creaBtn",
 			function(index) {
-				alert($(this).parent().parent().find('.text').val());
 				var rno = $(this).parent().parent().find('.rno').val();
 				var replytext = $(this).parent().parent().find('.text').val();
 				$.ajax({
@@ -223,14 +223,17 @@
 						console.log("result: " + result);
 						if (result == 'SUCCESS') {
 							alert("수정 되었습니다.");
-							$('#repliesDiv').empty();
 							getPage("/publicmana/replies/" + cp_complaintNo
 									+ "/" + replyPage);
+							
 						}
 					}
 				});
 
 			})
+			
+	});
+	
 	Handlebars.registerHelper("prettifyDate", function(timeValue) {
 		var dateObj = new Date(timeValue);
 		var year = dateObj.getFullYear();
@@ -240,9 +243,7 @@
 	});
 
 	var printData = function(replyArr, target, templateObject) {
-
 		var template = Handlebars.compile(templateObject.html());
-
 		var html = template(replyArr);
 		$(".replyLi").remove();
 		target.after(html);
@@ -274,6 +275,7 @@
 									"[" + data.pageMaker.totalCount + "]");
 
 						});
+		
 	}
 
 	var printPaging = function(pageMaker, target) {
@@ -329,15 +331,21 @@
 			success : function(result) {
 				console.log("result: " + result);
 				if (result == 'SUCCESS') {
-					alert("등록 되었습니다.");
+			
 					replyPage = 1;
-					getPage("/replies/" + cp_complaintNo + "/" + replyPage);
+					alert("등록 되었습니다.2222");
+					getPage("/publicmana/replies/" + cp_complaintNo + "/" + replyPage);
+					
 					replyerObj.val("");
 					replytextObj.val("");
 				}
 			}
 		});
 	});
+	
+	
+	
+	
 
 	$(".timeline").on("click", ".replyLi", function(event) {
 
@@ -373,9 +381,18 @@
 							getPage("/publicmana/replies/" + cp_complaintNo
 									+ "/" + replyPage);
 						}
+						
+						goListBtn();
 					}
 				});
 			});
+	
+	
+	function goListBtn(){
+		formObj.attr("method", "get");
+		formObj.attr("action", "/publicmana/list");
+		formObj.submit();
+	}
 </script>
 
 
@@ -404,6 +421,8 @@
 		});
 
 	});
+	
+
 
 </script>
 

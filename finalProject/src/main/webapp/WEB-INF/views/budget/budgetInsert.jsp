@@ -33,8 +33,9 @@ $(function() {
 	<div class="header">
 		<jsp:include page="../include/head.jsp"></jsp:include>
 	</div>
-	<div id="page-wrapper">
-
+	<div id="page">
+			
+		<jsp:include page="../include/mypagehead.jsp"></jsp:include>
 		<div class="container-fluid">
 
 			<!-- Page Heading -->

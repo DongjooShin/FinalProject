@@ -81,11 +81,10 @@ public class MypageController {
 		int memberGrade = member.getM_grade();
 		if (memberGrade >= 0) {
 
-			if (memberGrade == 1) { // 일반 사용자
+			if (memberGrade == 1||memberGrade==2) { // 일반 사용자
 				return "redirect:/mypage/userMypage";
-			} else if (memberGrade == 2) { // 관리소
-				return "redirect:/mypage/managerMypage";
-			} else if (memberGrade == 3) { // 입주자 대표
+			}
+			 else if (memberGrade == 3) { // 입주자 대표
 				return "redirect:/mypage/userMypage";
 			} else if (memberGrade == 4) {// 동대표
 				return "redirect:/mypage/userMypage";

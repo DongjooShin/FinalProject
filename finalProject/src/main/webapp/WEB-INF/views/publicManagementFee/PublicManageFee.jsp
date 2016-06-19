@@ -19,34 +19,43 @@
 
 
 <!-- Morris Charts JavaScript -->
-<script src="../../../resources/js/gidae/morris/raphael.min.js"></script>
-<script src="../../../resources/js/gidae/morris/morris.min.js"></script>
-<script src="../../../resources/js/gidae/morris/morris-data.js"></script>
+<script src="/resources/js/gidae/morris/raphael.min.js"></script>
+<script src="/resources/js/gidae/morris/morris.min.js"></script>
+<script src="/resources/js/gidae/morris/morris-data.js"></script>
 <!-- Bootstrap Core CSS -->
 
 
 
-<link href="../../../resources/css/gidae/bootstrap.min.css"
+<link href="/resources/css/gidae/bootstrap.min.css"
 	rel="stylesheet">
 
-<link href="../../../resources/css/gidae/sb-admin.css" rel="stylesheet">
+<link href="/resources/css/gidae/sb-admin.css" rel="stylesheet">
 
-<script src="../../../resources/js/gidae/jquery-1.11.0.js"></script>
+<script src="/resources/js/gidae/jquery-1.11.0.js"></script>
 
-<script src="../../../resources/js/gidae/bootstrap.min.js"></script>
+<script src="/resources/js/gidae/bootstrap.min.js"></script>
 
 <style type="text/css">
+
+
 .panel-red {
-    border-color: #d9534f;
+	border-color: #d9534f;
 }
 
 .panel-red .panel-heading {
-    border-color: #d9534f;
-    color: #fff;
-    background-color: #d9534f;
+	border-color: #d9534f;
+	color: #fff;
+	background-color: #d9534f;
 }
-.feee{
-	display:  none;
+
+.feee {
+	display: none;
+}
+
+.content {
+	padding-top: 50px;
+	padding-right: 50px;
+	padding-left: 50px;
 }
 </style>
 </head>
@@ -56,41 +65,39 @@
 		<jsp:include page="../include/head.jsp"></jsp:include>
 	</div>
 	<div class="main">
-		<div>
-			<div id="page" class="hfeed site">
-			<div class="row">
-				<div class="col-lg-2">
+		
+			<div id="page" class="content">
 				
-				<div id="secondary">
-					<aside id="archives" class="widget">
-					<h3 class="widget-title">&nbsp;관리비</h3>
-					<ul>
-						<li><a href='http://demo.themegrill.com/spacious/2014/03/'>&nbsp;전체관리비
-								</a></li>
-						<li><a href='http://demo.themegrill.com/spacious/2014/03/'>&nbsp;공동관리비</a></li>
-					</ul>
-					</aside>
-				</div>
-				<div id="primary" style="height: 1000px;"></div>
-
-			</div>
-				<div class="col-lg-1"></div>
+					<div class="col-lg-3">
+						<div id="secondary">
+							<div id="archives" class="widget">
+								<h3 class="widget-title ">&nbsp;관리비</h3>
+								<ul>
+									<li><a href='/managementFee/managementFeeList'>&nbsp;전dd체관리비aaaa
+									</a></li>
+									<li><a href='/publicmana/appropia'>&nbsp;예산</a></li>
+									<li><a href='/publicmana/PublicManageFee'>&nbsp;공동관리비</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-1"></div>
 					<div class="col-lg-8">
-					<div >
-					<p>나의 전기/가스 계산</p>
-						<select name="state">
-						<option value="ele">전기세</option>
-						<option value="gas">가스세</option>
-						</select>
-							<input type="text" id="fee" onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" maxlength="9"
-							placeHolder="전기사용량을 입력해주세요">
+						<div>
+							<p>나의 전기/가스 계산</p>
+							<select name="state">
+								<option value="ele">전기세</option>
+								<option value="gas">가스세</option>
+							</select> <input type="text" id="fee"
+								onkeyup="this.value=this.value.replace(/[^0-9]/g,'')"
+								maxlength="9" placeHolder="전기사용량을 입력해주세요">
 							<button id="FeeCal">계산</button>
 							<div class="feee" id="calu">
-							결과값:<input id="feee" disabled="disabled">
+								결과값:<input id="feee" disabled="disabled">
 							</div>
-					</div>
-										
-					
+						</div>
+
+
 						<h2>연도별 공동관리비</h2>
 						<div class="panel panel-red">
 							<div class="panel-heading">
@@ -104,13 +111,13 @@
 						</div>
 					</div>
 					<div class="col-lg-3"></div>
-				<div class="row">
-					<div class="col-lg-2"></div>
-					<div class="col-lg-8">
-						<h2>관리비 내역</h2>
-						<button name="excel" value="엑셀파일로" id="excel">엑셀파일로 보기</button>
-						<div class="table-responsive">
-													<table class="table table-bordered table-hover">
+					<div class="row">
+						<div class="col-lg-2"></div>
+						<div class="col-lg-8">
+							<h2>관리비 내역</h2>
+							<button name="excel" value="엑셀파일로" id="excel">엑셀파일로 보기</button>
+							<div class="table-responsive">
+								<table class="table table-bordered table-hover">
 									<thead>
 										<tr style="background-color: skyblue;">
 											<th>관리비이름</th>
@@ -323,72 +330,69 @@
 										</tr>
 									</tbody>
 								</table>
+							</div>
 						</div>
 					</div>
+
 				</div>
+
 
 			</div>
+		
 
+	<div class="footer"></div>
+	<script type="text/javascript">
+		$(function() {
+			$('select[name=state]').on('mouseup', function() {
+				alert('dd')
+			});
 
-		</div>
-				</div>
-	
-		</div>
-			<div class="footer"></div>
-			<script type="text/javascript">
-			$(function () {
-				$('select[name=state]').on('mouseup',function(){
-					alert('dd')
-				});
-				
-				$('#excel').on('click',function(){
-					window.open('/getExcel', '엑셀파일');
-					
-				});
-				
-				$('#FeeCal').on('click',function(){
-					
-					var option = $('select[name=state]').val();
-					var fee =$('#fee').val();
-					var passfee =<c:out value='${p. pm_publicElectric}' /> ;
-					if(fee>passfee){
-						
-					var cal =0;
-					if(option =='ele'){
-						cal= fee *57.6;
-					if(fee >100){
-						cal=fee *57.6;
-					}	else if(fee>200){
-						cal=fee * 98.9;
-					}	else if(fee>300){
-						cal=fee * 147.3;
-					}	else if(fee>400){
-						cal=fee *215.6;
-					}	else if(fee>500){
-						cal = fee*325.7;
-					}	else if(fee>600){
-						cal = fee*574.6;
-					}
-						
-					}else{
-						cal =fee * 635.73;
-						if(fee>12){
-							cal = ((fee -12)*700.32)+(12*635.73);
+			$('#excel').on('click', function() {
+				window.open('/getExcel', '엑셀파일');
+
+			});
+
+			$('#FeeCal').on('click', function() {
+
+				var option = $('select[name=state]').val();
+				var fee = $('#fee').val();
+				var passfee = <c:out value='${p. pm_publicElectric}' />;
+				if (fee > passfee) {
+
+					var cal = 0;
+					if (option == 'ele') {
+						cal = fee * 57.6;
+						if (fee > 100) {
+							cal = fee * 57.6;
+						} else if (fee > 200) {
+							cal = fee * 98.9;
+						} else if (fee > 300) {
+							cal = fee * 147.3;
+						} else if (fee > 400) {
+							cal = fee * 215.6;
+						} else if (fee > 500) {
+							cal = fee * 325.7;
+						} else if (fee > 600) {
+							cal = fee * 574.6;
+						}
+
+					} else {
+						cal = fee * 635.73;
+						if (fee > 12) {
+							cal = ((fee - 12) * 700.32) + (12 * 635.73);
 						}
 					}
-					cal +="원";
+					cal += "원";
 					$('#calu').removeClass();
 					$('#feee').val(cal);
-					}else{
-						alert(fee)
-						alert('관리비를 잘못입력했습니다 전달보다 많아야 지금쓴 사용량을 계산 가능해요')
-						alert('전달에'+passfee+"만큼 사용하셨어요")
-					}
-				});
-				
+				} else {
+					alert(fee)
+					alert('관리비를 잘못입력했습니다 전달보다 많아야 지금쓴 사용량을 계산 가능해요')
+					alert('전달에' + passfee + "만큼 사용하셨어요")
+				}
 			});
-			
-			
-			</script>
+
+		});
+	</script>
 </body>
 </html>

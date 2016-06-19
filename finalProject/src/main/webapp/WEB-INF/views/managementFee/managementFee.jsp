@@ -10,9 +10,14 @@
 	<div class="header">
 		 <jsp:include page="../include/head.jsp"></jsp:include> 
 	</div>
-	<div class="main">
+	<div class="main" id="page">
+				<jsp:include page="../include/mypagehead.jsp"></jsp:include>
 		<jsp:include page="managementFeeInsert.jsp"></jsp:include>
 	</div>
+			
+
+		
+	
 	<div class="footer"></div>
 </body>
 </html>

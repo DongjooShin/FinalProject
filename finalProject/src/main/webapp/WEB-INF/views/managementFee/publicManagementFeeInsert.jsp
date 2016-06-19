@@ -23,6 +23,11 @@
 	<div class="header">
 		<jsp:include page="../include/head.jsp"></jsp:include>
 	</div>
+				<div class="col-md-12" id="page">
+			
+				<jsp:include page="../include/mypagehead.jsp"></jsp:include>
+
+		
 	<div id="page-wrapper">
 
 		<div class="container-fluid">
@@ -188,6 +193,7 @@
 	<!-- /#page-wrapper -->
 
 	</div>
+		</div>
 	<!-- /#wrapper -->
 
 	<!-- jQuery Version 1.11.0 -->
