@@ -36,7 +36,7 @@
    </insert> 
    
    
-   <insert id="insertAPTsale" parameterType="Property">
+   <insert id="insertAPTsale" parameterType="kosta.apt.domain.Property.Property">
       
      insert into Property(
         pr_group,pr_APTName,pr_addr,pr_price,pr_deposit,pr_level,pr_totalLevel,pr_doorStruct,

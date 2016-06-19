@@ -1,6 +1,7 @@
 package kosta.apt.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import kosta.apt.domain.Survey.Survey;
 import kosta.apt.domain.Survey.SurveyDB;
@@ -16,7 +17,7 @@ public interface SurveyMapper {
 
 	public int insertSurvey(Survey survey);
 
-	public List<SurveyDB> surveystart(int date22);
+	public List<SurveyDB> surveystart(Map<String, Integer> map);
 
 	public List<Survey> surveyList(int groupNum);
 

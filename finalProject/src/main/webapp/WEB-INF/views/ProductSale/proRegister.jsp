@@ -51,12 +51,31 @@
 
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 
- 
+ <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+<!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
+
+<script src="../../../resources/js/Min/jquery.ui.widget.js"></script>
+
+<!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
+
+<script src="/resources/js/Min/jquery.iframe-transport.js""></script>
+
+<!-- The basic File Upload plugin -->
+
+<script src="/resources/js/Min/jquery.fileupload.js"></script>
+
+
 </head>
 <body>
 
+<script>
 
-<script type="text/javascript">
+</script>
+
+
+
+<!-- <script type="text/javascript">
 
 $(document).ready(function(){
 	
@@ -65,9 +84,11 @@ $(document).ready(function(){
 	
 		var a = this.value;
 		var b = this.id;
+
 		alert(a+"입니다.");
 		alert(b+"입니다.");
 		alert("변경된그림");
+
 		
 		var photo =  document.getElementById(b);
 		alert(photo);
@@ -122,7 +143,7 @@ function Postcost2(value){
 }
 
 
-</script>
+</script> -->
 
 
 	<div class="header">
@@ -185,15 +206,11 @@ function Postcost2(value){
 							<div class="form-group">
 									<label class="col-lg-3 control-label">분류</label>
 									<div class="col-lg-7">
-									<select class="form-control" name="pro_group" id="select">
-										<option>식품</option>
-										<option>뷰티</option>
-										<option>패션/의류</option>
-										<option>생활/주방용품</option>
-										<option>가구/디지털</option>
-										<option>완구/도서</option>
-										<option>스포츠/레저상품</option>
-									</select>
+								
+										${product.pro_group}
+									
+										<input type="hidden" name="pro_group" value="${product.pro_group}">
+									
 									</div>
 							</div>
 							
@@ -281,14 +298,14 @@ function Postcost2(value){
 									<label class="col-lg-3 control-label">배송방법&배송비</label>
 									<div class="col-lg-7">
 										
-									시작일<select class="form-control" name="pro_sdate1" id="select" style="width: 90px;">
+									시작일<select class="form-control" name="pro_sdate1" id="select" style="width: 90px; float: left;">
 										
 									
-									
+										<div>
 											<option>2016</option>
 											</select>년
 											
-											<select class="form-control" name="pro_sdate2" id="select" style="width: 70px;">
+											<select class="form-control" name="pro_sdate2" id="select" style="width: 70px; float: left;">
 											<c:forEach begin="1" end="9" var="list">
 											<option>0${list}</option>
 											</c:forEach>
@@ -298,7 +315,7 @@ function Postcost2(value){
 											</select>월
 											
 											
-											<select class="form-control" name="pro_sdate3" id="select" style="width: 70px;">
+											<select class="form-control" name="pro_sdate3" id="select" style="width: 70px; float: left;">
 											<c:forEach begin="1" end="9" var="list">
 											<option>0${list}</option>
 											</c:forEach>
@@ -311,11 +328,12 @@ function Postcost2(value){
 										 &nbsp;&nbsp;&nbsp;&nbsp;
 										
 									
-										종료일 <select class="form-control" name="pro_edate1" id="select" style="width: 90px;">
+										종료일 <select class="form-control" name="pro_edate1" id="select" style="width: 90px; float: left;">
 											<option>2016</option>
-											</select>년
 											
-											<select class="form-control" name="pro_edate2" id="select" style="width: 70px;">
+											</select>
+											년
+											<select class="form-control" name="pro_edate2" id="select" style="width: 70px; float: left;">
 											<c:forEach begin="1" end="9" var="list">
 											<option>0${list}</option>
 											</c:forEach>
@@ -324,7 +342,7 @@ function Postcost2(value){
 											<option>12</option>
 											</select>월
 											
-											<select class="form-control" name="pro_edate3" id="select" style="width: 70px;">
+											<select class="form-control" name="pro_edate3" id="select" style="width: 70px; float: left;">
 											
 											<c:forEach begin="1" end="9" var="list">
 											<option>0${list}</option>
@@ -333,7 +351,7 @@ function Postcost2(value){
 											<option>${list}</option>
 											</c:forEach>
 											</select>일
-											
+											</div>
 									</div>
 							</div>
 							
@@ -392,5 +410,7 @@ function Postcost2(value){
 			
 		</div>
 	</div>
+	
+	
 </body>
 </html>

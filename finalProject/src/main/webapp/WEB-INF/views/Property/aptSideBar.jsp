@@ -47,10 +47,11 @@
 
 		<div id="secondary" style="background-color: white;">
 			<aside id="archives" class="widget">
-			<h3 class="widget-title">Archives</h3>
+			
 			<ul>
+				<h3 class="widget-title">부동산</h3>
 				<li><a href='/Property/aptSaleList'>부동산매물 정보</a></li>
-				<li><a href='/aptSale/Property'>부동산매물 등록</a></li>
+				<li><a href='/Property/aptSale'>부동산매물 등록</a></li>
 
 			</ul>
 			</aside>

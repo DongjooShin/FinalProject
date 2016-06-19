@@ -100,11 +100,11 @@
 											href="http://demo.themegrill.com/spacious/layout/no-sidebar-full-width/">투표</a></li>
 										<li id="menu-item-107"
 											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-107"><a
-											href="/PublicManageFee">중고거래</a></li>
+											href="/ProductSale/proApplicationList">중고거래</a></li>
 
 										<li id="menu-item-108"
 											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-107"><a
-											href="/PublicManageFee">설문조사</a></li>
+											href="/Survey/surveyRegistdeliver">설문조사</a></li>
 										<li id="menu-item-109"
 											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-107"><a
 											href="/PublicManageFee">공지사항</a></li>
@@ -142,11 +142,11 @@
 											href="main.jsp?body=aptNewsMain.jsp">CCTV정보</a></li>
 										<li id="menu-item-107"
 											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-107"><a
-											href="/controller/aptSale">아파트매물등록</a></li>
+											href="/Property/aptSale">아파트매물등록</a></li>
 
 										<li id="menu-item-107"
 											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-107"><a
-											href="aptSaleList.jsp">아파트매물보기</a></li>
+											href="/Property/aptSaleList">아파트매물보기</a></li>
 									</ul></li>
 
 								<li id="menu-item-254"

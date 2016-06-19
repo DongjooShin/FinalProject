@@ -14,49 +14,43 @@
 
 
 $(document).ready(function(){
-	
 	$('#select123').on('change',function(){
-	//	alert(this.value);
+		alert(this.value);
 		var a = this.value;
-	//	alert(a+"입니다.");
-		
-		$.ajax({
-		
-			url: '/Survey/surveyResult?dateNum='+this.value,
+		 $.ajax({
+			url: '/Survey/surveyResult',
 			dataType:'json',
+			data : {
+				'dateNum' : this.value
+			},
 			type: 'post',
 			success: function(data){
-			//	alert("뭐지");
-				var i = 1;
-			 $('#resultInfo').html("");
+					var i = 1;
+			  $('#resultInfo').html("");
 
 				$.each(data, function(index, sendMessage){
 					
 					 var ab = "'#main"+i+"'";
-					// alert(ab);
-					var cc = Math.round(sendMessage.avgSum); //반올림해서 뭐 색칠하던지요
-					
+					 alert(ab);
+					var cc = Math.round(sendMessage.avgSum); 												//반올림해서 뭐 색칠하던지요
 					  $('#resultInfo').append("<div class='resultSurvey'>&nbsp;&nbsp;&nbsp;제목 :"+sendMessage.su_title+"&nbsp;&nbsp;&nbsp;시작일 :"+sendMessage.su_startdate+"&nbsp;&nbsp;&nbsp;종료일 :"+sendMessage.su_enddate+"<br>"+
 							  "&nbsp;&nbsp;&nbsp;투표수 :"+sendMessage.totalCount +"명&nbsp;&nbsp;&nbsp;투표율 :"+sendMessage.totalCount+"/그룹아파트총인원수%" +"&nbsp;&nbsp;&nbsp평점 :"+sendMessage.avgSum+"/10 </div>");
-				
-				//	  $('#resultInfo').append("&nbsp;&nbsp;&nbsp;투표수 :"+sendMessage.totalCount +"명&nbsp;&nbsp;&nbsp;투표율 :"+sendMessage.totalCount+"/그룹아파트총인원수%" +"&nbsp;&nbsp;&nbsp평점 :"+sendMessage.avgSum+"/10 </div>");
 					  $('#resultInfo').append('<div id="mainBar" class="main'+i+'"><div id="realbar" class="red'+i+'" style= width:'+sendMessage.avgSum*10 +'%;></div></div>');
-				//	  $('#resultInfo').append('<div id="detail'+i+'"><a href="javascript:detailclick('+sendMessage.su_group+','+i+')" > 상세보기</a></div>');
-				
+			
 					  $('#resultInfo').append('<div id="detail'+i+'"><div id="resultContext'+i+'" class="resultContext"></div><div id="resultGrape'+i+'" class="resultGrape"></div></div> <div id="buttonSwitch'+i+'"><input type="button" onclick="detailclick('+sendMessage.su_group+','+i+')" value="상세보기"></div>');
 					  $('#resultInfo').append('<div id="detailbut'+i+'"><div>');
 					  
-					  $('#resultGrape'+i).hide();//테두리 색깔보여서
+					  $('#resultGrape'+i).hide();																	//테두리 색깔보여서
 					  i++;
-				});
+				}); 
 				
-				
+			
 			}
 			
 			
-		})
+		})  
 		
-		
+	 
 		
 	});
 	
@@ -288,11 +282,27 @@ function deleteSurvey(divnum){
 </head>
 
 <body>
-	<div class="header">
-				 <jsp:include page="../include/head.jsp"></jsp:include>  
-	</div>
-	삐용
-	<div class="sutitle" id="sutitle">
+
+
+
+
+
+	 <jsp:include page="../include/head.jsp"></jsp:include> 
+
+	
+	
+		<div class="row">
+			
+			
+		<div class="col-md-3" style="padding-left: 60px;">
+		
+			 <jsp:include page="SurveySideBar.jsp"></jsp:include> 
+		</div>
+		
+		<div class="col-md-9" style="margin-top: 50px;">
+
+
+<div class="sutitle" id="sutitle">
 	<select class="form-control" name="su_title" id="select123" >
 	
 	<c:forEach begin="1" end="12" var="list">
@@ -311,7 +321,17 @@ function deleteSurvey(divnum){
 
 	<div id="resultInfo" class="resultInfo"></div>
 	
-
+		
+		<div class="container mainpage1" id="main" style="padding-right: 220px;">
+	
+	</div>
+	</div>
+	</div>
+	
+	
+	
+	
+<!-- 
  <div class="progress">
   <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40"
   aria-valuemin="0" aria-valuemax="100" style="width:40%">
@@ -338,7 +358,7 @@ function deleteSurvey(divnum){
   aria-valuemin="0" aria-valuemax="100" style="width:70%">
     70% Complete (danger)
   </div>
-</div>
+</div> -->
 
 
 	

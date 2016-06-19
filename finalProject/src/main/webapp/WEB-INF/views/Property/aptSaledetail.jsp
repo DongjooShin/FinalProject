@@ -98,6 +98,10 @@ function aaa(id2){
 <title>Insert title here</title>
 </head>
 <body>
+  <div class="modal fade" id="Modal" role="dialog">
+
+   
+    
     <section id="plans">
         <div class="container">
             <div class="row">
@@ -171,6 +175,7 @@ function aaa(id2){
             </div>
         </div>
     </section>
-
+ </div>
+    
 </body>
 </html>

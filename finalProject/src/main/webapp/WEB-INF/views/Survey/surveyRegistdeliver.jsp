@@ -118,15 +118,14 @@ width: 100%;
 ${survey.su_surveyNo }. ${survey.su_context }
 
 <div class="btn-group pull-right">
-<button class="delete btn btn-warning">삭제</button>
 </div>
 </div>
 <div class="radiobox">
-<input type="radio" value="1" name="check${survey.su_surveyNo }">
+<input type="radio" value="5" name="check${survey.su_surveyNo }">
 매우좋음
 </div>
 <div class="radiobox">
-<input type="radio" value="2" name="check${survey.su_surveyNo }">
+<input type="radio" value="4" name="check${survey.su_surveyNo }">
 좋음
 </div>
 <div class="radiobox">
@@ -134,11 +133,11 @@ ${survey.su_surveyNo }. ${survey.su_context }
 보통
 </div>
 <div class="radiobox">
-<input type="radio" value="4" name="check${survey.su_surveyNo }">
+<input type="radio" value="2" name="check${survey.su_surveyNo }">
 나쁨
 </div>
 <div class="radiobox">
-<input type="radio" value="5" name="check${survey.su_surveyNo }">
+<input type="radio" value="1" name="check${survey.su_surveyNo }">
 매우나쁨
 </div>
 </li>

@@ -44,12 +44,14 @@ function detailMsg(id2){
 </script>
 
 
+
+
 <!-- Main content -->
 <section class="content">
 	<div class="row">
 		<!-- left column -->
 		<div class="col-md-12">
-			<!-- general form elements -->
+			<!-- general form elements -->	
 
 			<div class="box">
 				<div class="box-header with-border">
@@ -65,7 +67,7 @@ function detailMsg(id2){
 		<th>날짜</th>
 		<th style="width: 100px">확인유무</th>
 		
-<form action="delectMsg" method="post">
+<form action="delectMsg" method="post" >
 		<th><input type="submit" value="삭제하기"></th>
 		<th><input type="hidden" name="readPage" value="1"></th>
 	</tr>

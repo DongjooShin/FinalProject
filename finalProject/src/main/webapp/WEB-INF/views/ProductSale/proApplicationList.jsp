@@ -28,6 +28,24 @@
 }
 </style>
 </head>
+<script type="text/javascript">
+
+function detailProduct(pro_no){
+
+	alert(pro_no+"입니다.");
+	url = "/ProductSale/proRegister?pro_no="+pro_no;
+	
+	
+	open(    
+			url,
+			"confirm",
+			"toolbar=no, status=no, menubar=no, location=no, scrollbars=yes, resizable=no, width=1000, height=900");
+
+}
+
+
+
+</script>
 <body>
 
 
@@ -41,13 +59,14 @@
 				<div class="col-lg-3"
 					style="margin-right: 0; margin-left: 26px; margin-top: 17px;">
 			 		<div class="loginSidebar">
-						<jsp:include page="proSideBar.jsp"></jsp:include>
+						<jsp:include page="ProductSideBar.jsp"></jsp:include>
 					</div>
  
 				</div>
 				<div class="col-lg-8"
 					style="padding-left: 0; padding-right: -15px; margin-top: 17px;">
 					<div class="well bs-component">
+					
 						<form class="form-horizontal" action="MemberOk.jsp" method="post"
 							name="userInput" onsubmit="return checkIt()">
 
@@ -74,7 +93,7 @@
 				<td align="center">${product.pro_no }</td>
 				<td align="center">${product.pro_group }</td>
 				<td align="center">${product.pro_name }</td>
-				<td align="center"><a href="/Property/aptSaledetail?pro_no=${product.pro_no }">내용보기</a></td>
+				<td align="center"><a onclick="detailProduct(${product.pro_no })">등록하기</a></td>
 				<td align="center">${product.pro_date }</td> 
 				<td align="center">${product.pro_flag }</td>
 				</tr>

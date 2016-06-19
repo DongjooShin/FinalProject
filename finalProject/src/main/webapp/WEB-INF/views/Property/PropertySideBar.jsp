@@ -24,19 +24,12 @@
 			<aside id="archives" class="widget">
 			<h3 class="widget-title">메세지함</h3>
 			<ul>
-				<li><a href='http://demo.themegrill.com/spacious/2014/03/'>부동산매물정보
+				<li><a href='/Property/aptSaleList'>부동산매물정보
 				</a></li>
-				<li><a href='http://demo.themegrill.com/spacious/2014/02/'>부동산매물등록
+				<li><a href='/Property/aptSale'>부동산매물등록
 				</a></li>
 
-				<li><a href='http://demo.themegrill.com/spacious/2014/03/'>메세지보관함
-				</a></li>
-				<li><a href='http://demo.themegrill.com/spacious/2014/02/'>February
-						2014</a></li>
-				<li><a href='http://demo.themegrill.com/spacious/2014/03/'>March
-						2014</a></li>
-				<li><a href='http://demo.themegrill.com/spacious/2014/02/'>February
-						2014</a></li>
+		
 			</ul>
 			</aside>
 		</div>

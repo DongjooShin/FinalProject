@@ -12,17 +12,17 @@ import org.springframework.stereotype.Service;
 import kosta.apt.domain.Message.Message;
 import kosta.apt.domain.Message.MessageCriteria;
 import kosta.apt.domain.Paging.Criteria;
-import kosta.apt.persistence.MessageBDao;
+import kosta.apt.persistence.MessageDao;
 
 @Service
 public class MessageService {
 	
 	@Inject
-	private MessageBDao msgDao;
+	private MessageDao msgDao;
 	
 	
 	@Autowired
-	public void setMsgDao(MessageBDao msgDao) {
+	public void setMsgDao(MessageDao msgDao) {
 		this.msgDao = msgDao;
 	}
 
@@ -77,6 +77,18 @@ public class MessageService {
 	public void updateState(int msgno) {
 		
 		msgDao.updateState(msgno);
+		
+	}
+
+	public String selectMg_to(String mg_to) {
+		
+		String abc = "";
+		abc = msgDao.selectMg_toO(mg_to);
+		if(abc ==null){
+			abc  = "";
+		}
+		
+		return abc;
 		
 	}
 	

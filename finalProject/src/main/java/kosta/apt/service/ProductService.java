@@ -55,7 +55,7 @@ public class ProductService {
 
 
 
-	public List<Product> selectApplyList(Criteria cri, int m_memberNo) {
+	public List<Product> selectApplyList(Criteria cri, String m_memberNo) {
 	
 		return productDao.selectApplyList(cri, m_memberNo);
 	}
@@ -214,7 +214,7 @@ public class ProductService {
 
 
 
-	public int selectProduct(int pro_no) {
+	public Product selectProduct(int pro_no) {
 		
 		return productDao.selectProduct(pro_no);
 	}
