@@ -1,5 +1,7 @@
 $(function() {
 	/* $("#mngtable").; */
+	
+	$('')
 
 	//alert($(".form-control option:selected").val());
 	var areaChartCanvas = $("#waterChart").get(0).getContext("2d");
@@ -54,19 +56,17 @@ $(function() {
 			var gasFeeAvg      = json[14].mf_gasFeeAvg;
 			var electricFeeAvg = json[14].mf_electricFeeAvg;
 		
-			alert(waterFeeAvg);
-			
 			afterThisPayAmount = thisPayAmount[6]*1.05;
 			//alert(thisPayAmount);
 			subdate = date1[6].substr(4,2);
-			alert(subdate);
+			//alert(subdadte);
 			
 			
 			var html = '<div>'+subdate+'월의 납부금액은 '+thisPayAmount[6]+' 원 입니다.';
 //			var html = '<div>월의 납부금액은'+thisPayAmount+'원 입니다.';
 			$('#mntEx').append(html);
 			
-			html = subdate+'월 우리집 관리비';
+			html = subdate+'월 우리집 관리비 ';
 			$('.box-title2').append(html);
 			
 			html = waterList[6]+'원';
@@ -231,6 +231,10 @@ $(function() {
 			alert('실패');
 		}
 	});
+	
+	function clickBox(){
+		
+	}
 	
 
 });

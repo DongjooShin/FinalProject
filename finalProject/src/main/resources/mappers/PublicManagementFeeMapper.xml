@@ -21,13 +21,14 @@
 		)
 	</insert>
 	
-	<select id="selectPublicManagementFee" parameterType="int" resultType="int">
+	<select id="selectPublicManagementFee" parameterType="java.util.HashMap" resultType="int">
 			select (PM_CLEAN+PM_GENERAL+PM_MAINTAIN+PM_LIFTMAINTAIN+PM_SECURITY+PM_FOODWASTE+PM_FIREINSURANCE+PM_COMMISSION+PM_MEETING+PM_PUBLICELECTRIC+PM_LIFTELECTRIC+PM_TVFEE+PM_DISINFECTION) as sumpublicfee  
 			from (select * from publicmanagementfee 
-					where apt_aptgno = #{param1}
+					where apt_aptgno = #{param1.apt_APTGno}
+					and <![CDATA[ pm_publicfeeno <= #{param2.mf_date} ]]>
 					order by pm_publicfeeno DESC)
-				where<![CDATA[ ROWNUM <= 7 ]]>	
-				order by pm_publicfeeno ASC		
+				where <![CDATA[ ROWNUM <= 7 ]]>
+				order by pm_publicfeeno ASC	
 	</select>
 	
 	<select id="select2MonthPublicManagementFee" parameterType="java.util.HashMap" resultType="PublicManagementFee">

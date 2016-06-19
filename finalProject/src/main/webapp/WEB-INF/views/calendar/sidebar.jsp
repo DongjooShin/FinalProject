@@ -83,7 +83,10 @@
 </script>
 </head>
 <body>
-   <div class="container" id="page" style="min-height: 500px;">
+   <div class="header">
+		<jsp:include page="../include/head.jsp"></jsp:include>
+	</div>
+   <div class="container" id="page">
    
       <div class="col-md-3">
          
@@ -107,11 +110,11 @@
                </ul>
                </aside>
             </div>
-
+            <div id="primary" style="height: 1000px; "></div>
          
       </div>
 
-      <div class="col-md-8" style="margin-bottom: 100px;">
+      <div class="col-md-8">
          <!-- 일정추가모달 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
          <br>
 
@@ -172,7 +175,7 @@
 
                            <div class="modal-footer">
                               <button type="submit" id="success" class="btn btn-default"
-                                 value="성공"></button>
+                                 value="성공">
                                  성공
                                  <button type="button" class="btn btn-default"
                                     data-dismiss="modal">닫기</button>

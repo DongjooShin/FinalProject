@@ -24,14 +24,14 @@ public interface VoterMapper {
 	public int selectGroupGPNum(int aptno);
 	public void updateAllVflag(HashMap<String, Integer> map);
 	public String getMemberName(String id);
-	public int updateHit(int hit);
-	public int maxVoterNo();
+	public int updateHit(String id);
+	public Integer maxVoterNo();
 	public int insertVoter(Voter v);
 	public Voter selectExistVoter(HashMap<String, Integer> map);
 	public List<Member> selectBuildingPresi(int aptgno);
 	public void levelDownBuildingPresi(int aptgno);
 	public Integer searchBSymbolService(HashMap<String, Integer> map);	
-	
+	public void updateGP(int aptgno);
 	
 	/*
 	public Member selectBuildingPresi(HashMap<String, Integer> hm);

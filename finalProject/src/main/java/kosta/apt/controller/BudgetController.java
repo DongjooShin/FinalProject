@@ -96,10 +96,9 @@ public class BudgetController {
 			int i = 1;
 			row = sheet.getRow(i); // row 가져오기
 			if (row != null) {
-				// && !"".equals(row.getCell(0).getStringCellValue())) {
-				
 				cell = row.getCell(0);
 				b_clean = cell + "";
+
 				cell = row.getCell(1);
 				b_general = cell + "";
 				cell = row.getCell(2);

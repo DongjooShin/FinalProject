@@ -23,9 +23,9 @@
 			<aside id="archives" class="widget">
 			<h3 class="widget-title">아파트이름</h3>
 			<ul>
-				<li>현재 우리 아파트 시세가</li>
+				
 				<li><a href=''>공지사항</a></li>
-				<li><a href=''>아파트규약</a></li>
+				
 				<li><a href=''>캘린더</a></li>
 				<li><a href=''>상가정보</a></li>
 				<li><a href=''>주변시설/CCTV</a></li>

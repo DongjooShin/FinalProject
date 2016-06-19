@@ -33,8 +33,8 @@ public class PublicManagementFeeDao {
 		return sqlSession.getMapper(PublicManagementFeeMapper.class).select2MonthPublicManagementFee(map1, map2);
 	}
 
-	public List selectPublicManagementFee(int apt_APTGno) {
-		return sqlSession.getMapper(PublicManagementFeeMapper.class).selectPublicManagementFee(apt_APTGno);
+	public List selectPublicManagementFee(Map<String, Integer> map1, Map<String, String> map2) {
+		return sqlSession.getMapper(PublicManagementFeeMapper.class).selectPublicManagementFee(map1, map2);
 	}
 
 	public List<PublicManagementFee> selectMonthPublicManagementFee(int apt_APTGNo) {

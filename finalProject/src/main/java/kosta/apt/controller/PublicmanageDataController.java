@@ -1,7 +1,10 @@
 package kosta.apt.controller;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.Locale;
 
 import javax.servlet.http.HttpSession;
 
@@ -51,7 +54,6 @@ public class PublicmanageDataController {
 		return list2;
 	}
 	
-	
 	//도시별 관리비
 	@RequestMapping("/CityGraph")
 	public List<Graph> getCityGraph(HttpSession session){
@@ -87,8 +89,6 @@ public class PublicmanageDataController {
 		}
 		return list3;
 	}
-	
-	
 	
 	//달별 공동관리비
 	@RequestMapping("/monthManageFee")
@@ -127,9 +127,20 @@ public class PublicmanageDataController {
 		String m_memberNo = member.getM_memberNo();
 		int apt_APTGNo = member.getApt_APTGNo();
 		
-		List list  = mntFeeService.selectManagementFee(m_memberNo);
-		List list2 = publicMntFeeService.selectPublicManagementFee(apt_APTGNo);
-		List list3 = mntFeeService.selectManagementFeeAvg(m_memberNo);
+		Calendar calendar = new GregorianCalendar(Locale.KOREA);
+		String mf_date= "";
+		mf_date += calendar.get(Calendar.YEAR);
+		int   month = calendar.get(Calendar.MONTH);
+		month++;
+		if(month<10){
+			mf_date +="0"+month;
+		}else{
+			mf_date += month;
+		}
+       
+		List list  = mntFeeService.selectManagementFee(m_memberNo, mf_date);
+		List list2 = publicMntFeeService.selectPublicManagementFee(apt_APTGNo, mf_date);
+		List list3 = mntFeeService.selectManagementFeeAvg(m_memberNo,mf_date);
 		//System.out.println("테스트"+list2.toString());
 		//System.out.println(list.toString());
 		System.out.println(list3.toString());
@@ -156,10 +167,35 @@ public class PublicmanageDataController {
 		
 		//두번째 라파미터는 아파트 그룹임
 		List list2 = publicMntFeeService.select2MonthPublicManagementFee(mf_date, apt_APTGNo);
-		System.out.println(list.toString()+"나와ㅅㅂ;;;;;");
-		System.out.println(list2.toString()+"나와라;;;;;");
+		System.out.println(list.toString());
+		System.out.println(list2.toString());
 		for(int i=0;i<list2.size();i++){
 			list.add(list2.get(i));
+		}
+		return list;
+	}
+	
+	
+	@RequestMapping("/ManagementFeeChangeJSONList{date}")
+	public List getJsonManagement2(HttpSession session, @PathVariable("date") String mf_date){
+		System.out.println("ajax요청");
+		
+		Member member = (Member) session.getAttribute("member");
+		String m_memberNo = member.getM_memberNo();
+		int apt_APTGNo = member.getApt_APTGNo();
+		
+		List list  = mntFeeService.selectManagementFee(m_memberNo, mf_date);
+		List list2 = publicMntFeeService.selectPublicManagementFee(apt_APTGNo, mf_date);
+		List list3 = mntFeeService.selectManagementFeeAvg(m_memberNo, mf_date);
+		
+		//System.out.println("테스트"+list2.toString());
+		//System.out.println(list.toString());
+		System.out.println(list3.toString());
+		for(int i=0;i<list2.size();i++){
+			list.add(list2.get(i));
+		}
+		for(int i=0;i<list3.size();i++){
+			list.add(list3.get(i));
 		}
 		return list;
 	}
