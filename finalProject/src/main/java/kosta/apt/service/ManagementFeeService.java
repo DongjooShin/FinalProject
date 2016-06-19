@@ -29,8 +29,8 @@ public class ManagementFeeService {
 		dao.managementFeeInsert(map1, map2);
 	}
 
-	public List<ManagementFee> selectManagementFee(String m_memberNo) {
-		return dao.selectManagementFee(m_memberNo);
+	public List<ManagementFee> selectManagementFee(String m_memberNo, String mf_date) {
+		return dao.selectManagementFee(m_memberNo, mf_date);
 	}
 
 
@@ -38,8 +38,8 @@ public class ManagementFeeService {
 		return dao.select2MonthManagementFee(mf_date, m_memberNo);
 	}
 
-	public List selectManagementFeeAvg(String m_memberNo) {
-		return dao.selectManagementFeeAvg(m_memberNo);
+	public List selectManagementFeeAvg(String m_memberNo, String mf_date) {
+		return dao.selectManagementFeeAvg(m_memberNo, mf_date);
 	}
 
 	public List<ManagementFee> selectMonthManagementFee(String m_memberNo) {

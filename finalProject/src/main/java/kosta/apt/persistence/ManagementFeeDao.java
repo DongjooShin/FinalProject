@@ -35,8 +35,8 @@ public class ManagementFeeDao {
 		sqlSession.getMapper(ManagementFeeMapper.class).managementFeeInsert(map1, map2);
 	}
 
-	public List<ManagementFee> selectManagementFee(String m_memberNo) {
-		return sqlSession.getMapper(ManagementFeeMapper.class).selectManagementFee(m_memberNo);
+	public List<ManagementFee> selectManagementFee(String m_memberNo, String mf_date) {
+		return sqlSession.getMapper(ManagementFeeMapper.class).selectManagementFee(m_memberNo, mf_date);
 	}
 
 	public List<ManagementFee> select2MonthManagementFee(String mf_date, String m_memberNo) {
@@ -46,8 +46,8 @@ public class ManagementFeeDao {
 		return sqlSession.getMapper(ManagementFeeMapper.class).select2MonthManagementFee(mf_date, lastMf_date, m_memberNo);
 	}
 
-	public List selectManagementFeeAvg(String m_memberNo) {
-		return sqlSession.getMapper(ManagementFeeMapper.class).selectManagementFeeAvg(m_memberNo);
+	public List selectManagementFeeAvg(String m_memberNo, String mf_date) {
+		return sqlSession.getMapper(ManagementFeeMapper.class).selectManagementFeeAvg(m_memberNo, mf_date);
 	}
 
 	public List<ManagementFee> selectMonthManagementFee(String m_memberNo) {

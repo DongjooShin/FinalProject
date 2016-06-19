@@ -131,5 +131,11 @@ public class ManagementFeeController {
 
 		return "/mypage/managementFeePay";
 	}
+	
+	@RequestMapping("/paySequence1")
+	public String paySequence1(){
+		return "/pay/paySequence1";
+	}
+	
 
 }

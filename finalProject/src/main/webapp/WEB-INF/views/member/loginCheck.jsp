@@ -68,7 +68,7 @@ function check(){
 
 	</div>
 	<div id="page"
-		style="background: white; display: inline-block; padding-bottom: 50px; margin-left: 7.9%;">
+		style="display: inline-block; padding-bottom: 50px;">
 		<div class="col-md-12">
 			<div class="col-lg-3"
 				style="margin-right: 0; margin-left: 26px; margin-top: 17px; ">
