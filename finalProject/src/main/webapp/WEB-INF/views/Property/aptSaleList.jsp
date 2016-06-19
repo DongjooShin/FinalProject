@@ -33,6 +33,10 @@
 
 		 <jsp:include page="../include/head.jsp"></jsp:include> 
 
+
+	<div id="page" class="hfeed site"
+		style="height: 950px; border-top: 2px solid;">
+		
 	<div class="main">
 
 	
@@ -148,13 +152,6 @@
 
 			</div>
 		</div>
-		<!-----start-copyright---->
-		<div class="copy-right">
-			<p>
-				Template by <a href="http://w3layouts.com">w3layouts</a>
-			</p>
-		</div>
-
 
 
 
@@ -183,7 +180,7 @@
     </div>
   </div>
   
-
+</div>
 
 </body>
 </html>

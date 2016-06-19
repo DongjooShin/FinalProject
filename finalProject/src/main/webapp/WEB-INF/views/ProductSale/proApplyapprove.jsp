@@ -16,6 +16,16 @@
 	media='all' />
 <link rel='stylesheet' href='../css/basic2.css' type='text/css'
 	media='all' />
+	<link rel='stylesheet' id='spacious-genericons-css'
+	href='/resources/bootstrap/bootstrap.min.css' type='text/css' media='all' />
+<link rel='stylesheet' id='spacious-genericons-css'
+	href='/resources/dist/css/mainFont.css' type='text/css' media='all' />
+<link rel='stylesheet' id='google_fonts-css'
+	href='//fonts.googleapis.com/css?family=Lato&#038;ver=e7d1598c32c9180e5e08e97723f82bcd'
+	type='text/css' media='all' />
+<link rel='stylesheet' id='spacious_style-css' href='/resources/dist/css/main1.css'
+	type='text/css' media='all' />
+	
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="https://code.jquery.com/jquery.js"></script>
 <script src="js/dong/bootstrap.min.js"></script>
@@ -76,9 +86,9 @@ self.close();
 			<div class="row">
 				<div class="col-lg-3"
 					style="margin-right: 0; margin-left: 26px; margin-top: 17px;">
-			 		<div class="loginSidebar">
-						<jsp:include page="proSideBar.jsp"></jsp:include>
-					</div>
+			 	<%-- 	<div class="loginSidebar">
+					<jsp:include page="ProductSideBar.jsp"></jsp:include>
+					</div> --%>
  
 				</div>
 				<div class="col-lg-8"
@@ -121,7 +131,7 @@ self.close();
 
 	
 	
-	<div class="buttonInfo">
+	<div class="buttonInfo" style="margin-left: 40%;">
 		
 	<input type="hidden" name="pro_no" value="${product.pro_no }">
 	

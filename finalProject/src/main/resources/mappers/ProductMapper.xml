@@ -16,6 +16,11 @@
 		select max(pro_no) from productApply 
 	
 	</select>
+	
+	
+	
+
+	
 
 
 	<!-- 공구신청등록 -->
@@ -41,7 +46,7 @@
 	
 	<!-- 로그인한아이디 공구신청 목록 -->
 	
-	<select id="selectApplyList" resultType="kosta.apt.domain.Product.Product">
+	<select id="selectApplyList" resultType="kosta.apt.domain.Product.Product" parameterType="String">
 	
 		select * from productApply where m_memberNo = #{m_memberNo}
 	
@@ -287,9 +292,9 @@
    
    <!--product디테일부분-->
    
-    <select id="selectProduct" resultType="Integer">
+    <select id="selectProduct" parameterType="Integer" resultType="kosta.apt.domain.Product.Product">
 	
-		select pro_num from Product where pro_no =#{pro_no}
+		select * from Product where pro_no =#{pro_no}
 	
 	</select>
 	

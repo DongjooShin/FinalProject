@@ -14,7 +14,7 @@ public class PropertyImageUtil {
     
     public static final int SAME = -1;
     public static final int RATIO = 0;
-    
+   
     public static void resize(File src, File dest,	//사이즈에 맞게 resize 해준다. 
                               int width, int height) throws IOException {
         FileInputStream srcIs = null;
@@ -64,6 +64,8 @@ public class PropertyImageUtil {
         
         ImageIO.write(destImg, "jpg", dest);
     }
+    
+    
 }
 
 

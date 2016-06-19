@@ -83,7 +83,7 @@ function aaa(id2){
 	
 	
 	
-	url = "/aptMessage?m_memberNo="+id2.m_memberNo.value+"&&id="+id2.id.value;
+	url = "/mypage/aptMessage?m_memberNo="+id2.m_memberNo.value+"&&id="+id2.id.value;
 	//alert(url);
 	
 	open(
@@ -98,6 +98,10 @@ function aaa(id2){
 <title>Insert title here</title>
 </head>
 <body>
+  <div class="modal fade" id="Modal" role="dialog">
+
+   
+    
     <section id="plans">
         <div class="container">
             <div class="row">
@@ -171,6 +175,7 @@ function aaa(id2){
             </div>
         </div>
     </section>
-
+ </div>
+    
 </body>
 </html>

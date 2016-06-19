@@ -104,7 +104,7 @@ function reloadpage(){ //클릭시 리스트 다시호출시켜야되.
 	var pro_no = $(".pro_no").val();
 	
 	
-	$.ajax({  //여기가 켜지자마사 댓글목록을 불러와줘
+	$.ajax({ 																							 //여기가 켜지자마사 댓글목록을 불러와줘
 	
 		url : '/ProductSale/Replylist',
 		type :'post',
@@ -114,15 +114,16 @@ function reloadpage(){ //클릭시 리스트 다시호출시켜야되.
 		dataType : 'json',
 		success : function(data){
 			$('.replydiv').empty();
-			//alert("목록부르기성공");
+																										//alert("목록부르기성공");
 			$.each(data, function(index, product){
 				
 				
 			
 			var html2 = '<div class="bb">';
-				html2 += '<button class="deleteReply" onclick="deleteReply('+product.re_no+","+ product.pro_no+')" >삭제하기</button>';
-				html2 +='<div>목록 번호:'+product.re_no+'작성자 :'+product.m_memberno+'날짜 : '+product.re_date +'</div>';
+				html2 += '<div>';
+				html2 +='목록 번호:'+product.re_no+'작성자 :'+product.m_memberno+'날짜 : '+product.re_date +'';
 				html2 +='<div>글 내용:'+product.re_text+'</div>';
+				html2 +='<button class="deleteReply" onclick="deleteReply('+product.re_no+","+ product.pro_no+')" >삭제하기</button></div>';
 				html2 += '</div>';
 				$('#replydiv').append(html2);
 			
@@ -185,6 +186,18 @@ function deleteReply(rno,pno){
 </script>
  
 <title>Insert title here</title>
+
+<link rel='stylesheet' id='spacious-genericons-css'
+	href='/resources/bootstrap/bootstrap.min.css' type='text/css' media='all' />
+<link rel='stylesheet' id='spacious-genericons-css'
+	href='/resources/dist/css/mainFont.css' type='text/css' media='all' />
+<link rel='stylesheet' id='google_fonts-css'
+	href='//fonts.googleapis.com/css?family=Lato&#038;ver=e7d1598c32c9180e5e08e97723f82bcd'
+	type='text/css' media='all' />
+<link rel='stylesheet' id='spacious_style-css' href='/resources/dist/css/main1.css'
+	type='text/css' media='all' />
+
+
 </head>
 <body>
 

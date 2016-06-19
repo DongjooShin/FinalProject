@@ -19,7 +19,7 @@ public interface ProductMapper {
 
 	public int listCountCri(Criteria cri);
 
-	public List<Product> selectApplyList(RowBounds rowBounds, int m_memberNo);
+	public List<Product> selectApplyList(RowBounds rowBounds, String m_memberNo);
 
 	public Product proApplyapprove(int pro_no);
 
@@ -67,7 +67,7 @@ public interface ProductMapper {
 
 	public void updateProduct(ProductOrder productOrder);
 
-	public int selectProduct(int pro_no);
+	public Product selectProduct(int pro_no);
 	
 	
 }

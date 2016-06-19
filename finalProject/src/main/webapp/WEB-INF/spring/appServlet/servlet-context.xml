@@ -49,6 +49,7 @@
 			<mapping path="/budget/*" />
 			<mapping path="/siteNotice/inquiryMain"/>
 			<mapping path="/voter/*"/>
+			<mapping path="/publicmana/*"/>
 			<beans:ref bean="authInterceptor" />
 		</interceptor>
 		<interceptor>
@@ -72,6 +73,7 @@
 			<mapping path="/budget/*"/>
 			<mapping path="/siteNotice/inquiryMain"/>
 			<mapping path="/voter/*"/>
+			<mapping path="/publicmana/*"/>
 	
 			
 			<beans:ref bean="loginInterceptor" />

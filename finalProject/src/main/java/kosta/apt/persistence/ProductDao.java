@@ -67,7 +67,7 @@ public class ProductDao {
 		return crinum;
 	}
 
-	public List<Product> selectApplyList(Criteria cri, int m_memberNo) {
+	public List<Product> selectApplyList(Criteria cri, String m_memberNo) {
 		
 		List<Product> list = null;
 		
@@ -252,7 +252,7 @@ public class ProductDao {
 		sqlSession.getMapper(ProductMapper.class).updateProduct(productOrder);
 	}
 
-	public int selectProduct(int pro_no) {
+	public Product selectProduct(int pro_no) {
 	
 		return sqlSession.getMapper(ProductMapper.class).selectProduct(pro_no);
 	}

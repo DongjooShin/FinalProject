@@ -45,9 +45,11 @@ function detailProduct(pro_no){
 	open(    
 			url,
 			"confirm",
-			"toolbar=no, status=no, menubar=no, location=no, scrollbars=yes, resizable=no, width=410, height=280");
+			"toolbar=no, status=no, menubar=no, location=no, scrollbars=yes, resizable=no, width=2000, height=400");
 
 }
+
+
 
 
 
@@ -63,7 +65,7 @@ function detailProduct(pro_no){
 				<div class="col-lg-3"
 					style="margin-right: 0; margin-left: 26px; margin-top: 17px;">
 			 		<div class="loginSidebar">
-						<jsp:include page="proSideBar.jsp"></jsp:include>
+							<jsp:include page="ProductSideBar.jsp"></jsp:include>
 					</div>
  
 				</div>
@@ -97,7 +99,7 @@ function detailProduct(pro_no){
 				<td align="center">${product.pro_no }</td>
 				<td align="center">${product.pro_group }</td>
 				<td align="center">${product.pro_name }</td>
-				<td align="center"><a href="/ProductSale/proApplyapprove?pro_no=${product.pro_no }">내용보기</a></td>
+				<td align="center"><a onclick="detailProduct(${product.pro_no })">내용보기</a></td>
 				<td align="center">${product.pro_date }</td> 
 				<td align="center"><div id="flag${product.pro_no }" > </div> ${product.pro_flag } </td>
 				<td align="center"><a href="javascript:detailProduct(${product.pro_no })">평가하기</a></td>

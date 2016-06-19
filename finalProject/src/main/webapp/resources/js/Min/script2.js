@@ -38,6 +38,9 @@ $(document).ready(function(){
 	$(".list_of_items").on("click", ":checkbox", function (){
 		$(this).closest("li").toggleClass("completed_item");
 	});
+	
+	
+	
 });
 
 

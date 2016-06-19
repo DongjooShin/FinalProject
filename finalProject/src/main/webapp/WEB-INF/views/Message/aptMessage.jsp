@@ -89,8 +89,8 @@ function sandMsg(id2){
 					<div class="col-sm-6 col-sm-offset-3 form-box">
 						<div class="form-top">
 							<div class="form-top-left">
-								<h3>Contact us</h3>
-								<p>Fill in the form below to send us a message:</p>
+								<h3>메세지  보내기</h3>
+								<p>메세지를 입력하세요.</p>
 							</div>
 							<div class="form-top-right">
 								<i class="fa fa-envelope"></i>
@@ -102,16 +102,16 @@ function sandMsg(id2){
 
 
 							<h3>
-								<p class="white">받는사람 :</p>
+								<p class="white">보내는사람 : ${m_memberNo}<input type="hidden" name="mg_from" value="${m_memberNo}"></p>
 							</h3>
 
-							<div class="form-group">
+						<!-- 	<div class="form-group">
 								<label class="sr-only" for="contact-email">받는사람</label> <input
 									type="text" name="m_memberNo" class="contact-email form-control"
 									id="contact-email" value="">
-							</div>
+							</div> -->
 							<div>
-							받는사람:<input type="text" name="mg_to" value="${m_memberNo }">
+							받는사람:<input type="text" name="mg_to">
 							</div>
 							<div>
 							제목:<input type="text" name="mg_title">
@@ -128,7 +128,7 @@ function sandMsg(id2){
 								
 								<textarea name="mg_content" placeholder="Message..." class="contact-message form-control" id="contact-message"></textarea>
 								<input type="hidden" name="mg_state" value="f">
-								<input type="hidden" name="mg_from" value="jsp에서 값너줬다.">
+							
 								
 								<input type="submit" class="btn" value="보내기" onclick="sandMsg(this.form)" >
 								

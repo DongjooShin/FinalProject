@@ -2,6 +2,7 @@ package kosta.apt.persistence;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.swing.GroupLayout.SequentialGroup;
@@ -72,7 +73,7 @@ public class SurveyDAO {
 	}
 
 
-	public List<SurveyDB> surveystart() {
+	public List<SurveyDB> surveystart(int sessionNum) {
 		
 		Calendar oCalendar = Calendar.getInstance( );
 		 // 현재 날짜/시간 등의 각종 정보 얻기
@@ -86,8 +87,12 @@ public class SurveyDAO {
 		 int date22 = Integer.parseInt(currentDate);
 		 
 		 System.out.println(date22+"현재날짜는?");
+		 
+		 HashMap<String, Integer> map = new HashMap<String, Integer>();
+		 map.put("date22", date22);
+			map.put("sessionNum", sessionNum);
 				
-		return sqlSession.getMapper(SurveyMapper.class).surveystart(date22);
+		return sqlSession.getMapper(SurveyMapper.class).surveystart(map);
 	}
 
 

@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
 import kosta.apt.domain.Survey.Survey;
 import kosta.apt.domain.Survey.SurveyDB;
 import kosta.apt.domain.Survey.SurveyScore;
+import kosta.apt.domain.member.Member;
 import kosta.apt.service.SurveyService;
 
 @Controller
@@ -47,7 +48,7 @@ public class SurveyController {
 	
 	
 	@RequestMapping(value="/surveyRegist", method = RequestMethod.POST )
-	public void surveyRegistForm(Survey survey, @RequestParam("su_context") String str[], @RequestParam("su_title") String su_title)throws Exception{
+	public void surveyRegistForm(HttpSession session, Survey survey, @RequestParam("su_context") String str[], @RequestParam("su_title") String su_title)throws Exception{
 	
 		
 		
@@ -179,10 +180,10 @@ public class SurveyController {
   	      
  		//i = 1; // 설문지 문항수 만큼 DB를 넣으꺼 임의의 변수값
  		//int j=0;
- 		int surveygroup =0; //설문지 고유번호 0부터시작
- 		if(str[0] != null){ //surveyDB에 저장할데이터들 
+ 		int surveygroup =0; 																		//설문지 고유번호 0부터시작
+ 		if(str[0] != null){																			 //surveyDB에 저장할데이터들 
  			
- 			surveygroup = (int) surveyService.updateSurveyGru(); //그룹번호 자동증가
+ 			surveygroup = (int) surveyService.updateSurveyGru(); 										//그룹번호 자동증가
  	 		
  			String s_date = "";
  			String e_date = "";
@@ -194,12 +195,20 @@ public class SurveyController {
  	    	b = Integer.parseInt(bb);
  	    	b2 = Integer.parseInt(bb2);
  	    
- 	    	
- 			
  			surveyDB.setSu_startdate(st_date1);
  			System.out.print(surveyDB.getSu_startdate()+"시작날짜인가");
  			surveyDB.setSu_enddate(ed_date1);
- 			surveyDB.setApt_APTGNo(1); //세션으로 가져와야할 아파트 그룹번호
+ 			
+ 			
+ 			Member member = (Member) session.getAttribute("member");
+ 			
+ 			if(member!=null){
+ 				surveyDB.setApt_APTGNo(member.getApt_APTGNo());
+ 				survey.setApt_APTGNo(member.getApt_APTGNo());
+ 			}else{
+ 				surveyDB.setApt_APTGNo(5); //세션으로 가져와야할 아파트 그룹번호
+ 				survey.setApt_APTGNo(5); 
+ 			}
  			
  			surveyDB.setSu_title(su_title);
  			surveyDB.setSu_group(surveygroup+1);
@@ -216,9 +225,9 @@ public class SurveyController {
  		
  		for(int k=0; k <str.length; k++){
  		
- 	 		String context = str[k]; //context값을 넣으려고
+ 	 		String context = str[k];																	 //context값을 넣으려고
  	 		if(context !=null){
- 	 		System.out.println(context+"내용입니다.");
+ 	 																									System.out.println(context+"내용입니다.");
  	 		survey.setSu_context(context);
  	 		
  	 		}
@@ -237,12 +246,25 @@ public class SurveyController {
 	//설문지 답변부분
 	
 	@RequestMapping(value="/surveyRegistdeliver", method = RequestMethod.GET)
-	public void surveydelivery(Model model)throws Exception{
+	public void surveydelivery(HttpSession session, Model model)throws Exception{
 		List<Survey> survey = null;
 		
 		List<SurveyDB> surveyDB = null;
 		
-		surveyDB = surveyService.surveystart();
+		Member member = (Member) session.getAttribute("member");
+		int sessionNum = 0;
+			if(member!=null){
+																										System.out.println("세션값으로왓다.");
+				sessionNum = member.getApt_APTGNo();
+		
+			}else{
+																									System.out.println("세션값으로 안왔다");
+				sessionNum = 5;
+			}
+			
+			
+		
+		surveyDB = surveyService.surveystart(sessionNum);
 		System.out.println(surveyDB.size()+"서베이 크기");
 		
 		
@@ -276,7 +298,7 @@ public class SurveyController {
 	
 	//설문지 배달 AJax버전 
 	@RequestMapping(value="/surveyRegistdeliver2", method = RequestMethod.POST)
-	public String surveyRegistdeliver2(Model model)throws Exception{
+	public String surveyRegistdeliver2(HttpSession session, Model model)throws Exception{
 		
 		System.out.println("ajax컨트롤러에 들어왔다.");
 		
@@ -284,7 +306,19 @@ public class SurveyController {
 		
 		List<SurveyDB> surveyDB = null;
 		
-		surveyDB = surveyService.surveystart();
+		Member member = (Member) session.getAttribute("member");
+		int sessionNum = 0;
+			if(member!=null){
+				System.out.println("세션값으로왓다.");
+				sessionNum = member.getApt_APTGNo();
+		
+			}else{
+				System.out.println("세션값으로 안왔다");
+				sessionNum = 5;
+			}
+			
+		
+		surveyDB = surveyService.surveystart(sessionNum);
 		System.out.println(surveyDB.size()+"서베이 크기");
 		
 		
@@ -320,9 +354,10 @@ public class SurveyController {
 	
 	
 	@RequestMapping(value="/surveyRegistdeliver", method = RequestMethod.POST)
-	public void surveydelivery(HttpServletRequest request,@RequestParam("size") int size,
+	public String surveydelivery(HttpSession session, HttpServletRequest request,@RequestParam("size") int size,
 								@RequestParam("su_group") int su_group){
 		
+		Member member = (Member) session.getAttribute("member");
 		
 		int value[] = new int[size];
 		int valuecheck  =0;  //질문에 답했는지
@@ -344,29 +379,27 @@ public class SurveyController {
 			
 					survey.setSu_surveyNo((i+1));
 					survey.setSu_sum(value[i]);
-					survey.setApt_APTGNo(1);
+					survey.setApt_APTGNo(member.getApt_APTGNo());
 					survey.setSu_count(1);
 					
-				surveyService.inputsurveyDB(survey);
+		surveyService.inputsurveyDB(survey);
 				
 			}
 			
 			
-			
-	
-			
-			
-			
-			
 		 System.out.println(value[i]);
+		 
 		}
-		
+			
+		return "redirect:/Survey/surveyResult";
 	
 		}
 
 	//설문조사 제목 출력하기
 	@RequestMapping(value="/surveyResult", method = RequestMethod.GET)
-	public void surveyResultTitle(Model model)throws Exception{
+	public void surveyResultTitle(HttpSession session, Model model)throws Exception{
+		
+		Member member = (Member) session.getAttribute("member");
 	/*	
 	SurveyDB surveyDB = new SurveyDB();
 		
@@ -415,10 +448,18 @@ public class SurveyController {
 	//설문지 메인결과 보기
 	
 	@RequestMapping(value="/surveyResult", method = RequestMethod.POST)
-	public ResponseEntity<List<SurveyScore>> surveyResult(@RequestParam("dateNum") int dateNum)throws Exception{
-			//json형태로 jsp에보내려고 ResponseEntity  ==Jackson라이브러리필요     //해당하는 시작월만뽑으려고 ==RequestParam
+	public ResponseEntity<List<SurveyScore>> surveyResult(Model model, HttpSession session, @RequestParam("dateNum") int dateNum)throws Exception{
+			//json형태로 jsp에보내려고   ==Jackson라이브러리필요     //해당하는 시작월만뽑으려고 ==RequestParam
+		
+		System.out.println(dateNum+"번호가져왓다시발");
+		
+		
+		Member member = (Member) session.getAttribute("member");
+
 		
 		SurveyDB surveyDB = new SurveyDB();
+		
+	
 	
 		List<SurveyDB> list = new ArrayList<>();
 		
@@ -432,27 +473,39 @@ public class SurveyController {
 		surveyDB.setSu_enddate(selectend2);  //1월 31일까지만 찾게 select구문만드려고
 		
 		
+		if(member !=null){
+		surveyDB.setApt_APTGNo(member.getApt_APTGNo());
+		}else{
+			surveyDB.setApt_APTGNo(1);
+		}
 		list = surveyService.surveySelectDay(surveyDB); //리스트에 ex)1월달만  2월달만 출력하려고
 		
 		
-		System.out.println("리스트의 사이즈:" +list.size());
-		
+		System.out.println("리스트의 사이즈:" +list.size()+list.get(0).getSu_startdate());
+		if(member !=null){
+			surveyDB.setApt_APTGNo(member.getApt_APTGNo());
+			
+		}
 		
 		
 		List<SurveyScore> list2  = new ArrayList<SurveyScore>();
 		//SurveyScore클래스를 만들어줫다 ==>내가원하는데이터는 Survey +SurveyDB의변수들인데 필요한 변수들만 모은 클래스생성
 	
 		if(list !=null){ //해당월에 설문지가있는경우
+			System.out.println("해당월에 설문지가있다.");
+			SurveyScore surveyScore = new SurveyScore();
 			
+			System.out.println(list.size()+"사이즈이다.");
 		for(int i=0; i<list.size(); i++){
 		
 			
 			Integer sugroup = list.get(i).getSu_group(); //설문지번호를 알아와서 Suvey의 데이터를 가져오려고 ==평점/설문자수/설문지문항등...
-			SurveyScore surveyScore = new SurveyScore();
+			System.out.println(list.get(i).getSu_group()+"su그룹번호입니다. sugroup 이상해시발");
 		
 				int TotalScore = surveyService.surveyScoreSum(sugroup);
+				System.out.println(TotalScore+"총점수");
 				int TotalCount = surveyService.surveyCountSum(sugroup);
-		
+				System.out.println(TotalCount+"총인원");
 				surveyScore.setTotalScore(TotalScore);
 				surveyScore.setTotalCount(TotalCount);
 				surveyScore.setAvgSum((TotalScore/TotalCount*2));
@@ -461,10 +514,12 @@ public class SurveyController {
 				surveyScore.setSu_title(list.get(i).getSu_title());
 				surveyScore.setSu_group(list.get(i).getSu_group());
 				
-				list2.add(surveyScore);
+				System.out.println(list.get(i).getSu_title()+"제목이다.");
+				
+				
 				
 			}
-		
+		list2.add(surveyScore);
 		}
 		
 		

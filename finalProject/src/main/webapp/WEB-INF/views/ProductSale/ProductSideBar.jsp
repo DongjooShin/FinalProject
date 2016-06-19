@@ -28,7 +28,7 @@
 				<li><a href='/ProductSale/proApplication'>구매자공동구매신청
 				</a></li>
 				
-				<li><a href='/ProductSale/proApplyManageList'>관리자 공동구매신청 승인
+				<li><a href='/ProductSale/proApplicationList'>관리자 공동구매신청 승인
 				</a></li>
 				
 				<li><a href='/ProductSale/proApplication'>구매자공동구매등록

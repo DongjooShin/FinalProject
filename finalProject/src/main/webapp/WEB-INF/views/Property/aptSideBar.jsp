@@ -39,15 +39,14 @@
 
 		<div id="secondary" style="background-color: white;">
 			<aside id="archives" class="widget">
-			<h3 class="widget-title" style="border-bottom: 3px solid #eaeaea; font-weight: bold;padding-left: 5%">부동산</h3>
-	
+
 			<ul>
-				<li><a href='/Property/aptNews?newsNum=0&page=0'>부동산 뉴스</a></li>
-				<li><a href='/Property/aptRealTransaction?page=0'>아파트시세</a></li>
+
+				<h3 class="widget-title">부동산</h3>
+
 				<li><a href='/Property/aptSaleList'>부동산매물 정보</a></li>
-				<li><a href='/aptSale/Property'>부동산매물 등록</a></li>
 
-
+				<li><a href='/Property/aptSale'>부동산매물 등록</a></li>
 			</ul>
 			</aside>
 		</div>

@@ -15,7 +15,7 @@ import kosta.apt.domain.Paging.Criteria;
 import kosta.apt.mapper.MessageMapper;
 
 @Repository
-public class MessageBDao {
+public class MessageDao {
 
 	private SqlSession sqlsession;
 
@@ -110,6 +110,20 @@ public class MessageBDao {
 	public void updateState(int msgno) {
 		
 		sqlsession.getMapper(MessageMapper.class).updateState(msgno);
+		
+	}
+
+
+	public String selectMg_toO(String mg_to) {
+		
+		String abc = "";
+		abc = sqlsession.getMapper(MessageMapper.class).selectMg_toO(mg_to);
+		
+		if(abc ==null){
+			abc  = "";
+		}
+		return abc;
+	
 		
 	}
 	
