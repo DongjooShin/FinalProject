@@ -15,8 +15,27 @@
 		$('#fifthManu').css('background', '#09b9e5');
 		$('#fifthManu').css('display', 'block');
 
+		
+		
 
 	});
+	
+	
+
+	function msgform(){
+		
+		
+		url = "/mypage/aptMessage";
+		
+		open(    
+				url,
+				"confirm",
+				"toolbar=no, status=no, menubar=no, location=no, scrollbars=no, resizable=no, width=450, height=350");
+
+		
+		
+		}
+	
 </script> 
 
 <style type="text/css">
@@ -90,11 +109,24 @@
 function detailMsg(id2){
 
 	
-	alert("url");
+/* 	 $.ajax({
+			url: '/mypage/aptMsgdetail?sep='+id2,
+			dataType:'json',
+			type: 'get',
+			success: function(data){
+				
+			  $('.badge').empty;
+			  $('.badge').append(data);
+
+			
+			
+			}
+			
+			
+		})  
+		 */
 	
-	
-	
-	
+
 	url = "/mypage/aptMsgdetail?sep="+id2;
 	alert(url);
 	

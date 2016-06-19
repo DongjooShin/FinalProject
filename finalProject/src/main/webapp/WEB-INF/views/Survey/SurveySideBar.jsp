@@ -31,12 +31,12 @@
 
 #archives ul li{
 
-	padding: 50px;
+	padding: 30px;
 }
 
 #archives ul{
 
-	padding: 50px;
+	padding: 30px;
 }
 
 </style>

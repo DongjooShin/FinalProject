@@ -82,12 +82,25 @@ function CheckPostUpdate(){
 </script>
 
 
-<div class="header">
-	 <jsp:include page="../include/head.jsp"></jsp:include> 
-</div>
 
-<!-- Main content -->
-<section class="content">
+
+		 <jsp:include page="../include/head.jsp"></jsp:include> 
+
+	<div class="main">
+
+	
+		<div class="col-md-12">
+			<div class="row">
+				<div class="col-lg-3"
+					style="margin-right: 0; margin-left: 26px; margin-top: 17px;">
+			 		<div class="loginSidebar">
+						<jsp:include page="ProductSideBar.jsp"></jsp:include>
+					</div>
+ 
+				</div>
+				<div class="col-lg-8"
+					style="padding-left: 0; padding-right: -15px; margin-top: 17px;">
+		
 	<div class="row">
 		<!-- left column -->
 		<div class="col-md-12">
@@ -185,12 +198,13 @@ function CheckPostUpdate(){
 		<!--/.col (left) -->
 
 	</div>
-	<!-- /.row -->
-</section>
-<!-- /.content -->
-</div>
-<!-- /.content-wrapper -->
-
+	</div>
+	
+		
+		</div>
+		</div>
+		</div>
+		
 
 </body>
 </html>

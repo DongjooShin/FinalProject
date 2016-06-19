@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -33,9 +35,13 @@ import kosta.apt.domain.Paging.PageMaker;
 import kosta.apt.domain.Property.AptTransactionPrice;
 import kosta.apt.domain.Property.Property;
 import kosta.apt.domain.Property.PropertyImageUtil;
-import kosta.apt.domain.member.AddressCity;
+
 import kosta.apt.domain.member.Member;
+
+import kosta.apt.domain.member.AddressCity;
+
 import kosta.apt.domain.member.RssReader;
+
 import kosta.apt.service.PropertyService;
 
 @Controller
@@ -56,11 +62,16 @@ public class PropertyController {
 
 	}
 
-	@RequestMapping(value = "/aptSale", method = RequestMethod.POST)
-	public String aptInsert(HttpServletRequest request, Model model, @RequestParam("pr_propertyNo") int pr_propertyNo)
-			throws Exception {
-		System.out.println("여기로 왔다.");
+	
+	
+	@RequestMapping(value="/aptSale", method = RequestMethod.POST)
+	public String aptInsert(HttpSession session, HttpServletRequest request, Model model, @RequestParam("pr_propertyNo") int pr_propertyNo)throws Exception{
 
+	
+		Member member = (Member) session.getAttribute("member");
+	
+		
+	
 		String uplodaPath = request.getRealPath("M_upload1");
 
 		System.out.println(uplodaPath);
@@ -79,15 +90,23 @@ public class PropertyController {
 		property.setPr_company(multi.getParameter("pr_company"));
 		property.setPr_imageName(multi.getParameter("pr_imageName"));
 		property.setPr_content(multi.getParameter("pr_content"));
-		property.setPr_group(multi.getParameter("1"));
-		property.setM_memberNo(multi.getParameter("1"));
 
-		property.setPr_group("1");
-		property.setM_memberNo("1");
+		property.setPr_group(multi.getParameter("pr_group"));
+	//	property.setM_memberNo(multi.getParameter("1"));
+		
+		if(member !=null){
+			property.setM_memberNo(member.getM_memberNo());
+		}
+		else{
 
-		System.out.println(property.getM_memberNo() + "서비스의 넘번호입니다.");
-		// 세션값
-		// 넣어야되property.setPr_propertyNo(Integer.parseInt(multi.getParameter("pr_propertyNo")));
+			property.setM_memberNo("1");
+		}
+		
+		
+		System.out.println(property.getM_memberNo()+"서비스의 넘번호입니다.");
+		// 세션값 넣어야되property.setPr_propertyNo(Integer.parseInt(multi.getParameter("pr_propertyNo")));
+		
+	
 
 		property.setPr_price(Integer.parseInt(multi.getParameter("pr_price")));
 		property.setPr_deposit(Integer.parseInt(multi.getParameter("pr_deposit")));
@@ -118,8 +137,8 @@ public class PropertyController {
 			String thumImagePath = uplodaPath + "\\" + headName + "_small." + pattern;
 			File dest = new File(thumImagePath);
 
-			if (pattern.equals("jpg") || pattern.equals("gif")) {
-
+			if(pattern.equals("jpg")|| pattern.equals("gif") || pattern.equals("PNG")){
+	
 				PropertyImageUtil.resize(src, dest, 100, PropertyImageUtil.RATIO);
 			}
 
@@ -181,39 +200,70 @@ public class PropertyController {
 
 	}
 
+	
+	@Transactional(propagation=Propagation.REQUIRED, rollbackFor={Exception.class})
 	@RequestMapping(value = "/aptUpdate", method = RequestMethod.GET)
-	public String aptUpdate(@RequestParam("pr_propertyNo") int pr_propertyNo, RedirectAttributes rttr)
-			throws Exception {
-
-		// PropertyService.aptUpdate("pr_propertyNo");
-		// POST로 가서 pr_propertyNo이있다면 if문써서 업데이트시키게만든다.
-
+	public String aptUpdate(HttpSession session, @RequestParam("pr_propertyNo") int pr_propertyNo, RedirectAttributes rttr)throws Exception{
+		
+		Member member = (Member) session.getAttribute("member");
+		
+		Property property= propertyService.aptSaledetail(pr_propertyNo);
+		
+		System.out.println(property.getM_memberNo()+"이름과"+member.getM_memberNo()+"멤버이름");
+		if(property.getM_memberNo().equals(member.getM_memberNo())){
+			System.out.println("일치한다.");
+		}else{
+			throw new Exception("수정이 불가능합니다. 등록한 게시물로 로그인하여주십시오.");
+		}
+		
+	
 		rttr.addFlashAttribute("pr_propertyNo", pr_propertyNo);
+		return "redirect:/Property/aptSale2?pr_propertyNo="+pr_propertyNo;
+		
 
-		return "redirect:/Property/aptSale2?pr_propertyNo=" + pr_propertyNo;
 	}
 
-	@RequestMapping(value = "/aptSale2", method = RequestMethod.GET)
-	public void aptSaleView2(@RequestParam("pr_propertyNo") int pr_propertyNo, Model model) {
+	
+	
+
+	@RequestMapping(value="/aptSale2", method = RequestMethod.GET)
+	public void aptSaleView2( @RequestParam("pr_propertyNo") int pr_propertyNo, Model model)throws Exception{
+
 
 		System.out.println("뷰로 이동하겠습니다.1");
 
-		if (pr_propertyNo != 0) {
+		
+		if(pr_propertyNo!=0){
+			
+			Property property= propertyService.aptSaledetail(pr_propertyNo);
+			
 
-			Property property = propertyService.aptSaledetail(pr_propertyNo);
-
-			// String b =
-			// property.getPr_tel().substring(0,property.getPr_tel().lastIndexOf("-")-1);
-			// String c =
-			// property.getPr_tel().substring(property.getPr_tel().lastIndexOf("-")+1,property.getPr_tel().lastIndexOf("-")+1);
 			model.addAttribute("property", property);
 
 		}
 
 	}
 
+	
+	
+	
+	
+	@Transactional(propagation=Propagation.REQUIRED, rollbackFor={Exception.class})
 	@RequestMapping(value = "/aptDelete", method = RequestMethod.GET)
-	public String aptDelete(@RequestParam("pr_propertyNo") int pr_propertyNo) throws Exception {
+
+	public String aptDelete(HttpSession session, @RequestParam("pr_propertyNo") int pr_propertyNo)throws Exception{
+		
+		Member member = (Member) session.getAttribute("member");
+		
+		Property property= propertyService.aptSaledetail(pr_propertyNo);
+		
+		if(property.getM_memberNo().equals(member.getM_memberNo())){
+				System.out.println("성공");
+		}else{
+			throw new Exception("삭제가 불가능합니다. 등록한 게시물로 로그인하여주십시오.");
+		}
+		
+		
 
 		propertyService.aptDelete(pr_propertyNo);
 

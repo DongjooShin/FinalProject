@@ -34,12 +34,9 @@
 		 <jsp:include page="../include/head.jsp"></jsp:include> 
 
 	
-	
-		<div class="row">
-			
-			<!-- 사이드부분 끝@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
-			<!-- 메인부분 시작@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
-		<div class="col-md-3" style="padding-left: 60px;">
+	<div id="page" class="hfeed site" style="border-top: 2px solid;">
+		<div class="col-md-12">
+			<div class="col-lg-3">
 		
 			 <jsp:include page="SurveySideBar.jsp"></jsp:include> 
 		</div>
@@ -57,18 +54,18 @@
 
 <form role ="form" id="main_input_box" >
 
-<input type="text" class ="form-control" id="custom_textbox" name="Item" placeholder="설문지 질문을 적으세요!" style="height: 100px;">
+<input type="text" class ="form-control" id="custom_textbox" name="Item" placeholder="설문지 질문을 적으세요!" style="height: 100px; width: 70%;">
 
 <input type="hidden" name="count" value="count">
-<input type="submit" value="Add" class="btn btn-primary add_button" >
+<input type="submit" value="Add" class="btn btn-primary add_button" style="width: 20%; height: 45px;" >
 
 </form>
 
 <form action="/Survey/surveyRegist" method="post">
 
-<h1>설문지 제목
-	<input type="text" name="su_title" placeholder="설문지 제목을 입하세요">
-</h1>
+<h1>설문지 제목</h1>
+	<input type="text" name="su_title" placeholder="설문지 제목을 입하세요" style="width: 70%;">
+
 
 
 
@@ -130,8 +127,8 @@
 
 </div>
 
-<div>
-<input type="submit" value="설문지 작성완료">
+<div><br>
+<input type="submit" value="설문지 작성완료"  style="width: 20%; height: 45px;">
 </div>
 
 </form>
@@ -159,6 +156,6 @@
   })();
 
 </script>
-
+</div>
 </body>
 </html>

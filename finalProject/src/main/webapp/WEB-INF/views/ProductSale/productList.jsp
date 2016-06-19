@@ -29,26 +29,27 @@
 </style>
 </head>
 <body>
+	<div class="header">
 
+		<jsp:include page="../include/head.jsp"></jsp:include>
 
-		 <jsp:include page="../include/head.jsp"></jsp:include> 
+	</div>
+	<div id="page" class="hfeed site"
+		style="display:inline-block; ;  border-top: 2px solid;">
 
-	<div class="main">
-
-	
 		<div class="col-md-12">
 			<div class="row">
 				<div class="col-lg-3"
-					style="margin-right: 0; margin-left: 26px; margin-top: 17px;">
+					style="margin-right: 0; ; margin-top: 17px;">
 			 		<div class="loginSidebar">
-						<jsp:include page="proSideBar.jsp"></jsp:include>
-					</div> 
-
+						<jsp:include page="ProductSideBar.jsp"></jsp:include>
+					</div>
+ 
 				</div>
-				<div class="col-lg-8"
+				<div class="col-lg-9"
 					style="padding-left: 0; padding-right: -15px; margin-top: 17px;">
 					<div class="well bs-component">
-						<form class="form-horizontal" action="MemberOk.jsp" method="post"
+					<form class="form-horizontal" action="MemberOk.jsp" method="post"
 							name="userInput" onsubmit="return checkIt()">
 
 							<legend>아파트 매물정보 </legend>
@@ -131,6 +132,8 @@
 			
 						</form>
 						
+						
+												
 <div class="checkbox123">		
 	<form action="aptSaleList.jsp" method="post">
 		<input type="checkbox" name="area" value="pr_APTName">제목 <input
@@ -142,17 +145,13 @@
 	</form>
 	</div>
 	
+					
 					</div>
-				</div>
-
-			</div>
-		</div>
-		<!-----start-copyright---->
-		<div class="copy-right">
-			<p>
-				Template by <a href="http://w3layouts.com">w3layouts</a>
-			</p>
-		</div>
+					</div>
+					</div>
+					</div>
+					</div>
+		
 
 
 

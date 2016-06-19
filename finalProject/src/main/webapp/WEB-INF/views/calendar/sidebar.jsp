@@ -99,6 +99,9 @@
       </div>
 
       <div class="col-md-8">
+      <div style="border-bottom:  3px  solid #eaeaea; width: 90%; ">
+						<h2 style="padding-bottom: 6px;">캘린더</h2>
+			</div>
          <!-- 일정추가모달 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
          <br>
 

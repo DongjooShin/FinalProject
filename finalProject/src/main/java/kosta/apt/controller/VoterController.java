@@ -240,6 +240,7 @@ public class VoterController {
 		Member m = (Member)session.getAttribute("member");
 		voteService.updateAllVflagService(1, m.getApt_APTGNo());
 		voteService.updateVflagService(1, m.getM_memberNo());
+		voteService.updateGP(m.getApt_APTGNo());	// GP register
 		return managerGroupPresi(session,model);
 	}//Done
 	

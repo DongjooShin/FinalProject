@@ -3,8 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-
-
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -81,7 +79,7 @@
 	<tr>
 		
 		<td>${product.m_memberNo}</td>
-		<td><c:if test="${product.pro_img1 != null}">
+		<%-- <td><c:if test="${product.pro_img1 != null}">
 				
 						<c:set var="head"
 							value="${fn:substring(product.pro_img1,0,fn:length(product.pro_img1)-4) }"></c:set>
@@ -89,7 +87,7 @@
 							value="${fn:substringAfter(product.pro_img1, head) }"></c:set>
 						 <img src="../M_upload1/${head }_small${pattern}" /> 
 						
-		</c:if></td>
+		</c:if></td> --%>
 		<td>${product.pro_name}</td>
 		<td>${productOrder.check_num}개</td>
 		<td>${product.pro_price}원</td>
@@ -207,7 +205,7 @@
 							<input type="hidden" name="pro_no" value="${product.pro_no}">
 							<input type="hidden" name="checkPost" value="${product.checkPost}">
 							<input type="hidden" name="pro_price" value="${product.pro_price}">
-							<input type="hidden" name="check_price" value="${head+head2 }">
+							<%-- <input type="hidden" name="check_price" value="${head+head2 }"> --%>
 							<input type="hidden" name="check_name" value="${product.pro_name}">
 							<input type="hidden" name="check_num" value="${productOrder.check_num}">
 							<input type="hidden" name="check_seller" value="${product.m_memberNo}">

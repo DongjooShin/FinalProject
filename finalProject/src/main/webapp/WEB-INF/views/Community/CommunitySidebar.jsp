@@ -38,6 +38,7 @@
 				<li ><a href='/calendar/calendar'>캘린더</a></li>
 				<li><a href='/Property/aptRealTransaction?page=0'>아파트시세</a></li>
 				<li><a href='/store/listStore'>상가정보</a></li>
+				<li><a href='/facility/facilityMap'>주변시설정보</a></li>
 				<li><a href='/voter/groupPresiMain'>입주자대표선거</a></li>
 				<li><a href='/voter/buildingPresiMain'>동대표선거</a></li>
 				<li><a href=''>중고거래</a></li>

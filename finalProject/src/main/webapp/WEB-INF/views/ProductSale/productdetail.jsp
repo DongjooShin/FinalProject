@@ -22,9 +22,7 @@
   -o-transition: all .3s ease;
   -webkit-transition: all .3s ease;
 }
-.panel-pricing:hover {
-  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.2);
-}
+
 .panel-pricing .panel-heading {
   padding: 20px 10px;
 }
@@ -104,7 +102,7 @@ function reloadpage(){ //클릭시 리스트 다시호출시켜야되.
 	var pro_no = $(".pro_no").val();
 	
 	
-	$.ajax({  //여기가 켜지자마사 댓글목록을 불러와줘
+	$.ajax({ 																							 //여기가 켜지자마사 댓글목록을 불러와줘
 	
 		url : '/ProductSale/Replylist',
 		type :'post',
@@ -114,15 +112,16 @@ function reloadpage(){ //클릭시 리스트 다시호출시켜야되.
 		dataType : 'json',
 		success : function(data){
 			$('.replydiv').empty();
-			//alert("목록부르기성공");
+																										//alert("목록부르기성공");
 			$.each(data, function(index, product){
 				
 				
 			
 			var html2 = '<div class="bb">';
-				html2 += '<button class="deleteReply" onclick="deleteReply('+product.re_no+","+ product.pro_no+')" >삭제하기</button>';
-				html2 +='<div>목록 번호:'+product.re_no+'작성자 :'+product.m_memberno+'날짜 : '+product.re_date +'</div>';
+				html2 += '<div>';
+				html2 +='목록 번호:'+product.re_no+'작성자 :'+product.m_memberno+'날짜 : '+product.re_date +'';
 				html2 +='<div>글 내용:'+product.re_text+'</div>';
+				html2 +='<button class="deleteReply" onclick="deleteReply('+product.re_no+","+ product.pro_no+')" >삭제하기</button></div>';
 				html2 += '</div>';
 				$('#replydiv').append(html2);
 			
@@ -185,34 +184,50 @@ function deleteReply(rno,pno){
 </script>
  
 <title>Insert title here</title>
+
+<link rel='stylesheet' id='spacious-genericons-css'
+	href='/resources/bootstrap/bootstrap.min.css' type='text/css' media='all' />
+<link rel='stylesheet' id='spacious-genericons-css'
+	href='/resources/dist/css/mainFont.css' type='text/css' media='all' />
+<link rel='stylesheet' id='google_fonts-css'
+	href='//fonts.googleapis.com/css?family=Lato&#038;ver=e7d1598c32c9180e5e08e97723f82bcd'
+	type='text/css' media='all' />
+<link rel='stylesheet' id='spacious_style-css' href='/resources/dist/css/main1.css'
+	type='text/css' media='all' />
+
+
 </head>
 <body>
+<div id="page" class="hfeed site"
+		style="display:inline-block; ;  border-top: 2px solid;">
 
- <form action="/ProductSale/proCheck" method="get"  >
+		<div class="col-md-12" style="margin-top: 100px;">
+
  
     <section id="plans">
         <div class="container">
             <div class="row">
 
-             
+             <form action="/ProductSale/proCheck" method="get"  >
                 <!-- item -->
-                <div class="col-md-11 text-center">
+                <div class="col-md-12 text-center">
                     <div class="panel panel-success panel-pricing">
                        
-                        <div class="panel-body text-center">
+                        <div class="panel-body text-center" >
+                        
+                         
                       		<p><strong>목록번호 : ${product.pro_no }</strong></p>
                             <p><strong>판매자 : ${product.m_memberNo }</strong></p>
                             <p><strong>연락처 :${product.pro_tel }</strong></p>
                             <p><strong>시작일 :${product.pro_startdate } ~ 종료일 : ${product.pro_enddate }</strong></p>
-                          
-                        
                         </div>
+                        
                         <ul class="list-group text-center">
-                        <li class="list-group-item"><i class="fa fa-check"></i>분류 : ${product.pro_group  }</li>
+                        	<li class="list-group-item"><i class="fa fa-check"></i>분류 : ${product.pro_group  }</li>
                             <li class="list-group-item"><i class="fa fa-check"></i>판매상품명 : ${product.pro_name }</li>
                             <li class="list-group-item"><i class="fa fa-check"></i>판매가격 : ${product.pro_price }</li>
-                          
-                            <li class="list-group-item"><i class="fa fa-check"></i>구매수량:<input type="text" name="check_num"> /최대구매수량${product.pro_maxnum} 남은수량 :${product.pro_num }</li>
+                            <li class="list-group-item"><i class="fa fa-check"></i>구매수량:
+                            <input type="text" name="check_num" style="width: 10%; margin: 0;padding: 2px 5px 2px 5px"> /최대구매수량${product.pro_maxnum} 남은수량 :${product.pro_num }</li>
                            
        						<li class="list-group-item"><i class="fa fa-check"></i>택배비용 : ${product.checkPost }원</li>
                           
@@ -231,10 +246,7 @@ function deleteReply(rno,pno){
 					</c:if>
 					
                             </li>
-                            
-                            
-                            
-                            
+                      
                         </ul>
                         
                         
@@ -247,12 +259,10 @@ function deleteReply(rno,pno){
                        <input type="hidden" name="check_name" value="${product.pro_name }">
                 	   <input type="hidden" class="pro_no" name="pro_no" value="${product.pro_no }">
                 	   <input type="hidden" name="check_Post" value="${product.checkPost }">
-                	   <input type="hidden" name="check_img1" value="${product.pro_img1 }">
+                	   <input type="text" name="check_img1" value="${product.pro_img1 }">
                 	   
-					  
-					  
-					    <input type="submit" value="구매하기" onclick="maxnum(this.form)">
-                       
+					    <input type="submit" value="구매하기"  style="width: 25%; height: 50px; margin-top: 30px">
+               
                        </form>
                                               
                         </div>
@@ -277,6 +287,6 @@ function deleteReply(rno,pno){
        <div class="replydiv" id="replydiv">
        </div>
             
-
+</div></div>
 </body>
 </html>

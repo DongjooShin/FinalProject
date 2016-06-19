@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -39,13 +40,16 @@ public class StoreController {
 	}
 	
 	@RequestMapping(value="/register",method=RequestMethod.GET)
-	public String registerGet()throws Exception{
+	public String registerGet(Model model,HttpSession session)throws Exception{
 		System.out.println("registerGET store controller 들어옴");
+		Member member=(Member) session.getAttribute("member");
+		int aptName = member.getApt_APTGNo();
+		model.addAttribute("aptName", aptName);
 		return "/store/register";
 	}
 	
 	@RequestMapping(value="/register",method=RequestMethod.POST)
-	   public String registerPOST(Store store,HttpSession session,HttpServletRequest req)throws Exception{
+	   public String registerPOST(Store store,HttpSession session,HttpServletRequest req,Model model)throws Exception{
 	      System.out.println("registerPOST store controller 들어옴");
 	      System.out.println("store=>"+store.toString());
 	      
@@ -97,12 +101,12 @@ public class StoreController {
 	      }
 	      service.regist(store);
 	      
+		
 	      return "/store/listStore";
 	   }
 	   
 	   @RequestMapping(value="/listStore",method=RequestMethod.GET)
-	   public String listStoreGET(HttpSession session,Store store )throws Exception{
-	      
+	   public String listStoreGET(HttpSession session,Store store,Model model )throws Exception{
 	      
 	      
 	      return "/store/listStore";
@@ -127,11 +131,10 @@ public class StoreController {
 	   }
 	
 	@RequestMapping(value="/delete",method=RequestMethod.POST)
-	public String deleteStore(@RequestParam("s_storeNo")int s_storeNo,HttpSession session)throws Exception{
+	public String deleteStore(@RequestParam("s_storeNo")int s_storeNo,HttpSession session,Model model)throws Exception{
 		
 		System.out.println("번호오아롬;ㅏㅣㄴㅇ러미나렁미ㅏ너 아이디값"+s_storeNo);
-		//Member m=(Member) session.getAttribute("member");
-		service.deleteStore(s_storeNo);
+		
 		return "/store/listStore";
 	}
 	

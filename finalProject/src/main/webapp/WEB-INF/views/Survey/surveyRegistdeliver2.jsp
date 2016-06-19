@@ -81,13 +81,23 @@ width: 100%;
 <body>
 성공
 
+<jsp:include page="../include/head.jsp"></jsp:include> 
 
-<div class="container" id="main">
+	
+	
+		<div class="row">
+			
+			<!-- 사이드부분 끝@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+			<!-- 메인부분 시작@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+		<div class="col-md-3" style="padding-left: 60px;">
+		
+			 <jsp:include page="SurveySideBar.jsp"></jsp:include> 
+		</div>
+		
+		<div class="col-md-9" style="margin-top: 50px;">
+		
+		<div class="container mainpage1" id="main" style="padding-right: 220px;">
 
-
-<%-- <h1>아파트 설문조사</h1> 날짜 : ${survey.su_enddate }까지 제출바랍니다.
- --%>
- 
 <form action="/Survey/surveyRegistdeliver" method="post">
 
 <input type="hidden"  name="size" value="${survey.size() }">
@@ -137,6 +147,15 @@ ${survey.su_surveyNo }. ${survey.su_context }
 
 </form>
 
+
+
+</div>
+</div>
+
+
+<%-- <h1>아파트 설문조사</h1> 날짜 : ${survey.su_enddate }까지 제출바랍니다.
+ --%>
+ 
 </body>
 
 

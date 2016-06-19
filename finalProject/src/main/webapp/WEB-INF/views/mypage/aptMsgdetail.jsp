@@ -64,7 +64,7 @@
 
 </script>
 
-<form action="/Message/aptMessage" method="get">
+<form action="/mypage/aptMessage" method="get">
 								
 	<div class="top-content">
 
@@ -114,6 +114,7 @@
 							</div>
 								
 								<input type="submit" class="btn" value="답장하기"  >
+								
 								<input type=button value="닫기" onclick="closeconfirm()">
 								
 								

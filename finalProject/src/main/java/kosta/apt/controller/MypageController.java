@@ -13,12 +13,15 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -27,6 +30,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import kosta.apt.domain.calendar.Calendar;
 import kosta.apt.domain.Message.Message;
@@ -177,140 +181,198 @@ public class MypageController {
 
 	
 	@RequestMapping(value = "/mypage/aptMessage", method = RequestMethod.GET)
-	public void Msgview(Message message , Model model) {
+	public void Msgview(HttpSession session, Message message, Model model) {
 		System.out.println("메시지창이다.");
 		
-		int m_memberNo = 1;
+		Member member = (Member) session.getAttribute("member");
 		
-		model.addAttribute("m_memberNo", m_memberNo);
+		if(member!=null){
+			System.out.println(member.getM_memberNo());
+			model.addAttribute("m_memberNo", member.getM_memberNo());
+			
+		}else{
+			int m_memberNo = 1;
+			model.addAttribute("m_memberNo", m_memberNo);
+		}
 		
+
 
 	}
 
 	@RequestMapping(value = "/mypage/aptMessage", method = RequestMethod.POST)
-	public String SandMsg(Message message) throws Exception {
+	public String SandMsg(HttpSession session, Message message) throws Exception {
 
 		// 답장하기를 눌렀으면 세션에 메시지번호를 가져와서 메시지번호가가져왔을경우 답장하기버튼인걸 인식해서 클릭후 페이지닫게만들고
 		// Okdelect.jsp를 보내기 클릭시 파라미터에 세션메세지번호를(히든으로) 담게하든가해서 그값이 널이 아닌경우만
 		// 새창띄우게한다.
 
 		System.out.println("성공적이야");
+		
+		System.out.println("성공적이야2"+message.getMg_to()+"입니다.");
+		
+	    String abc= "";
+	    	 abc=	messageService.selectMg_to(message.getMg_to());
+		
+	    if(abc !=null){
+	    	
+	    	System.out.println(abc+"입니다.");
+	    }else{
+	    	
+	    	System.out.println("없다요");
+	    }
+	    
 
 		message.setMg_messageNo(messageService.MsgNo());
 
-		message.setM_memberNo("999");
+		Member member = (Member) session.getAttribute("member");
+		
+		
+		if(member!=null){
+			message.setM_memberNo(member.getM_memberNo());
+		
+		}else{
+			message.setM_memberNo("999");
+		}
+		
+		
 		messageService.SandMessage(message);
 
-		return "redirect:/mypage/sendMessageList";
+	//	return "redirect:/mypage/sendMessageList";
+		return "redirect:/mypage/aptMessageOkdelect";
 		// 리다이렉트해서 메시지창 닫기 만들어라.
+	}
+
+	
+	/*
+	 * //메시지수신함
+	 * 
+	 * @RequestMapping(value="/readMessageList", method=RequestMethod.GET)
+	 * public void readMessageList(Model model,Message message)throws Exception{
+	 * List<Message> list = messageService.readlistMsg(message);
+	 * 
+	 * System.out.println(list.size()); System.out.println("메세지함 성공이야");
+	 * model.addAttribute("list", list); }
+	 */
+
+	// 수신함
+	@RequestMapping(value = "/mypage/readMessageList", method = RequestMethod.GET)
+	public void readMessageList(HttpSession session, Model model, Message message, @ModelAttribute("cri") Criteria cri) throws Exception {
+
+		Member member = (Member) session.getAttribute("member");
+		
+		
+		if(member!=null){
+			message.setM_memberNo(member.getM_memberNo());
+		
+		}else{
+			message.setM_memberNo("1");
+		}
+		
+		
+		
+		List<Message> list = messageService.readlistMsg(message, cri);
+		System.out.println(list.size());
+		System.out.println("메세지함 성공이야");
+
+		PageMaker pageMaker = new PageMaker();
+
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(messageService.listCountCri(cri));
+
+		model.addAttribute("pageMaker", pageMaker);
+		model.addAttribute("list", list);
+
+	}
+
+	// 메시지발송함
+	@RequestMapping(value = "/mypage/sendMessageList", method = RequestMethod.GET)
+	public void sendMessageList(HttpSession session , Model model, Message message, @ModelAttribute("cri") Criteria cri) throws Exception {
+
+		Member member = (Member) session.getAttribute("member");
+		
+		
+		if(member!=null){
+			message.setM_memberNo(member.getM_memberNo());
+		
+		}else{
+			message.setM_memberNo("1");
+		}
+		
+		
+		
+		
+		List<Message> list = messageService.sendMessageList(message, cri);
+
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(messageService.sendPage(cri));
+		
+		model.addAttribute("pageMaker", pageMaker);
+		model.addAttribute("list", list);
+
+	}
+
+	// 메시지 잘보내지면 OK
+	@RequestMapping(value = "/mypage/aptMessageOkdelect", method = RequestMethod.GET)
+	public void sendMsgOK() throws Exception {
+
+	}
+
+	// 메세지 디테일부분
+	@RequestMapping(value = "/mypage/aptMsgdetail", method = RequestMethod.GET)
+	public void detaileMsg(@RequestParam("sep") int msgno, Model model) throws Exception {
+
+		System.out.println(msgno + "메세지번호입니다.");
+		Message message = null;
+		message = messageService.detailmsg(msgno);
+		
+		//확인유무 읽지않음에서 =>읽음 확인했다고 적으려고
+		messageService.updateState(msgno);
+
+		model.addAttribute("detail", message);
+		
+	}
+
+	// 메세지 삭제부분
+	@RequestMapping(value = "/mypage/delectMsg", method = RequestMethod.POST)
+	public String delectMsg(@RequestParam("delect") int msgNo[], @RequestParam("readPage") String page) throws Exception {
+
+		if (msgNo != null) {
+
+			Message message = messageService.detailmsg(msgNo[0]);
+
+			if (message.getMg_from() == message.getM_memberNo()) { 
+
+				for (int i = 0; i < msgNo.length; i++) {
+				
+
+					messageService.delectMsg(msgNo[i]);
+				}
+
+				return "redirect:/mypage/readMessageList";
+			}else{
+			// 수신함에서 받은메세지를 삭제할경우 삭제하고나서  수신함.jsp로가라 ==수신메세지 새로고침
+			for (int i = 0; i < msgNo.length; i++) {
+					// System.out.println(msgNo[i]+"의번호");
+
+					messageService.delectMsg(msgNo[i]);
+			}
+				return "redirect:/mypage/sendMessageList";
+			}
+		}
+		
+		//체크박스 선택도안했는데 삭제버튼눌렀을시
+		if(msgNo ==null && page.equals("1")){
+			return "redirect:/mypage/readMessageList";
+		}else{
+			return "redirect:/mypage/sendMessageList";
+		}
+
 	}
 	
 	
-	
-	// 수신함
-		@RequestMapping(value = "/mypage/readMessageList", method = RequestMethod.GET)
-		public void readMessageList(Model model, Message message, @ModelAttribute("cri") Criteria cri) throws Exception {
 
-			List<Message> list = messageService.readlistMsg(message, cri);
-			System.out.println(list.size());
-			System.out.println("메세지함 성공이야");
 
-			PageMaker pageMaker = new PageMaker();
-
-			pageMaker.setCri(cri);
-			pageMaker.setTotalCount(messageService.listCountCri(cri));
-
-			model.addAttribute("pageMaker", pageMaker);
-			model.addAttribute("list", list);
-
-		}
-
-		// 메시지발송함
-		@RequestMapping(value = "/mypage/sendMessageList", method = RequestMethod.GET)
-		public void sendMessageList(Model model, Message message, @ModelAttribute("cri") Criteria cri) throws Exception {
-			List<Message> list = messageService.sendMessageList(message, cri);
-
-			PageMaker pageMaker = new PageMaker();
-			pageMaker.setCri(cri);
-			pageMaker.setTotalCount(messageService.sendPage(cri));
-			
-			model.addAttribute("pageMaker", pageMaker);
-			model.addAttribute("list", list);
-
-		}
-		
-		
-	
-		
-		// 메시지 잘보내지면 OK
-		@RequestMapping(value = "/mypage/aptMessageOkdelect", method = RequestMethod.GET)
-		public void sendMsgOK() throws Exception {
-
-		}
-		
-		
-		
-
-		// 메세지 디테일부분
-		@RequestMapping(value = "/mypage/aptMsgdetail", method = RequestMethod.GET)
-		public void detaileMsg(@RequestParam("sep") int msgno, Model model) throws Exception {
-
-			System.out.println(msgno + "메세지번호입니다.");
-			Message message = null;
-			message = messageService.detailmsg(msgno);
-			
-			//확인유무 읽지않음에서 =>읽음 확인했다고 적으려고
-			messageService.updateState(msgno);
-
-			model.addAttribute("detail", message);
-			
-		}
-
-		// 메세지 삭제부분
-		@RequestMapping(value = "/mypage/delectMsg", method = RequestMethod.POST)
-		public String delectMsg(@RequestParam("delect") int msgNo[], @RequestParam("readPage") String page) throws Exception {
-
-			if (msgNo != null) {
-
-				Message message = messageService.detailmsg(msgNo[0]);
-
-				if (message.getMg_from() == message.getM_memberNo()) { 
-
-					for (int i = 0; i < msgNo.length; i++) {
-					
-
-						messageService.delectMsg(msgNo[i]);
-					}
-
-					return "redirect:/mypage/readMessageList";
-				}else{
-				// 수신함에서 받은메세지를 삭제할경우 삭제하고나서  수신함.jsp로가라 ==수신메세지 새로고침
-				for (int i = 0; i < msgNo.length; i++) {
-						// System.out.println(msgNo[i]+"의번호");
-
-						messageService.delectMsg(msgNo[i]);
-				}
-					return "redirect:/mypage/sendMessageList";
-				}
-			}
-			
-			//체크박스 선택도안했는데 삭제버튼눌렀을시
-			if(msgNo ==null && page.equals("1")){
-				return "redirect:/mypage/readMessageList";
-			}else{
-				return "redirect:/mypage/sendMessageList";
-			}
-
-		}
-
-		
-		
-		//사이트 관리자 아파트 관리자 아이디/비밀번호 생성
-		@RequestMapping(value = "/mypage/signupManager", method = RequestMethod.GET)
-		public void signupManagerGet( Model model) throws Exception {
-			model.addAttribute("loginOn", 1);
-			
-		}
 		
 		//사이트 관리자 아파트 관리자 아이디/비밀번호 생성
 		@RequestMapping(value = "/mypage/signupManager", method = RequestMethod.POST)

@@ -18,9 +18,9 @@
 
 </head>
 <body>
-	<div id="page" class="hfeed site">
+	
 
-		<div id="secondary" style="background-color: white;">
+		<div id="secondary" style="text-align: center;">
 			<aside id="archives" class="widget">
 			<h3 class="widget-title">공동구매 게시판</h3>
 			<ul>
@@ -28,13 +28,10 @@
 				<li><a href='/ProductSale/proApplication'>구매자공동구매신청
 				</a></li>
 				
-				<li><a href='/ProductSale/proApplyManageList'>관리자 공동구매신청 승인
+				<li><a href='/ProductSale/proApplicationList'>관리자 공동구매신청 승인
 				</a></li>
 				
-				<li><a href='/ProductSale/proApplication'>구매자공동구매등록
-				</a></li>
-
-				<li><a href='/ProductSale/proconsumerlist'>구매자공동구매목록
+								<li><a href='/ProductSale/proconsumerlist'>구매자공동구매목록
 				</a></li>
 				<li><a href='/ProductSale/proconsumerlist'>구매자구매내역</a></li>
 				<li><a href='/ProductSale/promanagelist'>구매자판매내역</a></li>
@@ -44,7 +41,6 @@
 			</ul>
 			</aside>
 		</div>
-		
-	</div>
+
 </body>
 </html>

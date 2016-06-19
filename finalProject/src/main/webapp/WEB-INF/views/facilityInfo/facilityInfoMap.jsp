@@ -275,30 +275,12 @@ html, body {
 	</div>
 	<div class="main">
 		<div class="container" id="page" style="height: 850px;">
-			<div class="col-md-3" >
-				<div id="secondary">
-					<aside id="archives" class="widget">
-					<h3 class="widget-title">Archives</h3>
-					<ul>
-						<li><a href='http://demo.themegrill.com/spacious/2014/03/'>March
-								2014</a></li>
-						<li><a href='http://demo.themegrill.com/spacious/2014/02/'>February
-								2014</a></li>
-
-						<li><a href='http://demo.themegrill.com/spacious/2014/03/'>March
-								2014</a></li>
-						<li><a href='http://demo.themegrill.com/spacious/2014/02/'>February
-								2014</a></li>
-						<li><a href='http://demo.themegrill.com/spacious/2014/03/'>March
-								2014</a></li>
-						<li><a href='http://demo.themegrill.com/spacious/2014/02/'>February
-								2014</a></li>
-					</ul>
-					</aside>
-				</div><!-- 
-				<div id="primary" style="height: 1000px;"></div>
- -->
-			</div>
+			 <div class="col-md-3">
+         
+    <jsp:include page="../Community/CommunitySidebar.jsp"></jsp:include>
+           
+         
+      </div>
 			<div class="col-md-8  col-lg-offset-1" style="margin-top: 70px;">
 			<div style="border-bottom:  3px  solid #eaeaea; width: 90%; ">
 						<h2 style="padding-bottom: 6px;">아파트 주변 시설</h2>

@@ -15,6 +15,7 @@ import org.springframework.web.servlet.view.AbstractView;
 
 public class DownloadView2 extends AbstractView {
 
+
    public DownloadView2() {
       setContentType("application/download; charset=utf-8");
    }
@@ -56,3 +57,4 @@ public class DownloadView2 extends AbstractView {
    }
 
 }
+

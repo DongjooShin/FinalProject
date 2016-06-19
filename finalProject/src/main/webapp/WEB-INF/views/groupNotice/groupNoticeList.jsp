@@ -16,7 +16,7 @@
 				$('#searchBtn').on(
 						"click",
 						function(event) {
-							alert("search!!");
+							//alert("search!!");
 							self.location = "listAll"
 									+ '${pageMaker.makeQuery(1)}'
 									+ "&searchType="

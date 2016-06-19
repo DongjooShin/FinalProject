@@ -30,6 +30,8 @@ public interface MessageMapper {
 
 	void updateState(int msgno);
 
+	String selectMg_toO(String mg_to);
+
 	
 	
 

@@ -14,21 +14,21 @@
 	$(function() {
 		var formObj = $("form[role='form']");
 		$("#updategn").on("click", function() {
-			alert("수정버튼 클릭");
+			//alert("수정버튼 클릭");
 			formObj.attr("action", "/groupNotice/modify");
 			formObj.attr("method", "get");
 			formObj.submit();
 		});
 
 		$("#deletegn").on("click", function() {
-			alert("삭제버튼 클릭");
+			//alert("삭제버튼 클릭");
 			formObj.attr("action", "/groupNotice/delete");
 			formObj.attr("method", "get");
 			formObj.submit();
 		});
 
 		$("#listgn").on("click", function() {
-			alert("목록버튼 클릭");
+			//alert("목록버튼 클릭");
 			formObj.attr("method", "get");
 			formObj.attr("action", "/groupNotice/listAll");
 			formObj.submit();
@@ -46,34 +46,18 @@
 
 	<div class="main">
 		<div class="container" id="page">
-			<div class="col-md-3">
-				
-				<div id="secondary">
-					<aside id="archives" class="widget">
-					<h3 class="widget-title">Archives</h3>
-					<ul>
-						<li><a href='http://demo.themegrill.com/spacious/2014/03/'>March
-								2014</a></li>
-						<li><a href='http://demo.themegrill.com/spacious/2014/02/'>February
-								2014</a></li>
-
-						<li><a href='http://demo.themegrill.com/spacious/2014/03/'>March
-								2014</a></li>
-						<li><a href='http://demo.themegrill.com/spacious/2014/02/'>February
-								2014</a></li>
-						<li><a href='http://demo.themegrill.com/spacious/2014/03/'>March
-								2014</a></li>
-						<li><a href='http://demo.themegrill.com/spacious/2014/02/'>February
-								2014</a></li>
-					</ul>
-					</aside>
-				</div>
-				<div id="primary" style="height: 1000px;"></div>
-
-			</div>
+			 <div class="col-md-3">
+         
+    <jsp:include page="../Community/CommunitySidebar.jsp"></jsp:include>
+           
+         
+      </div>
 			
 			<!-- 리스트,입력,상세보기 -->
 			<div class="col-md-8" style="margin-top: 50px;">
+			<div style="border-bottom:  3px  solid #eaeaea; width: 90%; ">
+						<h2 style="padding-bottom: 6px;">공지사항</h2>
+			</div>
 				<table border="1" class="table table-striped">
 					<tr height="30">
 						<td width="50">제목</td>
@@ -102,8 +86,10 @@
 					</tr>
 					<tr height="30">
 						<td colspan="4">
+						<c:if test="${member.m_grade eq 2 }">
 							<button type="button" id="updategn" >수정</button>
 							<button type="button" id="deletegn">삭제</button>
+						</c:if>
 							<button type="button" id="listgn">목록</button>
 						</td>
 

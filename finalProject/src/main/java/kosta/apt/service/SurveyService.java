@@ -47,9 +47,9 @@ public class SurveyService {
 		
 	}
 
-	public List<SurveyDB> surveystart() {
+	public List<SurveyDB> surveystart(int sessionNum) {
 		
-		return surDao.surveystart();
+		return surDao.surveystart(sessionNum);
 	}
 
 	public List<Survey> surveyList(int groupNum) {

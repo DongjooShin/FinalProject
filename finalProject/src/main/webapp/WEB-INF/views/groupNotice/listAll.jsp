@@ -19,6 +19,9 @@
 			
 			<!-- 리스트,입력,상세보기 -->
 			<div class="col-md-8" style="margin-top: 50px;">
+			<div style="border-bottom:  3px  solid #eaeaea; width: 90%; ">
+						<h2 style="padding-bottom: 6px;">공지사항</h2>
+			</div>
 				<jsp:include page="groupNoticeList.jsp"></jsp:include>
 			</div>
 		</div>
