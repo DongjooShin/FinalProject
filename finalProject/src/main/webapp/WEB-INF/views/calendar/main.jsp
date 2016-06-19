@@ -8,9 +8,9 @@
 <title>Insert title here</title>
 </head>
 <body style="background-color: #eaeaea;">
-	<div class="header">
+	<%-- <div class="header">
 		 <jsp:include page="../include/head.jsp"></jsp:include> 
-	</div>
+	</div> --%>
 	<div class="main">
 		<jsp:include page="sidebar.jsp"></jsp:include>
 	</div>

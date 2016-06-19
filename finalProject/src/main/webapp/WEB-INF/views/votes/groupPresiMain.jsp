@@ -153,14 +153,14 @@
 												<tr><td colspan="2">${cn.cd_promise }</td></tr>
 												
 												<tr><td height="40px" colspan="2" style="padding:10px;">
-													<input type="radio"name="onechoose" checked="checked" value="${cn.cd_symbol }" style="margin-top:0px;margin-left:0px;">
+													<input type="radio"name="onechoose" checked="checked" value="${cn.m_memberNo }" style="margin-top:0px;margin-left:0px;">
 												</td></tr>
 											</table>
 										</div>
 									</c:forEach>
 								</div>
 								<br><br>
-								<c:if test="${msg != null }">
+								<c:if test="${msg != 'No' }">
 									<script type="text/javascript">
 										var msg = '${msg}'; 
 										alert(msg);

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import kosta.apt.domain.member.Member;
 import kosta.apt.domain.vote.Candidate;
 import kosta.apt.domain.vote.Voter;
+import kosta.apt.mapper.SiteNoticeMapper;
 import kosta.apt.mapper.VoterMapper;
 
 @Repository
@@ -87,8 +88,8 @@ public class VoteDao {
 		return sqlSession.getMapper(VoterMapper.class).getMemberName(id);
 	}
 
-	public void updateHit(int hit) {
-		sqlSession.getMapper(VoterMapper.class).updateHit(hit);
+	public void updateHit(String id) {
+		sqlSession.getMapper(VoterMapper.class).updateHit(id);
 	}
 	
 	public int maxVoterNo(){
@@ -116,6 +117,10 @@ public class VoteDao {
 
 	public Integer searchBSymbolService(HashMap<String, Integer> map) {
 		return sqlSession.getMapper(VoterMapper.class).searchBSymbolService(map);
+	}
+
+	public void updateGP(int aptgno) {
+		sqlSession.getMapper(SiteNoticeMapper.class).updateGP(aptgno);
 	}
 	
 	

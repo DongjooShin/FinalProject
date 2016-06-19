@@ -76,12 +76,10 @@
 					<aside id="archives" class="widget">
 					<h3 class="widget-title ">&nbsp;관리비</h3>
 					<ul>
-						<li><a href='http://demo.themegrill.com/spacious/2014/03/'>&nbsp;전체관리비
+						<li><a href='/managementFee/managementFeeList'>&nbsp;전체관리비
 								</a></li>
-						<li><a href='http://demo.themegrill.com/spacious/2014/02/'>&nbsp;전기세</a></li>
-
-						<li><a href='http://demo.themegrill.com/spacious/2014/03/'>&nbsp;수도세</a></li>
-						<li><a href='http://demo.themegrill.com/spacious/2014/03/'>&nbsp;공동관리비</a></li>
+						<li><a href='/publicmana/appropia'>&nbsp;예산</a></li>
+						<li><a href='/publicmana/PublicManageFee'>&nbsp;공동관리비</a></li>
 					</ul>
 					</aside>
 				</div>

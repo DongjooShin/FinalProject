@@ -81,7 +81,7 @@ $('#fileInto').tooltip({
 							<input type="hidden" name="cno" value="${cn.candidateNo }"> 
 							<table class="candidatelist" border="1px" >
 								<tr>
-								 	<td rowspan="4" width="300px">
+								 	<td rowspan="4" width="300px" height="280">
 											<img alt="" src="../j_upload/${cn.cd_imageName }">
 									</td>
 									<td width="100px">분류</td>

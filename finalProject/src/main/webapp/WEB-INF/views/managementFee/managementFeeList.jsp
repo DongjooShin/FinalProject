@@ -36,8 +36,37 @@
 		<jsp:include page="../include/head.jsp"></jsp:include>
 	</div>
 	<div class="wrapper">
-		<!-- Main content -->
-		<section class="content" id="page">
+		<!-- Main content -->					
+		<div class="content" id="page">
+		
+		<div class="col-lg-3">
+		<!-- 	<aside id="archives" class="widget"> -->
+					<h3 class="widget-title ">&nbsp;관리비</h3>
+					<ul>
+						<li><a href='/managementFee/managementFeeList'>&nbsp;전체관리비
+								</a></li>
+						<li><a href='/publicmana/appropia'>&nbsp;예산</a></li>
+						<li><a href='/publicmana/PublicManageFee'>&nbsp;공동관리비</a></li>
+					</ul>
+			</aside>
+		</div>
+		
+		<div class="col-lg-9">
+			<div class="col-lg-9"></div>
+			<div class="col-lg-3">
+				<select class="form-control" id="graphChange" name="feeGroup">
+					<option value="201602">2016년 2월</option>
+					<option value="201603">2016년 3월</option>
+					<option value="201604">2016년 4월</option>
+					<option value="201605">2016년 5월</option>
+					<option value="201606" selected>2016년 6월</option>
+				</select>
+			</div>
+			</form>
+		
+		<div class="row">
+			<div class="col-lg-12">&nbsp;</div>
+		</div>
 		<div class="row">
 			<div class="col-md-9">
 				<div class="box">
@@ -292,7 +321,7 @@
 		<div class="row">
 			<div class="col-lg-9"></div>
 			<div class="col-lg-3">
-				<select class="form-control" name="feeGroup">
+				<select class="form-control" id="mntTable" name="feeGroup">
 					<option value="201602">2016년 2월</option>
 					<option value="201603">2016년 3월</option>
 					<option value="201604">2016년 4월</option>
@@ -321,10 +350,11 @@
 					</table>
 				</div>
 			</div>
+			</div>
 		</div>
 		</section>
-
-	</div>
+		</div>
+	</div></div>
 	<!-- ./wrapper -->
 
 
@@ -341,6 +371,8 @@
 	<script type="text/javascript"
 		src="/resources/dist/js/kyungtae/demo.js"></script>
 	<script type="text/javascript" src="/resources/js/kyungtae/mntChart.js"></script>
+	<!-- <script type="text/javascript" src="/resources/js/kyungtae/mntChartChange.js"></script> -->
+	
 </body>
 
 </html>

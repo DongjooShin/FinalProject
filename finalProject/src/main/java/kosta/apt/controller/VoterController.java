@@ -144,30 +144,31 @@ public class VoterController {
 						String b_fname = null;
 						if (!file.isEmpty()) {
 							b_fname = file.getOriginalFilename();
+							
+							String uploadDir = request.getServletContext().getRealPath("/j_upload/");
+							
+							file.transferTo(new File(uploadDir,b_fname));
+							// aaa.gif => aaa_small.gif
+							String pattern = b_fname.substring(b_fname.indexOf(".") + 1);
+							String headName = b_fname.substring(0, b_fname.indexOf("."));
+							String imagePath = uploadDir + "\\" + b_fname;
+							File src = new File(imagePath);
+							String thumImagePath = uploadDir + "\\" + headName + "_small." + pattern;
+							File dest = new File(thumImagePath);
+		
+							if (pattern.equals("jpg") || pattern.equals("png") || pattern.equals("gif")
+									|| pattern.equals("JPG") || pattern.equals("PNG") || pattern.equals("GIF")) 
+							{
+								ImageUtil.resize(src, dest, 210, ImageUtil.RATIO);
+							}
+		
+							c.setCd_imageName(headName + "_small." + pattern);
+							
 						}else{
-							b_fname = "non_image.png";
+							b_fname = "default_non_image_small.png";
+							c.setCd_imageName(b_fname);
 						}
-						String uploadDir = request.getServletContext().getRealPath("/j_upload/");
-						System.out.println("1+"+uploadDir);
-					
-						file.transferTo(new File(uploadDir,b_fname));
-						// aaa.gif => aaa_small.gif
-						String pattern = b_fname.substring(b_fname.indexOf(".") + 1);
-						String headName = b_fname.substring(0, b_fname.indexOf("."));
-						String imagePath = uploadDir + "\\" + b_fname;
-						File src = new File(imagePath);
-						String thumImagePath = uploadDir + "\\" + headName + "_small." + pattern;
-						File dest = new File(thumImagePath);
 						
-						System.out.println("2+"+imagePath);
-						System.out.println("3+"+dest);
-	
-						if (pattern.equals("jpg") || pattern.equals("png") || pattern.equals("gif")
-								|| pattern.equals("JPG") || pattern.equals("PNG") || pattern.equals("GIF")) {
-							ImageUtil.resize(src, dest, 210, ImageUtil.RATIO);
-						}
-	
-						c.setCd_imageName(headName + "_small." + pattern);
 						
 						c.setApt_APTGNo(member.getApt_APTGNo());
 						
@@ -233,6 +234,7 @@ public class VoterController {
 	@RequestMapping(value="closeVote",method=RequestMethod.GET)
 	public String closeVote(HttpSession session,Model model){
 		Member m = (Member)session.getAttribute("member");
+		voteService.updateGP(m.getApt_APTGNo());	// GP register
 		voteService.updateAllVflagService(4, m.getApt_APTGNo());
 		voteService.updateVflagService(4,  m.getM_memberNo());
 		return managerGroupPresi(session,model);
@@ -272,16 +274,13 @@ public class VoterController {
 					for(int i=0; i<id.length; i++){
 						System.out.println(id[i]);
 					}
-					int hit=0;
-					if(id != null){
-						hit = Integer.parseInt(id[0]);
-					}
-					voteService.updateHitService(hit);
+					System.out.println("id:"+id[0]);
+					voteService.updateHitService(id[0]);
 					voteService.updateVflagService(3, m.getM_memberNo());
 					Voter v = new Voter(voteService.maxVoterNoService()+1, m.getM_buildingNo(), m.getM_roomNo(), m.getM_memberNo(), m.getApt_APTGNo(), "입주자대표");
 					
 					voteService.insertVoterService(v);
-					model.addAttribute("msg", null);
+					model.addAttribute("msg", "No");
 				}
 			}else{
 				String message = "비밀번호 오류";

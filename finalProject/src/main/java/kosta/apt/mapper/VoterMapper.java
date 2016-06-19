@@ -24,7 +24,7 @@ public interface VoterMapper {
 	public int selectGroupGPNum(int aptno);
 	public void updateAllVflag(HashMap<String, Integer> map);
 	public String getMemberName(String id);
-	public int updateHit(int hit);
+	public int updateHit(String id);
 	public int maxVoterNo();
 	public int insertVoter(Voter v);
 	public Voter selectExistVoter(HashMap<String, Integer> map);

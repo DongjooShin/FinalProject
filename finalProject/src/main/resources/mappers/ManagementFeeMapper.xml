@@ -27,7 +27,8 @@
 	
 	<select id="selectManagementFee" parameterType="String" resultType="ManagementFee">
 		select * from (select * from managementfee 
-				where m_memberno = #{m_memberNo}
+				where m_memberno = #{param1}
+				AND <![CDATA[ mf_date <= #{param2} ]]>
 				order by mf_date DESC)
 			where <![CDATA[ ROWNUM <= 7 ]]>
 			order by mf_date ASC
@@ -41,14 +42,13 @@
 			where <![CDATA[ ROWNUM <= 2 ]]>
 	</select>
 	
-	
-	
 	<select id="selectManagementFeeAvg" parameterType="String" resultType="ManagementFeeAvg">
 		select mf_waterfeeavg, mf_gasfeeavg, mf_electricfeeavg, mf_date from  (select round(AVG(mng.mf_waterfee)) as mf_waterfeeavg, round(AVG(mng.mf_gasfee)) as mf_gasfeeavg, round(AVG(mng.mf_electricfee)) as mf_electricfeeavg, mng.mf_date
 		from member mem, managementfee mng
 		where mem.m_memberno = mng.m_memberno
 		and mem.apt_aptgno = (select apt_aptgno from member 
-			where m_memberno = #{m_memeberNo})
+			where m_memberno = #{param1}
+			and <![CDATA[ mf_date <= #{param2}) ]]>
 		group by mng.mf_date
 		order by mf_date DESC)
 		where <![CDATA[ ROWNUM <= 7 ]]>

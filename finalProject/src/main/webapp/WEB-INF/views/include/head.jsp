@@ -6,10 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-
-
-<link rel='stylesheet' href='/resources/bootstrap/bootstrap.min.css'
-	type='text/css' rel="stylesheet" />
+<link rel='stylesheet' href='/resources/bootstrap/bootstrap.min.css' type='text/css' rel="stylesheet" />
 <link rel='stylesheet' href='/resources/dist/css/mainFont.css'
 	type='text/css' rel="stylesheet" />
 <link rel='stylesheet'
@@ -115,11 +112,14 @@
 
 								<li id="menu-item-9"
 									class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-254"><a
-									href="http://demo.themegrill.com/spacious/">관리비</a>
+									href="/managementFee/managementFeeList">관리비</a>
 									<ul class="sub-menu">
 										<li id="menu-item-109"
 											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-109"><a
 											href="/managementFee/managementFeeList">전체관리비</a></li>
+										<li id="menu-item-109"
+											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-109"><a
+											href="/publicmana/appropia">예산</a></li>
 										<li id="menu-item-107"
 											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-107"><a
 											href="/publicmana/PublicManageFee">공통관리비</a></li>
