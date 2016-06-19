@@ -87,11 +87,11 @@ public class VoteDao {
 		return sqlSession.getMapper(VoterMapper.class).getMemberName(id);
 	}
 
-	public void updateHit(int hit) {
-		sqlSession.getMapper(VoterMapper.class).updateHit(hit);
+	public void updateHit(String id) {
+		sqlSession.getMapper(VoterMapper.class).updateHit(id);
 	}
 	
-	public int maxVoterNo(){
+	public Integer maxVoterNo(){
 		return sqlSession.getMapper(VoterMapper.class).maxVoterNo();
 	}
 	public void insertVoter(Voter v) {
@@ -116,6 +116,10 @@ public class VoteDao {
 
 	public Integer searchBSymbolService(HashMap<String, Integer> map) {
 		return sqlSession.getMapper(VoterMapper.class).searchBSymbolService(map);
+	}
+
+	public void updateGP(int aptgno) {
+		sqlSession.getMapper(VoterMapper.class).updateGP(aptgno);
 	}
 	
 	

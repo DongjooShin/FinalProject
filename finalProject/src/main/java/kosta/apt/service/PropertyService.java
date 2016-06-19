@@ -1,11 +1,15 @@
 package kosta.apt.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kosta.apt.controller.APTGroupController;
 import kosta.apt.domain.Paging.Criteria;
+import kosta.apt.domain.Property.AptTransactionPrice;
 import kosta.apt.domain.Property.Property;
 import kosta.apt.persistence.PropertyDAO;
 
@@ -75,6 +79,31 @@ public class PropertyService {
 	public void aptDelete(int pr_propertyNo) {
 		
 		proDao.aptDelete(pr_propertyNo);
+	}
+
+
+	public List<AptTransactionPrice> getAptAddrService(int aptNum) {
+		HashMap<String, String> map = new HashMap<String, String>();
+		String addr = proDao.getAptAddr(aptNum);
+		String aptName = proDao.getAptName(aptNum);
+		System.out.println(aptName);
+		String addrSe[] = new String[4];
+		addrSe =addr.split(" ");
+		addr = addrSe[0]+"도 "+addrSe[1]+" "+addrSe[2]+"%";
+		/*
+		map.put("f_addr", addr);
+		map.put("f_groupName", aptName);*/
+	map.put("f_addr", " 서울특별시 강남구 역삼동");
+		map.put("f_groupName", "대우디오빌");
+		List<AptTransactionPrice> list = proDao.getRealTransaction(map);
+		
+		return list;
+	}
+
+
+	public List<AptTransactionPrice> getAptTransactionService(String address) {
+		
+		return proDao.getAptTransaction(address);
 	}
 
 

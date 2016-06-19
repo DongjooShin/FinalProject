@@ -16,29 +16,21 @@
 	type='text/css' media='all' />
 
 <style type="text/css">
-
-#page2{
-
+#page2 {
 	margin-left: 3px;
-
 }
 
-#archives{
-
+#archives {
 	padding-left: 10px;
 }
 
-
-#archives ul li{
-
+#archives ul li {
 	padding: 50px;
 }
 
-#archives ul{
-
+#archives ul {
 	padding: 50px;
 }
-
 </style>
 
 </head>
@@ -47,16 +39,18 @@
 
 		<div id="secondary" style="background-color: white;">
 			<aside id="archives" class="widget">
-			
-			<ul>
-				<h3 class="widget-title">부동산</h3>
-				<li><a href='/Property/aptSaleList'>부동산매물 정보</a></li>
-				<li><a href='/Property/aptSale'>부동산매물 등록</a></li>
 
+			<ul>
+
+				<h3 class="widget-title">부동산</h3>
+
+				<li><a href='/Property/aptSaleList'>부동산매물 정보</a></li>
+
+				<li><a href='/Property/aptSale'>부동산매물 등록</a></li>
 			</ul>
 			</aside>
 		</div>
-	
+
 	</div>
 </body>
 </html>

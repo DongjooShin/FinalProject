@@ -83,7 +83,7 @@ function aaa(id2){
 	
 	
 	
-	url = "/aptMessage?m_memberNo="+id2.m_memberNo.value+"&&id="+id2.id.value;
+	url = "/mypage/aptMessage?m_memberNo="+id2.m_memberNo.value+"&&id="+id2.id.value;
 	//alert(url);
 	
 	open(

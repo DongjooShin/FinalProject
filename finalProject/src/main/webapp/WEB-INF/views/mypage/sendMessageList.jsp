@@ -149,7 +149,7 @@ function detailMsg(id2){
 			<div id="mypageLayout">
 				<ul id=mypageUl>
 				
-						<jsp:include page="../include/mypagehead.jsp"></jsp:include>
+						<jsp:include page="../include/aaa.jsp"></jsp:include>
 				
 				</ul>
 				

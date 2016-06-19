@@ -16,7 +16,7 @@
 
 </head>
 <body>
-	<div id="page" class="hfeed site">
+
 
 		<div id="secondary" style="background-color: white;text-align: center;">
 			<aside id="archives" class="widget">
@@ -30,7 +30,7 @@
 			</aside>
 		</div>
 		
-	</div>
+
 	
 	
 	

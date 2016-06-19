@@ -49,7 +49,7 @@ function check(){
 			open(
 					url,
 					"map",
-					"toolbar=no, status=no, menubar=no, location=no, scrollbars=no, resizable=no, width=500, height=400");
+					"toolbar=no, status=no, menubar=no, location=no, scrollbars=no, resizable=no, width=700, height=400");
 
 		} else {
 			alert("개인정보 약관에 동의하셔야 합니다.");
@@ -68,7 +68,7 @@ function check(){
 
 	</div>
 	<div id="page"
-		style="background: white; display: inline-block; padding-bottom: 50px; margin-left: 7.9%;">
+		style="display: inline-block; padding-bottom: 50px;">
 		<div class="col-md-12">
 			<div class="col-lg-3"
 				style="margin-right: 0; margin-left: 26px; margin-top: 17px; ">

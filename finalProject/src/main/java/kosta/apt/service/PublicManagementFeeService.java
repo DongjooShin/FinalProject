@@ -38,8 +38,12 @@ public class PublicManagementFeeService {
 		return dao.selectMonthPublicManagementFee(apt_APTGNo);
 	}
 	
-	public List selectPublicManagementFee(int apt_APTGno) {
-		return dao.selectPublicManagementFee(apt_APTGno);
+	public List selectPublicManagementFee(int apt_APTGno, String mf_date) {
+		Map<String, Integer> map1 = new HashMap<String, Integer>();
+		Map<String, String> map2 = new HashMap<String, String>();
+		map1.put("apt_APTGno", apt_APTGno);
+		map2.put("mf_date", mf_date);
+		return dao.selectPublicManagementFee(map1, map2);
 	}
 
 	public List<Member> selectMemberList(int apt_APTGNo) {

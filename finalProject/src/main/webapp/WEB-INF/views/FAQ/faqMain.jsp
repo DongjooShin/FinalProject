@@ -78,7 +78,7 @@
 								<a class="cd-faq-trigger" href="#0">단지 가입 문의는?</a>
 								<div class="cd-faq-content">
 									<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;본 사이트 메뉴의 [고객센터] > [가입문의] 에서 확인해 주십시오. </p>
-								</div>
+								</div> 
 							</li>
 							<li>
 								<a class="cd-faq-trigger" href="#0">입주민의 사이트 가입?</a>

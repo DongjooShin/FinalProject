@@ -29,8 +29,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import kosta.apt.domain.Property.AptTransactionPrice;
 import kosta.apt.domain.member.AptList;
-import kosta.apt.domain.member.AptTransactionPrice;
 import kosta.apt.domain.member.LoginCheck;
 import kosta.apt.domain.member.MailMail;
 import kosta.apt.domain.member.Member;
@@ -65,10 +65,7 @@ public class MemberController {
 
 	@RequestMapping(value = "/signup", method = RequestMethod.GET)
 	public void signupGet(Model model, String state, String city, String aptname) {
-		System.out.println(state);
-		System.out.println(city);
-		System.out.println(aptname);
-		
+
 		String fullAddres = memberService.getAddressService(state + " " + city, aptname);
 		int apt_aptgno = memberService.getAptNumService(state + " " + city, aptname);
 		model.addAttribute("fullAddres", fullAddres);
@@ -78,7 +75,6 @@ public class MemberController {
 
 	@RequestMapping(value = "/confirmId", method = RequestMethod.GET)
 	public void confirmIdPost(Model model, @RequestParam("id") String id) {
-		System.out.println(id);
 		int check = memberService.checkMemberIdService(id);
 		model.addAttribute("id", id);
 		model.addAttribute("check", check);
@@ -92,7 +88,7 @@ public class MemberController {
 		member.setM_domain(domain);
 		String S_passwod = testSHA256(member.getM_pass());
 		member.setM_pass(S_passwod);
-		// testSHA256
+	
 
 		memberService.inserMemberService(member);
 		return "redirect:/main";
@@ -186,91 +182,6 @@ public class MemberController {
 		return "redirect:/main";
 	}
 
-	@RequestMapping(value = "/aptNews", method = RequestMethod.GET)
-	public void aptNewsGet(HttpSession session, Model model, @RequestParam("newsNum") int newsNum,
-			@RequestParam("page") int page) throws Exception {
-		List<Map<String, String>> newsList = null;
-		RssReader rssReader = new RssReader();
-		newsList = rssReader.getSynFeed(newsNum);
-		int startPage = page;
-		int endPage = startPage + 4;
-
-		model.addAttribute("listSize", newsList.size() - 5);
-		model.addAttribute("newsNum", newsNum);
-		model.addAttribute("startPage", startPage);
-		model.addAttribute("endPage", endPage);
-		model.addAttribute("newsList", newsList);
-
-	}
-
-	@RequestMapping(value = "/FileUploadForm", method = RequestMethod.GET)
-	public void showForm(AptTransactionPrice aptTransactionPrice, ModelMap model) {
-		model.addAttribute("excel", aptTransactionPrice);
-	}
-
-	@SuppressWarnings("resource")
-	@RequestMapping(value = "/FileUploadForm", method = RequestMethod.POST)
-	public String processForm(@ModelAttribute("excel") AptTransactionPrice aptTransactionPrice, BindingResult result)
-			throws IOException {
-		List<AptTransactionPrice> list = new ArrayList<AptTransactionPrice>();
-		AptTransactionPrice aptTransactionPrice1 = null;
-		if (!result.hasErrors()) {
-			FileOutputStream outputStream = null;
-
-			// save & load location
-			String filePath = System.getProperty("java.io.tmpdir") + aptTransactionPrice.getFile().getOriginalFilename();
-
-			String[] b = filePath.split("[.]");
-
-			// save
-			outputStream = new FileOutputStream(new File(filePath));
-			outputStream.write(aptTransactionPrice.getFile().getFileItem().get());
-
-			// load
-			FileInputStream file = new FileInputStream(new File(filePath));
-
-			XSSFWorkbook workbook = new XSSFWorkbook(file);
-			XSSFSheet sheet = workbook.getSheetAt(0);
-			System.out.println(workbook.getSheetName(0));
-			Iterator<Row> rowIterator = sheet.iterator();
-
-			while (rowIterator.hasNext()) {
-				Row row = rowIterator.next();
-				if (row.getRowNum() == 0) {
-
-				} else {
-					String primaryNum = "201604" + workbook.getSheetName(0) + row.getRowNum();
-					String[] aptPrice = row.getCell(5).getStringCellValue().split("[,]");
-					aptTransactionPrice1 = new AptTransactionPrice(primaryNum, row.getCell(0).getStringCellValue(),
-							row.getCell(1).getStringCellValue(), row.getCell(2).getStringCellValue(),
-							Float.parseFloat(row.getCell(3).getStringCellValue()), row.getCell(4).getStringCellValue(),
-							Integer.parseInt(aptPrice[0] + aptPrice[1]),
-							Integer.parseInt(row.getCell(6).getStringCellValue()),
-							Integer.parseInt(row.getCell(7).getStringCellValue()), row.getCell(8).getStringCellValue());
-
-					memberService.updateRealTransactionPriceService(aptTransactionPrice1);
-				}
-			}
-
-			file.close();
-
-			return "redirect:/main";
-		}
-		return "main";
-	}
-
-	@RequestMapping(value = "/sendMail", method = RequestMethod.GET)
-	public void sendMail(Model model) {
-		ApplicationContext context = new ClassPathXmlApplicationContext("classpath:/Spring-Mail.xml");
-		MailMail mm = (MailMail) context.getBean("MailMail");
-		mm.sendMail("aptmanager.kost111@gmail.com", "dongjoo1029@naver.com", "Testing123",
-				"Testing only \n\n Hello Spring Email Sender");
-	}
-
-	@RequestMapping(value = "/mypageTest", method = RequestMethod.GET)
-	public void mypageTest(Model model) {
-
-	}
 
 	@RequestMapping(value = "/certification", method = RequestMethod.GET)
 	public void certificationGet(Model model) {
@@ -283,8 +194,7 @@ public class MemberController {
 			@RequestParam("domain") String domain) {
 		HashMap<String, String> map = new HashMap<String, String>();
 		String Email = email + "@" + domain;
-		ApplicationContext context = new ClassPathXmlApplicationContext("classpath:/Spring-Mail.xml");
-		MailMail mm = (MailMail) context.getBean("MailMail");
+
 
 		int Num1[] = new int[8];
 		int Num2[] = new int[8];
@@ -296,8 +206,11 @@ public class MemberController {
 				+ Num2[2] + Num2[3] + ((char) Num1[4]) + ((char) Num1[5]) + ((char) Num1[6]) + ((char) Num1[7])
 				+ Num2[4] + Num2[5] + Num2[6] + Num2[7];
 
-		String text = "AptManager 회원 인증을 위한 메일입니다 \n\n 아래 key값을 복사하여 입력해주세요.\n\n\t\t" + key + "\n\n\t감사합니다.";
-		mm.sendMail("aptmanager.kost111@gmail.com", Email, "AptManager 회원 인증", text);
+		ApplicationContext context = new ClassPathXmlApplicationContext("classpath:/Spring-Mail.xml");
+		MailMail mail = (MailMail) context.getBean("MailMail");
+		String text = "AptManager 회원 인증을 위한 메일입니다 \n\n 아래 key값을 복사하여 입력해주세요."
+				+ "\n\n\t\t" + key + "\n\n\t감사합니다.";
+		mail.sendMail("aptmanager.kost111@gmail.com", Email, "AptManager 회원 인증", text);
 		map.put("key", key);
 		return map;
 	}
@@ -342,7 +255,6 @@ public class MemberController {
 				sb.append(Integer.toString((byteData[i] & 0xff) + 0x100, 16).substring(1));
 			}
 			SHA = sb.toString();
-
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
 			SHA = null;

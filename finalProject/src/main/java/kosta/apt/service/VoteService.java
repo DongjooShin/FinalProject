@@ -38,6 +38,7 @@ public class VoteService {
 		return votedao.maxCandiNo();
 	}
 	public Integer searchSymbolService(int s,int aptgno) {
+		System.out.println("s:"+s+" , aptgno:"+aptgno);
 		HashMap<String, Integer> map = new HashMap<>();
 		map.put("aptgno", aptgno);
 		map.put("s", s);
@@ -76,10 +77,10 @@ public class VoteService {
 		return votedao.getMemberName(id);	
 	}	
 
-	public void updateHitService(int hit) {
-		votedao.updateHit(hit);
+	public void updateHitService(String id) {
+		votedao.updateHit(id);
 	}
-	public int maxVoterNoService() {
+	public Integer maxVoterNoService() {
 		return votedao.maxVoterNo();
 	}
 	public void insertVoterService(Voter v) {
@@ -88,7 +89,9 @@ public class VoteService {
 	public Voter selectExistVoterService(HashMap<String, Integer> map){
 		return votedao.selectExistVoter(map);
 	}
-	
+	public void updateGP(int aptgno) {
+		votedao.updateGP(aptgno);
+	}
 	
 	
 	
@@ -106,6 +109,7 @@ public class VoteService {
 		map.put("aptgno", apt_APTGNo);
 		return votedao.searchBSymbolService(map);
 	}
+
 	
 	
 	/*

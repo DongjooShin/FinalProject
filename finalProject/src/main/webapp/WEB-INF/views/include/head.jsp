@@ -6,10 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-
-
-<link rel='stylesheet' href='/resources/bootstrap/bootstrap.min.css'
-	type='text/css' rel="stylesheet" />
+<link rel='stylesheet' href='/resources/bootstrap/bootstrap.min.css' type='text/css' rel="stylesheet" />
 <link rel='stylesheet' href='/resources/dist/css/mainFont.css'
 	type='text/css' rel="stylesheet" />
 <link rel='stylesheet'
@@ -87,17 +84,17 @@
 
 								<li id="menu-item-52"
 									class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-7 current_page_item menu-item-9"><a
-									href="http://demo.themegrill.com/spacious/">커뮤니티</a>
+									href="/calendar/calendar">커뮤니티</a>
 									<ul class="sub-menu">
 										<li id="menu-item-109"
 											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-109"><a
 											href="/calendar/calendar">스케줄</a></li>
 										<li id="menu-item-108"
 											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-108"><a
-											href="http://demo.themegrill.com/spacious/layout/right-sidebar/">아파트시세</a></li>
+											href="/Property/aptRealTransaction?page=0">아파트시세</a></li>
 										<li id="menu-item-106"
 											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-106"><a
-											href="http://demo.themegrill.com/spacious/layout/no-sidebar-full-width/">투표</a></li>
+											href="/voter/groupPresiMain">투표</a></li>
 										<li id="menu-item-107"
 											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-107"><a
 											href="/ProductSale/proApplicationList">중고거래</a></li>
@@ -115,7 +112,7 @@
 
 								<li id="menu-item-9"
 									class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-254"><a
-									href="http://demo.themegrill.com/spacious/">관리비</a>
+									href="/managementFee/managementFeeList">관리비</a>
 									<ul class="sub-menu">
 										<li id="menu-item-109"
 											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-109"><a
@@ -126,20 +123,17 @@
 									</ul></li>
 								<li id="menu-item-111"
 									class="menu-item menu-item-type-custom menu-item-object-custom menu-item-165"><a
-									target="_blank" href="/aptList">부동산</a>
+									target="_blank" href="/Property/aptNews?newsNum=0&page=0">부동산</a>
 									<ul class="sub-menu">
 										<li id="menu-item-255"
 											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-255"><a
-											href="/member/aptNews?newsNum=0&page=0">부동산뉴스</a></li>
+											href="/Property/aptNews?newsNum=0&page=0">부동산뉴스</a></li>
 										<li id="menu-item-256"
 											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-256"><a
-											href="main.jsp?body=aptNewsMain.jsp">아파트시세</a></li>
+											href="/Property/OtheraptRealTransaction">아파트시세</a></li>
 										<li id="menu-item-255"
 											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-255"><a
 											href="main.jsp?body=aptNewsMain.jsp">아파트이미지</a></li>
-										<li id="menu-item-256"
-											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-256"><a
-											href="main.jsp?body=aptNewsMain.jsp">CCTV정보</a></li>
 										<li id="menu-item-107"
 											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-107"><a
 											href="/Property/aptSale">아파트매물등록</a></li>
@@ -169,7 +163,7 @@
 								<li id="menu-item-105"
 									class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-105"><a
 									href="/mypage">마이페이지</a>
-									<ul class="sub-menu">
+								<!-- 	<ul class="sub-menu">
 										<li id="menu-item-110"
 											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-109"><a
 											href="/aptGroup/Main">아파트그룹</a></li>
@@ -202,7 +196,7 @@
 											href="/managementFee/myPageManagementFee">마이페이지 관리비</a></li>
 
 
-									</ul></li>
+									</ul> --></li>
 
 
 							</ul>

@@ -28,7 +28,7 @@
 </head>
 <body>
 	
-			<div class="container" >
+			
 				<section class="cd-faq" style="margin-top:30px;">
 					<c:if test="${myqna != null }">	<!-- 1:1 inquiry exist -->
 						<c:forEach var="my" items="${myqna}">	<!-- All inquiry print -->
@@ -55,7 +55,7 @@
 					</c:if>
 				<%-- END OF ITEMS --%>
 				</section>
-			</div>
+		
 
 	<script src="/resources/FAQ_CSSnJS/jquery-2.1.1.js"></script>
 	<script src="/resources/FAQ_CSSnJS/jquery.mobile.custom.min.js"></script>

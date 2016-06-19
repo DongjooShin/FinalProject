@@ -1,13 +1,17 @@
 package kosta.apt.persistence;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kosta.apt.controller.APTGroupController;
 import kosta.apt.domain.Paging.Criteria;
+import kosta.apt.domain.Property.AptTransactionPrice;
 import kosta.apt.domain.Property.Property;
 import kosta.apt.mapper.PropertyMapper;
 
@@ -86,6 +90,27 @@ public class PropertyDAO {
 	public void aptDelete(int pr_propertyNo){
 	
 		sqlSession.getMapper(PropertyMapper.class).aptDelete(pr_propertyNo);
+	}
+
+	public String getAptAddr(int apt_aptGno) {
+		
+		return sqlSession.getMapper(PropertyMapper.class).getAptAddr(apt_aptGno);	
+	}
+
+	public String getAptName(int apt_aptGno) {
+		
+		return sqlSession.getMapper(PropertyMapper.class).getAptName(apt_aptGno);
+	}
+
+	public List<AptTransactionPrice> getRealTransaction(HashMap<String, String> map) {
+
+		return sqlSession.getMapper(PropertyMapper.class).getRealTransaction(map);
+		
+	}
+
+	public List<AptTransactionPrice> getAptTransaction(String address) {
+		// TODO Auto-generated method stub
+		return sqlSession.getMapper(PropertyMapper.class).getAptTransaction(address);
 	}
 	
 }
