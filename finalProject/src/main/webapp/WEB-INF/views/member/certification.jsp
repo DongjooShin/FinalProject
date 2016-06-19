@@ -149,7 +149,7 @@
 		<h3>본인 인증 이메일</h3>
 		<div id="insertEmail">
 			<form action="/certification" name="certificationForm" method="post" >
-				 <input type="text" name="key" id="key" value="" >
+				 <input type="hidden" name="key" id="key" value="" >
 				<input type="text" class="emailInput" name="emailAddress" id="emailAddress" > 
 				<label id="atSign"> @ </label> 
 				<input type="text" class="emailInput" name="m_domain" id="m_domain">

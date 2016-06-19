@@ -34,5 +34,5 @@ public interface SiteNoticeMapper {
 	public QnA selectReply(int qnaNo);
 	public List<QnA> selectMyInquiry(String m_memberNo);
 	public List<QnA> selectMyReply(String m_memberNo);
-	public void updateGP(int aptgno);
+	
 }

@@ -3,9 +3,9 @@ package kosta.apt.mapper;
 import java.util.List;
 import java.util.Map;
 
+import kosta.apt.domain.Property.AptTransactionPrice;
 import kosta.apt.domain.member.AddressCity;
 import kosta.apt.domain.member.AptList;
-import kosta.apt.domain.member.AptTransactionPrice;
 import kosta.apt.domain.member.LoginCheck;
 import kosta.apt.domain.member.Member;
 

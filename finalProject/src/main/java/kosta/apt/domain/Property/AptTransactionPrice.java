@@ -1,4 +1,4 @@
-package kosta.apt.domain.member;
+package kosta.apt.domain.Property;
 
 import java.io.Serializable;
 

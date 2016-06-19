@@ -6,9 +6,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kosta.apt.domain.Property.AptTransactionPrice;
 import kosta.apt.domain.member.AddressCity;
 import kosta.apt.domain.member.AptList;
-import kosta.apt.domain.member.AptTransactionPrice;
 import kosta.apt.domain.member.LoginCheck;
 import kosta.apt.domain.member.Member;
 import kosta.apt.persistence.MemberDao;

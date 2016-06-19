@@ -91,9 +91,9 @@ $('#fileInto').tooltip({
 								<tr><td>최종학력</td><td>${cn.cd_eduLevel }</td></tr>
 								<tr><td>기호</td><td>${cn.cd_symbol }</td></tr>
 								<tr><td colspan="3">경력</td></tr>
-								<tr><td colspan="3" height="150">${cn.cd_career }</td></tr>
+								<tr><td colspan="3" height="120">${cn.cd_career }</td></tr>
 								<tr><td colspan="3">공약</td></tr>
-								<tr><td colspan="3" height="150">${cn.cd_promise }</td></tr>
+								<tr><td colspan="3" height="230">${cn.cd_promise }</td></tr>
 							</table>
 							<br><input type="submit" value="삭제하기" style="margin-left:100px;">
 						</form>

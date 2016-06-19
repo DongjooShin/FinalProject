@@ -10,11 +10,15 @@
 <title>Insert title here</title>
 <link rel='stylesheet' href='/resources/bootstrap/bootstrap.min.css'
 	type='text/css' rel="stylesheet" />
-<link rel='stylesheet' href='/resources/bootstrap/mypage-bootstrap.css'
+<link rel='stylesheet' href='/resources/dist/css/mainFont.css'
+	type='text/css' rel="stylesheet" />
+<link rel='stylesheet'
+	href='//fonts.googleapis.com/css?family=Lato&#038;ver=e7d1598c32c9180e5e08e97723f82bcd'
+	type='text/css' media='all' />
+<link rel='stylesheet' href='/resources/dist/css/main1.css'
 	type='text/css' rel="stylesheet" />
 <script type="text/javascript"
 	src="/resources/jquery/jQuery-2.1.4.min.js"></script>
-
 </head>
 <script type="text/javascript">
 	$(function() {
@@ -26,7 +30,7 @@
 			
 			
 			$.ajax({
-				url : '/member/test',
+				url : '/member/map',
 				type : 'POST',
 				data : {
 					"state" : state
@@ -41,7 +45,7 @@
 
 				},
 				error : function(hxr, data, error) {
-					alert('이메일 전송이 실패 하였습니다.');
+				
 				}
 			});
 		});
@@ -118,16 +122,22 @@
 <body>
 
 	<div style="background: white; padding: 0px; height: 400px;">
+
 		<h3 align="center" style="padding-top: 40px;">우리 아파트 찾기</h3>
 		<div>
 			<img id="mapImage" src="/resources/images/dong/map0.png"
-				usemap="#interior" style="float: left;">
+				usemap="#interior" style="float: left; ">
 		</div>
 		<div>
 			<map name="interior" id="map">
+			
 				<area alt="16" href="#" id="Seoul" title="서울"
 					coords="66,66,66,71,68,73,72,73,76,74,79,72,83,68,82,64,78,65,77,61,75,58,71,60,67,63"
 					onclick="fncRegnCd('Seoul')" shape="poly">
+					
+					
+					
+					
 				<area alt="3" href="#" id="Busan" title="부산"
 					coords="171,181,164,187,162,188,160,190,157,190,155,192,155,194,156,195,157,196,157,198,159,197,161,197,163,197,164,197,166,196,168,194,170,193,171,190,173,189,174,187,174,185,174,183,172,182,170,180"
 					onclick="fncRegnCd('Busan');" shape="poly">
@@ -177,7 +187,7 @@
 		</div>
 		<br>
 
-		<div style="margin-top: 40px">
+		<div style="margin-top: 80px">
 			<form action="map" name="chooseState" method="post">
 				<select name="selectState" id="selectState" style="width: 120px">
 					<option id="select1" selected="selected">선택</option>

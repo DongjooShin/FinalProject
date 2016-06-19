@@ -11,7 +11,6 @@ import org.springframework.stereotype.Repository;
 import kosta.apt.domain.member.Member;
 import kosta.apt.domain.vote.Candidate;
 import kosta.apt.domain.vote.Voter;
-import kosta.apt.mapper.SiteNoticeMapper;
 import kosta.apt.mapper.VoterMapper;
 
 @Repository
@@ -92,7 +91,7 @@ public class VoteDao {
 		sqlSession.getMapper(VoterMapper.class).updateHit(id);
 	}
 	
-	public int maxVoterNo(){
+	public Integer maxVoterNo(){
 		return sqlSession.getMapper(VoterMapper.class).maxVoterNo();
 	}
 	public void insertVoter(Voter v) {
@@ -120,7 +119,7 @@ public class VoteDao {
 	}
 
 	public void updateGP(int aptgno) {
-		sqlSession.getMapper(SiteNoticeMapper.class).updateGP(aptgno);
+		sqlSession.getMapper(VoterMapper.class).updateGP(aptgno);
 	}
 	
 	

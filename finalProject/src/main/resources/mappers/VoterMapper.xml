@@ -62,7 +62,7 @@
 	<update id="updateHit" parameterType="String">
 		update Candidate set cd_voteNum = cd_voteNum+1 where m_memberNo = #{id}
 	</update>
-	<select id="maxVoterNo" resultType="int">
+	<select id="maxVoterNo" resultType="Integer">
 		select max(v_voterno) from Voter
 	</select>
 	
@@ -91,7 +91,7 @@
 	
 	<update id="updateGP" parameterType="int">
 		update Member set m_grade = 3 
-			where m_memberNno = (select m_memberNo from candidate where apt_aptgno = #{aptgno} 
+			where m_memberNo = (select m_memberNo from candidate where apt_aptgno = #{aptgno} 
 				AND cd_votenum = (select max(cd_votenum) from candidate where apt_aptgno = #{aptgno}) )
 	</update>
 	

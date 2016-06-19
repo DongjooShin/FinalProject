@@ -38,6 +38,7 @@ public class VoteService {
 		return votedao.maxCandiNo();
 	}
 	public Integer searchSymbolService(int s,int aptgno) {
+		System.out.println("s:"+s+" , aptgno:"+aptgno);
 		HashMap<String, Integer> map = new HashMap<>();
 		map.put("aptgno", aptgno);
 		map.put("s", s);
@@ -79,7 +80,7 @@ public class VoteService {
 	public void updateHitService(String id) {
 		votedao.updateHit(id);
 	}
-	public int maxVoterNoService() {
+	public Integer maxVoterNoService() {
 		return votedao.maxVoterNo();
 	}
 	public void insertVoterService(Voter v) {

@@ -49,7 +49,7 @@ function check(){
 			open(
 					url,
 					"map",
-					"toolbar=no, status=no, menubar=no, location=no, scrollbars=no, resizable=no, width=500, height=400");
+					"toolbar=no, status=no, menubar=no, location=no, scrollbars=no, resizable=no, width=700, height=400");
 
 		} else {
 			alert("개인정보 약관에 동의하셔야 합니다.");

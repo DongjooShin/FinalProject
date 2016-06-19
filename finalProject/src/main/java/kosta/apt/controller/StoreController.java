@@ -132,7 +132,7 @@ public class StoreController {
 		System.out.println("번호오아롬;ㅏㅣㄴㅇ러미나렁미ㅏ너 아이디값"+s_storeNo);
 		//Member m=(Member) session.getAttribute("member");
 		service.deleteStore(s_storeNo);
-		return "/store/main";
+		return "/store/listStore";
 	}
 	
 	
