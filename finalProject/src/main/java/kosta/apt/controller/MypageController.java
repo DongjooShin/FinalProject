@@ -72,6 +72,7 @@ public class MypageController {
 	public String SelectMypage(HttpSession session, Model model, HttpServletRequest request, RedirectAttributes attr) {
 
 		Member member = (Member) session.getAttribute("member");
+		
 
 		attr.addFlashAttribute("loginOn", 1);
 		int memberGrade = member.getM_grade();

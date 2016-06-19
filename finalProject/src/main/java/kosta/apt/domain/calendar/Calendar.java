@@ -14,9 +14,17 @@ public class Calendar implements Serializable {
 	private String c_Dday2;
 	private String c_Dday3;
 	
+	private String c_content;
 	
 	
 	
+	
+	public String getC_content() {
+		return c_content;
+	}
+	public void setC_content(String c_content) {
+		this.c_content = c_content;
+	}
 	public String getC_Dday1() {
 		return c_Dday1;
 	}

@@ -28,9 +28,10 @@ public class CalendarController {
 	}
 	
 	@RequestMapping(value="/calendar" ,method=RequestMethod.GET)
-	public String calendar(){
-		System.out.println("calendar Controller 들어옴");
-		
+	public String calendar(HttpSession session, Model model){
+		Member member = (Member) session.getAttribute("member");
+		String aptName = service.getAptNameService(member.getApt_APTGNo());
+		model.addAttribute("aptName", aptName);
 		return "/calendar/main";
 	}
 	

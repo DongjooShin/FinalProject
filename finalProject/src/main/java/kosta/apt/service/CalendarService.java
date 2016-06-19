@@ -35,7 +35,6 @@ public class CalendarService {
 	}
 	
 	public List<Calendar> calendarDday(Calendar calendar) {
-		// TODO Auto-generated method stub
 		return calendarDao.calendarDday(calendar);
 	}
 
@@ -45,13 +44,15 @@ public class CalendarService {
 	}
 
 	public List<Calendar> calendarDday2(Calendar calendar) {
-		// TODO Auto-generated method stub
 		return calendarDao.calendarDday2(calendar);
 	}
 
 	public List<Calendar> calendarDday3(Calendar calendar) {
-		// TODO Auto-generated method stub
 		return calendarDao.calendarDday3(calendar);
+	}
+
+	public String getAptNameService(int apt_APTGNo) {
+		return calendarDao.getAptName(apt_APTGNo);
 	}
 
 	

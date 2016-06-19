@@ -94,17 +94,20 @@
 											href="/Property/aptRealTransaction?page=0">아파트시세</a></li>
 										<li id="menu-item-106"
 											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-106"><a
+											href='/store/listStore'>상가정보</a></li>
+										<li id="menu-item-106"
+											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-106"><a
 											href="/voter/groupPresiMain">투표</a></li>
 										<li id="menu-item-107"
 											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-107"><a
-											href="/PublicManageFee">중고거래</a></li>
+											href="/calendar/calendar">중고거래</a></li>
 
 										<li id="menu-item-108"
 											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-107"><a
-											href="/PublicManageFee">설문조사</a></li>
+											href="/calendar/calendar">설문조사</a></li>
 										<li id="menu-item-109"
 											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-107"><a
-											href="/PublicManageFee">공지사항</a></li>
+											href='/groupNotice/listAll'>공지사항</a></li>
 
 									</ul></li>
 
@@ -121,6 +124,7 @@
 											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-107"><a
 											href="/publicmana/PublicManageFee">공통관리비</a></li>
 									</ul></li>
+									
 								<li id="menu-item-111"
 									class="menu-item menu-item-type-custom menu-item-object-custom menu-item-165"><a
 									target="_blank" href="/Property/aptNews?newsNum=0&page=0">부동산</a>

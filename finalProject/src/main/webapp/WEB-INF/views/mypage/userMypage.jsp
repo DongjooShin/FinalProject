@@ -12,82 +12,17 @@
    src="/resources/jquery/jQuery-2.1.4.min.js"></script>
 
 <script type="text/javascript">
-<<<<<<< HEAD
-   $(function() {
-      
-      $('#sixthContent').load("/member/passwordCheck");
-      $('#firstContent1').load("/calendar/exam");
-      $('#firstContent2').load("/groupNotice/exam");
-      /* $('#thirdContent').load("/publicmana/list"); */
-      
-      $('#firstManu').css('background', '#0fbe7c');
 
-      $('#firstManu').css('background', '#09b9e5');
-      $('#firstManu').css('display', 'block');
-
-      $('#firstManu').click(function() {
-         $('.manu').css('background-color', 'rgba(0, 0, 0, 0.3)');
-         $('#firstManu').css('background-color', '#0fbe7c');
-         $('.content').css('display', 'none');
-         $('#firstContent').css('display', 'block');
-      });
-
-      $('#secondManu').click(function() {
-         $('.manu').css('background-color', 'rgba(0, 0, 0, 0.3)');
-         $('#secondManu').css('background-color', '#0fbe7c');
-         $('.content').css('display', 'none');
-         $('#secondContent').css('display', 'block');
-      });
-
-      $('#thirdManu').click(function() {
-         $('.manu').css('background-color', 'rgba(0, 0, 0, 0.3)');
-         $('#thirdManu').css('background-color', '#0fbe7c');
-         $('.content').css('display', 'none');
-         $('#thirdContent').css('display', 'block');
-
-      });
-
-      $('#fourthManu').click(function() {
-         $('.manu').css('background-color', 'rgba(0, 0, 0, 0.3)');
-         $('#fourthManu').css('background-color', '#0fbe7c');
-         $('.content').css('display', 'none');
-         $('#fourthContent').css('display', 'block');
-
-      });
-    }); 
-   
-</script> 
-<script type="text/javascript">
- $(function () {
-   
-      $('#fifthManu').click(function() {
-         $('.manu').css('background-color', 'rgba(0, 0, 0, 0.3)');
-         $('#fifthManu').css('background-color', '#0fbe7c');
-         $('.content').css('display', 'none');
-         $('#fifthContent').css('display', 'block');
-
-      });
-
-      $('#sixthManu').click(function() {
-         $('.manu').css('background-color', 'rgba(0, 0, 0, 0.3)');
-         $('#sixthManu').css('background-color', '#0fbe7c');
-         $('.content').css('display', 'none');
-         $('#sixthContent').css('display', 'block');
-
-      });
-
-})
-=======
 	$(function() {
 
 		$('#firstManu').css('background', '#09b9e5');
 
 
 	});
->>>>>>> branch 'master' of https://github.com/DongjooShin/FinalProject.git
+
 </script>
 <style type="text/css">
-<<<<<<< HEAD
+
 #mypageUl {
    margin-top: -53px;
 }
@@ -110,13 +45,6 @@
    display: inline-block;
    width: 100%;
    margin-top: 70px;
-=======
-
-#sixthContent {
-
-	min-height: 500px;
-
->>>>>>> branch 'master' of https://github.com/DongjooShin/FinalProject.git
 }
 
 .manu {
@@ -127,12 +55,12 @@
 </style>
 </head>
 <body>
-<<<<<<< HEAD
+
    <div class="header">
       <jsp:include page="../include/head.jsp"></jsp:include>
    </div>
    <div id="page"
-      style="background: white; display: inline-block;  margin-left: 7.9%;">
+      style="background: white; display: inline-block; ">
       <div class="col-md-12">
          <div id="mypageLayout">
             <ul id=mypageUl>

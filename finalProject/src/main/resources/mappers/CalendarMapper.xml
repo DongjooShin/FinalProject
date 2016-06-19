@@ -10,9 +10,9 @@
 
    <insert id="insertCal" parameterType="Calendar">
       insert into calendar(
-      c_calendarno,c_schedule,c_startdate,c_enddate,apt_APTGNo)      
+      c_calendarno,c_schedule,c_startdate,c_enddate,apt_APTGNo,c_content)      
       values(
-      cal_seq.nextval,#{c_schedule},to_date(#{c_startdate},'yyyy-MM-dd'),to_date(#{c_enddate},'yyyy-MM-dd'),#{apt_APTGNo}
+      cal_seq.nextval,#{c_schedule},to_date(#{c_startdate},'yyyy-MM-dd'),to_date(#{c_enddate},'yyyy-MM-dd'),#{apt_APTGNo},#{c_content}
       )
    </insert>
    
@@ -50,6 +50,9 @@
    		and c_startdate=#{c_Dday3}
    </select>
    
+   <select id="getAptName" parameterType="int" resultType="String">
+   select f_groupname from facilityinfo where apt_aptgno = #{apt_APTGNo}
+   </select>
 </mapper>
 
 

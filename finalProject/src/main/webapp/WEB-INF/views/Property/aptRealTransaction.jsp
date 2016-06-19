@@ -106,7 +106,7 @@
 		style="border-top: 2px solid; display: inline-block;">
 		<div class="col-md-12">
 			<div class="col-md-3">
-				<jsp:include page="aptSideBar.jsp"></jsp:include>
+				<jsp:include page="../Community/CommunitySidebar.jsp"></jsp:include>
 			</div>
 			<div class="col-md-9">
 				

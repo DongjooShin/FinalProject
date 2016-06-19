@@ -45,6 +45,11 @@
 <!-- <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script> -->
 
 <link rel='stylesheet'  href='/resources/dist/css/main1.css' type='text/css' rel="stylesheet" />
+<style type="text/css">
+#secondary ul li a{
+   color: #0fbe7c;
+}
+</style>
 
 <!-- datepicker스크립트 -->
 <script type="text/javascript">
@@ -83,34 +88,13 @@
 </script>
 </head>
 <body>
-   <div class="header">
-		<jsp:include page="../include/head.jsp"></jsp:include>
-	</div>
+<jsp:include page="../include/head.jsp"></jsp:include>
    <div class="container" id="page">
    
       <div class="col-md-3">
          
-            <div id="secondary">
-               <aside id="archives" class="widget">
-               <h3 class="widget-title">Archives</h3>
-               <ul>
-                  <li><a href='http://demo.themegrill.com/spacious/2014/03/'>March
-                        2014</a></li>
-                  <li><a href='http://demo.themegrill.com/spacious/2014/02/'>February
-                        2014</a></li>
-
-                  <li><a href='http://demo.themegrill.com/spacious/2014/03/'>March
-                        2014</a></li>
-                  <li><a href='http://demo.themegrill.com/spacious/2014/02/'>February
-                        2014</a></li>
-                  <li><a href='http://demo.themegrill.com/spacious/2014/03/'>March
-                        2014</a></li>
-                  <li><a href='http://demo.themegrill.com/spacious/2014/02/'>February
-                        2014</a></li>
-               </ul>
-               </aside>
-            </div>
-            <div id="primary" style="height: 1000px; "></div>
+    <jsp:include page="../Community/CommunitySidebar.jsp"></jsp:include>
+           
          
       </div>
 
@@ -141,10 +125,21 @@
                         <form class="form-horizontal" method="post" action="/calendar/add" role="form">
                            <div class="form-group">
                               <label for="inputSchedule" class="col-sm-2 control-label">일정
-                                 내용</label>
+                                 제목</label>
                               <div class="col-sm-9">
                                  <input type="text" id="inputSchedule" class="form-control"
                                     name="c_schedule" size="30px">
+                              </div>
+                              <div class="col-sm-1">
+                                 <%-- <input type="hidden" id="inputSchedule" name="apt_APTGNo"
+                                    value="${member.getApt_APTGNo() }"> --%>
+                              </div>
+                           </div>
+                           <div class="form-group">
+                              <label for="textareaContent" class="col-sm-2 control-label">일정
+                                 내용</label>
+                              <div class="col-sm-9">
+                                 <textarea rows="3" cols="3" id="textareaContent" name="c_content"></textarea>
                               </div>
                               <div class="col-sm-1">
                                  <%-- <input type="hidden" id="inputSchedule" name="apt_APTGNo"

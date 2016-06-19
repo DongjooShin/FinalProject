@@ -22,6 +22,7 @@ public interface CalMapper {
 
 	public List<Calendar> calendarDday3(Calendar calendar);
 
+	public String getAptName(int apt_APTGNo);
 	
 
 }

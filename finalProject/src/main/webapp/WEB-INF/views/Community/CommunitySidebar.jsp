@@ -14,29 +14,39 @@
 	type='text/css' media='all' />
 <link rel='stylesheet' id='spacious_style-css' href='/resources/dist/css/main1.css'
 	type='text/css' media='all' />
+<style type="text/css">
 
+#sideBar li a{
+
+  color: #0fbe7c;
+
+}
+
+#sideBar li {
+  margin-bottom: 10px; 
+}
+
+</style>
 </head>
 <body>
-	<div id="page" class="hfeed site">
 
 		<div id="secondary" style="background-color: white;text-align: center;">
 			<aside id="archives" class="widget">
-			<h3 class="widget-title">아파트이름</h3>
-			<ul>
-				
-				<li><a href=''>공지사항</a></li>
-				
-				<li><a href=''>캘린더</a></li>
-				<li><a href=''>상가정보</a></li>
-				<li><a href=''>주변시설/CCTV</a></li>
-				<li><a href=''>중고거래</a></li>
+			<h3 class="widget-title">${aptName }</h3>
+			<ul id="sideBar">
+				 
+				<li ><a href='/calendar/calendar'>캘린더</a></li>
+				<li><a href='/Property/aptRealTransaction?page=0'>아파트시세</a></li>
+				<li><a href='/store/listStore'>상가정보</a></li>
 				<li><a href='/voter/groupPresiMain'>입주자대표선거</a></li>
-				<li><a href='voter/buildingPresiMain'>동대표선거</a></li>
-				<li><a href=''>건의불만</a></li>
+				<li><a href='/voter/buildingPresiMain'>동대표선거</a></li>
+				<li><a href=''>중고거래</a></li>
+				<li><a href=''>설문조사</a></li>
+				<li><a href='/groupNotice/listAll'>공지사항</a></li>
 			</ul>
 			</aside>
 		</div>
-		
-	</div>
+	
+
 </body>
 </html>

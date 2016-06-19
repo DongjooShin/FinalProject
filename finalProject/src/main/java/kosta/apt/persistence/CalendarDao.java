@@ -70,6 +70,11 @@ public class CalendarDao {
 		return sqlSession.getMapper(CalMapper.class).calendarDday3(calendar);
 	}
 
+	public String getAptName(int apt_APTGNo) {
+		// TODO Auto-generated method stub
+		return sqlSession.getMapper(CalMapper.class).getAptName(apt_APTGNo);
+	}
+
 	
 	
 }
