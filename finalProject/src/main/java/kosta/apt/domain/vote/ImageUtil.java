@@ -21,6 +21,7 @@ public class ImageUtil {
         FileInputStream srcIs = null;
         try {
             srcIs = new FileInputStream(src);
+            System.out.println("resize:"+src.getAbsolutePath());
             ImageUtil.resize(srcIs, dest, width, height);
         } finally {
             if (srcIs != null) try { srcIs.close(); } catch(IOException ex) {}
@@ -34,7 +35,7 @@ public class ImageUtil {
         int srcHeight = srcImg.getHeight();
 
         int destWidth = -1, destHeight = -1;
-
+        System.out.println("resize2:"+dest.getAbsolutePath());
         if (width == SAME) {
             destWidth = srcWidth;
         } else if (width > 0) {

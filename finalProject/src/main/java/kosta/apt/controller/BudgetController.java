@@ -95,13 +95,14 @@ public class BudgetController {
 					b_TVFee = null;
 			int i = 1;
 			row = sheet.getRow(i); // row 가져오기
-			System.out.println(row + "row");
 			if (row != null) {
-				// && !"".equals(row.getCell(0).getStringCellValue())) {
-				
 				cell = row.getCell(0);
-				System.out.println(cell + "셀셀");
 				b_clean = cell + "";
+				
+				//System.out.println(row + "row");
+				// && !"".equals(row.getCell(0).getStringCellValue())) {
+				System.out.println(cell + "셀셀");
+				
 				System.out.println(b_clean);
 				cell = row.getCell(1);
 				b_general = cell + "";

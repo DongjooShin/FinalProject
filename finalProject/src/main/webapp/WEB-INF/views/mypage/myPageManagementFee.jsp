@@ -201,10 +201,10 @@
 	<script type="text/javascript"
 		src="/resources/js/kyungtae/myPageMntChart.js"></script>
 	<script type="text/javascript">
-	
+		//resizable=no location=no
 		$(function(){
 		$('#mntPay').on('click',function(){
-			window.open('/managementFee/managementFeePay','_blank','toolbar=no,location=no,status=no,menubar=no, scrollbars=auto,resizable=no,directories=no,	width=680,height=690, top=0,left=40');
+			window.open('/managementFee/managementFeePay','_blank','toolbar=no,status=no, menubar=no, scrollbars=auto,directories=no,	width=680,height=690, top=0,left=40');
 		})
 	})
 	</script>
