@@ -20,9 +20,20 @@
 	href='/resources/dist/css/kyungtae/skins/_all-skins.min.css'
 	type='text/css' />
 </head>
+	<script type="text/javascript">
+   $(function() {
+      $('#secondManu').css('background', '#09b9e5');
+
+
+   });
+</script> 
 <body>
 	<div class="header">
 		<jsp:include page="../include/head.jsp"></jsp:include>
+	</div>
+	<div class="col-md-12" id="page">
+			
+				<jsp:include page="../include/mypagehead.jsp"></jsp:include>
 	</div>
 	<div class="wrapper" id="page">
 		<!-- Main content -->
