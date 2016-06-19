@@ -20,7 +20,7 @@
 <body>
 <%-- -----------------Header include----------------- --%>	
 	<div class="header">
-		 <jsp:include page="head.jsp"></jsp:include> 
+		 <jsp:include page="../include/head.jsp"></jsp:include> 
 	</div>	
 
 <%--
@@ -124,11 +124,10 @@
 							<br><br><h3>우리 단지의 입주자 대표</h3><br><br>
 							<c:if test="${gpm != null }">
 								<table class="nowPresi">
-									<tr><td colspan=""><img alt="" src="../j_upload/${cn.cd_imageName }"></td></tr>
 									<tr><td colspan="2">${gpm.getM_name() }</td></tr>
 									<tr><td colspan="2">${gpm.getM_memberNo() }</td></tr>
 									<tr><td>${gpm.getM_buildingNo()} 동</td><td>${gpm.getM_roomNo() } 호</td></tr>
-									<tr><td colspan="2">${gpm.getM_age() } 세</td></tr>
+									<tr><td colspan="2" >${gpm.getM_age() } 세</td></tr>
 									<tr><td colspan="2">${gpm.getM_email() }</td></tr>
 								</table>
 							</c:if>
@@ -142,15 +141,15 @@
 								<div class="col-md-12">
 									<c:forEach var="cn" items="${groupPresi }">
 										<div class="radio col-md-5" style="margin:0 0 0 10px;padding:0px;">
-											<table class="voteCandiList" style="width:300px; height:440px;">
-												<tr><td colspan="2" height="280"><img alt="" src="../j_upload/${cn.cd_imageName }"></td></tr>
+											<table class="voteCandiList" style="width:320px;">
+												<tr><td colspan="2" height="400"><img alt="" src="../j_upload/${cn.cd_imageName }"></td></tr>
 												<tr><td><b>기호</b></td><td>${cn.cd_symbol}</td></tr>
 												<tr><td><b>학력</b></td><td>${cn.cd_eduLevel }</td></tr>
 												<tr><td><b>직업</b></td><td>${cn.cd_job }</td></tr>
 												<tr><td colspan="2"><b>경력</b></td></tr>
-												<tr><td colspan="2">${cn.cd_career }</td></tr>
+												<tr><td colspan="2" height="120">${cn.cd_career }</td></tr>
 												<tr><td colspan="2"><b>공약</b></td></tr>
-												<tr><td colspan="2">${cn.cd_promise }</td></tr>
+												<tr><td colspan="2" height="300">${cn.cd_promise }</td></tr>
 												
 												<tr><td height="40px" colspan="2" style="padding:10px;">
 													<input type="radio"name="onechoose" checked="checked" value="${cn.m_memberNo }" style="margin-top:0px;margin-left:0px;">
@@ -160,7 +159,7 @@
 									</c:forEach>
 								</div>
 								<br><br>
-								<c:if test="${msg != 'No' }">
+								<c:if test="${msg != null }">
 									<script type="text/javascript">
 										var msg = '${msg}'; 
 										alert(msg);

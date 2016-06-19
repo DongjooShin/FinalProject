@@ -97,7 +97,7 @@
 											href="http://demo.themegrill.com/spacious/layout/right-sidebar/">아파트시세</a></li>
 										<li id="menu-item-106"
 											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-106"><a
-											href="http://demo.themegrill.com/spacious/layout/no-sidebar-full-width/">투표</a></li>
+											href="/voter/groupPresiMain">투표</a></li>
 										<li id="menu-item-107"
 											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-107"><a
 											href="/PublicManageFee">중고거래</a></li>

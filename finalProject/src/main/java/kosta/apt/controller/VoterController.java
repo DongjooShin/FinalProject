@@ -125,8 +125,7 @@ public class VoterController {
 		if (gpm != null) {
 			model.addAttribute("GPmessage", "현 입주자대표의 권한이 하향되지 않았습니다.");
 		} else {
-			if (voteService.searchSymbolService(c.getCd_symbol(),c.getApt_APTGNo()) != null) {
-
+			if (voteService.searchSymbolService(c.getCd_symbol(),member.getApt_APTGNo()) != null) {
 				model.addAttribute("GPmessage", "이미 존재하는 기호입니다.");
 			} else {
 				if (voteService.selectOneCandiService(c.getM_memberNo()) != null) {
@@ -135,8 +134,6 @@ public class VoterController {
 					if(voteService.selectOneMemberService(c.getM_memberNo()) == null){
 						model.addAttribute("GPmessage", "존재하지 않는 입주민입니다.");
 					}else{
-						
-				
 						Member temp = voteService.selectOneMemberService(c.getM_memberNo());
 						c.setCd_buildingNo(temp.getM_buildingNo());
 						model.addAttribute("GPmessage", "No");
@@ -171,7 +168,6 @@ public class VoterController {
 						
 						
 						c.setApt_APTGNo(member.getApt_APTGNo());
-						
 						if(voteService.maxCandiNoService() != null)
 						{	
 							c.setCandidateNo(voteService.maxCandiNoService() + 1);
@@ -212,9 +208,7 @@ public class VoterController {
 	public String startVote(HttpSession session,Model model){
 		Member m = (Member)session.getAttribute("member");
 		voteService.updateAllVflagService(2,m.getApt_APTGNo());
-	
 		getVoteRating(session,model);
-		
 		voteService.updateVflagService(3, m.getM_memberNo());
 		
 		return  managerGroupPresi(session,model);
@@ -274,10 +268,19 @@ public class VoterController {
 					for(int i=0; i<id.length; i++){
 						System.out.println(id[i]);
 					}
+					
+					int pk = 0;
+					if(voteService.maxVoterNoService() != null){
+						pk=voteService.maxVoterNoService()+1;
+					}else{
+						pk=1;
+					}
+					Voter v = new Voter(pk, m.getM_buildingNo(), m.getM_roomNo(), 
+							m.getM_memberNo(), m.getApt_APTGNo(), "입주자대표");
+					
 					System.out.println("id:"+id[0]);
 					voteService.updateHitService(id[0]);
 					voteService.updateVflagService(3, m.getM_memberNo());
-					Voter v = new Voter(voteService.maxVoterNoService()+1, m.getM_buildingNo(), m.getM_roomNo(), m.getM_memberNo(), m.getApt_APTGNo(), "입주자대표");
 					
 					voteService.insertVoterService(v);
 					model.addAttribute("msg", "No");
