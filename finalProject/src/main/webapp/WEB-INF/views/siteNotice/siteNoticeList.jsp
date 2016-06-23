@@ -23,7 +23,6 @@
 				$('#searchBtn').on(
 						"click",
 						function(event) {
-							alert("search!!");
 							self.location = "siteNoticeAllList"
 									+ '${pageMaker.makeQuery(1)}'
 									+ "&searchType="
@@ -56,6 +55,8 @@
 </head>
 <body>
 
+<label style="font-size: 25px; color: black; border-bottom: 3px solid #eaeaea; padding: 0 15px 13px 15px; margin-bottom: 15px;">공지사항</label>
+		<br><br>
 			<table class="table table-striped">
 				<tr height="30">
 					<th width="50">번호</th>
@@ -95,13 +96,13 @@
 		
 					<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
 						<li><a
-							href="siteNoticeAllList${pageMaker.makeSearch(pageMaker.endPage +1) }">&raquo;</a></li>
+					"src/main/webapp/WEB-INF/views/siteNotice/siteNoticeRead.jsp"		href="siteNoticeAllList${pageMaker.makeSearch(pageMaker.endPage +1) }">&raquo;</a></li>
 					</c:if>
 		
 				</ul>
 			</div>
 		
-			<select name="searchType">
+			<select name="searchType" style="width: 20%; height: 6% ;margin-right: 15px; margin-left: 30px;">
 				<option value="n"
 					<c:out value="${cri.searchType == null?'selected':''}"/>>
 					---</option>
@@ -110,7 +111,7 @@
 					제목</option>
 			</select>
 			<input type="text" name='keyword' id="keywordInput" 
-				value='${cri.keyword }'>
+				value='${cri.keyword }'  style="width: 30%; margin-right: 15px;">
 			<button id='searchBtn'>Search</button>
 			<c:if test="${member.m_grade eq 0 }">
 				<button id='newBtn'>New Board</button>

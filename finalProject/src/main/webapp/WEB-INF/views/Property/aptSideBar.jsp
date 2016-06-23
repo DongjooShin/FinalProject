@@ -43,10 +43,12 @@
 			<ul>
 
 				<h3 class="widget-title">부동산</h3>
-
+				<li><a href='/Property/aptNews?newsNum=0&page=0'>부동산뉴스</a></li>
+				<li><a href='/Property/OtheraptRealTransaction'>아파트시세</a></li>
+				<li><a href='/Property/aptSale'>부동산매물 등록</a></li>
 				<li><a href='/Property/aptSaleList'>부동산매물 정보</a></li>
 
-				<li><a href='/Property/aptSale'>부동산매물 등록</a></li>
+				
 			</ul>
 			</aside>
 		</div>

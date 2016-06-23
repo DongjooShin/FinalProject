@@ -177,6 +177,9 @@
 	<!-- Bootstrap Core JavaScript -->
 	<script src="../js/kyungtae/bootstrap.min.js"></script>
 
+<div class="footer">
+		<jsp:include page="../include/footer.jsp"></jsp:include>
+	</div>
 </body>
 
 </html>

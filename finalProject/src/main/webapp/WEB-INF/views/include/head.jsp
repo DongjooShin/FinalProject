@@ -92,9 +92,13 @@
 										<li id="menu-item-108"
 											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-108"><a
 											href="/Property/aptRealTransaction?page=0">아파트시세</a></li>
+											
 										<li id="menu-item-106"
 											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-106"><a
 											href='/store/listStore'>상가정보</a></li>
+											<li id="menu-item-106"
+											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-106"><a
+											href='/facility/facilityMap'>주변시설정보</a></li>
 										<li id="menu-item-106"
 											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-106"><a
 											href="/voter/groupPresiMain">투표</a></li>
@@ -105,7 +109,7 @@
 
 										<li id="menu-item-108"
 											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-107"><a
-											href="/Survey/surveyRegistdeliver">설문조사</a></li>
+											href="/Survey/surveyResult">설문조사</a></li>
 
 										<li id="menu-item-109"
 											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-107"><a
@@ -140,9 +144,7 @@
 										<li id="menu-item-256"
 											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-256"><a
 											href="/Property/OtheraptRealTransaction">아파트시세</a></li>
-										<li id="menu-item-255"
-											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-255"><a
-											href="main.jsp?body=aptNewsMain.jsp">아파트이미지</a></li>
+										
 										<li id="menu-item-107"
 											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-107"><a
 											href="/Property/aptSale">아파트매물등록</a></li>
@@ -172,40 +174,7 @@
 								<li id="menu-item-105"
 									class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-105"><a
 									href="/mypage">마이페이지</a>
-								<!-- 	<ul class="sub-menu">
-										<li id="menu-item-110"
-											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-109"><a
-											href="/aptGroup/Main">아파트그룹</a></li>
-										<li id="menu-item-111"
-											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-108"><a
-											href="http://demo.themegrill.com/spacious/layout/right-sidebar/">개인정보관리</a></li>
-										<li id="menu-item-112"
-											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-106"><a
-											href="http://demo.themegrill.com/spacious/layout/no-sidebar-full-width/">마이페이지</a></li>
-										<li id="menu-item-113"
-											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-108"><a
-											href="/controller/readMessageList">메세지함</a></li>
-										<li id="menu-item-114"
-											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-108"><a
-											href="/controller/aptMessage">메세지보내기</a></li>
-										<li id="menu-item-115"
-											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-109"><a
-											href="/managementFee/managementFeeInsertForm">관리비입력</a></li>
-										<li id="menu-item-116"
-											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-110"><a
-											href="/publicManagementFee/publicManagementFeeInsertForm">공동관리비입력</a></li>
-										<li id="menu-item-117"
-											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-111"><a
-											href="/budget/budgetInsertForm">예산입력</a></li>
-										<li id="menu-item-118"
-											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-111"><a
-											href="/budget/budgetList">예산조회</a></li>
-										<li id="menu-item-119"
-											class="menu-item menu-item-type-post_type menu-item-object-page menu-item-111"><a
-											href="/managementFee/myPageManagementFee">마이페이지 관리비</a></li>
-
-
-									</ul> --></li>
+							</li>
 
 
 							</ul>

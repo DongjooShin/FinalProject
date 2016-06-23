@@ -63,17 +63,14 @@
 
 <body
 	class="home singular page page-id-7 page-template page-template-page-templates page-template-business page-template-page-templatesbusiness-php ">
+	<div class="header">
+		<jsp:include page="../include/head.jsp"></jsp:include>
+	</div>
+	<div class="page">
+		<jsp:include page="../include/middle.jsp"></jsp:include>
+	</div>
 
-
-
-	<jsp:include page="../include/head.jsp"></jsp:include>
-
-
-
-
-
-	<div id="page" class="hfeed site"
-		style="height: 950px; border-top: 2px solid;">
+	<div id="page" class="hfeed site" 	style="display:inline-block; ; border-top: 2px solid;">
 
 
 
@@ -90,31 +87,26 @@
 
 				<jsp:include page="aptSideBar.jsp"></jsp:include>
 			</div>
-			<div class="col-md-9">
-
-				<h2>아파트 매물올리기</h2>
+			<div class="col-md-8">
+<br> <br> <label
+						style="font-size: 25px; color: black; border-bottom: 3px solid #eaeaea; padding: 0 15px 13px 15px; margin-bottom: 15px;">아파트 매물등록</label>
+					<br><br>
 				<p class="bs-component">
-					<!-- <a href="#" class="btn btn-default">Default</a>
-              <a href="#" class="btn btn-primary">Primary</a>
-	          <a href="#" class="btn btn-success">Success</a>
-              <a href="#" class="btn btn-info">Info</a>
-              <a href="#" class="btn btn-warning">Warning</a>
-              <a href="#" class="btn btn-danger">Danger</a> -->
+					
 					<a href="#" class="btn btn-primary">매매</a> <a href="#"
 						class="btn btn-primary">전세</a> <a href="#" class="btn btn-primary">월세</a>
 
 				</p>
 			</div>
 
-			<div class="col-md-9">
-				<div class="row">
+			<div class="col-md-8">
 					<div class="col-lg-12">
 						<div class="well bs-component">
 							<form class="form-horizontal"
 								action="/Property/aptSale?pr_propertyNo=0" method="post"
 								enctype="multipart/form-data">
 
-								<legend>Legend</legend>
+								
 
 								<input type="hidden" name="pr_propertyNo" value="0">
 
@@ -184,7 +176,7 @@
 											placeholder="희망가">
 									</div>
 
-									<label class="col-lg-1 control-label">보증금</label>
+									<label class="col-lg-2 control-label">보증금</label>
 									<div class="col-lg-3">
 										<input type="text" class="form-control" name="pr_deposit"
 											placeholder="보증금">
@@ -200,7 +192,7 @@
 											placeholder="매물층">
 									</div>
 
-									<label class="col-lg-1 control-label">총층수</label>
+									<label class="col-lg-2 control-label">총층수</label>
 									<div class="col-lg-3">
 										<input type="text" class="form-control" name="pr_totalLevel"
 											placeholder="총층수">
@@ -220,7 +212,7 @@
 									</div>
 
 
-									<label class="col-lg-1 control-label">실면적</label>
+									<label class="col-lg-2 control-label">실면적</label>
 									<div class="col-lg-3">
 										<input type="text" class="form-control" name="pr_roomArea"
 											placeholder="실면적">
@@ -239,7 +231,7 @@
 									</div>
 
 
-									<label class="col-lg-1 control-label">권리금</label>
+									<label class="col-lg-2 control-label">권리금</label>
 									<div class="col-lg-3">
 										<input type="text" class="form-control" placeholder="권리금">
 									</div>
@@ -254,7 +246,7 @@
 											placeholder="방갯수">
 									</div>
 
-									<label class="col-lg-1 control-label">욕실수</label>
+									<label class="col-lg-2 control-label">욕실수</label>
 									<div class="col-lg-3">
 										<input type="text" class="form-control" name="pr_bathNum"
 											placeholder="욕실수">
@@ -270,7 +262,7 @@
 											placeholder="단지규모">
 									</div>
 
-									<label class="col-lg-1 control-label">건설회사</label>
+									<label class="col-lg-2 control-label">건설회사</label>
 									<div class="col-lg-3">
 										<input type="text" class="form-control" name="pr_company"
 											placeholder="건설회사">
@@ -302,7 +294,6 @@
 					</div>
 
 				</div>
-			</div>
 		</div>
 
 	</div>
@@ -374,11 +365,8 @@
 		element_wrap.style.display = 'block';
 	}
 </script>
-
-
-
-	<br>
-	<br>
-	<br>
+<div class="footer">
+		<jsp:include page="../include/footer.jsp"></jsp:include>
+	</div>
 </body>
 </html>

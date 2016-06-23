@@ -96,9 +96,10 @@
 </head>
 <body>
 	<div class="header">
-
 		<jsp:include page="../include/head.jsp"></jsp:include>
-
+	</div>
+	<div class="page">
+		<jsp:include page="../include/middle.jsp"></jsp:include>
 	</div>
 
 	<div id="page" class="hfeed site"
@@ -108,7 +109,9 @@
 				<jsp:include page="aptSideBar.jsp"></jsp:include>
 			</div>
 			<div class="col-md-9">
-				<br>
+				<br> <br> <label
+						style="font-size: 25px; color: black; border-bottom: 3px solid #eaeaea; padding: 0 15px 13px 15px; margin-bottom: 15px;">아파트 실거래가 조회</label>
+					
 				<div style="margin-top: 40px;">
 					<select name="selectState" id="selectState"
 						style="width: 120px; height: 30px; margin-right: 10px;">
@@ -150,6 +153,9 @@
 				
 			</div>
 		</div>
+	</div>
+	<div class="footer">
+		<jsp:include page="../include/footer.jsp"></jsp:include>
 	</div>
 </body>
 </html>

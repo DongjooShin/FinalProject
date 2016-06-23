@@ -108,14 +108,12 @@
 						class="widget widget_call_to_action clearfix">
 						<div class="call-to-action-content-wrapper clearfix">
 							<div class="call-to-action-content">
-								<h3>Spacious is incredibly spacious with a clean responsive
-									design.</h3>
-								<p>And it has many awesome features like image slider, theme
-									options &amp; many more!</p>
+								<h3>당신의 관리비를 효율적으로 관리하고 싶으신가요?</h3>
+								<p>지금 당장 KOPART와 함께하세요!</p>
 							</div>
 							<a class="call-to-action-button"
-								href="http://themegrill.com/themes/spacious-pro/"
-								title="View Spacious Pro">View Spacious Pro</a>
+								href="/siteNotice/joinInquiry"
+								title="View Spacious Pro">가입 문의 하기</a>
 						</div>
 					</section>
 					<!-- <div class="clearfix"> -->
@@ -125,22 +123,19 @@
 					<section id="spacious_recent_work_widget-2"
 						class="widget widget_recent_work clearfix">
 						<div class="tg-one-fourth tg-column-1">
-							<h3 class="widget-title">Recent Work</h3>
-							<p>Use the TG:Featured Widget to show this section. In the
-								widget just add the title and description. Then add three pages
-								from the three drop down option. The featured images of those
-								pages will be shown in the right and link back to those added
-								pages.</p>
+							<h3 class="widget-title">우리 KOPART는</h3>
+							<p>다른 사이트과 비교하지 마세요,
+                     <a href="" onClick='return false'><strong>KOPART</strong></a>가 선두두자인 이유가 있습니다.</p>
 						</div>
 						<div class="tg-one-fourth tg-column-2">
 							<div class="service-image">
 								<a title="Recent Work Skateboard"
 									href="http://demo.themegrill.com/spacious/recent-work-skateboard/"><img
 									width="270" height="270"
-									src="http://demo.themegrill.com/spacious/wp-content/uploads/sites/2/2014/03/skateboard-270x270.png"
+									src="/resources/images/kyungtae/bottomImg01.png"
 									class="attachment-featured-blog-medium size-featured-blog-medium wp-post-image"
 									alt="skateboard"
-									srcset="http://demo.themegrill.com/spacious/wp-content/uploads/sites/2/2014/03/skateboard-270x270.png 270w, http://demo.themegrill.com/spacious/wp-content/uploads/sites/2/2014/03/skateboard-150x150.png 150w"
+									srcset="/resources/images/kyungtae/bottomImg01.png 270w, /resources/images/kyungtae/bottomImg01.png 150w"
 									sizes="(max-width: 270px) 100vw, 270px" /></a>
 							</div>
 						</div>
@@ -150,10 +145,10 @@
 								<a title="Recent Work Spectacle"
 									href="http://demo.themegrill.com/spacious/recent-work-spectacle/"><img
 									width="270" height="270"
-									src="http://demo.themegrill.com/spacious/wp-content/uploads/sites/2/2014/03/Spectacle-270x270.png"
+									src="/resources/images/kyungtae/bottomImg02.png"
 									class="attachment-featured-blog-medium size-featured-blog-medium wp-post-image"
 									alt="Spectacle"
-									srcset="http://demo.themegrill.com/spacious/wp-content/uploads/sites/2/2014/03/Spectacle-270x270.png 270w, http://demo.themegrill.com/spacious/wp-content/uploads/sites/2/2014/03/Spectacle-150x150.png 150w"
+									srcset="/resources/images/kyungtae/bottomImg02.png 270w, /resources/images/kyungtae/bottomImg02.png 150w"
 									sizes="(max-width: 270px) 100vw, 270px" /></a>
 							</div>
 						</div>
@@ -162,10 +157,10 @@
 								<a title="Recent Work Camera"
 									href="http://demo.themegrill.com/spacious/recent-work-camera/"><img
 									width="270" height="270"
-									src="http://demo.themegrill.com/spacious/wp-content/uploads/sites/2/2014/03/Camera-270x270.png"
+									src="/resources/images/kyungtae/bottomImg03.png"
 									class="attachment-featured-blog-medium size-featured-blog-medium wp-post-image"
 									alt="Camera"
-									srcset="http://demo.themegrill.com/spacious/wp-content/uploads/sites/2/2014/03/Camera-270x270.png 270w, http://demo.themegrill.com/spacious/wp-content/uploads/sites/2/2014/03/Camera-150x150.png 150w"
+									srcset="/resources/images/kyungtae/bottomImg03.png 270w, /resources/images/kyungtae/bottomImg03.png 150w"
 									sizes="(max-width: 270px) 100vw, 270px" /></a>
 							</div>
 						</div>

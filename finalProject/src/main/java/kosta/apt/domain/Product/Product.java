@@ -186,6 +186,17 @@ public class Product implements Serializable {
 	public void setPro_tel3(String pro_tel3) {
 		this.pro_tel3 = pro_tel3;
 	}
+	@Override
+	public String toString() {
+		return "Product [pro_no=" + pro_no + ", pro_group=" + pro_group + ", pro_name=" + pro_name + ", m_memberNo="
+				+ m_memberNo + ", pro_tel=" + pro_tel + ", pro_tel1=" + pro_tel1 + ", pro_tel2=" + pro_tel2
+				+ ", pro_tel3=" + pro_tel3 + ", pro_context=" + pro_context + ", pro_startdate=" + pro_startdate
+				+ ", pro_enddate=" + pro_enddate + ", pro_flag=" + pro_flag + ", apt_APTGNo=" + apt_APTGNo
+				+ ", m_grade=" + m_grade + ", pro_price=" + pro_price + ", pro_num=" + pro_num + ", pro_img1="
+				+ pro_img1 + ", pro_img2=" + pro_img2 + ", pro_img3=" + pro_img3 + ", checkPost=" + checkPost
+				+ ", pro_maxnum=" + pro_maxnum + ", pro_date=" + pro_date + "]";
+	}
+	
 	
 	
 	

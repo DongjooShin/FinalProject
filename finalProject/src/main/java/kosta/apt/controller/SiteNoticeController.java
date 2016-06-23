@@ -62,9 +62,7 @@ public class SiteNoticeController {
 	}
 
 	@RequestMapping(value = "siteNoticeRegist", method = RequestMethod.POST)
-	public String registerPOST(SiteNotice sn, Model model, HttpServletRequest request) throws Exception {
-		System.out.println("1212125664212sn controller 들어옴!!!!");
-		System.out.println("title: " + sn.getSn_title());
+	public String registerPOST(SiteNotice sn, Model model, HttpServletRequest request,RedirectAttributes attr) throws Exception {
 		if (snService.maxSnNo() != null) {
 			sn.setSn_siteNoticeNo(snService.maxSnNo() + 1);
 		} else {
@@ -96,7 +94,8 @@ public class SiteNoticeController {
 		}
 
 		snService.regist(sn);
-
+		attr.addFlashAttribute("loginOn", 1);
+		
 		return "redirect:/siteNotice/siteNoticeAllList";
 
 	}
@@ -167,7 +166,7 @@ public class SiteNoticeController {
 		SNPageMaker pageMaker = new SNPageMaker();
 		pageMaker.setCri(cri);
 		pageMaker.setTotalCount(snService.listSearchCount(cri));// 글의 총갯수 구하는 것
-
+		model.addAttribute("loginOn", 1);
 		model.addAttribute("pageMaker", pageMaker);
 
 		return "/inquiry/inquiry";
@@ -217,6 +216,7 @@ public class SiteNoticeController {
 
 		model.addAttribute("qna", qna);
 		model.addAttribute("sn", snService.inqRead(qnaNo));
+		model.addAttribute("loginOn", 1);
 		return "/inquiry/inquiryRead";
 	}
 
@@ -234,6 +234,7 @@ public class SiteNoticeController {
 
 		model.addAttribute("qna", qna);
 		model.addAttribute("sn", snService.inqRead(qnaNo));
+		model.addAttribute("loginOn", 1);
 		return "/inquiry/inquiryRead";
 	}
 	/*
@@ -278,17 +279,18 @@ public class SiteNoticeController {
 
 	// -----------------my page : 1:1 ---------------------------
 
-	@RequestMapping("mypage_SiteInquiry")
+	@RequestMapping(value = "mypage_SiteInquiry", method = RequestMethod.GET)
 	public String mySiteInquiry(HttpSession session, Model model) {
 		Member m = (Member) session.getAttribute("member");
 		List<QnA> myqna = snService.selectMyInquiry(m.getM_memberNo());
 		List<QnA> reply = snService.selectMyReply(m.getM_memberNo());
+		
+		model.addAttribute("loginOn", 1);
 
-		System.out.println("hi" + reply);
 		model.addAttribute("myqna", myqna);
 		model.addAttribute("reply", reply);
 
-		return "mypage_SiteInquiry";
+		return "/mypage_SiteInquiry";
 	}
 
 }

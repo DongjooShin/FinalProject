@@ -273,6 +273,9 @@ html, body {
 	<div class="header">
 		 <jsp:include page="../include/head.jsp"></jsp:include> 
 	</div>
+	<div class="page">
+		<jsp:include page="../include/middle.jsp"></jsp:include>
+	</div>
 	<div class="main">
 		<div class="container" id="page" style="height: 850px;">
 			 <div class="col-md-3">
@@ -282,9 +285,9 @@ html, body {
          
       </div>
 			<div class="col-md-8  col-lg-offset-1" style="margin-top: 70px;">
-			<div style="border-bottom:  3px  solid #eaeaea; width: 90%; ">
-						<h2 style="padding-bottom: 6px;">아파트 주변 시설</h2>
-			</div>
+			<br>
+<label	style="font-size: 25px; color: black; border-bottom: 3px solid #eaeaea; padding: 0 15px 13px 15px; margin-bottom: 15px;">아파트 주변 시설</label>
+	
 			<br>
 				<div class="map_wrap" >
 					<div id="map" style="width: 90%; height: 600px; position: relative; overflow: hidden; border: 3px solid #eaeaea;  	border-radius: 3px;"></div>
@@ -308,6 +311,10 @@ html, body {
 			</div>
 		</div>
 	</div>
+	<div class="footer">
+		<jsp:include page="../include/footer.jsp"></jsp:include>
+	</div>
+	
 	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 	<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=71a85629fc48e906b151821200dfd650&libraries=services,clusterer"></script>
 	<script>

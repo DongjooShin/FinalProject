@@ -72,7 +72,7 @@
 	   mg_messageNo, mg_from, mg_to, mg_content, mg_date, mg_state, m_memberNo, mg_title
 	 from 
 	   Message
-	 where m_memberNo = #{m_memberNo}
+	 where mg_to = #{m_memberNo}
 	 order by mg_messageNo desc, mg_date desc
 	 ]]>
 	</select>
@@ -85,7 +85,7 @@
 	   mg_messageNo, mg_from, mg_to, mg_content, mg_date, mg_state, m_memberNo, mg_title
 	 from 
 	   Message
-	 where m_memberNo = #{m_memberNo}
+	 where mg_from = #{m_memberNo}
 	 order by mg_messageNo desc, mg_date desc
 	 ]]>
    </select>

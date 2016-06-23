@@ -41,30 +41,27 @@ public class SurveyController {
 	}
 
 	@RequestMapping(value="/surveyRegist", method = RequestMethod.GET )
-	public void surveyRegist()throws Exception{
-		
-		System.out.println("surveyRegist.jsp이다.");
+	public void surveyRegist(Model model,HttpSession session)throws Exception{
+		Member member = (Member) session.getAttribute("member");
+		model.addAttribute("loginOn", 1);
+		model.addAttribute("member", member);
 	}
 	
 	
 	@RequestMapping(value="/surveyRegist", method = RequestMethod.POST )
 	public void surveyRegistForm(HttpSession session, Survey survey, @RequestParam("su_context") String str[], @RequestParam("su_title") String su_title)throws Exception{
 	
-		
-		
-		System.out.println("음씨발!");
+
 
 		int maxcount =0; //설문지 개수 뀨뀨
 		
 		maxcount = (int)surveyService.updateSurveyGru();
 		
-		System.out.println(maxcount+"설문지 전체끝번호");
 	
 		SurveyDB surveyDB = new SurveyDB();
  	
  		String maxcount1 = "";
  		
- 		System.out.println(str.length+"컨텍스트의 사이즈입니다.");
  		
  	
  		survey.setSu_group(maxcount+1);
@@ -75,10 +72,7 @@ public class SurveyController {
  	      int month = calendar.get(calendar.MONTH)+1;
  	      int day3  = calendar.get(calendar.DAY_OF_MONTH);
  	   
- 	      System.out.println(year);
- 	      System.out.println(month+"월");
- 	      System.out.println(day3+"일");
- 	      
+
  	      if(day3<10 && month<10){
  	    	  String day =""+year+"0"+month+"0"+day3;
  	    	  day3 = Integer.parseInt(day);
@@ -247,11 +241,13 @@ public class SurveyController {
 	
 	@RequestMapping(value="/surveyRegistdeliver", method = RequestMethod.GET)
 	public void surveydelivery(HttpSession session, Model model)throws Exception{
+		Member member = (Member) session.getAttribute("member");
+		model.addAttribute("loginOn", 1);
+		model.addAttribute("member", member);
 		List<Survey> survey = null;
 		
 		List<SurveyDB> surveyDB = null;
 		
-		Member member = (Member) session.getAttribute("member");
 		int sessionNum = 0;
 			if(member!=null){
 																										System.out.println("세션값으로왓다.");
@@ -270,6 +266,7 @@ public class SurveyController {
 		
 		if(surveyDB !=null){
 			
+			model.addAttribute("title", surveyDB.get(0).getSu_title());
 			
 		for(int i = 0; i< surveyDB.size(); i++){
 		System.out.println(surveyDB.get(i).getSu_group()+"이게 해당하느일이다."+"시작일:"+surveyDB.get(i).getSu_startdate()+"끝날짜:"+surveyDB.get(i).getSu_enddate());
@@ -400,6 +397,9 @@ public class SurveyController {
 	public void surveyResultTitle(HttpSession session, Model model)throws Exception{
 		
 		Member member = (Member) session.getAttribute("member");
+		
+		model.addAttribute("loginOn", 1);
+		model.addAttribute("member", member);
 	/*	
 	SurveyDB surveyDB = new SurveyDB();
 		
@@ -533,16 +533,10 @@ public class SurveyController {
 	@RequestMapping(value="/surveyDetail", method = RequestMethod.POST)
 	public ResponseEntity<List<Survey>> surveyDetail(@RequestParam("sugroup") int sugroup)throws Exception{
 		
-		System.out.println("시발머여!");
-		System.out.println(sugroup+"숫자이다");
 		
 		List<Survey> list = new ArrayList<>();
 		
 		list = surveyService.surveyDetail(sugroup);
-		
-		
-		System.out.println(list.size()+"서베이디테일의 크기이다.");
-		
 		return new ResponseEntity<>(list, HttpStatus.OK);
 		
 		

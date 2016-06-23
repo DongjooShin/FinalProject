@@ -57,8 +57,10 @@ public class ProductController {
 	
 	
 	@RequestMapping(value="/proApplication", method = RequestMethod.GET)
-	public void proApplication()throws Exception{
-		
+	public void proApplication(Model model, HttpSession session )throws Exception{
+		Member member = (Member) session.getAttribute("member");
+		model.addAttribute("member", member);
+		model.addAttribute("loginOn", 1);
 		System.out.println("판매신청으로 이동하겠다.");
 	}
 	
@@ -105,6 +107,7 @@ public class ProductController {
 		String m_memberNo ="1";
 
 		Member member = (Member) session.getAttribute("member");
+		model.addAttribute("loginOn", 1);
 		if(member !=null){
 			System.out.println("세션이있네요 리스트");
 			mgrade = member.getM_grade();
@@ -141,7 +144,8 @@ public class ProductController {
 		 pageMaker.setTotalCount(productService.listCountCri(cri));
 		 model.addAttribute("pageMaker", pageMaker);
 		 model.addAttribute("list", list);
-		 
+			model.addAttribute("member", member);
+			model.addAttribute("loginOn", 1);
 		 if(mgrade == 2){
 			 return  "/ProductSale/proApplyManageList";
 		
@@ -167,6 +171,7 @@ public class ProductController {
 		product = productService.proApplyapprove(pro_no);
 		
 		model.addAttribute("product", product);
+		model.addAttribute("loginOn", 1);
 		
 	}
 	
@@ -198,7 +203,7 @@ public class ProductController {
 		product = productService.proApplyapprove(pro_no);
 		
 		System.out.println(product.getPro_name()+"입니다.");
-		
+		model.addAttribute("loginOn", 1);
 		model.addAttribute("product", product);
 		
 	}
@@ -361,6 +366,7 @@ public class ProductController {
 		
 		model.addAttribute("pageMaker", pageMaker);
 		model.addAttribute("list", list);
+		model.addAttribute("loginOn", 1);
 		
 	}
 	
@@ -465,7 +471,7 @@ public class ProductController {
 		
 		
 		model.addAttribute("product", product);
-		
+		model.addAttribute("loginOn", 1);
 		
 		
 	}
@@ -481,11 +487,37 @@ public class ProductController {
 		
 		product = productService.productdetail(productOrder.getPro_no());
 		System.out.println(product.getPro_img1());
+	
 		model.addAttribute("product", product);
 		
 		
 		model.addAttribute("productOrder", productOrder);
 		
+		System.out.println(product.getM_memberNo()+"번호");
+
+		System.out.println(product.toString());
+		System.out.println(productOrder.toString());
+		
+		String b = product.getPro_img1();
+		String pattern = b.substring(b.lastIndexOf(".")+1);
+		String headName = b.substring(0, b.lastIndexOf("."));
+		String c22 = headName+"_small."+pattern;
+	
+	 int num1 = 0;
+	 int num2 = 0;
+	 int num3 = 0;
+	 
+	 num1 = productOrder.getCheck_num();
+	 num2 = product.getPro_price();
+	 num3 = product.getCheckPost();
+	 
+	 num3 = (num1*num2)+num3;
+
+		model.addAttribute("img1", c22);
+		model.addAttribute("totalprice",num3);
+		model.addAttribute("loginOn", 1);
+		
+
 	}
 	
 
@@ -557,7 +589,7 @@ public class ProductController {
 		
 		model.addAttribute("pageMaker", pageMaker);
 		model.addAttribute("list", list);
-		
+		model.addAttribute("loginOn", 1);
 		
 	}
 	
@@ -668,7 +700,7 @@ public class ProductController {
 		
 		model.addAttribute("pageMaker", pageMaker);
 		model.addAttribute("list", list);
-		
+		model.addAttribute("loginOn", 1);
 		
 	}
 	

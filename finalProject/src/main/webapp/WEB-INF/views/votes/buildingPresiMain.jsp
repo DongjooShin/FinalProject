@@ -22,7 +22,7 @@
 <body>
 <%-- -----------------Header include----------------- --%>	
 	<div class="header">
-		 <jsp:include page="head.jsp"></jsp:include> 
+		 <jsp:include page="../include/head.jsp"></jsp:include> 
 	</div>	
 <%-- ------------------------------Body------------------------------------------- --%>
 	<div id= "page" style="height: 900px; margin-left: 144px; margin-top: -3px; padding-bottom: 50px;">

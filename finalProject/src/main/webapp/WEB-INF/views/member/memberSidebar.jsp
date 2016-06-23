@@ -21,16 +21,11 @@
 	
 		<div id="secondary" style="background-color: white;">
 			<aside id="archives" class="widget">
-			<h3 class="widget-title">Archives</h3>
+			<h3 class="widget-title"></h3>
 			<ul>
-				<li><a href='http://demo.themegrill.com/spacious/2014/03/'>March
-						2014</a></li>
-				<li><a href='http://demo.themegrill.com/spacious/2014/02/'>February
-						2014</a></li>
-				<li><a href='http://demo.themegrill.com/spacious/2014/03/'>March
-						2014</a></li>
-				<li><a href='http://demo.themegrill.com/spacious/2014/02/'>February
-						2014</a></li>
+				<li><a href='/member/login'> 로그인</a></li>
+				<li><a href='/member/loginCheck'>회원가입</a></li>
+				
 				
 			</ul>
 			</aside>

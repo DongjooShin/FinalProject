@@ -8,10 +8,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-
-<script type="text/javascript">
-	
-</script>
+<link rel='stylesheet' href='/resources/bootstrap/bootstrap.min.css' type='text/css' rel="stylesheet" />
+<link rel='stylesheet' href='/resources/dist/css/mainFont.css'
+	type='text/css' rel="stylesheet" />
+<link rel='stylesheet'
+	href='//fonts.googleapis.com/css?family=Lato&#038;ver=e7d1598c32c9180e5e08e97723f82bcd'
+	type='text/css' media='all' />
+<link rel='stylesheet' href='/resources/dist/css/main1.css'
+	type='text/css' rel="stylesheet" />
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <head>
@@ -55,7 +59,7 @@
 
 
 </head>
-<body>
+<body style="background-color: white;">
 
 
 <script type="text/javascript">
@@ -108,9 +112,9 @@ function abc223(id2){
 				<div class="row">
 					<div class="col-sm-6 col-sm-offset-3 form-box">
 						<div class="form-top">
-							<div class="form-top-left">
-								<h3>Contact us</h3>
-								<p>Fill in the form below to send us a message:</p>
+							<div class="form-top-left" >
+								<h3 style="border-bottom:  4px solid #eaeaea;">쪽지보내기</h3>
+						
 							</div>
 							<div class="form-top-right">
 								<i class="fa fa-envelope"></i>

@@ -23,14 +23,16 @@
 <script type="text/javascript">
 	$(function() {
 		$("#selectState").change(function() {
+			
 			state = $("#selectState option:selected").text();
+			
 			var stateNum = $(this).val();
 			$("#mapImage").attr({"src" : "/resources/images/dong/map" + stateNum + ".png"	});
 			
 			
 			
 			$.ajax({
-				url : '/member/map',
+				url : '/member/test',
 				type : 'POST',
 				data : {
 					"state" : state
@@ -45,7 +47,7 @@
 
 				},
 				error : function(hxr, data, error) {
-				
+					alert('찾기에 실패 하였습니다.');
 				}
 			});
 		});
@@ -63,14 +65,13 @@
 				success : function(result) {
 					var str = "";
 					$(result).each(function() {
-						alert(this.f_groupname);
 						str += "<option>" + this.f_groupname + "</option>"
 						$("#aptname").html(str);
 					});
 
 				},
 				error : function(hxr, data, error) {
-					alert('이메일 전송이 실패 하였습니다.');
+					alert('찾기에 실패 하였습니다.');
 				}
 			});
 		});

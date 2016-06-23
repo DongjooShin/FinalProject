@@ -446,7 +446,6 @@
 				$('#feee').val(" "+Math.round(cal)+"원");
 			} else {
 				
-				alert(fee)
 				alert('관리비를 잘못입력했습니다 전달보다 많아야 지금쓴 사용량을 계산 가능해요')
 				alert('전달에' + passfee + "만큼 사용하셨어요")
 			}
@@ -454,5 +453,8 @@
 	})
 	
 	</script>
+	<div class="footer">
+		<jsp:include page="../include/footer.jsp"></jsp:include>
+	</div>
 </body>
 </html>

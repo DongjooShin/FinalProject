@@ -17,7 +17,6 @@
 				$('#searchBtn').on(
 						"click",
 						function(event) {
-							alert("search!!");
 							self.location = "inquiryMain"
 									+ '${pageMaker.makeQuery(1)}'
 									+ "&searchType="
@@ -97,7 +96,7 @@
 		</ul>
 	</div>
 
-	<select name="searchType">
+	<select name="searchType" style="width: 13%; height: 5%; margin-left: 11%;margin-right: 25px;">
 		<option value="n"
 			<c:out value="${cri.searchType == null?'selected':''}"/>>
 			---</option>
@@ -109,8 +108,8 @@
 			작성자</option>
 	</select>
 	<input type="text" name='keyword' id="keywordInput"
-		value='${cri.keyword }'>
-	<button id='searchBtn'>Search</button>
+		value='${cri.keyword }' style="width: 25%; margin-right: 25px; height: 30px">
+	<button id='searchBtn' style="height: 30px;">Search</button>
 
 </body>
 </html>

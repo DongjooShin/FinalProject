@@ -91,10 +91,10 @@ public class PropertyService {
 		/*
 		map.put("f_addr", addr);
 		map.put("f_groupName", aptName);*/
-	map.put("f_addr", " 서울특별시 강남구 역삼동");
-		map.put("f_groupName", "대우디오빌");
+		map.put("f_addr", " 서울특별시 영등포구 신길동");
+		map.put("f_groupName", "신길자이아파트");
 		List<AptTransactionPrice> list = proDao.getRealTransaction(map);
-		
+		System.out.println(list.size());
 		return list;
 	}
 

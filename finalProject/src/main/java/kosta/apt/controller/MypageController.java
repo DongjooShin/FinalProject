@@ -90,7 +90,7 @@ public class MypageController {
 			} else if (memberGrade == 4) {// 동대표
 				return "redirect:/mypage/userMypage";
 			} else {// 사이트 관리자
-				return "redirect:/mypage/siteManagerMypage";
+				return "redirect:/mypage/signupManager";
 			}
 
 		}
@@ -105,10 +105,9 @@ public class MypageController {
 	@RequestMapping(value = "/mypage/userMypage", method = RequestMethod.GET)
 	public void userMypageGet(Calendar calendar, HttpSession session, Model model) {
 
-		System.out.println("calendar Controller 들어옴fffff");
 		Member m = (Member) session.getAttribute("member");
 		int aptNum = m.getApt_APTGNo();
-
+		
 		// 현재날짜
 		java.util.Calendar cal = java.util.Calendar.getInstance();
 		SimpleDateFormat d_format = new SimpleDateFormat("yyyy-MM-dd");
@@ -160,7 +159,7 @@ public class MypageController {
 
 
 		int m_memberNo = 1;
-		
+		model.addAttribute("loginOn", 1);
 		model.addAttribute("m_memberNo", m_memberNo);
 		
 
@@ -205,19 +204,15 @@ public class MypageController {
 		// Okdelect.jsp를 보내기 클릭시 파라미터에 세션메세지번호를(히든으로) 담게하든가해서 그값이 널이 아닌경우만
 		// 새창띄우게한다.
 
-		System.out.println("성공적이야");
 		
-		System.out.println("성공적이야2"+message.getMg_to()+"입니다.");
 		
 	    String abc= "";
 	    	 abc=	messageService.selectMg_to(message.getMg_to());
 		
 	    if(abc !=null){
 	    	
-	    	System.out.println(abc+"입니다.");
 	    }else{
 	    	
-	    	System.out.println("없다요");
 	    }
 	    
 
@@ -236,7 +231,6 @@ public class MypageController {
 		
 		messageService.SandMessage(message);
 
-	//	return "redirect:/mypage/sendMessageList";
 		return "redirect:/mypage/aptMessageOkdelect";
 		// 리다이렉트해서 메시지창 닫기 만들어라.
 	}
@@ -258,7 +252,7 @@ public class MypageController {
 	public void readMessageList(HttpSession session, Model model, Message message, @ModelAttribute("cri") Criteria cri) throws Exception {
 
 		Member member = (Member) session.getAttribute("member");
-		
+		model.addAttribute("loginOn", 1);
 		
 		if(member!=null){
 			message.setM_memberNo(member.getM_memberNo());
@@ -288,7 +282,7 @@ public class MypageController {
 	public void sendMessageList(HttpSession session , Model model, Message message, @ModelAttribute("cri") Criteria cri) throws Exception {
 
 		Member member = (Member) session.getAttribute("member");
-		
+		model.addAttribute("loginOn", 1);
 		
 		if(member!=null){
 			message.setM_memberNo(member.getM_memberNo());
@@ -369,7 +363,11 @@ public class MypageController {
 
 	}
 	
-	
+	@RequestMapping(value = "/mypage/signupManager", method = RequestMethod.GET)
+	public void signupManagerGet(Model model){
+		model.addAttribute("loginOn", 1);
+		
+	}
 
 
 		

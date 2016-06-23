@@ -24,12 +24,11 @@
 
 <style type="text/css">
 
-<<<<<<< HEAD
 #mypageUl {
    margin-top: -53px;
 }
 
-#mypageUl li {
+/* #mypageUl li {
    display: inline;
    float: left;
    position: relative;
@@ -47,13 +46,8 @@
    display: inline-block;
    width: 100%;
    margin-top: 70px;
-=======
-#sixthContent {
 
-	min-height: 500px;
-
->>>>>>> branch 'master' of https://github.com/DongjooShin/FinalProject.git
-}
+} */
 
 .manu {
 
@@ -68,21 +62,14 @@
    <div class="header">
       <jsp:include page="../include/head.jsp"></jsp:include>
    </div>
+   <div class="header">
+		<jsp:include page="../include/middle.jsp"></jsp:include>
+	</div>
    <div id="page"
       style="background: white; display: inline-block; ">
       <div class="col-md-12">
-         <div id="mypageLayout">
-            <ul id=mypageUl>
-                  <jsp:include page="../include/mypagehead.jsp"></jsp:include>
-            
-            </ul>
-            <br>
-
-
-
+ 
 					<jsp:include page="../include/mypagehead.jsp"></jsp:include>
-
-
 
 				<div class="col-lg-10 col-lg-offset-1">
 					<br> <br> <label
@@ -144,8 +131,8 @@
 
 		</div>
 	</div>
-
-
-
+<div class="footer">
+		<jsp:include page="../include/footer.jsp"></jsp:include>
+	</div>
 </body>
 </html>

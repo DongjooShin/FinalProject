@@ -326,9 +326,10 @@ $(function() {
          
          <!-- 리스트,입력,상세보기 -->
          <div class="col-md-8" style="margin-top: 50px;">
-         <div style="border-bottom:  3px  solid #eaeaea; width: 90%; ">
-						<h2 style="padding-bottom: 6px;">상가정보</h2>
-			</div>
+         
+<br>
+<label style="font-size: 25px; color: black; border-bottom: 3px solid #eaeaea; padding: 0 15px 13px 15px; margin-bottom: 15px;">상가정보</label>
+	
              <div class="container">
                <div>
                   <c:if test="${member.m_grade eq 2 }">

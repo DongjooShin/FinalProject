@@ -64,10 +64,11 @@
 	<div class="header">
 		<jsp:include page="../include/head.jsp"></jsp:include>
 	</div>
+	<div class="page">
+		<jsp:include page="../include/middle.jsp"></jsp:include>
+	</div>
 	<div class="main">
-		
 			<div id="page" class="content">
-				
 					<div class="col-lg-3">
 						<div id="secondary">
 							<div id="archives" class="widget">
@@ -394,5 +395,8 @@
 
 		});
 	</script>
+	<div class="footer">
+		<jsp:include page="../include/footer.jsp"></jsp:include>
+	</div>
 </body>
 </html>

@@ -29,7 +29,6 @@
 			window.close();
 		})
 		$('#mntPay').on('click',function(){
-			alert('dd');
 			window.location.href="/managementFee/paySequence1";
 		});
 	})

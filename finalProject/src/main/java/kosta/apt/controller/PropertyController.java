@@ -41,13 +41,19 @@ import kosta.apt.domain.member.Member;
 import kosta.apt.domain.member.AddressCity;
 
 import kosta.apt.domain.member.RssReader;
-
+import kosta.apt.service.CalendarService;
 import kosta.apt.service.PropertyService;
 
 @Controller
 @RequestMapping("/Property")
 public class PropertyController {
-
+private CalendarService service;
+	
+	@Autowired
+	public void setService(CalendarService service) {
+		this.service = service;
+		
+	}
 	private PropertyService propertyService;
 
 	@Autowired
@@ -59,6 +65,7 @@ public class PropertyController {
 	public void aptSaleView(Model model) {
 
 		System.out.println("뷰로 이동하겠습니다.1");
+		model.addAttribute("loginOn", 1);
 
 	}
 
@@ -182,6 +189,7 @@ public class PropertyController {
 
 		model.addAttribute("pageMaker", pageMaker);
 		model.addAttribute("list", list);
+		model.addAttribute("loginOn", 1);
 
 	}
 
@@ -197,7 +205,7 @@ public class PropertyController {
 		property = propertyService.aptSaledetail(pr_propertyNo);
 
 		model.addAttribute("property", property);
-
+		model.addAttribute("loginOn", 1);
 	}
 
 	
@@ -237,7 +245,7 @@ public class PropertyController {
 			
 			Property property= propertyService.aptSaledetail(pr_propertyNo);
 			
-
+			model.addAttribute("loginOn", 1);
 			model.addAttribute("property", property);
 
 		}
@@ -286,7 +294,7 @@ public class PropertyController {
 		
 		model.addAttribute("listSize", newsList.size() - 5);
 		model.addAttribute("newsNum", newsNum);
-		
+		model.addAttribute("loginOn", 1);
 		model.addAttribute("newsList", newsList);
 
 	}
@@ -297,6 +305,7 @@ public class PropertyController {
 		int aptNum = member.getApt_APTGNo();
 		List<AptTransactionPrice> list = propertyService.getAptAddrService(aptNum);
 		int totalNum = list.size();
+		System.out.println(totalNum);
 		int endPage =0;
 		int cssPage = page+1;
 		int perPage =4;
@@ -335,9 +344,12 @@ public class PropertyController {
 	}
 	
 	@RequestMapping(value = "/OtheraptRealTransaction", method = RequestMethod.GET)
-	public void OtheraptRealTransactionGet(HttpSession session) throws Exception {
-	
+	public void OtheraptRealTransactionGet(HttpSession session,Model model) throws Exception {
 		
+		Member member = (Member) session.getAttribute("member");
+		String aptName = service.getAptNameService(member.getApt_APTGNo());
+		model.addAttribute("aptName", aptName);
+		model.addAttribute("loginOn", 1);
 	
 	}
 	

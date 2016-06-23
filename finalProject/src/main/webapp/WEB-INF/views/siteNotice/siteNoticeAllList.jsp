@@ -20,7 +20,9 @@
 	<div class="header">
 		 <jsp:include page="../include/head.jsp"></jsp:include> 
 	</div>
-	
+	<div class="page">
+		<jsp:include page="../include/middle.jsp"></jsp:include>
+	</div>
 <%-- ------------------------------Body------------------------------------------- --%>	
 	<div class="main" id="page">
 		<div class="container">
@@ -36,9 +38,9 @@
 	</div>
 	
 <%-- ----------------------Footer include----------------- --%>
-	<div class = "footer">
-	
+<div class="footer">
+		<jsp:include page="../include/footer.jsp"></jsp:include>
 	</div>
-	
+
 </body>
 </html>

@@ -12,14 +12,12 @@
 	$(function() {
 		var formObj = $("form[role='form']");
 		$("#replygn").on("click", function() {
-			alert("답변버튼 클릭");
 			formObj.attr("action", "/siteNotice/inqReply");
 			formObj.attr("method", "get");
 			formObj.submit();
 		});
 
 		$("#listgn").on("click", function() {
-			alert("목록버튼 클릭");
 			formObj.attr("method", "get");
 			formObj.attr("action", "/siteNotice/inquiryMain");
 			formObj.submit();

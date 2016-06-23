@@ -41,7 +41,7 @@
 </div>
 
 
-
+<div id="page">
 <!-- Main content -->
 
 	<div class="row">
@@ -69,45 +69,46 @@
 		<th>단가</th>
 		<th>배송비</th>
 		<th>주문합계</th>
-		
-
-	
-
-	</tr>
-	
-
+	<%-- 
+	<c:if test="${product.pro_img1 != null}">
+		  <c:set var ="head"
+                     value="${fn:substring(product.pro_img1,0,fn:length(product.pro_img1)-2) }"></c:set>
+                  <c:set var="pattern"
+                     value="${fn:substringAfter(product.pro_img1, head) }"></c:set>
+                     ${head }입니다
+                      ${pattern}
+                   <img src="../M_upload1/${head }_small${pattern}" />  
+                   
+		</c:if>
+--%>
 
 	
 	<tr>
-		
+
 		<td>${product.m_memberNo}</td>
-		<td><c:if test="${product.pro_img1 != null}">
-				
-						<c:set var="head"
-							value="${fn:substring(product.pro_img1,0,fn:length(product.pro_img1)-4) }"></c:set>
-						<c:set var="pattern"
-							value="${fn:substringAfter(product.pro_img1, head) }"></c:set>
-						 <img src="../M_upload1/${head }_small${pattern}" /> 
-						
-		</c:if></td>
+		
+		<td><img src="../M_upload1/${img1}"></td>
+		
 		<td>${product.pro_name}</td>
 		<td>${productOrder.check_num}개</td>
 		<td>${product.pro_price}원</td>
-		<td>${product.checkPost}원</td>
-	 	<td><c:if test="${product.checkPost ==0 }">
+		<td>  ${product.checkPost}원</td>
+		<td>${totalprice }</td>
+<%-- 	 	<td><c:if test="${product.checkPost ==0 }">
               <c:set var="head" value="${product.pro_price*productOrder.check_num}">
               </c:set> ${head }원
          
-             </c:if>
+             </c:if> 
              <c:if test="${product.checkPost !=0 }">
                <c:set var="head2" value="(${product.pro_price*productOrder.check_num+product.checkPost}">
                 </c:set>
                 	${head2 } 원
-            
+          
 			 </c:if>
-			 	
-		</td>
-	 
+		  --%>	 	
+		  
+		
+	
 	</tr>
 	
 	
@@ -207,7 +208,7 @@
 							<input type="hidden" name="pro_no" value="${product.pro_no}">
 							<input type="hidden" name="checkPost" value="${product.checkPost}">
 							<input type="hidden" name="pro_price" value="${product.pro_price}">
-							<input type="hidden" name="check_price" value="${head+head2 }">
+							<input type="hidden" name="check_price" value="${product.pro_price*productOrder.check_num+product.checkPost}">
 							<input type="hidden" name="check_name" value="${product.pro_name}">
 							<input type="hidden" name="check_num" value="${productOrder.check_num}">
 							<input type="hidden" name="check_seller" value="${product.m_memberNo}">
@@ -319,6 +320,6 @@
 
 <!-- /.content-wrapper -->
 
-
+</div>
 </body>
 </html>

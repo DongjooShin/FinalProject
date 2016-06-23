@@ -46,9 +46,7 @@ public class ComplaintController {
 	public String List(@ModelAttribute("cri") SearchCriteria cri,Model model,HttpSession session,HttpServletRequest request){
 		model.addAttribute("member",(Member)session.getAttribute("member"));
 		   model.addAttribute("list", service.listSearchCriteria(cri));
-		   System.out.println(cri.toString());
 		   String keyword = request.getParameter("keyword");
-		   System.out.println(keyword);
 		   if(keyword !=null){
 			   
 			   System.out.println(keyword);
@@ -57,7 +55,7 @@ public class ComplaintController {
 		   pagemaker.setCri(cri);
 		   pagemaker.setTotalCount(service.listSearchCount(cri));
 		   model.addAttribute("pageMaker", pagemaker);
-		
+		   model.addAttribute("loginOn", 1);
 		return "complaint/complaintList";
 	}
 	@RequestMapping(value = "/register", method = RequestMethod.GET )
@@ -65,6 +63,7 @@ public class ComplaintController {
 		
 		Member member = (Member) session.getAttribute("member");
 		model.addAttribute("member", member);
+		model.addAttribute("loginOn", 1);
 		return "complaint/ComplaintRegister";
 	}
 	@RequestMapping(value = "/register", method = RequestMethod.POST )
@@ -83,6 +82,7 @@ public class ComplaintController {
 		   Member member = (Member)session.getAttribute("member");
 		   model.addAttribute(member);
 		   model.addAttribute(service.read(cp_complaintNo));
+		   model.addAttribute("loginOn", 1);
 		   
 		   return "complaint/complaintReadPage";
 	   }
@@ -119,7 +119,6 @@ public class ComplaintController {
 	   
 		@RequestMapping(value ="/replies/all/{cp_complaintNo}", method=RequestMethod.GET)
 		public ResponseEntity<List<Reply>> list(@PathVariable("cp_complaintNo") Integer cp_complaintNo){ //객체를 JSON JSON을 객체를 반환한다. 
-			System.out.println("dddddddddddddddddddddddd");
 			ResponseEntity<List<Reply>> entity = null;
 			System.out.println(service.listReply(cp_complaintNo));
 			try {
@@ -191,7 +190,6 @@ public class ComplaintController {
 				// TODO: handle exception
 				entity = new ResponseEntity<Map<String,Object>>(HttpStatus.BAD_REQUEST);
 			}
-			
 			return entity;
 			
 		}

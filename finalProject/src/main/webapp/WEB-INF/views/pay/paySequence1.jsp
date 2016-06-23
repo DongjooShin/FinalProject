@@ -126,7 +126,6 @@
 				type : 'post',
 				dataType : 'json',
 				success : function(json) {
-					alert('결제금액')
 					$.each(json, function(index, data) {
 						waterList.push(json[index].mf_waterFee);
 						gasList.push(json[index].mf_gasFee);

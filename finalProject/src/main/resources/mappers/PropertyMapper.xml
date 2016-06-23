@@ -27,16 +27,31 @@
    <insert id="insertMember" parameterType="member">
 
       insert into member(
-      m_memberNo,m_pass,m_buildingNo,m_roomNo,m_name,m_age,m_homeTel,m_tel,m_email,apt_APTGNo,v_flag)
+      m_memberNo, m_pass, m_buildingNo, m_roomNo, m_name, m_age, m_homeTel, m_tel, m_email, apt_APTGNo, v_flag)
       
       values(
-      #{m_memberNo},#{m_pass},#{m_buildingNo},#{m_roomNo},#{m_name},#{m_age},#{m_homeTel},#{m_tel},#{m_email},#{apt_APTGNo},#{v_flag}
+      #{m_memberNo}, #{m_pass}, #{m_buildingNo}, #{m_roomNo}, #{m_name}, #{m_age}, #{m_homeTel}, #{m_tel}, #{m_email}, #{apt_APTGNo}, #{v_flag}
       )
       
    </insert> 
    
    
-   <insert id="insertAPTsale" parameterType="kosta.apt.domain.Property.Property">
+<!--    <insert id="insertAPTsale" parameterType="kosta.apt.domain.Property.Property">
+      
+     insert into Property(
+        pr_group, pr_APTName, pr_addr, pr_price, pr_deposit, pr_level, pr_totalLevel, pr_doorStruct,
+        pr_roomNum, pr_bathNum, pr_roomArea, pr_scale, pr_company, pr_content,
+        pr_propertyNo, pr_imageName, pr_tel, pr_date, m_memberNo
+      )
+      values(
+     #{pr_group}, #{pr_APTName}, #{pr_addr}, #{pr_price}, #{pr_deposit}, #{pr_level}, #{pr_totalLevel},
+     #{pr_doorStruct}, #{pr_roomNum}, #{pr_bathNum}, #{pr_roomArea}, #{pr_scale}, #{pr_company},
+     #{pr_content}, #{pr_propertyNo}, #{pr_imageName}, #{pr_tel}, SYSDATE, #{m_memberNo}
+           )
+    
+   </insert> -->
+   
+  <insert id="insertAPTsale" parameterType="kosta.apt.domain.Property.Property">
       
      insert into Property(
         pr_group,pr_APTName,pr_addr,pr_price,pr_deposit,pr_level,pr_totalLevel,pr_doorStruct,
@@ -50,6 +65,7 @@
            )
     
    </insert>
+   
    
    
    
@@ -142,7 +158,7 @@
 	</select> 
 	
 	<select id="getRealTransaction"  parameterType="java.util.HashMap" resultType="kosta.apt.domain.Property.AptTransactionPrice">
-	select * from RealTransactionPrice where address = #{f_addr} and  aptName =#{f_groupName}
+	select * from RealTransactionPrice where address =#{f_addr} and  aptName =#{f_groupName}
 	
 	</select>
 	<select id="getAptTransaction" parameterType="String" resultType="kosta.apt.domain.Property.AptTransactionPrice">

@@ -97,9 +97,10 @@
 </head>
 <body>
 	<div class="header">
-
 		<jsp:include page="../include/head.jsp"></jsp:include>
-
+	</div>
+	<div class="page">
+		<jsp:include page="../include/middle.jsp"></jsp:include>
 	</div>
 
 	<div id="page" class="hfeed site"
@@ -189,5 +190,9 @@
 			</div>
 		</div>
 	</div>
+	<div class="footer">
+		<jsp:include page="../include/footer.jsp"></jsp:include>
+	</div>
+	
 </body>
 </html>

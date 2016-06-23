@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -16,29 +17,21 @@
 	type='text/css' media='all' />
 
 <style type="text/css">
-
-#page2{
-
+#page2 {
 	margin-left: 3px;
-
 }
 
-#archives{
-
+#archives {
 	padding-left: 10px;
 }
 
-
-#archives ul li{
-
+#archives ul li {
 	padding: 30px;
 }
 
-#archives ul{
-
+#archives ul {
 	padding: 30px;
 }
-
 </style>
 
 </head>
@@ -47,15 +40,20 @@
 
 		<div id="secondary" style="background-color: white;">
 			<aside id="archives" class="widget">
-			<h3 class="widget-title">Archives</h3>
+			<h3 class="widget-title">설문조사</h3>
 			<ul>
-				<li><a href='/Survey/surveyRegist'>관리자설문조사 작성하기</a></li>
+				<c:if test="${member.m_grade ==2}">
+					<li><a href='/Survey/surveyRegist'>관리자설문조사 작성하기</a></li>
+				</c:if>
+				
+				<c:if test="${member.m_grade ==1}">
 				<li><a href='/Survey/surveyRegistdeliver'>설문조사 답변</a></li>
+				</c:if>
 				<li><a href='/Survey/surveyResult'>설문조사 조회</a></li>
 			</ul>
 			</aside>
 		</div>
-	
+
 	</div>
 </body>
 </html>

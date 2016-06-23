@@ -11,6 +11,10 @@
 	<div class="header">
 		 <jsp:include page="../include/head.jsp"></jsp:include> 
 	</div>
+	<div class="page">
+		 <jsp:include page="../include/middle.jsp"></jsp:include> 
+	</div>
+	
 	<div class="main">
 		<div class="container" id="page">
 			<div class="col-md-3">
@@ -19,12 +23,18 @@
 			
 			<!-- 리스트,입력,상세보기 -->
 			<div class="col-md-8" style="margin-top: 50px;">
-			<div style="border-bottom:  3px  solid #eaeaea; width: 90%; ">
-						<h2 style="padding-bottom: 6px;">공지사항</h2>
-			</div>
+			<br>
+			
+
+<label
+						style="font-size: 25px; color: black; border-bottom: 3px solid #eaeaea; padding: 0 15px 13px 15px; margin-bottom: 15px; font-weight: normal;">공지사항</label>
+	
 				<jsp:include page="groupNoticeList.jsp"></jsp:include>
 			</div>
 		</div>
+	</div>
+<div class="footer">
+		<jsp:include page="../include/footer.jsp"></jsp:include>
 	</div>
 
 </body>

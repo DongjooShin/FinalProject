@@ -89,7 +89,10 @@
 </head>
 <body>
 <jsp:include page="../include/head.jsp"></jsp:include>
-   <div class="container" id="page">
+<div class="header">
+		<jsp:include page="../include/middle.jsp"></jsp:include>
+	</div>
+   <div class="container" id="page" style="padding-bottom: 100px;">
    
       <div class="col-md-3">
          
@@ -99,9 +102,10 @@
       </div>
 
       <div class="col-md-8">
-      <div style="border-bottom:  3px  solid #eaeaea; width: 90%; ">
-						<h2 style="padding-bottom: 6px;">캘린더</h2>
-			</div>
+      <br><br>
+     <label
+						style="font-size: 25px; color: black; border-bottom: 3px solid #eaeaea; padding: 0 15px 13px 15px; margin-bottom: 15px; font-weight: normal;"> 캘린더</label>
+				
          <!-- 일정추가모달 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
          <br>
 

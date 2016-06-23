@@ -13,7 +13,6 @@
 <script type="text/javascript">
 	$(function() {
 		$('#fifthManu').css('background', '#09b9e5');
-		$('#fifthManu').css('display', 'block');
 
 		
 		
@@ -30,7 +29,7 @@
 		open(    
 				url,
 				"confirm",
-				"toolbar=no, status=no, menubar=no, location=no, scrollbars=no, resizable=no, width=450, height=350");
+				"toolbar=no, status=no, menubar=no, location=no, scrollbars=no, resizable=no, width=500, height=500");
 
 		
 		
@@ -133,7 +132,7 @@ function detailMsg(id2){
 	open(    
 			url,
 			"confirm",
-			"toolbar=no, status=no, menubar=no, location=no, scrollbars=no, resizable=no, width=410, height=280");
+			"toolbar=no, status=no, menubar=no, location=no, scrollbars=no, resizable=no, width=410, height=350");
 
 }
 
@@ -143,33 +142,25 @@ function detailMsg(id2){
 	<div class="header">
 		<jsp:include page="../include/head.jsp"></jsp:include>
 	</div>
-	<div id="page"
-		style="background: white; display: inline-block;">
+	<div id="page" style="background: white; display: inline-block;">
 		<div class="col-md-12">
-			<div id="mypageLayout">
-				<ul id=mypageUl>
-				
-						<jsp:include page="../include/aaa.jsp"></jsp:include>
-				
-				</ul>
-				
-				
-               <br> <br> 
-				
-				
-			<div class="box">
-				<div class="box-header with-border">
-					<h3 class="box-title">보낸 메세지함</h3>
-					
-					<a href="/mypage/readMessageList" class="box-title">받은 메세지함</a>>
-					<a href="/mypage/sendMessageList">보낸 메세지함 </a>>
-					<a href="/mypage/"> 보관함</a>
-					
-						<br><br>
-					<label class=""><button onclick="msgform()">메세지쓰기</button></label>
-					
-				</div>
-				<div class="box-body">
+			<jsp:include page="../include/mypagehead.jsp"></jsp:include>
+
+			<br> <br>
+
+			<div class="col-md-12 col-md-offset-1">
+				<div class="box">
+					<div class="box-header with-border">
+						<br> <br> <label
+						style="font-size: 25px; color: black; border-bottom: 3px solid #eaeaea; padding: 0 15px 13px 15px; margin-bottom: 15px;">보낸메세지함</label>
+
+
+						<a href="/mypage/readMessageList" class="box-title">받은 메세지함</a>> <a
+							href="/mypage/sendMessageList">보낸 메세지함 </a>> <a href="/mypage/">
+							보관함</a> <br> <br> <label class=""><button
+								onclick="msgform()">메세지쓰기</button></label>
+
+					</div>
 				
 <table class="table table-bordered">
 	<tr>
@@ -243,21 +234,13 @@ function detailMsg(id2){
 
 				</div>				
 		</div>
-				<div class="box-footer">Footer</div>
-				<!-- /.box-footer-->
-			</div>
-					
-					
-					
 			
-				
-				
-				
-				
-				
-				
 			</div>
 		</div>
+		</div>
+		
+	<div class="footer">
+		<jsp:include page="../include/footer.jsp"></jsp:include>
 	</div>
 </body>
 </html>

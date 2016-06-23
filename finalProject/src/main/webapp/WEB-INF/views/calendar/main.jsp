@@ -11,8 +11,12 @@
 	<%-- <div class="header">
 		 <jsp:include page="../include/head.jsp"></jsp:include> 
 	</div> --%>
-	<div class="main">
+	<div class="main" >
 		<jsp:include page="sidebar.jsp"></jsp:include>
+	</div>
+	
+	  <div class="footer">
+		<jsp:include page="../include/footer.jsp"></jsp:include>
 	</div>
 
 </body>

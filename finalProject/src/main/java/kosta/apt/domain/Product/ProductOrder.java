@@ -138,6 +138,19 @@ public class ProductOrder implements Serializable {
 	public void setCheck_address(String check_address) {
 		this.check_address = check_address;
 	}
+	public ProductOrder() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	@Override
+	public String toString() {
+		return "ProductOrder [pro_no=" + pro_no + ", checkPost=" + checkPost + ", pro_price=" + pro_price
+				+ ", check_no=" + check_no + ", check_num=" + check_num + ", check_price=" + check_price
+				+ ", check_seller=" + check_seller + ", check_buyer=" + check_buyer + ", check_name=" + check_name
+				+ ", check_date=" + check_date + ", check_tell=" + check_tell + ", check_tell1=" + check_tell1
+				+ ", check_tell2=" + check_tell2 + ", check_tell3=" + check_tell3 + ", check_addressee="
+				+ check_addressee + ", check_address=" + check_address + ", check_sign=" + check_sign + "]";
+	}
 	
 	
 	

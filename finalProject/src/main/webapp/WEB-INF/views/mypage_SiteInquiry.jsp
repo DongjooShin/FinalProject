@@ -25,11 +25,39 @@
 	href='/resources/dist/css/main1.css' type='text/css' media='all' />
 
 <script src="/resources/FAQ_CSSnJS/modernizr.js"></script>
+
+<script type="text/javascript"
+   src="/resources/jquery/jQuery-2.1.4.min.js"></script>
+
+<script type="text/javascript">
+
+	$(function() {
+
+
+		$('#fourthManu').css('background', '#09b9e5');
+
+	});
+
+</script>
 </head>
 <body>
+<div class="header">
+      <jsp:include page="include/head.jsp"></jsp:include>
+   </div>
+   <div id="page"
+      style="background: white; display: inline-block; ">
+      <div class="col-md-12">
+ 
+					<jsp:include page="include/mypagehead.jsp"></jsp:include>
+
+				<div class="col-lg-10 col-lg-offset-1">
+					<br> <br> <label
+						style="font-size: 25px; color: black; border-bottom: 3px solid #eaeaea; padding: 0 15px 13px 15px; margin-bottom: 15px;">1:1문의</label>
+					<br> <br>
 	
 			
 				<section class="cd-faq" style="margin-top:30px;">
+				
 					<c:if test="${myqna != null }">	<!-- 1:1 inquiry exist -->
 						<c:forEach var="my" items="${myqna}">	<!-- All inquiry print -->
 								<span style="color: #408080;">${my.q_name }</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<fmt:formatDate value="${my.q_date }" pattern="yyyy-MM-dd"/><br>
@@ -50,16 +78,19 @@
 										</li>
 									</ul>
 								</div>
-								<hr><br>
+								<hr>
 						</c:forEach>
 					</c:if>
 				<%-- END OF ITEMS --%>
 				</section>
 		
-
+</div></div></div>
 	<script src="/resources/FAQ_CSSnJS/jquery-2.1.1.js"></script>
 	<script src="/resources/FAQ_CSSnJS/jquery.mobile.custom.min.js"></script>
 	<script src="/resources/FAQ_CSSnJS/main.js"></script>
 
+<div class="footer">
+		<jsp:include page="include/footer.jsp"></jsp:include>
+	</div>
 </body>
 </html>

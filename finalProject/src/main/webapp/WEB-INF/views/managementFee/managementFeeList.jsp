@@ -35,6 +35,9 @@
 	<div class="header">
 		<jsp:include page="../include/head.jsp"></jsp:include>
 	</div>
+	<div class="header">
+		<jsp:include page="../include/middle.jsp"></jsp:include>
+	</div>
 	<div class="wrapper">
 		<!-- Main content -->					
 		<div class="content" id="page">
@@ -374,7 +377,9 @@
 		src="/resources/dist/js/kyungtae/demo.js"></script>
 	<script type="text/javascript" src="/resources/js/kyungtae/mntChart.js"></script>
 	<!-- <script type="text/javascript" src="/resources/js/kyungtae/mntChartChange.js"></script> -->
-	
+	<div class="footer">
+		<jsp:include page="../include/footer.jsp"></jsp:include>
+	</div>
 </body>
 
 </html>

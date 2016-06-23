@@ -19,6 +19,8 @@
 <link rel='stylesheet'
 	href='/resources/dist/css/kyungtae/skins/_all-skins.min.css'
 	type='text/css' />
+	<script type="text/javascript"
+   src="/resources/jquery/jQuery-2.1.4.min.js"></script>
 </head>
 	<script type="text/javascript">
    $(function() {
@@ -30,6 +32,9 @@
 <body>
 	<div class="header">
 		<jsp:include page="../include/head.jsp"></jsp:include>
+	</div>
+	<div class="page">
+		<jsp:include page="../include/middle.jsp"></jsp:include>
 	</div>
 	<div class="col-md-12" id="page">
 			

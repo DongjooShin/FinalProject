@@ -177,8 +177,20 @@ public class Property implements Serializable{
 	public void setM_memberNo(String m_memberNo) {
 		this.m_memberNo = m_memberNo;
 	}
+	@Override
+	public String toString() {
+		return "Property [pr_date=" + pr_date + ", pr_propertyNo=" + pr_propertyNo + ", pr_group=" + pr_group
+				+ ", pr_APTName=" + pr_APTName + ", pr_addr=" + pr_addr + ", pr_tel=" + pr_tel + ", pr_tel1=" + pr_tel1
+				+ ", pr_tel12=" + pr_tel12 + ", pr_tel13=" + pr_tel13 + ", pr_price=" + pr_price + ", pr_deposit="
+				+ pr_deposit + ", pr_level=" + pr_level + ", pr_totalLevel=" + pr_totalLevel + ", pr_doorStruct="
+				+ pr_doorStruct + ", pr_roomNum=" + pr_roomNum + ", pr_bathNum=" + pr_bathNum + ", pr_roomArea="
+				+ pr_roomArea + ", pr_scale=" + pr_scale + ", pr_company=" + pr_company + ", pr_imageName="
+				+ pr_imageName + ", pr_content=" + pr_content + ", m_memberNo=" + m_memberNo + ", uploadFile="
+				+ uploadFile + "]";
+	}
 	
 
+	
 
 	
 }

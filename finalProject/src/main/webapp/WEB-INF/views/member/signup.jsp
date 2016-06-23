@@ -421,8 +421,9 @@
 			</div>
 		</div>
 	</div>
-
-	<div class="footer col-md-12"></div>
+<div class="footer">
+		<jsp:include page="../include/footer.jsp"></jsp:include>
+	</div>
 
 </body>
 </html>

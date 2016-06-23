@@ -101,7 +101,8 @@ public class PropertyDAO {
 	}
 
 	public List<AptTransactionPrice> getRealTransaction(HashMap<String, String> map) {
-
+		System.out.println(map.get("f_addr"));
+		System.out.println(map.get("f_groupName"));
 		return sqlSession.getMapper(PropertyMapper.class).getRealTransaction(map);
 		
 	}

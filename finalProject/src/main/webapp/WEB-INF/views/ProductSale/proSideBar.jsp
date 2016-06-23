@@ -27,14 +27,7 @@
 				<li><a href='http://demo.themegrill.com/spacious/2014/03/'>부동산매물 정보</a></li>
 				<li><a href='http://demo.themegrill.com/spacious/2014/02/'>부동산매물 등록</a></li>
 
-				<li><a href='http://demo.themegrill.com/spacious/2014/03/'>March
-						2014</a></li>
-				<li><a href='http://demo.themegrill.com/spacious/2014/02/'>February
-						2014</a></li>
-				<li><a href='http://demo.themegrill.com/spacious/2014/03/'>March
-						2014</a></li>
-				<li><a href='http://demo.themegrill.com/spacious/2014/02/'>February
-						2014</a></li>
+				
 			</ul>
 			</aside>
 		</div>

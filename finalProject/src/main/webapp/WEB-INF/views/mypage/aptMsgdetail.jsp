@@ -22,14 +22,16 @@
 <title>Bootstrap Contact Form Template</title>
 
 <!-- CSS -->
-<link rel="stylesheet"
-	href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
-<link rel="stylesheet" href="../css/Min/assets1/bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="../css/Min/assets1/font-awesome/css/font-awesome.min.css">
-<link rel="stylesheet" href="../css/Min/assets1/css/form-elements.css">
-<link rel="stylesheet" href="../css/Min/assets1/css/style.css">
 
+
+<link rel='stylesheet' href='/resources/bootstrap/bootstrap.min.css' type='text/css' rel="stylesheet" />
+<link rel='stylesheet' href='/resources/dist/css/mainFont.css'
+	type='text/css' rel="stylesheet" />
+<link rel='stylesheet'
+	href='//fonts.googleapis.com/css?family=Lato&#038;ver=e7d1598c32c9180e5e08e97723f82bcd'
+	type='text/css' media='all' />
+<link rel='stylesheet' href='/resources/dist/css/main1.css'
+	type='text/css' rel="stylesheet" />
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -37,16 +39,6 @@
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
 
-<!-- Favicon and touch icons -->
-<link rel="shortcut icon" href="../css/Min/assets1/ico/favicon.png">
-<link rel="apple-touch-icon-precomposed" sizes="144x144"
-	href="../css/Min/assets1/ico/apple-touch-icon-144-precomposed.png">
-<link rel="apple-touch-icon-precomposed" sizes="114x114"
-	href="../css/Min/assets1/ico/apple-touch-icon-114-precomposed.png">
-<link rel="apple-touch-icon-precomposed" sizes="72x72"
-	href="../css/Min/assets1/ico/apple-touch-icon-72-precomposed.png">
-<link rel="apple-touch-icon-precomposed"
-	href="../css/Min/assets1/ico/apple-touch-icon-57-precomposed.png">
 
 </head>
 
@@ -55,7 +47,7 @@
 
 
 </head>
-<body>
+<body style=" background-color: white;">
 
 <script type="text/javascript">
 	function closeconfirm() {
@@ -75,8 +67,8 @@
 					<div class="col-sm-6 col-sm-offset-3 form-box">
 						<div class="form-top">
 							<div class="form-top-left">
-								<h3>Contact us</h3>
-								<p>Fill in the form below to send us a message:</p>
+								<h3>받은 메시지</h3>
+								
 							</div>
 							<div class="form-top-right">
 								<i class="fa fa-envelope"></i>
@@ -96,7 +88,7 @@
 							</div>
 							<div>
 							날짜:${detail.mg_date}
-							</div>
+							</div><br>
 							<div>
 							제목:${detail.mg_title}
 							</div>
@@ -109,33 +101,16 @@
 							<div class="form-group">
 								<label class="sr-only" for="contact-message">내용</label>
 							</div>
-							<div>
+							<div style="border: 2px solid #eaeaea; height: 200px; width: 100%;">
 							${detail.mg_content}
 							</div>
-								
-								<input type="submit" class="btn" value="답장하기"  >
+								<div style="margin-top: 15px; text-align: center; padding: 40px; " class="col-md-4 row" >
+								<input type="submit"  value="답장하기"  style="margin-right: 20px;">
 								
 								<input type=button value="닫기" onclick="closeconfirm()">
-								
+								</div>
 								
 						
-							<!--     <form action="aptMessageOk.jsp" method="post">
-			                    <label class="sr-only" for="contact-message">Message</label>
-			                      
-			                    <input type="submit" class="btn" value="보내기">
-			                 
-			                 
-			                    <form action="aptMessageOk.jsp" method="post">
-								
-								<input type="text" name="message" >
-								<input type="submit" value="보내기">
-									</form>
-									
-									
-			                    </form> -->
-<!-- 
-<textarea name="message" placeholder="Message..."
-									class="contact-message form-control" id="contact-message"></textarea> -->
 						</div>
 					</div>
 				</div>
@@ -145,13 +120,7 @@
 	</div>
 
 </form>	
-	<!-- Javascript -->
-	<script src="aptMessagecss@@@/css/Min/assets1/js/jquery-1.11.1.min.js"></script>
-	<script src="aptMessagecss@@@/css/Min/assets1/bootstrap/js/bootstrap.min.js"></script>
-	<script src="aptMessagecss@@@@/css/Min/assets1/js/jquery.backstretch.min.js"></script>
-	<script src="aptMessagecss@@@@/css/Min/assets1/js/retina-1.1.0.min.js"></script>
-	<script src="aptMessagecss@@@@/css/Min/assets1/js/scripts.js"></script>
-
+	
 	<!--[if lt IE 10]>
             <script src="assets1/js/placeholder.js"></script>
         <![endif]-->

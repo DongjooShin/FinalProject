@@ -22,25 +22,11 @@
 	<div class="header">
 		 <jsp:include page="../include/head.jsp"></jsp:include> 
 	</div>	
+	<div class="page">
+		<jsp:include page="../include/middle.jsp"></jsp:include>
+	</div>
 
-<%--
 
-	//about v_flag
-	//case:manager
-	//1: there are no election. candidate regist button here
-	//2: manager is ongoing to put candidate. if manager changed that all president's grade, then v_flag will changed 2
-	//3: manager finished putting candidate and start election already. election is ongoing 
-	//4: election is end. result is noticing. if manager click the finish noticing, v_flag will change 1	
-	
-	//case:resident
-	//1: there are no election. Two president's information here
-	//2: election is start. And resident is not vote yet.
-	//3: election is ongoing. And resident is already votes. resident can see real time result
-	//4: election is end. Result is noticing. if result noticing is finished, v_flag will change 1
-		
- --%>
-
-<%-- ------------------------------Body------------------------------------------- --%>
 	<div id= "page">
 		<div class="col-md-3">
 			<jsp:include page="../Community/CommunitySidebar.jsp"></jsp:include>

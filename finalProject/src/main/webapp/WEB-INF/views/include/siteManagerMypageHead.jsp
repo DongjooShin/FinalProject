@@ -33,8 +33,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="/mypage"><li id="firstManu" class="manu ">공지사항등록</li></a>
-	<a href="/managementFee/managementFeePay"> <li id="secondManu" class="manu">1:1문의답변</li></a>
+	
 	<a href="/mypage/signupManager"><li id="thirdManu" class="manu">아파트관리자등록</li></a>
 	<a href="/mypage/FileUploadForm"><li id="fourthManu" class="manu">아파트실거래가등록</li></a>
 	

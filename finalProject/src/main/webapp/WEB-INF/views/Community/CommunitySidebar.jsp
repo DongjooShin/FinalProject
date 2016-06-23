@@ -32,7 +32,7 @@
 
 		<div id="secondary" style="background-color: white;text-align: center;">
 			<aside id="archives" class="widget">
-			<h3 class="widget-title">${aptName }</h3>
+			<h3 class="widget-title">신길자이아파트</h3>
 			<ul id="sideBar">
 				 
 				<li ><a href='/calendar/calendar'>캘린더</a></li>

@@ -37,13 +37,9 @@
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
 <title>우리 아파트</title>
-
-
 <!-- Morris Charts JavaScript -->
 <script src="../../../resources/js/gidae/morris/raphael.min.js"></script>
 <!-- Bootstrap Core CSS -->
-
-
 
 <link href="../../../resources/css/gidae/bootstrap.min.css"
 	rel="stylesheet">
@@ -71,6 +67,9 @@
 	<div class="header">
 		<jsp:include page="../include/head.jsp"></jsp:include>
 	</div>
+	<div class="page">
+		<jsp:include page="../include/middle.jsp"></jsp:include>
+	</div>
 	<div class="main">
 		<div>
 			<div id="page" class="content">
@@ -88,7 +87,7 @@
 					</ul>
 					</aside>
 				</div>
-				<div id="primary" style="height: 1000px;"></div>
+				
 
 			</div>
 					<div class="col-lg-9">
@@ -337,8 +336,8 @@
 
 
 		</div>
-				
-	
-			<div class="footer"></div>
+				<div class="footer">
+		<jsp:include page="../include/footer.jsp"></jsp:include>
+	</div>
 </body>
 </html>

@@ -48,9 +48,10 @@
 	</div>
 	
 <%-- ----------------------Footer include----------------- --%>
-	<div class = "footer">
-	
+<div class="footer">
+		<jsp:include page="../include/footer.jsp"></jsp:include>
 	</div>
+
 	
 </body>
 </html>

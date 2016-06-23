@@ -48,9 +48,10 @@ function detailProduct(pro_no){
 </script>
 <body>
 	<div class="header">
-
 		<jsp:include page="../include/head.jsp"></jsp:include>
-
+	</div>
+	<div class="page">
+		<jsp:include page="../include/middle.jsp"></jsp:include>
 	</div>
 	<div id="page" class="hfeed site"
 		style="display:inline-block; ;  border-top: 2px solid;">
@@ -66,16 +67,14 @@ function detailProduct(pro_no){
 				</div>
 				<div class="col-lg-9"
 					style="padding-left: 0; padding-right: -15px; margin-top: 17px;">
+					<br><br>
+<label style="font-size: 25px; color: black; border-bottom: 3px solid #eaeaea; padding: 0 15px 13px 15px; margin-bottom: 15px;">관리자 공동구매신청 승인 </label>
+		<br><br>
 					<div class="well bs-component">
 					
 						<form class="form-horizontal" action="MemberOk.jsp" method="post"
 							name="userInput" onsubmit="return checkIt()">
 
-							<legend>공동구매 신청내역 </legend>
-	
-
-						
-<h3>글목록 보기</h3>
 	<a href="/ProductSale/proApplicationList">공동구매 신청등록</a>
 
 	<table border="1" cellpadding="0" cellspacing="0">
@@ -94,7 +93,13 @@ function detailProduct(pro_no){
 				<td align="center">${product.pro_no }</td>
 				<td align="center">${product.pro_group }</td>
 				<td align="center">${product.pro_name }</td>
-				<td align="center"><a onclick="detailProduct(${product.pro_no })">등록하기</a></td>
+			            <c:if test="${product.pro_flag  != '승인완료'}">
+     	  	    <td align="center">등록불가능</td>
+        	    </c:if>
+         	   <c:if test="${product.pro_flag  == '승인완료'}">
+       	      <td align="center"><a onclick="detailProduct(${product.pro_no })">등록하기</a></td>
+      	      </c:if>
+            
 				<td align="center">${product.pro_date }</td> 
 				<td align="center">${product.pro_flag }</td>
 				</tr>
@@ -160,91 +165,10 @@ function detailProduct(pro_no){
 
 			</div>
 		</div>
-		<!-----start-copyright---->
-		<div class="copy-right">
-			<p>
-				Template by <a href="http://w3layouts.com">w3layouts</a>
-			</p>
-		</div>
-
-
-
-<%-- 
-
-<h3>글목록 보기</h3>
-	<a href="aptSale.jsp">글쓰기</a>
-
-	<table border="1" cellpadding="0" cellspacing="0">
-		<tr height="30">
-			<th width="50">건물명</th>
-			<th width="100">이미지</th>
-			<th width="250">제목</th>
-			<th width="150">회원아이디</th>
-			<th width="150">작성일</th>
 		
-		</tr>
-		<c:forEach var="property" items="${listModel.list }">
-			<tr height="30">
-				<td align="center">${property.pr_APTName }</td>
-				<td align="center"><c:if test="${property.pr_imageName != null}">
-				
-						<c:set var="head"
-							value="${fn:substring(property.pr_imageName,0,fn:length(property.pr_imageName)-4) }"></c:set>
-						<c:set var="pattern"
-							value="${fn:substringAfter(property.pr_imageName, head) }"></c:set>
-						 <img src="../M_upload1/${head }_small${pattern}" /> 
-						
-					</c:if></td>
-
-				<td align="left">
-				 <a href="aptSaledetail.jsp?pr_propertyNo=${property.pr_propertyNo }">${property.pr_APTName }</a></td>
-				<td align="center">${property.pr_APTName }</td>
-		 	<td align="center"><fmt:formatDate value="${property.pr_date }"
-						pattern="yyyy-MM-dd" /></td> 
-				</tr>
-				
-			
-		</c:forEach>
-	</table>
-	<br>
-	<br>
-
-	<!-- 페이징 처리  -->
-	<!-- 현재페이지, 페이지당글 갯수, 총 글갯수, 총페이지갯수, 시작페이지, 마지막페이지  -->
-
-	<c:if test="${listModel.startPage >5 }">
-		<a href="aptSaleList.jsp?pageNum=${listModel.startPage-5 }">[이전]</a>
-	</c:if>
-
-
-	<c:forEach var="pageNum" begin="${listModel.startPage }"
-		end="${listModel.endPage }">
-		<c:choose>
-			<c:when test="${listModel.requestPage == pageNum}">
-				<a href="aptSaleList.jsp?pageNum=${pageNum}"><b>[ ${pageNum} ]</b></a>
-			</c:when>
-			<c:otherwise>
-				<a href="aptSaleList.jsp?pageNum=${pageNum}">[ ${pageNum} ]</a>
-			</c:otherwise>
-		</c:choose>
-
-	</c:forEach>
-
-
-	<c:if test="${listModel.endPage < listModel.totalPageCount }">
-		<a href="aptSaleList.jsp?pageNum=${listModel.startPage+5 }">[다음]</a>
-	</c:if>
-	<br>
-	<br>
-
-	<form action="aptSaleList.jsp" method="post">
-		<input type="checkbox" name="area" value="b_title">제목 <input
-			type="checkbox" name="area" value="b_name">작성자 <input   
-			type="text" name="searchKey" size="10"> <input type="hidden"
-			name="temp" value="temp"> <input type="submit" value="검색">
-			<!-- 이거 pr이어야 검색되겟다 -->
-
-	</form> --%>
 </div>
+<div class="footer">
+		<jsp:include page="../include/footer.jsp"></jsp:include>
+	</div>
 </body>
 </html>

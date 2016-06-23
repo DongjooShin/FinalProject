@@ -47,7 +47,7 @@ $('#fileInto').tooltip({
 <body>
 <%-- -----------------Header include----------------- --%>	
 	<div class="header">
-		 <jsp:include page="head.jsp"></jsp:include> 
+		 <jsp:include page="../include/head.jsp"></jsp:include> 
 	</div>	
 
 <%-- ------------------------------Body------------------------------------------- --%>
